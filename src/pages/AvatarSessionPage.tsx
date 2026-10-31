@@ -1146,7 +1146,7 @@ export default function AvatarSessionPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-8rem)] px-2 md:px-3 py-3 pb-24 md:pb-3">
+    <div className="min-h-[calc(100vh-8rem)] px-2 py-3 pb-6 md:px-3 lg:pb-3">
       <div className="w-full relative grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(280px,340px)] gap-3 items-start">
         <main className="rounded-2xl border border-border bg-card/95 backdrop-blur p-4 md:p-5 flex flex-col gap-4 min-w-0">
           <div className="flex items-center justify-between gap-3 flex-wrap">

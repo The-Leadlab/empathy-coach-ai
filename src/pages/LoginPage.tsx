@@ -169,8 +169,9 @@ export default function LoginPage() {
 
   if (checkInboxEmail) {
     return (
-      <div className="container max-w-sm mx-auto px-4 py-12">
-        <div className="rounded-2xl border border-border bg-card p-6 shadow-soft space-y-4">
+      <div className="min-h-screen bg-background">
+      <div className="container mx-auto max-w-sm px-4 py-12">
+        <div className="space-y-4 py-2">
           <h1 className="font-display font-semibold text-lg text-foreground">Check your inbox</h1>
           <p className="text-sm text-muted-foreground">
             We sent a confirmation link to <strong className="text-foreground">{checkInboxEmail}</strong>.
@@ -187,7 +188,7 @@ export default function LoginPage() {
           </Button>
           <button
             type="button"
-            className="w-full text-sm text-muted-foreground hover:text-foreground"
+            className="inline-flex min-h-11 w-full items-center justify-center text-sm text-foreground"
             onClick={() => {
               setCheckInboxEmail(null);
               setIsSignUp(false);
@@ -197,12 +198,14 @@ export default function LoginPage() {
           </button>
         </div>
       </div>
+      </div>
     );
   }
 
   return (
-    <div className="container max-w-sm mx-auto px-4 py-12">
-      <div className="rounded-2xl border border-border bg-card p-6 shadow-soft">
+    <div className="min-h-screen bg-background">
+    <div className="container mx-auto max-w-sm px-4 py-12">
+      <div className="py-2">
         <h1 className="font-display font-semibold text-lg text-foreground mb-1">
           {isReset ? "Reset password" : isSignUp ? "Create account" : "Sign in"}
         </h1>
@@ -279,7 +282,7 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={() => setIsReset(true)}
-            className="mt-3 w-full text-sm text-muted-foreground hover:text-foreground"
+            className="mt-3 inline-flex min-h-11 w-full items-center justify-center text-sm text-foreground"
           >
             Forgot password?
           </button>
@@ -293,7 +296,7 @@ export default function LoginPage() {
             }
             setIsSignUp((v) => !v);
           }}
-          className="mt-4 w-full text-sm text-muted-foreground hover:text-foreground"
+          className="mt-4 inline-flex min-h-11 w-full items-center justify-center text-sm text-foreground"
         >
           {isReset
             ? "Back to sign in"
@@ -302,11 +305,12 @@ export default function LoginPage() {
               : "No account? Sign up"}
         </button>
         <p className="mt-4 text-center text-sm">
-          <Link to="/" className="text-muted-foreground hover:text-foreground">
+          <Link to="/" className="inline-flex min-h-11 items-center text-foreground">
             Back to main site
           </Link>
         </p>
       </div>
+    </div>
     </div>
   );
 }

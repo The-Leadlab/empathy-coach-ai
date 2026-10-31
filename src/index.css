@@ -17,7 +17,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 260 20% 14%;
 
-    --primary: 271 58% 59%;
+    /* 40% lightness keeps white labels and purple links readable on the light background */
+    --primary: 271 58% 40%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 291 52% 65%;
@@ -34,7 +35,7 @@
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 271 58% 59%;
+    --ring: 271 58% 40%;
 
     --radius: 0.5rem;
     --radius-lg: 0.75rem;
@@ -140,6 +141,10 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
+
+  p {
+    text-wrap: pretty;
+  }
 }
 
 @layer utilities {
@@ -216,6 +221,9 @@
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom);
   }
   /* ChatGPT / Gemini-style thinking dots while waiting for the LLM */
   .thinking-dot {

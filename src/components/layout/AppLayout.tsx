@@ -19,10 +19,10 @@ export default function AppLayout() {
       <DisclaimerBanner />
       <main
         className={cn(
-          "flex-1 pb-20 md:pb-8 overflow-x-hidden bg-[#f8f6f6]/98 backdrop-blur-md border border-white/30 shadow-xl",
+          "flex-1 overflow-x-hidden bg-background text-foreground",
           fullBleed
-            ? "md:mx-2 md:mb-2 md:rounded-2xl max-w-none"
-            : "md:mx-4 md:mb-4 md:rounded-3xl max-w-6xl md:mx-auto w-full",
+            ? "lg:mx-2 lg:mb-2 lg:rounded-2xl max-w-none"
+            : "mx-auto w-full max-w-6xl lg:mb-4 lg:rounded-2xl",
         )}
       >
         <Outlet />

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Bot, Download, ListTodo, Loader2, MessageCircle, MessageSquare, Pencil, Plus, Trash2 } from "lucide-react";
+import { Download, ListTodo, Loader2, MessageCircle, MessageSquare, Pencil, Plus, Trash2 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useTrainerAdmin } from "@/hooks/useTrainerAdmin";
 import {
@@ -177,18 +177,12 @@ export default function JourneysDashboardPage() {
         : `You have ${journeys.length} journeys. Pick one to continue or start something new.`;
 
   return (
-    <div className="min-h-[calc(100vh-8rem)] px-4 py-8 pb-24 md:pb-8">
+    <div className="min-h-[calc(100vh-8rem)] px-4 py-8 pb-8">
       <div className="max-w-3xl mx-auto space-y-6">
-        <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
-          <div className="flex items-start gap-4">
-            <div className="h-12 w-12 rounded-2xl bg-primary/10 grid place-items-center shrink-0">
-              <Bot className="w-6 h-6 text-primary" />
-            </div>
-            <div className="min-w-0">
-              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">ShiftED AI Coach</p>
-              <h1 className="text-2xl md:text-3xl font-semibold">Your journeys</h1>
-              <p className="text-muted-foreground mt-2">{welcomeLine}</p>
-            </div>
+        <div className="py-2">
+          <div className="min-w-0">
+            <h1 className="text-2xl font-semibold md:text-3xl">Your journeys</h1>
+            <p className="mt-2 text-foreground">{welcomeLine}</p>
           </div>
           <Button
             className="mt-6 rounded-xl relative z-10"

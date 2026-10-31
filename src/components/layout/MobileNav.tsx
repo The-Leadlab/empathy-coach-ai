@@ -14,8 +14,8 @@ export default function MobileNav() {
   const location = useLocation();
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-white/20 bg-[#5b4acb] shadow-lg px-1 py-1 safe-area-pb">
-      <div className="flex justify-around">
+    <nav className="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-[hsl(var(--sidebar-background))] pb-[env(safe-area-inset-bottom)]">
+      <div className="flex">
         {navItems.map((item) => {
           const active =
             location.pathname === item.to || location.pathname.startsWith(`${item.to}/`);
@@ -24,11 +24,11 @@ export default function MobileNav() {
               key={item.to}
               to={item.to}
               className={cn(
-                "flex flex-col items-center gap-0.5 px-1.5 py-1.5 rounded-xl text-[10px] font-medium transition-colors min-w-[56px]",
-                active ? "text-white bg-white/15" : "text-white/80 hover:text-white",
+                "flex min-h-11 min-w-11 flex-1 flex-col items-center justify-center gap-0.5 px-1 text-xs font-medium text-white transition-colors duration-150",
+                active ? "bg-white/15" : "hover:bg-white/10",
               )}
             >
-              <item.icon className="w-5 h-5" />
+              <item.icon className="w-5 h-5" strokeWidth={2} />
               {item.label}
             </Link>
           );

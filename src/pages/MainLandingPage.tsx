@@ -1,84 +1,68 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { MessageSquare, Shield, ArrowRight } from "lucide-react";
 
 /**
- * Main landing page (/) — ShiftED AI platform.
- * Uses platform colors (gradient #7C6CF3 → #A16AE8 → #C770D6).
- * All app features live under /testing.
+ * Public entry (/). App screens live under /testing.
+ * Brand gradient is the design-system hero only; chrome uses the solid sidebar colour
+ * so type stays readable on every screen size.
  */
 export default function MainLandingPage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="glass-nav sticky top-0 z-40 w-full">
-        <div className="container flex h-14 items-center justify-between px-4">
-          <Link to="/" className="flex items-center gap-2 font-display font-bold text-white tracking-tight">
+    <div className="flex min-h-screen flex-col bg-background">
+      <header className="sticky top-0 z-40 w-full bg-[hsl(var(--sidebar-background))] pt-[env(safe-area-inset-top)] text-white">
+        <div className="container flex h-14 items-center justify-between gap-3 px-4">
+          <Link to="/" className="flex min-h-11 items-center gap-2 font-display font-bold text-white">
             <img src="/logo.png" alt="" className="h-8 w-8 rounded-lg object-contain" aria-hidden />
-            <span className="text-lg">ShiftED</span>
-            <span className="text-lg text-white/90">AI</span>
+            <span className="text-lg">ShiftED AI</span>
           </Link>
           <Link
             to="/testing/login"
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 text-white hover:bg-white/25 text-sm font-medium transition-colors"
+            className="inline-flex min-h-11 items-center rounded-xl px-4 text-sm font-medium text-white transition-colors duration-150 hover:bg-white/10 active:scale-[0.96]"
           >
-            Sign in / Sign up
+            Sign in
           </Link>
         </div>
       </header>
 
       <main className="flex-1">
-        <section className="gradient-hero px-6 py-20 md:py-28">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl mx-auto text-center"
-          >
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-6">
-              <Shield className="w-3.5 h-3.5 text-white/90" />
-              <span className="text-xs font-medium text-white/90">Practice-based training · Not therapy</span>
-            </div>
-
-            <h1 className="text-4xl md:text-6xl font-display font-bold text-white leading-tight">
-              Build empathetic leaders,
-              <br />
-              <span className="text-white/95">one conversation at a time</span>
+        <section className="bg-[hsl(var(--sidebar-background))] px-6 py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <h1 className="font-display text-4xl font-bold leading-tight text-white md:text-5xl">
+              Build empathetic leaders, one conversation at a time
             </h1>
-
-            <p className="mt-6 text-white/80 text-lg max-w-lg mx-auto leading-relaxed">
-              ShiftED AI helps first-time managers master constructive feedback, inclusive communication, and critical thinking through AI-powered practice scenarios.
+            <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-white">
+              ShiftED AI is practice for first-time managers: constructive feedback, inclusive communication, and critical thinking. It is training, not therapy.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-              <Button asChild size="lg" className="bg-white text-[#2d2d3a] hover:bg-white/95 rounded-xl gap-2 shadow-lg font-semibold">
-                <Link to="/testing/login">
-                  Sign in / Sign up <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
+            <div className="mt-10 flex justify-center">
+              <Link
+                to="/testing/login"
+                className="inline-flex min-h-11 items-center rounded-xl bg-white px-6 text-base font-semibold text-foreground transition-transform duration-150 active:scale-[0.96]"
+              >
+                Sign in
+              </Link>
             </div>
-          </motion.div>
+          </div>
         </section>
 
-        <section className="px-6 py-16 max-w-4xl mx-auto">
-          <h2 className="font-display text-2xl font-bold text-foreground text-center mb-8">Current testing focus</h2>
-          <div className="grid md:grid-cols-1 gap-6 max-w-xl mx-auto">
-            <Link to="/testing/login" className="block p-6 rounded-2xl bg-card border border-border hover:shadow-elevated transition-shadow text-center">
-              <MessageSquare className="w-10 h-10 mx-auto mb-3 text-[#a16ae8]" />
-              <h3 className="font-display font-semibold text-foreground mb-1">One guided session</h3>
-              <p className="text-sm text-muted-foreground">Sign in, practice a difficult feedback conversation, and help us collect training data.</p>
+        <section className="mx-auto max-w-xl px-6 py-14">
+          <h2 className="font-display text-2xl font-bold text-foreground">One guided session</h2>
+          <p className="mt-3 text-base leading-relaxed text-foreground">
+            Sign in, then practise a difficult feedback conversation with the coach. Your journeys, tasks, and notes stay on this account.
+          </p>
+          <p className="mt-6">
+            <Link to="/testing/login" className="inline-flex min-h-11 items-center font-medium text-primary">
+              Continue to sign in
             </Link>
-          </div>
-          <p className="text-center mt-8">
-            <Link to="/testing/login" className="text-[#a16ae8] font-medium hover:underline">Sign in / Sign up →</Link>
           </p>
         </section>
       </main>
 
-      <footer className="border-t border-border bg-card/50 py-6 px-4 text-center text-sm text-muted-foreground">
-        <p>ShiftED AI — Empathy training for managers. Not a substitute for professional support.</p>
-        <p className="mt-1">
-          <a href="https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-use-111/" className="underline">NHS 111</a> · <a href="https://www.nhs24.scot/" className="underline">NHS 24 (Scotland)</a> · <a href="https://www.mind.org.uk" className="underline">Mind</a> · <a href="https://www.samaritans.org" className="underline">Samaritans</a>
+      <footer className="bg-background px-4 py-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] text-center text-sm text-foreground">
+        <p>ShiftED AI is empathy training for managers. It is not a substitute for professional support.</p>
+        <p className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+          <a className="inline-flex min-h-11 items-center underline" href="https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-use-111/">NHS 111</a>
+          <a className="inline-flex min-h-11 items-center underline" href="https://www.nhs24.scot/">NHS 24 (Scotland)</a>
+          <a className="inline-flex min-h-11 items-center underline" href="https://www.mind.org.uk">Mind</a>
+          <a className="inline-flex min-h-11 items-center underline" href="https://www.samaritans.org">Samaritans</a>
         </p>
       </footer>
     </div>

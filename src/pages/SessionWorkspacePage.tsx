@@ -328,9 +328,9 @@ export default function SessionWorkspacePage() {
         />
       </div>
 
-      <div className="fixed bottom-16 md:bottom-6 left-0 right-0 z-40 px-4 pointer-events-none">
+      <div className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] left-0 right-0 z-40 px-4 pointer-events-none lg:bottom-6">
         <div className="max-w-5xl mx-auto pointer-events-auto">
-          <Button className="w-full rounded-xl h-12 text-base shadow-lg" onClick={openChat}>
+          <Button className="h-12 w-full rounded-xl text-base" onClick={openChat}>
             <MessageCircle className="w-5 h-5 mr-2" />
             Talk to your coach
           </Button>
