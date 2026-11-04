@@ -20,15 +20,79 @@ function fallbackConfig() {
   return { apiKey, apiUrl, model, fallbackAfterMs };
 }
 
+const PREFERRED_MODELS = [
+  "llama-3.3-70b-versatile",
+  "openai/gpt-oss-120b",
+  "qwen/qwen3-32b",
+  "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "meta-llama/llama-4-scout-17b-16e-instruct",
+  "openai/gpt-oss-20b",
+  "llama-3.1-8b-instant",
+];
+const NON_CHAT_MODEL = /whisper|guard|tts|playai|orpheus|distil|prompt-guard|safeguard|compound/i;
+
+let resolvedModel = null;
+
+function isModelUnavailable(status, msg) {
+  return (
+    status === 404 ||
+    /model.*(not exist|not found|decommissioned|does not have access|unavailable)/i.test(String(msg))
+  );
+}
+
+async function pickAvailableModel(apiUrl, apiKey, exclude) {
+  const modelsUrl = apiUrl.replace(/\/chat\/completions\/?$/, "/models");
+  const res = await fetch(modelsUrl, {
+    headers: { Authorization: `Bearer ${apiKey}` },
+    signal: AbortSignal.timeout(10000),
+  });
+  if (!res.ok) return null;
+  const data = await res.json().catch(() => null);
+  const ids = (data?.data || [])
+    .filter((m) => m && m.id && m.active !== false)
+    .map((m) => m.id)
+    .filter((id) => id !== exclude && !NON_CHAT_MODEL.test(id));
+  const preferred = [(process.env.GROQ_MODEL || "").trim(), ...PREFERRED_MODELS].filter(Boolean);
+  return preferred.find((id) => ids.includes(id)) || ids[0] || null;
+}
+
+async function postChat(apiUrl, apiKey, payload, timeoutMs) {
+  const res = await fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(timeoutMs),
+  });
+  const text = await res.text();
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    throw new Error(`Fallback LLM invalid JSON (${res.status}): ${text.slice(0, 300)}`);
+  }
+  if (!res.ok) {
+    const msg = data?.error?.message || data?.error || text.slice(0, 300);
+    const err = new Error(`Fallback LLM ${res.status}: ${msg}`);
+    err.modelUnavailable = isModelUnavailable(res.status, msg);
+    throw err;
+  }
+  return String(data.choices?.[0]?.message?.content ?? "").trim();
+}
+
 /**
- * Synchronous OpenAI-compatible chat completion.
+ * Synchronous OpenAI-compatible chat completion. If the configured model is not
+ * available on the key, picks one from the provider's /models list and retries.
  * @returns {Promise<string>} assistant text
  */
 async function callFallbackChat(messages, sampling = {}, timeoutMs = 55000) {
-  const { apiKey, apiUrl, model } = fallbackConfig();
+  const { apiKey, apiUrl, model: configuredModel } = fallbackConfig();
   if (!apiKey || !apiUrl) {
     throw new Error("Fallback LLM is not configured.");
   }
+  const model = resolvedModel || configuredModel;
 
   const payload = {
     model,
@@ -43,35 +107,25 @@ async function callFallbackChat(messages, sampling = {}, timeoutMs = 55000) {
     payload.frequency_penalty = sampling.frequency_penalty;
   }
 
-  const res = await fetch(apiUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify(payload),
-    signal: AbortSignal.timeout(timeoutMs),
-  });
-
-  const text = await res.text();
-  let data;
   try {
-    data = JSON.parse(text);
-  } catch {
-    throw new Error(`Fallback LLM invalid JSON (${res.status}): ${text.slice(0, 300)}`);
+    return await postChat(apiUrl, apiKey, payload, timeoutMs);
+  } catch (err) {
+    if (!err.modelUnavailable) throw err;
+    const alternative = await pickAvailableModel(apiUrl, apiKey, model);
+    if (!alternative) throw err;
+    console.warn(`Fallback model "${model}" unavailable, using "${alternative}"`);
+    resolvedModel = alternative;
+    return postChat(apiUrl, apiKey, { ...payload, model: alternative }, timeoutMs);
   }
+}
 
-  if (!res.ok) {
-    const msg = data?.error?.message || data?.error || text.slice(0, 300);
-    throw new Error(`Fallback LLM ${res.status}: ${msg}`);
-  }
-
-  const reply = data.choices?.[0]?.message?.content ?? "";
-  return String(reply).trim();
+function currentFallbackModel() {
+  return resolvedModel || fallbackConfig().model;
 }
 
 module.exports = {
   fallbackConfigured,
   fallbackConfig,
   callFallbackChat,
+  currentFallbackModel,
 };

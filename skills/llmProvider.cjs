@@ -8,6 +8,7 @@ const {
   fallbackConfigured,
   fallbackConfig,
   callFallbackChat,
+  currentFallbackModel,
 } = require("./fallbackLlm.cjs");
 const {
   parseRunPodEndpointId,
@@ -99,9 +100,8 @@ async function callFallbackPath(messages, sampling) {
   if (!fallbackConfigured()) {
     throw new Error("Fallback LLM is not configured.");
   }
-  const { model } = fallbackConfig();
   const text = await callFallbackChat(messages, sampling);
-  return { text, provider: "fallback", model, async: false };
+  return { text, provider: "fallback", model: currentFallbackModel(), async: false };
 }
 
 /**
