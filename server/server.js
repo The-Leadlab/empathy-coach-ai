@@ -369,8 +369,8 @@ app.post("/api/workbook-author", async (req, res) => {
     const { data: userData, error: userErr } = await userClient.auth.getUser(token);
     if (userErr || !userData?.user) return res.status(401).json({ error: "Invalid session." });
 
-    const adminClient = createClient(url, service || anon);
-    const { data: roles, error: roleErr } = await adminClient
+    const roleClient = service ? createClient(url, service) : userClient;
+    const { data: roles, error: roleErr } = await roleClient
       .from("user_roles")
       .select("role")
       .eq("user_id", userData.user.id)

@@ -30,3 +30,5 @@ supabase/manual/
 
 # Cloned landing page repo (reference only)
 shifted-landing-temp/
+.vercel
+.env*
