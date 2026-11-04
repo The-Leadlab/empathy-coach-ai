@@ -5,6 +5,9 @@
 const { createClient } = require("@supabase/supabase-js");
 const { runAuthorAction } = require("../../skills/workbookAuthorService.cjs");
 
+// Keep in sync with NAMED_TRAINER_ADMINS in src/lib/adminAccess.ts
+const NAMED_TRAINER_ADMINS = ["kara@admin.com", "josh@admin.com", "simon@admin.com", "louise@admin.com"];
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, content-type",
@@ -33,6 +36,10 @@ async function requireAdmin(authHeader) {
   });
   const { data: userData, error: userErr } = await userClient.auth.getUser(token);
   if (userErr || !userData?.user) return { error: "Invalid session.", status: 401 };
+
+  if (NAMED_TRAINER_ADMINS.includes((userData.user.email || "").toLowerCase())) {
+    return { user: userData.user };
+  }
 
   const roleClient = service ? createClient(url, service) : userClient;
   const { data: roles, error: roleErr } = await roleClient

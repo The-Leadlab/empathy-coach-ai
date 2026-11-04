@@ -112,8 +112,11 @@ export async function listWorkbooks(): Promise<WorkbookRecord[]> {
     .from("clinician_workbooks" as never)
     .select("*")
     .order("updated_at", { ascending: false });
-  if (error) return readLocal();
-  return (data as WorkbookRecord[]) || [];
+  const local = readLocal();
+  if (error) return local;
+  const remote = (data as WorkbookRecord[]) || [];
+  const remoteIds = new Set(remote.map((w) => w.id));
+  return [...remote, ...local.filter((w) => !remoteIds.has(w.id))];
 }
 
 export async function getWorkbook(id: string): Promise<WorkbookRecord | null> {

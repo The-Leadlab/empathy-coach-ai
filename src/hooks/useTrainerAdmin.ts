@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { hasAdminRole, isTrainerAdminEmail } from "@/lib/adminAccess";
+import { hasAdminRole, isNamedTrainerAdmin, isTrainerAdminEmail } from "@/lib/adminAccess";
 
 export function useTrainerAdmin(userEmail: string | undefined | null, userId: string | undefined | null) {
   const [isTrainerAdmin, setIsTrainerAdmin] = useState(false);
@@ -10,6 +10,12 @@ export function useTrainerAdmin(userEmail: string | undefined | null, userId: st
     const check = async () => {
       if (!userId || !isTrainerAdminEmail(userEmail)) {
         setIsTrainerAdmin(false);
+        setChecking(false);
+        return;
+      }
+
+      if (isNamedTrainerAdmin(userEmail)) {
+        setIsTrainerAdmin(true);
         setChecking(false);
         return;
       }

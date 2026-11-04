@@ -369,14 +369,17 @@ app.post("/api/workbook-author", async (req, res) => {
     const { data: userData, error: userErr } = await userClient.auth.getUser(token);
     if (userErr || !userData?.user) return res.status(401).json({ error: "Invalid session." });
 
-    const roleClient = service ? createClient(url, service) : userClient;
-    const { data: roles, error: roleErr } = await roleClient
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", userData.user.id)
-      .eq("role", "admin")
-      .limit(1);
-    if (roleErr || !roles?.length) return res.status(403).json({ error: "Admin role required." });
+    const namedAdmins = ["kara@admin.com", "josh@admin.com", "simon@admin.com", "louise@admin.com"];
+    if (!namedAdmins.includes((userData.user.email || "").toLowerCase())) {
+      const roleClient = service ? createClient(url, service) : userClient;
+      const { data: roles, error: roleErr } = await roleClient
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userData.user.id)
+        .eq("role", "admin")
+        .limit(1);
+      if (roleErr || !roles?.length) return res.status(403).json({ error: "Admin role required." });
+    }
 
     const result = await runAuthorAction(req.body || {});
     return res.json({ ok: true, ...result });

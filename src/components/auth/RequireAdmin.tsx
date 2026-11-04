@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
-import { hasAdminRole, isTrainerAdminEmail } from "@/lib/adminAccess";
+import { hasAdminRole, isNamedTrainerAdmin, isTrainerAdminEmail } from "@/lib/adminAccess";
 
 export default function RequireAdmin() {
   const { user, loading } = useAuth();
@@ -24,6 +24,14 @@ export default function RequireAdmin() {
       if (!isTrainerAdminEmail(user.email)) {
         if (mounted) {
           setIsAdmin(false);
+          setCheckingRole(false);
+        }
+        return;
+      }
+
+      if (isNamedTrainerAdmin(user.email)) {
+        if (mounted) {
+          setIsAdmin(true);
           setCheckingRole(false);
         }
         return;
