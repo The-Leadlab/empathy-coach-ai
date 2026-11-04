@@ -26,6 +26,12 @@
   status  = 200
   force   = true
 
+[[redirects]]
+  from    = "/api/workbook-author"
+  to      = "/.netlify/functions/workbook-author"
+  status  = 200
+  force   = true
+
 # SPA: serve index.html for client-side routes
 [[redirects]]
   from    = "/*"
@@ -43,3 +49,7 @@
 [functions."chat"]
   timeout = 60
   included_files = ["knowledge-base/**"]
+
+[functions."workbook-author"]
+  timeout = 60
+  included_files = ["knowledge-base/**", "config/**", "skills/**"]

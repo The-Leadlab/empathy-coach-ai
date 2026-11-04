@@ -350,6 +350,42 @@ app.post("/api/transcribe", async (req, res) => {
   }
 });
 
+app.post("/api/workbook-author", async (req, res) => {
+  try {
+    const { createClient } = require("@supabase/supabase-js");
+    const { runAuthorAction } = require("../skills/workbookAuthorService.cjs");
+    const authHeader = req.headers.authorization || "";
+    const token = String(authHeader).replace(/^Bearer\s+/i, "").trim();
+    if (!token) return res.status(401).json({ error: "Missing authorization." });
+
+    const url = (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "").replace(/\/$/, "");
+    const anon = process.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_ANON_KEY;
+    const service = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!url || !anon) return res.status(500).json({ error: "Supabase is not configured." });
+
+    const userClient = createClient(url, anon, {
+      global: { headers: { Authorization: `Bearer ${token}` } },
+    });
+    const { data: userData, error: userErr } = await userClient.auth.getUser(token);
+    if (userErr || !userData?.user) return res.status(401).json({ error: "Invalid session." });
+
+    const adminClient = createClient(url, service || anon);
+    const { data: roles, error: roleErr } = await adminClient
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", userData.user.id)
+      .eq("role", "admin")
+      .limit(1);
+    if (roleErr || !roles?.length) return res.status(403).json({ error: "Admin role required." });
+
+    const result = await runAuthorAction(req.body || {});
+    return res.json({ ok: true, ...result });
+  } catch (err) {
+    console.error("workbook-author:", err);
+    return res.status(500).json({ error: err.message || "Workbook author failed." });
+  }
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Backend running on port ${PORT}`);

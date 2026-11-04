@@ -1,0 +1,20 @@
+{
+  "allowedLicences": ["us_public_domain", "owner_authored"],
+  "allowedAgencies": [
+    "VA NCPTSD",
+    "VA MIRECC",
+    "VA/DoD",
+    "SAMHSA",
+    "NIMH",
+    "NIAAA",
+    "NIDA",
+    "HHS"
+  ],
+  "blockedSources": [
+    "NHS CNTW",
+    "CCI",
+    "CEDAR",
+    "Berkshire NHS",
+    "PositivePsychology.com"
+  ]
+}

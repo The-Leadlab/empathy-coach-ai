@@ -1,10 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
-import { BookOpen, Bot, HeartHandshake, LayoutDashboard, LogIn, LogOut, Settings } from "lucide-react";
+import { BookOpen, Bot, HeartHandshake, LayoutDashboard, LogIn, LogOut, NotebookPen, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
+import { useTrainerAdmin } from "@/hooks/useTrainerAdmin";
 import { supabase } from "@/integrations/supabase/client";
 
-const navTabs = [
+const baseTabs = [
   { to: "/testing/journeys", icon: Bot, label: "Journeys" },
   { to: "/testing/library", icon: BookOpen, label: "Library" },
   { to: "/testing/profile", icon: LayoutDashboard, label: "Profile" },
@@ -15,6 +16,15 @@ const navTabs = [
 export default function TopNav() {
   const location = useLocation();
   const { user } = useAuth();
+  const { isTrainerAdmin } = useTrainerAdmin(user?.email, user?.id);
+
+  const navTabs = isTrainerAdmin
+    ? [
+        ...baseTabs.slice(0, 2),
+        { to: "/testing/workbooks", icon: NotebookPen, label: "Workbooks" },
+        ...baseTabs.slice(2),
+      ]
+    : baseTabs;
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();

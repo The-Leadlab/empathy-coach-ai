@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { toast } from "sonner";
 import AppLayout from "@/components/layout/AppLayout";
 import RequireAuth from "@/components/auth/RequireAuth";
+import RequireAdmin from "@/components/auth/RequireAdmin";
 import MainLandingPage from "./pages/MainLandingPage";
 import NotFound from "./pages/NotFound";
 import AvatarSessionPage from "./pages/AvatarSessionPage";
@@ -21,6 +22,9 @@ import ProfileDashboardPage from "./pages/ProfileDashboardPage";
 import JournalPage from "./pages/JournalPage";
 import ResourcesPage from "./pages/ResourcesPage";
 import SettingsPage from "./pages/SettingsPage";
+import ClinicianWorkbooksPage from "./pages/ClinicianWorkbooksPage";
+import ClinicianWorkbookNewPage from "./pages/ClinicianWorkbookNewPage";
+import ClinicianWorkbookEditorPage from "./pages/ClinicianWorkbookEditorPage";
 
 const queryClient = new QueryClient();
 
@@ -69,6 +73,11 @@ const App = () => {
                 <Route path="journal" element={<JournalPage />} />
                 <Route path="resources" element={<ResourcesPage />} />
                 <Route path="settings" element={<SettingsPage />} />
+                <Route path="workbooks" element={<RequireAdmin />}>
+                  <Route index element={<ClinicianWorkbooksPage />} />
+                  <Route path="new" element={<ClinicianWorkbookNewPage />} />
+                  <Route path=":id" element={<ClinicianWorkbookEditorPage />} />
+                </Route>
                 <Route path="*" element={<Navigate to="/testing/journeys" replace />} />
               </Route>
             </Route>

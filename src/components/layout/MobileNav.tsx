@@ -1,8 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { BookOpen, Bot, HeartHandshake, LayoutDashboard, Settings } from "lucide-react";
+import { BookOpen, Bot, HeartHandshake, LayoutDashboard, NotebookPen, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/useAuth";
+import { useTrainerAdmin } from "@/hooks/useTrainerAdmin";
 
-const navItems = [
+const baseItems = [
   { to: "/testing/journeys", icon: Bot, label: "Journeys" },
   { to: "/testing/library", icon: BookOpen, label: "Library" },
   { to: "/testing/profile", icon: LayoutDashboard, label: "Profile" },
@@ -12,6 +14,18 @@ const navItems = [
 
 export default function MobileNav() {
   const location = useLocation();
+  const { user } = useAuth();
+  const { isTrainerAdmin } = useTrainerAdmin(user?.email, user?.id);
+
+  const navItems = isTrainerAdmin
+    ? [
+        baseItems[0],
+        baseItems[1],
+        { to: "/testing/workbooks", icon: NotebookPen, label: "Books" },
+        baseItems[2],
+        baseItems[4],
+      ]
+    : baseItems;
 
   return (
     <nav className="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-[hsl(var(--sidebar-background))] pb-[env(safe-area-inset-bottom)]">
