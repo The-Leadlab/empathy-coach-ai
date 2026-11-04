@@ -59,7 +59,19 @@ export default function RequireAdmin() {
   }
 
   if (!user) return <Navigate to="/testing/login" replace />;
-  if (!isAdmin) return <Navigate to="/testing/journeys" replace />;
+  if (!isAdmin) {
+    return (
+      <div className="w-full h-[60vh] flex items-center justify-center px-6">
+        <div className="max-w-md text-center space-y-2">
+          <p className="text-base font-medium">This page needs an admin account</p>
+          <p className="text-sm text-muted-foreground">
+            {user.email} is signed in but doesn't have the admin role yet. Ask an admin to add it in Supabase,
+            then sign out and back in.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return <Outlet />;
 }
