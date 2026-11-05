@@ -6,6 +6,7 @@
  *   LLM_API_KEY=… VLLM_API_URL=https://api.runpod.ai/v2/dwmwweatrhzys4/openai/v1/chat/completions \
  *     node scripts/eval-coach-replies.mjs            # runs netlify/functions/chat.js locally
  *   node scripts/eval-coach-replies.mjs --app https://<deployment>   # hits the deployed /api/chat
+ *   Add --pace 25 to wait 25s between turns (avoids Groq free-tier rate limits).
  */
 import { createRequire } from "node:module";
 import path from "node:path";
@@ -30,6 +31,9 @@ const USER_TURNS = [
 
 const appIdx = process.argv.indexOf("--app");
 const appUrl = appIdx !== -1 ? process.argv[appIdx + 1]?.replace(/\/$/, "") : null;
+// Seconds between turns; Groq's free tier allows ~3 coach requests per minute.
+const paceIdx = process.argv.indexOf("--pace");
+const paceMs = paceIdx !== -1 ? Number(process.argv[paceIdx + 1]) * 1000 : 0;
 
 /** Calls /api/chat either over HTTP or via the local Netlify handler. Returns {status, data}. */
 async function call(method, query, body) {
@@ -85,6 +89,7 @@ let failures = 0;
 
 console.log(`Coach reply eval — ${appUrl ? `app ${appUrl}` : "local handler"}\n`);
 for (const [i, userMessage] of USER_TURNS.entries()) {
+  if (i > 0 && paceMs) await new Promise((r) => setTimeout(r, paceMs));
   const intake = phaseOneStep < 3;
   const result = await coachTurn({
     userMessage,
