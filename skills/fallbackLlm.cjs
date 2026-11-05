@@ -1,6 +1,6 @@
 /**
  * OpenAI-compatible fallback chat (e.g. Groq) when RunPod is queued/failed.
- * Env names only — keys live in Netlify.
+ * Env names only — keys live in Netlify / Vercel.
  */
 
 function fallbackConfigured() {
@@ -15,19 +15,20 @@ function fallbackConfig() {
     process.env.FALLBACK_LLM_API_URL ||
     (hasGroq ? "https://api.groq.com/openai/v1/chat/completions" : "")
   ).trim();
+  // Prefer a reliable chat model; gpt-oss often returns empty content for long coach prompts.
   const model = (process.env.FALLBACK_LLM_MODEL || "llama-3.1-8b-instant").trim();
   const fallbackAfterMs = Number(process.env.RUNPOD_FALLBACK_AFTER_MS) || 75000;
   return { apiKey, apiUrl, model, fallbackAfterMs };
 }
 
 const PREFERRED_MODELS = [
-  "llama-3.3-70b-versatile",
-  "openai/gpt-oss-120b",
-  "qwen/qwen3-32b",
-  "meta-llama/llama-4-maverick-17b-128e-instruct",
-  "meta-llama/llama-4-scout-17b-16e-instruct",
-  "openai/gpt-oss-20b",
   "llama-3.1-8b-instant",
+  "llama-3.3-70b-versatile",
+  "meta-llama/llama-4-scout-17b-16e-instruct",
+  "meta-llama/llama-4-maverick-17b-128e-instruct",
+  "qwen/qwen3-32b",
+  "openai/gpt-oss-20b",
+  "openai/gpt-oss-120b",
 ];
 const NON_CHAT_MODEL = /whisper|guard|tts|playai|orpheus|distil|prompt-guard|safeguard|compound/i;
 
@@ -40,7 +41,18 @@ function isModelUnavailable(status, msg) {
   );
 }
 
-async function pickAvailableModel(apiUrl, apiKey, exclude) {
+function extractReply(data) {
+  const choice = data?.choices?.[0];
+  const msg = choice?.message || {};
+  const parts = [msg.content, msg.reasoning, choice?.text];
+  for (const part of parts) {
+    if (typeof part === "string" && part.trim()) return part.trim();
+  }
+  return "";
+}
+
+async function pickAvailableModel(apiUrl, apiKey, exclude = []) {
+  const skip = new Set(exclude.filter(Boolean));
   const modelsUrl = apiUrl.replace(/\/chat\/completions\/?$/, "/models");
   const res = await fetch(modelsUrl, {
     headers: { Authorization: `Bearer ${apiKey}` },
@@ -51,7 +63,7 @@ async function pickAvailableModel(apiUrl, apiKey, exclude) {
   const ids = (data?.data || [])
     .filter((m) => m && m.id && m.active !== false)
     .map((m) => m.id)
-    .filter((id) => id !== exclude && !NON_CHAT_MODEL.test(id));
+    .filter((id) => !skip.has(id) && !NON_CHAT_MODEL.test(id));
   const preferred = [(process.env.GROQ_MODEL || "").trim(), ...PREFERRED_MODELS].filter(Boolean);
   return preferred.find((id) => ids.includes(id)) || ids[0] || null;
 }
@@ -79,12 +91,12 @@ async function postChat(apiUrl, apiKey, payload, timeoutMs) {
     err.modelUnavailable = isModelUnavailable(res.status, msg);
     throw err;
   }
-  return String(data.choices?.[0]?.message?.content ?? "").trim();
+  return extractReply(data);
 }
 
 /**
- * Synchronous OpenAI-compatible chat completion. If the configured model is not
- * available on the key, picks one from the provider's /models list and retries.
+ * Synchronous OpenAI-compatible chat completion. If the configured model is missing
+ * or returns empty content, tries the next available model on the key.
  * @returns {Promise<string>} assistant text
  */
 async function callFallbackChat(messages, sampling = {}, timeoutMs = 55000) {
@@ -92,31 +104,49 @@ async function callFallbackChat(messages, sampling = {}, timeoutMs = 55000) {
   if (!apiKey || !apiUrl) {
     throw new Error("Fallback LLM is not configured.");
   }
-  const model = resolvedModel || configuredModel;
 
-  const payload = {
-    model,
-    messages: messages.map((m) => ({ role: m.role, content: m.content || "" })),
-    temperature: sampling.temperature ?? 0.7,
-    max_tokens: sampling.max_tokens ?? 800,
-  };
-  if (typeof sampling.presence_penalty === "number") {
-    payload.presence_penalty = sampling.presence_penalty;
-  }
-  if (typeof sampling.frequency_penalty === "number") {
-    payload.frequency_penalty = sampling.frequency_penalty;
+  const tried = [];
+  let model = resolvedModel || configuredModel;
+  let lastError = null;
+
+  for (let attempt = 0; attempt < 3; attempt++) {
+    if (!model || tried.includes(model)) {
+      model = await pickAvailableModel(apiUrl, apiKey, tried);
+    }
+    if (!model) break;
+    tried.push(model);
+
+    const payload = {
+      model,
+      messages: messages.map((m) => ({ role: m.role, content: m.content || "" })),
+      temperature: sampling.temperature ?? 0.7,
+      max_tokens: sampling.max_tokens ?? 800,
+    };
+    if (typeof sampling.presence_penalty === "number") {
+      payload.presence_penalty = sampling.presence_penalty;
+    }
+    if (typeof sampling.frequency_penalty === "number") {
+      payload.frequency_penalty = sampling.frequency_penalty;
+    }
+
+    try {
+      const reply = await postChat(apiUrl, apiKey, payload, timeoutMs);
+      if (reply) {
+        resolvedModel = model;
+        return reply;
+      }
+      console.warn(`Fallback model "${model}" returned empty content, trying another`);
+      lastError = new Error(`Fallback LLM returned empty content (${model})`);
+      model = null;
+    } catch (err) {
+      lastError = err;
+      if (!err.modelUnavailable) throw err;
+      console.warn(`Fallback model "${model}" unavailable, trying another`);
+      model = null;
+    }
   }
 
-  try {
-    return await postChat(apiUrl, apiKey, payload, timeoutMs);
-  } catch (err) {
-    if (!err.modelUnavailable) throw err;
-    const alternative = await pickAvailableModel(apiUrl, apiKey, model);
-    if (!alternative) throw err;
-    console.warn(`Fallback model "${model}" unavailable, using "${alternative}"`);
-    resolvedModel = alternative;
-    return postChat(apiUrl, apiKey, { ...payload, model: alternative }, timeoutMs);
-  }
+  throw lastError || new Error("Fallback LLM returned empty content.");
 }
 
 function currentFallbackModel() {

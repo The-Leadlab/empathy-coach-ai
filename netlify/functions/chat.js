@@ -33,6 +33,7 @@ const {
   fallbackConfigured,
   fallbackConfig,
   callFallbackChat,
+  currentFallbackModel,
 } = require("../../skills/fallbackLlm.cjs");
 const {
   normalizeChatHistory,
@@ -349,7 +350,16 @@ exports.handler = async (event) => {
     }
     try {
       const reply = await callFallbackChat(messages, sampling);
-      console.log("Fallback LLM reply, mode=", mode, "chars=", reply.length);
+      console.log("Fallback LLM reply, mode=", mode, "chars=", reply.length, "model=", currentFallbackModel());
+      if (!reply) {
+        return {
+          statusCode: 502,
+          body: JSON.stringify({
+            error: "The coach is unavailable right now. Please try again.",
+            retryable: true,
+          }),
+        };
+      }
       return {
         statusCode: 200,
         headers: { "Content-Type": "application/json" },
@@ -370,6 +380,11 @@ exports.handler = async (event) => {
   // Client re-POSTs with provider:"fallback" after poll signals fallback:true
   if (preferFallback) {
     return runFallback(typeof body?.cancelJobId === "string" ? body.cancelJobId : null);
+  }
+
+  // Skip RunPod while paused / for testing (set COACH_LLM_PROVIDER=fallback on the host)
+  if ((process.env.COACH_LLM_PROVIDER || "").trim().toLowerCase() === "fallback" && fallbackConfigured()) {
+    return runFallback(null);
   }
 
   // Journey titles: prefer fast fallback so cold GPUs don't block naming

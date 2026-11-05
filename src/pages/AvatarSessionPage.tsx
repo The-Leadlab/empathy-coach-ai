@@ -625,19 +625,36 @@ export default function AvatarSessionPage() {
         return;
       }
 
-      const content = result.reply;
+      const content = (result.reply || "").trim();
       setIsCoachWarming(false);
-      const workbookRec = parseWorkbookRecommendation(content || "");
-      const { displayContent } = extractProgressUpdates(content || "", journeyState);
+      if (!content) {
+        setChatError("The coach is unavailable right now. Please try again.");
+        setRetryUserMessageId(persistedUserId);
+        setIsAiResponding(false);
+        return;
+      }
+      const workbookRec = parseWorkbookRecommendation(content);
+      const { displayContent } = extractProgressUpdates(content, journeyState);
       const reply: TranscriptMessage = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: displayContent || "I didn't get a response. Please try again.",
+        content: displayContent || content,
       };
-      const savedReply = await saveChatMessage(sessionId!, "assistant", reply.content, {
-        parentMessageId: persistedUserId,
-        generationMetadata: { provider: result.provider || "runpod" },
-      });
+      let savedReply;
+      try {
+        savedReply = await saveChatMessage(sessionId!, "assistant", reply.content, {
+          parentMessageId: persistedUserId,
+          generationMetadata: { provider: result.provider || "runpod" },
+        });
+      } catch (saveErr) {
+        console.warn("Assistant reply save failed:", saveErr);
+        toast.error("Couldn't save your progress — please try again");
+        // Still show the coach reply so the session isn't stuck.
+        savedReply = {
+          id: reply.id,
+          admin_quality_star: false,
+        };
+      }
       if (workbookRec && sessionId) {
         try {
           const savedRec = await saveWorkbookRecommendation({
