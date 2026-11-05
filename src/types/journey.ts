@@ -1,3 +1,5 @@
+import type { PhaseOneState } from "@/lib/fetchChatReply";
+
 export type PlatformPhase = 1 | 2 | 3;
 
 export type PhaseOneStep = 1 | 2 | 3;
@@ -93,6 +95,8 @@ export type JourneyContextPayload = {
   messageCount: number;
   phaseOneNextElement?: string | null;
   askedPhaseOneElements?: string | null;
+  /** Server-tracked Phase One intake state from the previous coach reply. */
+  phaseOneState?: PhaseOneState | null;
   progressSummary?: string | null;
   userGoals?: UserGoal[];
   phaseChecklist?: PhaseChecklistItem[];
@@ -310,6 +314,7 @@ export function toJourneyContextPayload(
     phaseOneNextElement?: string | null;
     askedPhaseOneElements?: string | null;
     practiceState?: PracticeStateForPrompt | null;
+    phaseOneState?: PhaseOneState | null;
   },
 ): JourneyContextPayload {
   return {
@@ -328,6 +333,7 @@ export function toJourneyContextPayload(
     messageCount,
     phaseOneNextElement: opts?.phaseOneNextElement ?? null,
     askedPhaseOneElements: opts?.askedPhaseOneElements ?? null,
+    phaseOneState: opts?.phaseOneState ?? null,
     progressSummary: state.progress_summary,
     userGoals: state.user_goals,
     phaseChecklist: state.phase_checklist,

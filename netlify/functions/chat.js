@@ -39,6 +39,18 @@ const {
   normalizeChatHistory,
   buildConversationMemoryBlock,
 } = require("../../skills/conversationMemory.cjs");
+const {
+  stripThinking,
+  contentFromChoice,
+  finalizeCoachReply,
+  prepareCoachTurn,
+  runGuarded,
+  mergeStateUpdate,
+  templatedReply,
+  withNoThink,
+  withRegenerateReminder,
+} = require("../../skills/coachReply.cjs");
+const { coachLlmProvider } = require("../../skills/llmProvider.cjs");
 
 const SYSTEM_PROMPT = {
   role: "system",
@@ -144,6 +156,7 @@ async function buildChatSystemContent(
   history,
   forInference = true,
   latestUserMessage = "",
+  turnInstruction = "",
 ) {
   const [rawTrainerRules, rawExemplars] = await Promise.all([
     fetchTrainerGlobalInstructions(forInference ? INFERENCE_TRAINER_LIMIT : TRAINER_FEEDBACK_LIMIT),
@@ -159,6 +172,7 @@ async function buildChatSystemContent(
     conversationMemory,
     forInference,
     latestUserMessage,
+    turnInstruction,
   });
   if (possibleCrisisLanguage) {
     content += `\n# Context for this turn\nThe user's latest message may mention suicide, dying, or self-harm (sometimes as a figure of speech). Follow the crisis language protocol above with extra care.\n`;
@@ -204,11 +218,27 @@ exports.handler = async (event) => {
       const data = await pollRunPodJob(endpointId, apiKey, jobId);
       const status = data.status || "UNKNOWN";
       if (status === "COMPLETED") {
-        const reply = extractReplyFromRunPodOutput(data.output);
+        const q = event.queryStringParameters || {};
+        const guard = {
+          jsonMode: q.json === "1",
+          phaseOne: q.intake === "1",
+          element: q.el || null,
+          crisis: q.crisis === "1",
+        };
+        const out = finalizeCoachReply(extractReplyFromRunPodOutput(data.output), guard);
+        if (out.rejected) {
+          console.warn("RunPod reply rejected:", out.rejected, "attempt", q.attempt || "1");
+          // First rejection: client resubmits once with a stricter reminder; then fallback / template.
+          const body =
+            q.attempt === "2"
+              ? { status, fallback: true, guardRejected: true }
+              : { status, regenerate: true };
+          return { statusCode: 200, headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) };
+        }
         return {
           statusCode: 200,
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ status, reply, provider: "runpod" }),
+          body: JSON.stringify({ status, reply: out.reply, stateUpdate: out.stateUpdate, provider: "runpod" }),
         };
       }
       if (isRunPodTerminalFailure(status)) {
@@ -282,6 +312,7 @@ exports.handler = async (event) => {
   const { userMessage, chatHistory, regenerationContext, conversationSnippet } = body;
 
   let messages = [];
+  let turn = null;
   if (mode === "name_journey") {
     const snippet = typeof conversationSnippet === "string" ? conversationSnippet.trim() : "";
     if (!snippet) {
@@ -320,23 +351,58 @@ exports.handler = async (event) => {
       return { statusCode: 400, body: JSON.stringify({ error: "userMessage is required and must be a string." }) };
     }
     const history = normalizeChatHistory(chatHistory, userMessage);
+    turn = prepareCoachTurn({
+      mode,
+      journeyContext: body?.journeyContext,
+      possibleCrisisLanguage: body?.possibleCrisisLanguage,
+      history,
+      userMessage,
+    });
+    // In intake, code picks the element; drop the client's regex-based hint so the prompt has one instruction.
+    const journeyContext = turn.phaseOne
+      ? { ...body.journeyContext, phaseOneNextElement: null, askedPhaseOneElements: null }
+      : body?.journeyContext;
     const systemContent = await buildChatSystemContent(
       !!body?.possibleCrisisLanguage,
-      body?.journeyContext,
+      journeyContext,
       history,
       true,
       userMessage,
+      turn.turnInstruction,
     );
     messages = [{ role: "system", content: systemContent }, ...history, { role: "user", content: userMessage }];
     messages = trimMessagesForContext(messages, { reserveOutputTokens: 450 });
   }
+  if (mode === "regenerate") {
+    turn = prepareCoachTurn({ mode, possibleCrisisLanguage: body?.possibleCrisisLanguage });
+  }
+  const guard = turn?.guard ?? null;
+  if (guard && body?.guardAttempt === 2) messages = withRegenerateReminder(messages);
 
+  const provider = coachLlmProvider();
   const isRunPod = url.includes("runpod.ai");
   const timeoutMs = Number(process.env.VLLM_TIMEOUT_MS) || (isRunPod ? 180000 : 60000);
-  const sampling = buildSamplingParams(mode);
+  const sampling = buildSamplingParams(mode, { summaryTurn: turn?.phaseOne?.asking === "summary" });
 
-  const runFallback = async (cancelJobId) => {
+  const okReply = (out, replyProvider) => ({
+    statusCode: 200,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      reply: out.reply,
+      provider: replyProvider,
+      stateUpdate: out.stateUpdate ?? null,
+      phaseOne: turn?.phaseOne ? mergeStateUpdate(turn.phaseOne, out.stateUpdate) : null,
+    }),
+  });
+  const templateReply = () => {
+    console.warn("Using templated coach reply, element=", guard?.element, "crisis=", !!guard?.crisis);
+    return okReply({ reply: templatedReply({ element: guard?.element, crisis: guard?.crisis }) }, "template");
+  };
+
+  /** Fallback provider. After a guard rejection it gets one attempt, then the deterministic template. */
+  const runFallback = async (cancelJobId, afterGuardRejection = false) => {
     if (!fallbackConfigured()) {
+      if (guard && afterGuardRejection) return templateReply();
       return {
         statusCode: 503,
         body: JSON.stringify({
@@ -349,24 +415,20 @@ exports.handler = async (event) => {
       await cancelRunPodJob(endpointId, apiKey, cancelJobId);
     }
     try {
-      const reply = await callFallbackChat(messages, sampling);
-      console.log("Fallback LLM reply, mode=", mode, "chars=", reply.length, "model=", currentFallbackModel());
-      if (!reply) {
-        return {
-          statusCode: 502,
-          body: JSON.stringify({
-            error: "The coach is unavailable right now. Please try again.",
-            retryable: true,
-          }),
-        };
+      if (!guard) {
+        const reply = stripThinking(await callFallbackChat(messages, sampling));
+        console.log("Fallback LLM reply, mode=", mode, "chars=", reply.length, "model=", currentFallbackModel());
+        if (!reply) throw new Error("empty fallback reply");
+        return okReply({ reply }, "fallback");
       }
-      return {
-        statusCode: 200,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ reply, provider: "fallback" }),
-      };
+      const generate = (isRetry) =>
+        callFallbackChat(isRetry || afterGuardRejection ? withRegenerateReminder(messages) : messages, sampling);
+      const out = await runGuarded(generate, guard, afterGuardRejection ? 1 : 2);
+      console.log("Fallback LLM reply, mode=", mode, "ok=", !!out, "model=", currentFallbackModel());
+      return out ? okReply(out, "fallback") : templateReply();
     } catch (err) {
       console.error("Fallback LLM error:", err.message);
+      if (guard && afterGuardRejection) return templateReply();
       return {
         statusCode: 502,
         body: JSON.stringify({
@@ -379,7 +441,7 @@ exports.handler = async (event) => {
 
   // Client re-POSTs with provider:"fallback" after poll signals fallback:true
   if (preferFallback) {
-    return runFallback(typeof body?.cancelJobId === "string" ? body.cancelJobId : null);
+    return runFallback(typeof body?.cancelJobId === "string" ? body.cancelJobId : null, !!body?.guardRejected);
   }
 
   // Skip RunPod while paused / for testing (set COACH_LLM_PROVIDER=fallback on the host)
@@ -407,7 +469,7 @@ exports.handler = async (event) => {
 
   const model = process.env.VLLM_MODEL || (isRunPod ? "empathy-coach-qwen" : "meta-llama/llama-3.2-3b-instruct:free");
 
-  if ((mode === "chat" || mode === "regenerate") && useRunPodAsync(url) && endpointId) {
+  if (provider === "runpod" && (mode === "chat" || mode === "regenerate") && useRunPodAsync(url) && endpointId) {
     try {
       // Hard-guarantee fit before async submit (no mid-job retry path).
       if (estimateMessagesTokens(messages) > 3400) {
@@ -426,6 +488,8 @@ exports.handler = async (event) => {
           warming: true,
           jobId,
           provider: "runpod",
+          guard,
+          phaseOne: turn?.phaseOne ?? null,
         }),
       };
     } catch (err) {
@@ -443,17 +507,13 @@ exports.handler = async (event) => {
     }
   }
 
-  const payload = {
-    model,
-    messages,
-    ...sampling,
-  };
-
   if (mode === "chat" || mode === "regenerate") {
     console.log(
       "LLM request:",
       "mode=",
       mode,
+      "provider=",
+      provider,
       "model=",
       model,
       "estTokens=",
@@ -461,91 +521,83 @@ exports.handler = async (event) => {
     );
   }
 
-  const doRequest = () =>
+  const post = (msgs) =>
     fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${apiKey.trim()}`,
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        model,
+        messages: withNoThink(msgs),
+        ...sampling,
+        // vLLM (RunPod) only; generic OpenAI-compatible hosts may reject unknown fields.
+        ...(provider === "runpod" ? { chat_template_kwargs: { enable_thinking: false } } : {}),
+      }),
       signal: AbortSignal.timeout(timeoutMs),
     });
 
-  try {
-    let { res, attempts } = await fetchLlmWithRetries(doRequest, { isRunPod });
-
+  /** One primary completion with cold-start retries and one context-length re-trim. Returns raw text. */
+  const requestPrimary = async (msgs) => {
+    let { res, attempts } = await fetchLlmWithRetries(() => post(msgs), { isRunPod });
     if (!res.ok) {
       let errText = await res.text();
-      // One aggressive re-trim + retry when the model rejects for context length.
       if (isContextLengthError(errText) && (mode === "chat" || mode === "regenerate")) {
-        console.warn("Context length error — retrying with aggressive trim. est was", estimateMessagesTokens(messages));
-        messages = trimMessagesForContext(messages, {
-          aggressive: true,
-          minHistoryMessages: 0,
-          reserveOutputTokens: 450,
-        });
-        const retryPayload = { model, messages, ...sampling };
-        const retryRes = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${apiKey.trim()}`,
-          },
-          body: JSON.stringify(retryPayload),
-          signal: AbortSignal.timeout(timeoutMs),
-        });
-        if (retryRes.ok) {
-          const data = await retryRes.json();
-          const reply = data.choices?.[0]?.message?.content ?? "";
-          return {
-            statusCode: 200,
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ reply, provider: isRunPod ? "runpod" : "direct" }),
-          };
-        }
-        errText = await retryRes.text();
-        res = retryRes;
+        console.warn("Context length error — retrying with aggressive trim. est was", estimateMessagesTokens(msgs));
+        msgs = trimMessagesForContext(msgs, { aggressive: true, minHistoryMessages: 0, reserveOutputTokens: 450 });
+        res = await post(msgs);
         attempts += 1;
+        if (!res.ok) errText = await res.text();
       }
-
-      console.error(
-        "LLM error:",
-        res.status,
-        "attempts:",
-        attempts,
-        "URL:",
-        url,
-        "model:",
-        model,
-        "estTokens:",
-        estimateMessagesTokens(messages),
-        "body:",
-        errText.slice(0, 1200),
-      );
-      if (fallbackConfigured()) {
-        return runFallback(null);
+      if (!res.ok) {
+        console.error(
+          "LLM error:",
+          res.status,
+          "attempts:",
+          attempts,
+          "URL:",
+          url,
+          "model:",
+          model,
+          "estTokens:",
+          estimateMessagesTokens(msgs),
+          "body:",
+          errText.slice(0, 1200),
+        );
+        const err = new Error(parseLlmErrorMessage(errText, res.status));
+        err.status = res.status;
+        throw err;
       }
-      return {
-        statusCode: res.status === 429 ? 429 : 502,
-        body: JSON.stringify({
-          error: parseLlmErrorMessage(errText, res.status),
-          retryable: res.status === 503 || res.status === 504 || res.status === 524,
-        }),
-      };
     }
-
     const data = await res.json();
-    const reply = data.choices?.[0]?.message?.content ?? "";
-    return {
-      statusCode: 200,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ reply, provider: isRunPod ? "runpod" : "direct" }),
-    };
+    return contentFromChoice(data.choices?.[0]);
+  };
+
+  try {
+    const replyProvider = isRunPod ? "runpod" : "direct";
+    if (!guard) {
+      return okReply({ reply: stripThinking(await requestPrimary(messages)) }, replyProvider);
+    }
+    const out = await runGuarded(
+      (isRetry) => requestPrimary(isRetry ? withRegenerateReminder(messages) : messages),
+      guard,
+    );
+    if (out) return okReply(out, replyProvider);
+    return runFallback(null, true);
   } catch (err) {
-    console.error("Error connecting to LLM:", err.message, "stack:", err.stack);
+    console.error("Error connecting to LLM:", err.message);
     if (fallbackConfigured()) {
       return runFallback(null);
+    }
+    if (err.status) {
+      return {
+        statusCode: err.status === 429 ? 429 : 502,
+        body: JSON.stringify({
+          error: err.message,
+          retryable: err.status === 503 || err.status === 504 || err.status === 524,
+        }),
+      };
     }
     return {
       statusCode: 502,

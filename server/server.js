@@ -15,6 +15,17 @@ const { formatJourneyContextForPrompt } = require("../skills/journeyContext.cjs"
 const { COACH_SYSTEM_PROMPT_TEXT } = require("../skills/coachSystemPrompt.cjs");
 const { buildProductionSystemPrompt } = require("../skills/buildProductionSystemPrompt.cjs");
 const {
+  stripThinking,
+  contentFromChoice,
+  prepareCoachTurn,
+  runGuarded,
+  mergeStateUpdate,
+  templatedReply,
+  withNoThink,
+  withRegenerateReminder,
+} = require("../skills/coachReply.cjs");
+const { coachLlmProvider } = require("../skills/llmProvider.cjs");
+const {
   trimTrainerRules,
   trimExemplars,
   trimMessagesForContext,
@@ -136,6 +147,7 @@ async function buildChatSystemContent(
   history,
   forInference = true,
   latestUserMessage = "",
+  turnInstruction = "",
 ) {
   const [rawTrainerRules, rawExemplars] = await Promise.all([
     fetchTrainerGlobalInstructions(forInference ? INFERENCE_TRAINER_LIMIT : TRAINER_FEEDBACK_LIMIT),
@@ -151,6 +163,7 @@ async function buildChatSystemContent(
     conversationMemory,
     forInference,
     latestUserMessage,
+    turnInstruction,
   });
   if (possibleCrisisLanguage) {
     content += `\n# Context for this turn\nThe user's latest message may mention suicide, dying, or self-harm (sometimes as a figure of speech). Follow the crisis language protocol above with extra care.\n`;
@@ -170,6 +183,7 @@ app.post("/api/chat", async (req, res) => {
   } = req.body;
 
   let messages = [];
+  let turn = null;
   const isNameJourneyMode = mode === "name_journey";
   const isRegenerationMode = mode === "regenerate";
   if (isNameJourneyMode) {
@@ -206,16 +220,20 @@ app.post("/api/chat", async (req, res) => {
       return res.status(400).json({ error: "userMessage is required and must be a string." });
     }
     const history = normalizeChatHistory(chatHistory, userMessage);
+    turn = prepareCoachTurn({ mode: "chat", journeyContext, possibleCrisisLanguage, history, userMessage });
     const systemContent = await buildChatSystemContent(
       !!possibleCrisisLanguage,
-      journeyContext,
+      turn.phaseOne ? { ...journeyContext, phaseOneNextElement: null, askedPhaseOneElements: null } : journeyContext,
       history,
       true,
       userMessage,
+      turn.turnInstruction,
     );
     messages = [{ role: "system", content: systemContent }, ...history, { role: "user", content: userMessage }];
     messages = trimMessagesForContext(messages, { reserveOutputTokens: 450 });
   }
+  if (isRegenerationMode) turn = prepareCoachTurn({ mode: "regenerate", possibleCrisisLanguage });
+  const guard = turn?.guard ?? null;
 
   const apiKey = process.env.LLM_API_KEY;
   const isRunPod = VLLM_API_URL.includes("runpod.ai");
@@ -227,21 +245,33 @@ app.post("/api/chat", async (req, res) => {
     if (mode === "chat") {
       console.log("LLM chat request estTokens=", estimateMessagesTokens(messages));
     }
-    const response = await axios.post(
-      VLLM_API_URL,
-      {
-        model: process.env.VLLM_MODEL || "meta-llama/llama-3.2-3b-instruct:free",
-        messages,
-        ...buildSamplingParams(mode),
-      },
-      {
-        headers,
-        timeout: Number(process.env.VLLM_TIMEOUT_MS) || (isRunPod ? 180000 : 60000),
-      }
-    );
+    const sampling = buildSamplingParams(mode, { summaryTurn: turn?.phaseOne?.asking === "summary" });
+    const generate = async (isRetry) => {
+      const response = await axios.post(
+        VLLM_API_URL,
+        {
+          model: process.env.VLLM_MODEL || "meta-llama/llama-3.2-3b-instruct:free",
+          messages: withNoThink(isRetry ? withRegenerateReminder(messages) : messages),
+          ...sampling,
+          ...(coachLlmProvider() === "runpod" ? { chat_template_kwargs: { enable_thinking: false } } : {}),
+        },
+        {
+          headers,
+          timeout: Number(process.env.VLLM_TIMEOUT_MS) || (isRunPod ? 180000 : 60000),
+        }
+      );
+      return contentFromChoice(response.data.choices?.[0]);
+    };
 
-    const aiReply = response.data.choices?.[0]?.message?.content ?? "";
-    res.json({ reply: aiReply });
+    if (!guard) return res.json({ reply: stripThinking(await generate(false)) });
+    const out =
+      (await runGuarded(generate, guard)) ??
+      { reply: templatedReply({ element: guard.element, crisis: guard.crisis }), stateUpdate: null };
+    res.json({
+      reply: out.reply,
+      stateUpdate: out.stateUpdate ?? null,
+      phaseOne: turn.phaseOne ? mergeStateUpdate(turn.phaseOne, out.stateUpdate) : null,
+    });
   } catch (error) {
     console.error("Error connecting to vLLM:", error.message);
     if (error.response) {

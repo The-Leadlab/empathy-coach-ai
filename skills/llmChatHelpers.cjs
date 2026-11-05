@@ -3,6 +3,8 @@
  * Keeps RunPod/vLLM context inside model limits and retries cold starts.
  */
 
+const { STOP_SEQUENCES } = require("./coachReply.cjs");
+
 /** Conservative estimate — prefer over-counting so we trim before the API rejects. */
 function estimateTokens(text) {
   return Math.ceil(String(text || "").length / 3);
@@ -210,15 +212,21 @@ function parseLlmErrorMessage(errText, status) {
   return userFacingLlmError(status);
 }
 
-function buildSamplingParams(mode) {
-  const temperature = Number(process.env.VLLM_TEMPERATURE) || 0.55;
+/**
+ * @param {string} mode - chat | regenerate | name_journey
+ * @param {{ summaryTurn?: boolean }} [opts] - the Phase One summary needs a little more room
+ */
+function buildSamplingParams(mode, opts = {}) {
+  const temperature = Number(process.env.VLLM_TEMPERATURE) || 0.6;
+  const chatMaxTokens = Number(process.env.VLLM_MAX_TOKENS) || (opts.summaryTurn ? 350 : 250);
   const base = {
     temperature:
       mode === "regenerate" ? Math.max(temperature, 0.78) : mode === "name_journey" ? 0.3 : temperature,
-    max_tokens: mode === "name_journey" ? 32 : Number(process.env.VLLM_MAX_TOKENS) || 450,
-    repetition_penalty: Number(process.env.VLLM_REPETITION_PENALTY) || 1.12,
+    max_tokens: mode === "name_journey" ? 32 : chatMaxTokens,
+    repetition_penalty: Number(process.env.VLLM_REPETITION_PENALTY) || 1.1,
     presence_penalty: Number(process.env.VLLM_PRESENCE_PENALTY) || 0.25,
     frequency_penalty: Number(process.env.VLLM_FREQUENCY_PENALTY) || 0.15,
+    stop: STOP_SEQUENCES,
   };
   return base;
 }

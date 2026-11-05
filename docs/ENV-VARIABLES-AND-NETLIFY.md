@@ -57,10 +57,14 @@ Optional (for the chat function):
 
 | Variable | Description |
 |----------|-------------|
-| VLLM_TEMPERATURE | e.g. `0.7` |
-| VLLM_MAX_TOKENS | e.g. `500` |
+| LLM_PROVIDER | `runpod` (default) or `openai_compat`. `openai_compat` sends a plain sync request to `VLLM_API_URL` without vLLM-only fields (`chat_template_kwargs`); any other value is treated as `runpod`. |
+| VLLM_TEMPERATURE | Default `0.6` (regenerate uses at least `0.78`) |
+| VLLM_MAX_TOKENS | Default `250` (`350` for the Phase One summary turn) |
+| VLLM_REPETITION_PENALTY | Default `1.1` |
 | VLLM_TIMEOUT_MS | e.g. `60000` |
 | RUNPOD_ASYNC | Set `false` to disable async RunPod submit/poll |
+
+**Coach reply guard.** Every chat reply passes through `skills/coachReply.cjs` before it reaches the user: `<think>` blocks and `reasoning_content` are dropped, Qwen thinking is disabled (`enable_thinking: false`, `/no_think`, `<think>` stop sequence), and replies that read like planning ("We need to…", "the user", phase/step names) or — during Phase One intake — contain no question are rejected. A rejected reply is regenerated once with a stricter reminder, then sent to the fallback provider once, then replaced by a fixed question for the current intake element. Phase One intake turns ask the model for `{"state_update":…,"reply":…}` JSON; the server tracks which element (situation, trigger, rule, belief, strength, coping) comes next and the client stores that state in `chat_messages.generation_metadata.phaseOne`. Replies are not streamed; `createThinkStreamFilter()` exists for when streaming is added. Check behaviour against a deployment with `node scripts/eval-coach-replies.mjs --app https://<host>`.
 
 **Important:** `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` are **baked into the frontend at build time**. If they’re missing in Netlify, the deployed app won’t be able to reach Supabase (login, survey, saving chats). Add them in Netlify with the same values as in your local `.env`.
 

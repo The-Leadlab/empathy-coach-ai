@@ -55,7 +55,7 @@ import { autoCompleteMatchingGoal } from "@/lib/dashboardGoals";
 import { syncSessionTasks } from "@/lib/coachTaskSync";
 import { syncPhaseChecklist } from "@/lib/phaseChecklist";
 import { buildWelcomeMessage } from "@/lib/journeyWelcome";
-import { cancelChatJob, fetchChatReply } from "@/lib/fetchChatReply";
+import { cancelChatJob, fetchChatReply, type PhaseOneState } from "@/lib/fetchChatReply";
 import { detectAskedPhaseOneElements, nextPhaseOneElement } from "@/lib/phaseOneRouting";
 import {
   journeyStateFromSession,
@@ -76,6 +76,7 @@ type StoredMessage = TranscriptMessage & {
   regenerated_from_message_id?: string | null;
   branch_root_message_id?: string | null;
   created_at?: string;
+  generation_metadata?: { phaseOne?: PhaseOneState | null } & Record<string, unknown> | null;
 };
 
 type RegenerationPayloadFeedback = {
@@ -272,6 +273,7 @@ export default function AvatarSessionPage() {
       branch_root_message_id: m.branch_root_message_id,
       admin_quality_star: m.admin_quality_star ?? false,
       created_at: m.created_at,
+      generation_metadata: m.generation_metadata,
     }));
 
   const loadFeedbackForMessages = async (messageList: StoredMessage[]) => {
@@ -580,10 +582,14 @@ export default function AvatarSessionPage() {
     setThinkElapsedMs(0);
 
     try {
-      const chatHistory = buildDisplayMessages(persistedRawMessages, activeAssistantId).map((m) => ({
+      const displayed = buildDisplayMessages(persistedRawMessages, activeAssistantId);
+      const chatHistory = displayed.map((m) => ({
         role: m.role,
         content: m.content,
       }));
+      const lastAssistantId = displayed.filter((m) => m.role === "assistant").at(-1)?.id;
+      const phaseOneState =
+        persistedRawMessages.find((m) => m.id === lastAssistantId)?.generation_metadata?.phaseOne ?? null;
       const assistantTexts = chatHistory.filter((m) => m.role === "assistant").map((m) => m.content);
       const askedPhaseOne = detectAskedPhaseOneElements(assistantTexts);
       const journeyState = journeyStateFromSession(journeySession);
@@ -596,6 +602,7 @@ export default function AvatarSessionPage() {
         askedPhaseOneElements:
           askedPhaseOne.size > 0 ? [...askedPhaseOne].join(", ") : null,
         practiceState,
+        phaseOneState,
       });
 
       const result = await fetchChatReply(
@@ -640,11 +647,15 @@ export default function AvatarSessionPage() {
         role: "assistant",
         content: displayContent || content,
       };
+      const generationMetadata = {
+        provider: result.provider || "runpod",
+        ...(result.phaseOne ? { phaseOne: result.phaseOne } : {}),
+      };
       let savedReply;
       try {
         savedReply = await saveChatMessage(sessionId!, "assistant", reply.content, {
           parentMessageId: persistedUserId,
-          generationMetadata: { provider: result.provider || "runpod" },
+          generationMetadata,
         });
       } catch (saveErr) {
         console.warn("Assistant reply save failed:", saveErr);
@@ -682,6 +693,7 @@ export default function AvatarSessionPage() {
           id: savedReply.id,
           parent_message_id: persistedUserId,
           admin_quality_star: savedReply.admin_quality_star ?? false,
+          generation_metadata: generationMetadata,
         },
       ];
       setRawMessages(nextRaw);

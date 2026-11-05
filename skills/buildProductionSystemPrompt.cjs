@@ -55,6 +55,7 @@ const INFERENCE_DIRECTIVES = `# Live inference directives (this turn — highest
  * @param {string} [opts.turnFeedback] - single-turn Simon feedback (training export)
  * @param {boolean} [opts.forInference] - slimmer stack for 4k-context RunPod inference
  * @param {string} [opts.latestUserMessage] - current user turn for KB skill router retrieval
+ * @param {string} [opts.turnInstruction] - code-chosen instruction for this turn (Phase One intake)
  */
 function buildProductionSystemPrompt(opts = {}) {
   const condensed = !!opts.forInference;
@@ -80,6 +81,11 @@ function buildProductionSystemPrompt(opts = {}) {
   if (condensed) {
     content += `\n\n${INFERENCE_DIRECTIVES}\n`;
     content += `\n8b. **[[WORKBOOK]] is invisible.** When recommending a Development Skills workbook, close with \`[[WORKBOOK]]{"id":"<catalogue_id>","reason":"…"}[[/WORKBOOK]]\` using only catalogue ids. At most one per reply. After [[PROGRESS]] if both appear.\n`;
+  }
+
+  // Before conversation memory: context trimming drops everything from that header onwards.
+  if (opts.turnInstruction?.trim()) {
+    content += `\n\n${opts.turnInstruction.trim()}\n`;
   }
 
   if (opts.conversationMemory?.trim()) {
