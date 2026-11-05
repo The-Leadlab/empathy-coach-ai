@@ -18,6 +18,16 @@ const {
   useRunPodAsync,
 } = require("./runpodAsync.cjs");
 
+/**
+ * Coach chat transport. `runpod` (default) uses RunPod Serverless async jobs when VLLM_API_URL is a
+ * RunPod URL; `openai_compat` sends synchronous /chat/completions to VLLM_API_URL.
+ * Legacy values (openrouter, groq, …) are treated as runpod so existing hosts keep working.
+ */
+function coachLlmProvider() {
+  const value = (process.env.LLM_PROVIDER || "").trim().toLowerCase();
+  return value === "openai_compat" ? "openai_compat" : "runpod";
+}
+
 function workbookProviderMode() {
   return (process.env.WORKBOOK_LLM_PROVIDER || "auto").trim().toLowerCase();
 }
@@ -160,6 +170,7 @@ async function pollRunPodJobResult(jobId, endpointId, apiKey) {
 
 module.exports = {
   callLlm,
+  coachLlmProvider,
   pollRunPodJobResult,
   workbookProviderMode,
   resolveSyncEndpoint,

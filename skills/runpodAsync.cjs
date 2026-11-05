@@ -2,6 +2,8 @@
  * RunPod Serverless async /run + /status — avoids long-held Netlify connections during cold start.
  */
 
+const { stripThinking, contentFromChoice, withNoThink } = require("./coachReply.cjs");
+
 function parseRunPodEndpointId(vllmApiUrl) {
   const match = String(vllmApiUrl || "").match(/api\.runpod\.ai\/v2\/([^/]+)/i);
   return match?.[1] || null;
@@ -18,32 +20,35 @@ function toRunPodSamplingParams(sampling) {
     presence_penalty: sampling.presence_penalty,
     frequency_penalty: sampling.frequency_penalty,
     repetition_penalty: sampling.repetition_penalty,
+    stop: sampling.stop,
   };
 }
 
 function buildRunPodInput(messages, sampling) {
   return {
     input: {
-      messages: messages.map((m) => ({ role: m.role, content: m.content || "" })),
+      messages: withNoThink(messages).map((m) => ({ role: m.role, content: m.content || "" })),
       sampling_params: toRunPodSamplingParams(sampling),
+      chat_template_kwargs: { enable_thinking: false },
     },
   };
 }
 
+/** Raw text only (reasoning fields are ignored); callers run it through finalizeCoachReply. */
 function extractReplyFromRunPodOutput(output) {
   if (!output) return "";
 
-  if (typeof output === "string") return output.trim();
+  if (typeof output === "string") return stripThinking(output);
 
-  if (typeof output.text === "string") return output.text.trim();
+  if (typeof output.text === "string") return stripThinking(output.text);
 
   const choices = output.choices || output.output?.choices;
   if (Array.isArray(choices) && choices.length > 0) {
     const first = choices[0];
-    if (typeof first.message?.content === "string") return first.message.content.trim();
-    if (typeof first.text === "string") return first.text.trim();
-    if (Array.isArray(first.tokens)) return first.tokens.join("").trim();
-    if (typeof first.tokens === "string") return first.tokens.trim();
+    const content = contentFromChoice(first);
+    if (content) return stripThinking(content);
+    if (Array.isArray(first.tokens)) return stripThinking(first.tokens.join(""));
+    if (typeof first.tokens === "string") return stripThinking(first.tokens);
   }
 
   if (Array.isArray(output) && output.length > 0) {

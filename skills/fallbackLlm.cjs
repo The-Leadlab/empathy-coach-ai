@@ -3,6 +3,8 @@
  * Env names only — keys live in Netlify / Vercel.
  */
 
+const { stripThinking, contentFromChoice } = require("./coachReply.cjs");
+
 function fallbackConfigured() {
   const key = (process.env.FALLBACK_LLM_API_KEY || process.env.GROQ_API_KEY || "").trim();
   return Boolean(key);
@@ -41,14 +43,20 @@ function isModelUnavailable(status, msg) {
   );
 }
 
+/** Assistant content only — reasoning / reasoning_content must never reach the user. */
 function extractReply(data) {
-  const choice = data?.choices?.[0];
-  const msg = choice?.message || {};
-  const parts = [msg.content, msg.reasoning, choice?.text];
-  for (const part of parts) {
-    if (typeof part === "string" && part.trim()) return part.trim();
+  return stripThinking(contentFromChoice(data?.choices?.[0]));
+}
+
+/** Groq reasoning models: hide reasoning and leave room for it inside max_tokens. */
+function reasoningParams(model, maxTokens) {
+  if (/gpt-oss/i.test(model)) {
+    return { include_reasoning: false, reasoning_effort: "low", max_tokens: maxTokens + 1024 };
   }
-  return "";
+  if (/qwen3/i.test(model)) {
+    return { reasoning_format: "hidden", max_tokens: maxTokens + 1024 };
+  }
+  return {};
 }
 
 async function pickAvailableModel(apiUrl, apiKey, exclude = []) {
@@ -128,6 +136,9 @@ async function callFallbackChat(messages, sampling = {}, timeoutMs = 55000) {
     if (typeof sampling.frequency_penalty === "number") {
       payload.frequency_penalty = sampling.frequency_penalty;
     }
+    // "<think>" is left out: hosted reasoning models handle that server-side via reasoningParams.
+    payload.stop = ["\nUser:", "<|im_end|>"];
+    Object.assign(payload, reasoningParams(model, payload.max_tokens));
 
     try {
       const reply = await postChat(apiUrl, apiKey, payload, timeoutMs);
