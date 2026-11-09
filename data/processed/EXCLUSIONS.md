@@ -1,0 +1,1610 @@
+# Phase 3 ingest exclusions
+
+- `data/fixtures/hold-cci-sample.txt` — hold_licence_or_path
+- `data/fixtures/kids-youth.txt` — kids_youth
+- `data/fixtures/measure-pcl5.txt` — validated_measure
+- `data/raw/10/extract/NIMH health publications/23-MH-8110-Understanding-Psychosis.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/Im-So-Stressed-Out.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/NIMH-Celebrating-75-Years-508_0.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/Teen_Depression_More_Than_Just_Moodiness_2022.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/adhd-2024.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/adhd-in-adults-four-things-to-know.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/autism-spectrum-disorder.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/bipolar-disorder-in-children-and-teens.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/bipolar-disorder-in-teens-and-young-adults.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/bipolar-disorder.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/children-and-mental-health.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/depression.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/disruptive-mood-dysregulation-disorder-the-basics_1.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/el-trastorno-de-deficit-de-atencion-con-hiperactividad-en-adultos.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/get-excited-about-brain-activity-book-508.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/get-excited-about-mental-health-research-508.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/helping-children-and-adolescents-cope-with-traumatic-events.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/looking-at-my-genes-what-can-they-tell-me-about-my-mental-health.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/los-ninos-salud-mental-solo-una-etapa_0.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/obsessive-compulsive-disorder-508.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/post-traumatic-stress-disorder_1.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/schizophrenia_1.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/stand-up-to-stress-coloring-activity-book.pdf.txt` — kids_youth
+- `data/raw/10/extract/NIMH health publications/teen-brain-7-things-to-know.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/2012-BHUS.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/PEP20-02-01-008_508.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/PEP20-02-01-010_508.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/PEP20-02-01-022.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/PEP20-03-01-002-508C.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/advisory-expanding-behavioral-health-teams-care-deserts-pep26-07-001.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/alternative-payment-methods-pep24-03-002.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/cfri-sud-prevention-report-pep25-03-008.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/community-oorms-planning-toolkit-pep25-02-001.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/ebp-kit-getting-started-with-ebps-10242019.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/ebp-kit-the-evidence-10242019.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/ebp-kit-training-frontline-staff-10112019.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/federal-guidelines-opioid-treatment-pep24-02-011.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/gettingstarted-imr_0.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/gettingstarted-psh.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/howtouseebpkits-psh.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/integrating-services-serving-pediatric-pep25-06-001.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/integrating-sud-prevention-pep25-03-008.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/medicaid-coverage-reverse-overdose-pep22-06-01-009.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/nolongeralone_englishtransc.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/oud-treatment-state-prisons-pep25-02-003.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/overdose-prevention-response-kit-pep23-03-00-001.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/peer-support-mh-addictions-workforce-pep24-08-005.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/pep16-ntbh-agenda.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/pep20-06-01-001.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/pep20-06-03-001.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/pep20-06-04-005.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/pep20-06-04-008.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/pep21-06-02-001.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/pep21-06-05-001.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/pep23-06-00-001.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/pep23-07-00-001.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/pep23-10-00-001.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/practitionerguidesandhandouts_0.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/recovery-housing-funding-sources-financial-sustainability-insights-narr-webinar-slides.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/recovery-housing-funding-sources-pep26-08-001.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma03-3824_2.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma08-4344-buildingyourprogram.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma08-4344-gettingstarted.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma08-4344-trainingfrontlinestaff.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma09-4409.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma09-4411.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma11-4633-building-your-program.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma11-4633-getting-started.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma11-4633-how-to-use-ebp-kits.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma11-4633-the-evidence.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma11-4642.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma12-3581.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma12-3604.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma12-4079.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma12-4097.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma12-4171.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma13-4182.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma13-4380.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma13-4777.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma13-4781eng.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma13-4788.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma13-4789.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma14-4435.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma14-4442.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma14-4816_litreview.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma14-4844.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma14-4854.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma14-4883.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma14-4892r.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma15-4174.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma15-4420.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma15-4907.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma16-4938.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma16-4978.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma16-4982.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma16-5013.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma17-5029.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma17-5035.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/sma18-5054.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/theevidence-imr_0.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/tip-42-sud-treatment-pep20-02-01-004.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/tip48_lit_review_updates.pdf.txt` — validated_measure
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/tip49_litrev.pdf.txt` — kids_youth
+- `data/raw/11/extract/SAMHSA clinical MH SUD manuals/trainingfrontlinestaff-imr_0.pdf.txt` — kids_youth
+- `data/raw/12/extract/VA PTSD and MIRECC additional clinical/CBT_for_Voices_and_Worries_Therapist_Workbook.pdf.txt` — kids_youth
+- `data/raw/12/extract/VA PTSD and MIRECC additional clinical/CBTp_Manual_VA_Yulia_Landa_2017.pdf.txt` — validated_measure
+- `data/raw/12/extract/VA PTSD and MIRECC additional clinical/CPT_Coach_Roadmap.pdf.txt` — validated_measure
+- `data/raw/12/extract/VA PTSD and MIRECC additional clinical/PECoachRoadmap508.pdf.txt` — validated_measure
+- `data/raw/13/extract/NIAAA alcohol clinical public brochures/NIAAA_Alcohol_Screening_Youth_Guide.pdf.txt` — kids_youth
+- `data/raw/13/extract/NIAAA alcohol clinical public brochures/NIAAA_Alcohol_Screening_Youth_Guide_Spanish.pdf.txt` — kids_youth
+- `data/raw/13/extract/NIAAA alcohol clinical public brochures/NIAAA_Make_a_Difference_English_1.pdf.txt` — kids_youth
+- `data/raw/13/extract/NIAAA alcohol clinical public brochures/NIAAA_Treatment_Alcohol_Problems_Booklet.pdf.txt` — kids_youth
+- `data/raw/13/extract/NIAAA alcohol clinical public brochures/NIAAA_Treatment_Alcohol_Problems_Booklet_Spanish.pdf.txt` — kids_youth
+- `data/raw/13/extract/NIAAA alcohol clinical public brochures/YouthPocketGuide-english.pdf.txt` — kids_youth
+- `data/raw/13/extract/NIAAA alcohol clinical public brochures/fas_6.pdf.txt` — kids_youth
+- `data/raw/13/extract/NIAAA alcohol clinical public brochures/pregnancy.pdf.txt` — kids_youth
+- `data/raw/13/extract/NIAAA alcohol clinical public brochures/rethinking_drinking_6x9_24pg_book-spanish_v10.pdf.txt` — kids_youth
+- `data/raw/14/extract/NIDA VA HHS clinical tools/10-791-Safe_and_Responsible_Use_508.pdf.txt` — kids_youth
+- `data/raw/14/extract/NIDA VA HHS clinical tools/ClinicalOpiateWithdrawalScale_0.pdf.txt` — validated_measure
+- `data/raw/14/extract/NIDA VA HHS clinical tools/Office-of-Mental-Health-and-Suicide-Prevention-National-Strategy-for-Preventing-Veterans-Suicide.pdf.txt` — kids_youth
+- `data/raw/14/extract/NIDA VA HHS clinical tools/OpioidRiskTool.pdf.txt` — validated_measure
+- `data/raw/14/extract/NIDA VA HHS clinical tools/PCL5_Standard_form.pdf.txt` — validated_measure
+- `data/raw/14/extract/NIDA VA HHS clinical tools/cows.pdf.txt` — validated_measure
+- `data/raw/14/extract/US-PUBLIC-DOMAIN.txt` — duplicate_content
+- `data/raw/15/extract/VA-DoD CPG Bipolar/Bipolar-pocket-card-508.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG Bipolar/VA-DOD-CPG-BD-Full-CPGFinal508.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG Bipolar/VA-DOD-CPG-BD-Provider-SummaryFinal508.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG MDD Depression/EffectivePharmacotherapies_34470_DHA_PHCoE_MDD_CST_v91_221108.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG MDD Depression/EffectivePsychotherapiesTreatmentOfMDD_CST_V43_221108.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG MDD Depression/UnderstandingDepressionCSTv50221205508.pdf.txt` — kids_youth
+- `data/raw/15/extract/VA-DoD CPG MDD Depression/VADODMDDCPGFinal508.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG MDD Depression/VADODMDDCPG_ProviderSummary_Final_508_updated.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG PTSD/PTSD-Assessment_508.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG PTSD/PTSD-in-Annals-2024.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG PTSD/PTSD-pocket-card-508.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG PTSD/VA-DOD-CPG-PTSD-Provider-Summary.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG PTSD/VA-DoD-CPG-PTSD-Full-CPG-Edited-111624-V5-81825.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG SUD/SUD-family-brochurev-20220314508.pdf.txt` — kids_youth
+- `data/raw/15/extract/VA-DoD CPG SUD/VA-DoD-SUD-CPG_Final_for-508_v3.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG SUD/VADODSUDCPGPocketCard.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG SUD/VADODSUDCPGProviderSummary.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG Suicide Risk/VADOD-CPG-Suicide-Risk-Full-CPG-2024_Final_508.pdf.txt` — validated_measure
+- `data/raw/15/extract/VA-DoD CPG Suicide Risk/VADOD-CPG-Suicide-Risk-Provider-Summary-2024_Final_508.pdf.txt` — validated_measure
+- `data/raw/16/extract/SAMHSA clinical additional/sma13-4152.pdf.txt` — kids_youth
+- `data/raw/16/extract/SAMHSA clinical additional/sma13-4671.pdf.txt` — validated_measure
+- `data/raw/16/extract/SAMHSA clinical additional/sma15-3991.pdf.txt` — kids_youth
+- `data/raw/16/extract/SAMHSA clinical additional/sma15-4211.pdf.txt` — kids_youth
+- `data/raw/16/extract/SAMHSA clinical additional/tip54_litrev_jan2012.pdf.txt` — validated_measure
+- `data/raw/16/extract/US-PUBLIC-DOMAIN.txt` — duplicate_content
+- `data/raw/16/extract/VA MIRECC VISN22 education/Depression_Education.pdf.txt` — kids_youth
+- `data/raw/16/extract/VA MIRECC VISN22 education/MIRECC_Schizoaffective_Education.pdf.txt` — kids_youth
+- `data/raw/16/extract/VA MIRECC VISN22 education/OCD_Education.pdf.txt` — kids_youth
+- `data/raw/16/extract/VA MIRECC VISN22 education/bipolar_education.pdf.txt` — kids_youth
+- `data/raw/16/extract/VA MIRECC VISN22 education/panic_and_agoraphobia.pdf.txt` — kids_youth
+- `data/raw/16/extract/VA MIRECC VISN22 education/schizophrenia_education.pdf.txt` — kids_youth
+- `data/raw/17/extract/US-PUBLIC-DOMAIN.txt` — duplicate_content
+- `data/raw/17/extract/phcoe-briefs-blogs/Military-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_PTSD.txt` — validated_measure
+- `data/raw/17/extract/phcoe-briefs-blogs/_Clinicians-Corner-Blog_Provider-Resources_How-Good-is-that-App-Evaluation-Criteria-for-Military-Mental-Health-Providers.txt` — validated_measure
+- `data/raw/17/extract/phcoe-briefs-blogs/al-Assault-and-Sexual-Harassment_Trauma-Informed-Interventions-and-Assessment-for-Survivors-of-Intimate-Partner-Violence.txt` — validated_measure
+- `data/raw/17/extract/phcoe-briefs-blogs/alth-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_Message-Received-Effective-Communication.txt` — kids_youth
+- `data/raw/17/extract/phcoe-briefs-blogs/ary-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Suicide-Risk.txt` — validated_measure
+- `data/raw/17/extract/phcoe-briefs-blogs/ellence_Clinicians-Corner-Blog_Military-Mental-and-Spiritual-Health-Personnel_Confidentiality-Chaplains-and-the-Military.txt` — kids_youth
+- `data/raw/17/extract/phcoe-briefs-blogs/inicians-Corner-Blog_Provider-Resources_Question-and-Verify-TRICARE-Authorized-Civilian-Mental-Health-Facility-Referrals.txt` — kids_youth
+- `data/raw/17/extract/phcoe-briefs-blogs/linicians-Corner-Blog_Special-Populations-and-Topics_Technology-and-the-Good-Life-A-Primer-for-Military-Health-Providers.txt` — kids_youth
+- `data/raw/17/extract/phcoe-briefs-blogs/nce_Clinicians-Corner-Blog_Special-Populations-and-Topics_Mental-Health-Crisis-in-Youth-What-is-the-Role-of-Social-Media.txt` — kids_youth
+- `data/raw/17/extract/phcoe-briefs-blogs/nd-Sexual-Harassment_Provider-strategies-Responding-to-adult-disclosures-of-sexual-assault-in-the-Military-Health-System.txt` — kids_youth
+- `data/raw/17/extract/phcoe-briefs-blogs/nicians-Corner-Blog_Special-Populations-and-Topics_A-New-Study-Examines-the-Prevalence-and-Course-of-ADHD-among-Children.txt` — kids_youth
+- `data/raw/17/extract/phcoe-briefs-blogs/ogical-Health-Center-of-Excellence_Clinicians-Corner-Blog_Substance-Misuse_Your-Relationship-with-Prescribed-Medications.txt` — kids_youth
+- `data/raw/17/extract/phcoe-tools/Reference-Center_Publications_2022_03_16_PHCoE_SUD_family_brochure_web_508.txt` — kids_youth
+- `data/raw/17/extract/phcoe-tools/Reference-Center_Publications_2023_02_28_Reducing-the-Risk-of-Unsafe-Opioid-Use.txt` — validated_measure
+- `data/raw/17/extract/phcoe-tools/Reference-Center_Publications_2023_12_14_PTSD-Pocket-Card.txt` — validated_measure
+- `data/raw/17/extract/phcoe-tools/Reference-Center_Publications_2023_12_14_Schizophrenia-Pocket-Card.txt` — kids_youth
+- `data/raw/17/extract/phcoe-tools/Reference-Center_Publications_2023_12_18_Management-of-Bipolar-Disorder-Pocket-Card.txt` — validated_measure
+- `data/raw/17/extract/phcoe-tools/Reference-Center_Publications_2024_01_04_Assessment-for-PTSD.txt` — validated_measure
+- `data/raw/17/extract/phcoe-tools/Reference-Center_Publications_2026_09_18_Quitting-to-Win-A-Roadmap-to-Beat-Nicotine-and-Tobacco-Use-in-the-Military.txt` — kids_youth
+- `data/raw/17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_5-Tips-for-Staying-Safe-in-an-Abusive-Relationship.txt` — kids_youth
+- `data/raw/17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Boost-Your-Mood-6-Tools-for-Reframing-Negative-Thoughts.txt` — kids_youth
+- `data/raw/17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Boosting-Family-Readiness.txt` — kids_youth
+- `data/raw/17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Coping-with-Mass-Shootings.txt` — kids_youth
+- `data/raw/17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Coping-with-the-Trauma-of-Suicide-Loss.txt` — kids_youth
+- `data/raw/17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Getting-Support-for-Chronic-Grief.txt` — kids_youth
+- `data/raw/17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Helping-Children-Through-the-Grieving-Process.txt` — kids_youth
+- `data/raw/17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_How-to-Cope-with-Common-Causes-of-Loss.txt` — kids_youth
+- `data/raw/17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Peer-Support-for-Military-Spouses.txt` — kids_youth
+- `data/raw/17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_The-Physiology-of-Combat-Stress-Reaction.txt` — kids_youth
+- `data/raw/17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Understanding-and-Coping-with-Natural-and-Human-Made-Disasters.txt` — kids_youth
+- `data/raw/18/extract/US-PUBLIC-DOMAIN.txt` — duplicate_content
+- `data/raw/18/extract/va-apps/appvid_courses_asp.txt` — kids_youth
+- `data/raw/18/extract/va-apps/appvid_mobile_cbticoach_app_pro_asp.txt` — validated_measure
+- `data/raw/18/extract/va-apps/appvid_mobile_coping_coach_app_asp.txt` — validated_measure
+- `data/raw/18/extract/va-apps/appvid_mobile_familycoach_app_asp.txt` — kids_youth
+- `data/raw/18/extract/va-mirecc-other/redcap_surveys.txt` — kids_youth
+- `data/raw/18/extract/va-mirecc-other/visn19.txt` — kids_youth
+- `data/raw/18/extract/va-mirecc-other/visn19_clinical.txt` — kids_youth
+- `data/raw/18/extract/va-mirecc-other/visn19_consult_lecture-series_asp.txt` — kids_youth
+- `data/raw/18/extract/va-mirecc-other/visn19_education.txt` — kids_youth
+- `data/raw/18/extract/va-mirecc-other/visn19_finvet_government-benefits_asp.txt` — kids_youth
+- `data/raw/18/extract/va-mirecc-other/visn19_psci-spc_additional-resources_asp.txt` — validated_measure
+- `data/raw/18/extract/va-mirecc-other/visn19_talk2kids.txt` — kids_youth
+- `data/raw/18/extract/va-mirecc-other/visn19_tbi_toolkit.txt` — kids_youth
+- `data/raw/18/extract/va-mirecc-other/visn19_trm_table_asp.txt` — kids_youth
+- `data/raw/18/extract/va-wholehealth/WHOLEHEALTH_CIH_clinical_hypnosis_asp.txt` — kids_youth
+- `data/raw/18/extract/va-wholehealth/WHOLEHEALTH_docs_NationalPainStrategy_508C_pdf.txt` — kids_youth
+- `data/raw/18/extract/va-wholehealth/WHOLEHEALTH_features_Boise_Rescue_Mission_Whole_Health_support_Veteran_asp.txt` — kids_youth
+- `data/raw/18/extract/va-wholehealth/WHOLEHEALTH_features_Compassion_beyond_the_pain_A_Veteran_s_story_asp.txt` — kids_youth
+- `data/raw/18/extract/va-wholehealth/WHOLEHEALTH_features_Pain_University_teaches_Veterans_they_matter_asp.txt` — kids_youth
+- `data/raw/18/extract/va-wholehealth/WHOLEHEALTH_features_Retired_VA_nurse_says_live_your_best_life_now_asp.txt` — kids_youth
+- `data/raw/19/extract/US-PUBLIC-DOMAIN.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nccih/health_anxiety-and-complementary-health-approaches.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nccih/health_in-the-news-magnesium-supplements-for-sleep-disorders.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nccih/health_meditation-and-mindfulness-effectiveness-and-safety.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nccih/health_mental-health.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nccih/health_post-traumatic-stress-disorder.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nccih/health_psilocybin-for-mental-health-and-addiction-what-you-need-to-know.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nccih/health_stress-anxiety-and-sleep-problems-considering-complementary-approaches.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nccih/health_tai-chi-what-you-need-to-know.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nccih/health_wellness-and-well-being.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nccih/health_yoga-effectiveness-and-safety.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_insomnia.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_insomnia_causes.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_insomnia_diagnosis.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_insomnia_living-with.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_insomnia_symptoms.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_insomnia_treatment.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-apnea.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-apnea_causes.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-apnea_children.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-apnea_diagnosis.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-apnea_living-with.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-apnea_symptoms.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-apnea_treatment.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-apnea_women.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-deprivation.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-deprivation_body-clock.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-deprivation_diagnosis-treatment.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-deprivation_health-effects.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-deprivation_healthy-sleep-habits.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-deprivation_how-much-sleep.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep-studies.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep_how-much-sleep.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep_sleep-wake-cycle.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep_stages-of-sleep.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nhlbi-sleep/health_sleep_why-sleep-important.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/espanol_ejercicio_beneficios-ejercicio-su-salud-fisica-mental.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_advance-care-planning_advance-care-planning-and-health-care-decisions-tips-caregivers-and.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-caregiving.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-caregiving_adapting-activities-people-alzheimers-disease.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-caregiving_alzheimers-caregiving-bathing-dressing-and-grooming.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-caregiving_alzheimers-caregiving-caring-yourself.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-caregiving_alzheimers-caregiving-finding-long-term-care.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-caregiving_care-last-stages-alzheimers-disease.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-caregiving_common-medical-problems-alzheimers-disease-information-caregivers.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-caregiving_getting-help-alzheimers-caregiving.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-caregiving_six-tips-make-mealtimes-easier-people-alzheimers-disease.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-caregiving_taking-person-alzheimers-disease-hospital.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-caregiving_tips-caregivers-helping-people-alzheimers-disease-eat-well.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_alzheimers-changes-behavior-and-communication_coping-agitation-aggression-and-sundowning.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_caregiving.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_caregiving_caregiver-worksheets.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_caregiving_does-older-adult-your-life-need-help.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_caregiving_getting-started-caregiving.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_caregiving_grandfamilies-and-kinship-families-caring-young-relatives.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_caregiving_healthy-aging-tips-older-adults-your-life.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_caregiving_services-older-adults-living-home.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_caregiving_sharing-caregiving-responsibilities.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_caregiving_take-care-yourself-caregiver.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_caregiving_taking-care-yourself-tips-caregivers.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_caregiving_what-respite-care.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_end-life.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_loneliness-and-social-isolation_loneliness-and-social-isolation-tips-staying-connected.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_long-distance-caregiving_long-distance-caregiving-how-can-i-help-if-im-far-away.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_long-distance-caregiving_what-long-distance-caregiving.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_medical-care-and-appointments_taking-someone-doctors-appointment-tips-caregivers.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_menopause_sleep-problems-and-menopause-what-can-i-do.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_mental-and-emotional-health.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_mental-and-emotional-health_mental-health-benefits-exercise-and-physical-activity.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_sleep_6-healthy-sleep-habits-older-adults.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_sleep_managing-sleep-problems-alzheimers-disease.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nia/health_sleep_sleep-and-older-adults.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_external-disclaimer-espanol.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_acerca.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_futuras-mamas.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_futuras-mamas_elaborar-un-plan.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_futuras-mamas_proveedor.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_materiales.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_materiales_Inicia-conversacion-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_materiales_accion-para-embarazo-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_materiales_preguntas-primera-cita-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_materiales_talla-grande-embarazo-lista-proveedores-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_materiales_tarjeta-referencia-embarazo-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_proveedores.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_proveedores_comunicacion.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_proveedores_comunicacion_iniciar-la-conversacion.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_proveedores_talla-grande.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_embarazo-para-todas-las-tallas_recursos.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_is-it-worth-it.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_know-your-terms_health-care-providers.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_know-your-terms_materials.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_know-your-terms_moms.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_know-your-terms_transcripts_Pages_termtalktextalt_aspx.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_know-your-terms_transcripts_termtalktextalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_moms-mental-health-matters_Pages_babyville_txt_alt_aspx.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_moms-mental-health-matters_find-help.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_moms-mental-health-matters_healthcare-providers.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_moms-mental-health-matters_healthcare-providers_ce-activity.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_moms-mental-health-matters_moms.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_moms-mental-health-matters_moms_action-plan.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_moms-mental-health-matters_partners-family-friends.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_pregnancy-for-every-body_healthcare-provider.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_pregnancy-for-every-body_healthcare-provider_communicating.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_pregnancy-for-every-body_healthcare-provider_communicating_begin-conversation.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_pregnancy-for-every-body_healthcare-provider_plus-size.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_pregnancy-for-every-body_materials.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_pregnancy-for-every-body_moms-to-be.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_pregnancy-for-every-body_moms-to-be_action-plan.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_pregnancy-for-every-body_moms-to-be_healthcare-provider.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_initiatives_pregnancy-for-every-body_resources.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_begin-conversation-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_halbe-tarjeta-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_happy-time-poster-esp-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_happy-time-poster-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_knowyourterms-badges.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_knowyourterms-facebook-posts.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_knowyourterms-twitter-posts.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_moms-conversation-postcard-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_moms-talonario-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_moms-tear-pad-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_plus-size-pregnancy-checklist-providers-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_poster-conozca-los-terminos-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_poster-know-your-terms-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_poster-los-terminos-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_poster-term-talk-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_pregnancy-action-plan-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_pregnancy-ref-card-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_preparada-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_prepared-for-anything-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_questions-first-appointment-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_talonario-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_tarjeta-postal-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_term-talk-infocard-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_terms-postcard-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/ncmhep_materials_terms-tear-pad-txtalt.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/19/extract/nichd-mmhm/newsroom_news_121119-pregnancy-for-every-body.txt` — hold_licence_or_path, hold_licence_or_path
+- `data/raw/20/extract/US-PUBLIC-DOMAIN.txt` — duplicate_content
+- `data/raw/20/extract/childwelfare/find-help-personal-situation.txt` — kids_youth
+- `data/raw/20/extract/childwelfare/find-resources_explore-information-gateway-publication-series.txt` — kids_youth
+- `data/raw/20/extract/childwelfare/resources_partnering-birth-parents-promote-reunification.txt` — kids_youth
+- `data/raw/20/extract/childwelfare/resources_partnering-relatives-promote-reunification.txt` — kids_youth
+- `data/raw/20/extract/childwelfare/topics_parents-and-caregivers.txt` — kids_youth
+- `data/raw/20/extract/childwelfare/topics_parents-and-caregivers_identifying-and-engaging-fathers.txt` — kids_youth
+- `data/raw/20/extract/childwelfare/topics_well-being.txt` — kids_youth
+- `data/raw/20/extract/childwelfare/topics_well-being_mental-and-behavioral-health.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/communityhealth_environmentalhealth.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/communityhealth_injuryprevention.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/communityhealth_schoolhealth.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/dbh_analytics.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/dbh_analytics_infographics.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/dbh_analytics_programevaluations.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/dbh_consultationandconfer.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/dbh_programs.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_bhpartnerstateresources_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_ihsaianyouthgapsreport_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_ihstribalservicecapacitydevyearone_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_innovativeapproachesinfographic_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_spevaluation2024_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_tbhscdpyear3of5_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_tribalbhriskprevention20152021_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_tribalbhservicecapdev2ndyear_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_yrtcaftercareeval_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_AIANNationalSPStrategicPlan_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_asqbibliography_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_crisiscentertoolkit_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_preventionreport_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_psychauto_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_suicidecrisisresponsechart_pdf.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/suicideprevention.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/suicideprevention_asqprogram_asqfaq.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/suicideprevention_communityguidelines_ihsarearesponse.txt` — kids_youth
+- `data/raw/20/extract/ihs-bh/suicideprevention_howtotalk.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_body-image-and-mental-health_body-image.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_body-image-and-mental-health_pregnancy-and-body-image.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_get-help-now.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_get-help-now_getting-treatment.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_good-mental-health_good-mental-health-every-age.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_good-mental-health_steps-good-mental-health.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_good-mental-health_stress-and-your-health.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_living-mental-health-condition_reproductive-health-and-mental-health.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_living-mental-health-condition_working-mental-health-condition.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_mental-health-conditions_alcohol-use-disorder-substance-use-disorder-and-addiction.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_mental-health-conditions_anxiety-disorders.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_mental-health-conditions_body-dysmorphic-disorder.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_mental-health-conditions_eating-disorders_anorexia-nervosa.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_mental-health-conditions_eating-disorders_binge-eating-disorder.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_mental-health-conditions_eating-disorders_bulimia-nervosa.txt` — kids_youth
+- `data/raw/20/extract/owh/mental-health_mental-health-conditions_post-traumatic-stress-disorder.txt` — kids_youth
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/00-root/Skills and Knowledge Base.docx.txt` — kids_youth
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 01 - What is Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 02 - Vicious Cycle of Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 03 - Analysing your Thinking.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 04 - Unhelpful Thinking Styles.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 05 - Behavioural Experiments Negative Predictions.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 06 - Situational Exposure.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 07 - What are Safety Behaviours.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 08 - Breathing Retraining.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 09 - Progressive Muscle Relaxation.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 10 - Coping with Stress.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 11 - Stress and Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 12 - Anxiety and Exercise.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 13 - What is needle phobia.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 14 - Overcoming needle phobia.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/02-anxiety-info-sheets/Anxiety Info 15 - CBT for Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/03-depression-back-from-the-bluez/Bluez 01 - Overview of Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/03-depression-back-from-the-bluez/Bluez 02 - Behavioural Strategies.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/03-depression-back-from-the-bluez/Bluez 03 - The Thinking-Feeling Connection.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/03-depression-back-from-the-bluez/Bluez 04 - The ABC Analysis.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/03-depression-back-from-the-bluez/Bluez 05 - Unhelpful Thinking Styles.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/03-depression-back-from-the-bluez/Bluez 06 - Detective Work and Disputation.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/03-depression-back-from-the-bluez/Bluez 07 - The End Result.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/03-depression-back-from-the-bluez/Bluez 08 - Core Beliefs.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/03-depression-back-from-the-bluez/Bluez 09 - Self-Management.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 01 - What is depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 02 - What Causes Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 03 - Psychotherapy for Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 04 - Vicious Cycle of Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 05 - Behavioural Activation Fun and Achievement.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 06 - Fun Activities Catalogue.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 07 - Improving how you Feel.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 08 - Thinking and Feeling.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 09 - Analysing your Thinking.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 10 - Changing your Thinking.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 11 - Unhelpful Thinking Styles.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 12 - What are Core Beliefs.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 13 - Problem Solving.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 14 - Staying Healthy.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Depression Info 15 - Grief and Bereavement.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/04-depression-info-sheets/Psychoeducation Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Behavioural Activation.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Depression Worksheet 01 - Symptoms of Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Depression Worksheet 03 - Weekly Activity Schedule.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Depression Worksheet 04 - Weekly Goals Record.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Depression Worksheet 06 - Thought Diary 1.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Depression Worksheet 07 - Thought Diary 2.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Depression Worksheet 08 - Thought Diary 3.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Depression Worksheet 09 - Thought Diary Tri-fold.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Depression Worksheet 10 - Core Beliefs Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Depression Worksheet 11 - Healthy Me Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Depression Worksheet 12 - Goal Setting worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/05-depression-worksheets/Making the Thought Feeling Connection.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/09-nhs-resources/NHS CNTW - Bereavement.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/09-nhs-resources/NHS CNTW - Depression and Low Mood.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/09-nhs-resources/NHS CNTW - Food for Thought.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/09-nhs-resources/NHS CNTW - Health Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/09-nhs-resources/NHS CNTW - Managing Anger.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/09-nhs-resources/NHS CNTW - Self Harm.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/09-nhs-resources/NHS CNTW - Sleeping Problems.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/09-nhs-resources/NHS CNTW - Social Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/09-nhs-resources/NHS CNTW - Stress.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/A Conversation with the Inner Child.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Accepting Yourself As Being Perfectly Imperfect.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Assessment of Life and Career Wants.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Creating Realistic Optimism for Resilience.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Exploring Past Resilience.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Expressing Anger.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Gratitude Journal.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Healing From Trauma Through Writing.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Loving Others, Better.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Mental Status Exam - Exploring Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Observing Anxiety Mindfully.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Removing Relationship Disturbances.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Self-Assessment for Assertiveness Self-Discovery.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Self-Esteem Journal For Adults Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Telling an Empathy Story.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/The Five Senses Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/The Win-Win Waltz Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Turning You into I Spreadsheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/What Strengths Do Others See.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/bonus-20-best-worksheets/Workplace Mindfulness.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/coaching-manuals/Positive-Psychology-Coaching-Instruction-Manual-for-Practitioner.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/coaching-manuals/Positive-Psychology-Coaching-Workbook-for-Client.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/communication-skills/3-Communication-Exercises.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/communication-skills/Active-Listening-Reflection-Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/communication-skills/How-to-Improve-Communication-in-Relationships-7-Essential-Skills.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/communication-skills/Trading-Places-Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/A Fine Line Between Avoidance and Helpful Distraction.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/A Letter to the Deceased.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/Analyzing My Way of Grieving.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/Bigger Than Grief.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/Continuing the Bond to the Deceased Through Ritual.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/Creating Rituals Around Loss.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/Journaling Through Grief in 40 Days.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/Metaphors of Grief.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/People Supporting You As You Grieve.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/Reconnecting With the Deceased Through Imagery.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/Restoring the Broken Mirror Metaphor.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/Sharing Your Loss with Others.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/Taking Care of the Grieving Self.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/The Life Certificate.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/The Right to Grieve In Your Way.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/Working Through the Four Tasks of Mourning.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/grief-bereavement/You Are Not Alone in Your Suffering.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/A Value-Tattoo.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/Before-You-Die Bucket List.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/Choice Point.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/Completing Sentences to Clarify Values.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/Learning From Value-Based Actions of the Past.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/Learning to Say No.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/Meaningful Photography.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/My Gravestone.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/Promoting Altruism to Enhance Purpose.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/Team Branding.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/The Beyond Limitation Question Technique.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/The Bulls-Eye Values Survey.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/The Values Diagrams.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/The Values Lantern.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/Value Cards.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/Values Vision Board.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/meaning-valued-living/Values-Based Goal Setting.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/00 17 Positive CBT Exercises.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/A Letter from Your Best Day to Your Bad Days.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Behavioral Activation.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Breaking the Vicious Cycle.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Changing Behavior Through Positive Reinforcement.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Diary of Better Moments.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Dropping Anchor.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Optimistic Thinking Style.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Pleasurable Activities Journal.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Replacing Non-Grateful Thoughts With Grateful Thoughts.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Replacing Unhelpful Thoughts With Helpful Alternatives.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Seeing Through the Hindsight-Bias.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Self-Forgiveness Letter.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Solution-Focused Scaling Questions.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Structured Problem-Solving.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/The ABC Model of Helpful Behavior.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/The Most Helpful Thoughts.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-cbt/Using Self-Distanced Language to Gain Perspective on Negative Events.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Analyzing Environmental Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Chasing Happiness.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Creating Savoring Rituals.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Daily Exceptions Journal.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Doors Closed Doors Open.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Experiencing Awe.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Exploring Flow Experiences.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Getting off the Hedonic Treadmill.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Positive Reminiscence.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Random Acts of Kindness.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Rewriting the Narrative with Humor.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/The Best Possible Team.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/The Metaphor of David.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/The Strengths Wheel.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/The Wheel of Life.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Using Photography to Increase Savoring.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/positive-psychology-exercises/Writing About Intensely Positive Experiences.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/A Personal Coping Mantra.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Adopting a Growth Mindset to Criticism.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Benefit Finding.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Costs and Benefits of Unhelpful Behaviour.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Extracting Strengths from Problems.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Finding Silver Linings.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Hope Map.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Identifying Emotional Avoidance Strategies.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Inspiration and Dealing with Challenges.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Meditation on the Soles of the Feet.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Moving Towards a Growth Mindset.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/My Learnings List.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Strengths Spotting by Exception Finding.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Tapping Into Your Inner Optimist.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/The Mindset Survey.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/The Spheres of Personal Control.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/resilience-coping/Valued Living During Challenging Times.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/A Family Tree of Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/A Reflected Best Self Portrait.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/A Strength-Based Resume.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/Crafting Team Tasks Around Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/Daily Strengths Awareness.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/Find the Person Behind the Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/Inward and Outward Strength Expression.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/Personalizing Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/Strength Collisions.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/Strength Journaling.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/Strengths Interviewing Guidelines.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/Strengths Spotting in Groups.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/Strengths in Significant Moments.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/The Freelancer Approach.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/The Strengths of Inspirational People.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/VIA Signature Strengths Scoring Sheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/strength-finding/Writing as a Metaphor for Strength and Weakness.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Building the Habit of Good Enough.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Caring About the Right Things.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Dealing with Uncontrollable Circumstances.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Diaphragmatic Breathing (Belly Breathing).pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Eye of the Hurricane Meditation.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Mountain Meditation.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/My Stress Profile.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Progressive Muscle Relaxation.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/S.O.B.E.R. Stress Interruption.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Solution-Focused Guided Imagery.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Spending Time in Nature.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Stress Diary.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Stress Management Emergency Plan.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/The 5-4-3-2-1 Stress Reduction Technique.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/The Coping Strategy Wheels.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Visualization for Stress Reduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/10-positive-psychology/stress-burnout/Window of Tolerance.pdf.txt` — hold_licence_or_path
+- `data/raw/2a/extract/shiftedai-data/raw/simon-drive/12-worry/What is Generalised Anxiety_Worry.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-phase3/ShiftedAI-Data-Content-Report.pdf.txt` — validated_measure
+- `data/raw/2d/extract/shiftedai-phase3/ShiftedAI-Phase0-Phase1-NoPrices.pdf.txt` — validated_measure
+- `data/raw/2d/extract/shiftedai-phase3/ShiftedAI-Phase0-Phase1.pdf.txt` — validated_measure
+- `data/raw/2d/extract/shiftedai-phase3/ShiftedAI-Phase3-Implementation-Breakdown-and-Costs.pdf.txt` — validated_measure
+- `data/raw/2d/extract/shiftedai-phase3/content-report/doc.html` — validated_measure
+- `data/raw/2d/extract/shiftedai-phase3/crawl/cntw_bsl.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-phase3/crawl/cntw_sample.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-phase3/crawl/cntw_sitemap.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-phase3/crawl/page_Resources_For-Clinicians_Sleep.html` — kids_youth
+- `data/raw/2d/extract/shiftedai-phase3/crawl/page_Resources_Looking-After-Yourself_Other-Resources.html` — kids_youth
+- `data/raw/2d/extract/shiftedai-phase3/crawl/page_Training_Demonstration-Videos.html` — kids_youth
+- `data/raw/2d/extract/shiftedai-phase3/p01/doc_noprices.html` — validated_measure
+- `data/raw/2d/extract/shiftedai-phase3/p01/raw_noprices.pdf.txt` — validated_measure
+- `data/raw/2d/extract/shiftedai-phase3/spec.txt` — duplicate_content
+- `data/raw/2d/extract/shiftedai-resources/bundle/CLOUD-AGENT-PROMPT.md` — validated_measure
+- `data/raw/2d/extract/shiftedai-resources/bundle/INVENTORY.md` — validated_measure
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-00-root.md` — kids_youth
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-03-depression-back-from-the-bluez.md` — kids_youth
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-04-depression-info-sheets.md` — kids_youth
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-05-depression-worksheets.md` — kids_youth
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-09-nhs-resources.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-10-positive-psychology-bonus-20-best-worksheets.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-10-positive-psychology-coaching-manuals.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-10-positive-psychology-communication-skills.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-10-positive-psychology-grief-bereavement.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-10-positive-psychology-meaning-valued-living.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-10-positive-psychology-misc.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-10-positive-psychology-positive-cbt.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-10-positive-psychology-positive-psychology-exercises.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-10-positive-psychology-resilience-coping.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-10-positive-psychology-strength-finding.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/bundle/text-10-positive-psychology-stress-burnout.md` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/Experiencing Awe.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/Exploring Flow Experiences.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/Getting off the Hedonic Treadmill.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/Positive Reminiscence.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/Random Acts of Kindness.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/Rewriting the Narrative with Humor.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/The Best Possible Team.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/The Metaphor of David.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/The Strengths Wheel.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/The Wheel of Life.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/Using Photography to Increase Savoring.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/positive-psychology-exercises/Writing About Intensely Positive Experiences.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/A Personal Coping Mantra.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Adopting a Growth Mindset to Criticism.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Benefit Finding.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Costs and Benefits of Unhelpful Behaviour.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Extracting Strengths from Problems.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Finding Silver Linings.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Hope Map.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Identifying Emotional Avoidance Strategies.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Inspiration and Dealing with Challenges.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Meditation on the Soles of the Feet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Moving Towards a Growth Mindset.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/My Learnings List.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Strengths Spotting by Exception Finding.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Tapping Into Your Inner Optimist.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/The Mindset Survey.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/The Spheres of Personal Control.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/resilience-coping/Valued Living During Challenging Times.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/A Family Tree of Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/A Reflected Best Self Portrait.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/A Strength-Based Resume.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/Crafting Team Tasks Around Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/Daily Strengths Awareness.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/Find the Person Behind the Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/Inward and Outward Strength Expression.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/Personalizing Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/Strength Collisions.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/Strength Journaling.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/Strengths Interviewing Guidelines.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/Strengths Spotting in Groups.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/Strengths in Significant Moments.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/The Freelancer Approach.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/The Strengths of Inspirational People.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/VIA Signature Strengths Scoring Sheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/strength-finding/Writing as a Metaphor for Strength and Weakness.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Building the Habit of Good Enough.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Caring About the Right Things.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Dealing with Uncontrollable Circumstances.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Diaphragmatic Breathing (Belly Breathing).pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Eye of the Hurricane Meditation.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Mountain Meditation.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/My Stress Profile.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Progressive Muscle Relaxation.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/S.O.B.E.R. Stress Interruption.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Solution-Focused Guided Imagery.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Spending Time in Nature.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Stress Diary.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Stress Management Emergency Plan.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/The 5-4-3-2-1 Stress Reduction Technique.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/The Coping Strategy Wheels.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Visualization for Stress Reduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/10-positive-psychology/stress-burnout/Window of Tolerance.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/raw/11-suicide-prevention/1758193032174.pdf.txt` — duplicate_content
+- `data/raw/2d/extract/shiftedai-resources/raw/11-suicide-prevention/SafetyPlanningGuide-Quick-Guide-for-Clinicians.pdf.txt` — duplicate_content
+- `data/raw/2d/extract/shiftedai-resources/raw/12-worry/What is Generalised Anxiety_Worry.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/00-root/4. My Well-Being Toolkit.docx.txt` — kids_youth
+- `data/raw/2d/extract/shiftedai-resources/text/00-root/For Josh.docx.txt` — duplicate_content
+- `data/raw/2d/extract/shiftedai-resources/text/00-root/My Sustainability Path Toolkit - The Sustainability Model.docx.txt` — kids_youth
+- `data/raw/2d/extract/shiftedai-resources/text/00-root/Skills and Knowledge Base.docx.txt` — kids_youth
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 01 - What is Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 02 - Vicious Cycle of Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 03 - Analysing your Thinking.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 04 - Unhelpful Thinking Styles.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 05 - Behavioural Experiments Negative Predictions.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 06 - Situational Exposure.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 07 - What are Safety Behaviours.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 08 - Breathing Retraining.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 09 - Progressive Muscle Relaxation.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 10 - Coping with Stress.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 11 - Stress and Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 12 - Anxiety and Exercise.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 13 - What is needle phobia.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 14 - Overcoming needle phobia.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/02-anxiety-info-sheets/Anxiety Info 15 - CBT for Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/03-depression-back-from-the-bluez/Bluez 01 - Overview of Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/03-depression-back-from-the-bluez/Bluez 02 - Behavioural Strategies.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/03-depression-back-from-the-bluez/Bluez 03 - The Thinking-Feeling Connection.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/03-depression-back-from-the-bluez/Bluez 04 - The ABC Analysis.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/03-depression-back-from-the-bluez/Bluez 05 - Unhelpful Thinking Styles.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/03-depression-back-from-the-bluez/Bluez 06 - Detective Work and Disputation.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/03-depression-back-from-the-bluez/Bluez 07 - The End Result.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/03-depression-back-from-the-bluez/Bluez 08 - Core Beliefs.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/03-depression-back-from-the-bluez/Bluez 09 - Self-Management.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Core Coping Skills for Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 01 - What is depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 02 - What Causes Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 03 - Psychotherapy for Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 04 - Vicious Cycle of Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 05 - Behavioural Activation Fun and Achievement.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 06 - Fun Activities Catalogue.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 07 - Improving how you Feel.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 08 - Thinking and Feeling.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 09 - Analysing your Thinking.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 10 - Changing your Thinking.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 11 - Unhelpful Thinking Styles.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 12 - What are Core Beliefs.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 13 - Problem Solving.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 14 - Staying Healthy.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Depression Info 15 - Grief and Bereavement.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/Psychoeducation Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/04-depression-info-sheets/The Cycle of Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Behavioural Activation.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Depression Worksheet 01 - Symptoms of Depression.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Depression Worksheet 03 - Weekly Activity Schedule.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Depression Worksheet 04 - Weekly Goals Record.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Depression Worksheet 06 - Thought Diary 1.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Depression Worksheet 07 - Thought Diary 2.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Depression Worksheet 08 - Thought Diary 3.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Depression Worksheet 09 - Thought Diary Tri-fold.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Depression Worksheet 10 - Core Beliefs Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Depression Worksheet 11 - Healthy Me Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Depression Worksheet 12 - Goal Setting worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/05-depression-worksheets/Making the Thought Feeling Connection.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/08-mindfulness-models/The feeling wheel.pdf.txt` — duplicate_content
+- `data/raw/2d/extract/shiftedai-resources/text/09-nhs-resources/NHS CNTW - Bereavement.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/09-nhs-resources/NHS CNTW - Depression and Low Mood.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/09-nhs-resources/NHS CNTW - Food for Thought.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/09-nhs-resources/NHS CNTW - Health Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/09-nhs-resources/NHS CNTW - Managing Anger.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/09-nhs-resources/NHS CNTW - Self Harm.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/09-nhs-resources/NHS CNTW - Sleeping Problems.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/09-nhs-resources/NHS CNTW - Social Anxiety.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/09-nhs-resources/NHS CNTW - Stress.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/Pleasure Vs Mastery.docx.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/A Conversation with the Inner Child.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Accepting Yourself As Being Perfectly Imperfect.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Assessment of Life and Career Wants.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Creating Realistic Optimism for Resilience.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Exploring Past Resilience.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Expressing Anger.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Gratitude Journal.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Healing From Trauma Through Writing.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Loving Others, Better.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Mental Status Exam - Exploring Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Observing Anxiety Mindfully.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Removing Relationship Disturbances.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Self-Assessment for Assertiveness Self-Discovery.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Self-Esteem Journal For Adults Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Telling an Empathy Story.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/The Five Senses Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/The Win-Win Waltz Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Turning You into I Spreadsheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/What Strengths Do Others See.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/bonus-20-best-worksheets/Workplace Mindfulness.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/coaching-manuals/Positive-Psychology-Coaching-Instruction-Manual-for-Practitioner.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/coaching-manuals/Positive-Psychology-Coaching-Workbook-for-Client.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/communication-skills/3-Communication-Exercises.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/communication-skills/Active-Listening-Reflection-Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/communication-skills/How-to-Improve-Communication-in-Relationships-7-Essential-Skills.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/communication-skills/Trading-Places-Worksheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/A Fine Line Between Avoidance and Helpful Distraction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/A Letter to the Deceased.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/Analyzing My Way of Grieving.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/Bigger Than Grief.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/Continuing the Bond to the Deceased Through Ritual.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/Creating Rituals Around Loss.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/Journaling Through Grief in 40 Days.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/Metaphors of Grief.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/People Supporting You As You Grieve.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/Reconnecting With the Deceased Through Imagery.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/Restoring the Broken Mirror Metaphor.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/Sharing Your Loss with Others.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/Taking Care of the Grieving Self.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/The Life Certificate.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/The Right to Grieve In Your Way.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/Working Through the Four Tasks of Mourning.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/grief-bereavement/You Are Not Alone in Your Suffering.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/A Value-Tattoo.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/Before-You-Die Bucket List.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/Choice Point.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/Completing Sentences to Clarify Values.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/Learning From Value-Based Actions of the Past.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/Learning to Say No.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/Meaningful Photography.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/My Gravestone.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/Promoting Altruism to Enhance Purpose.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/Team Branding.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/The Beyond Limitation Question Technique.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/The Bulls-Eye Values Survey.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/The Values Diagrams.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/The Values Lantern.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/Value Cards.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/Values Vision Board.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/meaning-valued-living/Values-Based Goal Setting.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/00 17 Positive CBT Exercises.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/A Letter from Your Best Day to Your Bad Days.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Behavioral Activation.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Breaking the Vicious Cycle.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Changing Behavior Through Positive Reinforcement.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Diary of Better Moments.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Dropping Anchor.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Optimistic Thinking Style.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Pleasurable Activities Journal.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Replacing Non-Grateful Thoughts With Grateful Thoughts.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Replacing Unhelpful Thoughts With Helpful Alternatives.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Seeing Through the Hindsight-Bias.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Self-Forgiveness Letter.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Solution-Focused Scaling Questions.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Structured Problem-Solving.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/The ABC Model of Helpful Behavior.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/The Most Helpful Thoughts.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-cbt/Using Self-Distanced Language to Gain Perspective on Negative Events.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Analyzing Environmental Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Chasing Happiness.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Creating Savoring Rituals.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Daily Exceptions Journal.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Doors Closed Doors Open.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Experiencing Awe.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Exploring Flow Experiences.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Getting off the Hedonic Treadmill.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Positive Reminiscence.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Random Acts of Kindness.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Rewriting the Narrative with Humor.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/The Best Possible Team.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/The Metaphor of David.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/The Strengths Wheel.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/The Wheel of Life.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Using Photography to Increase Savoring.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/positive-psychology-exercises/Writing About Intensely Positive Experiences.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/A Personal Coping Mantra.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Adopting a Growth Mindset to Criticism.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Benefit Finding.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Costs and Benefits of Unhelpful Behaviour.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Extracting Strengths from Problems.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Finding Silver Linings.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Hope Map.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Identifying Emotional Avoidance Strategies.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Inspiration and Dealing with Challenges.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Meditation on the Soles of the Feet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Moving Towards a Growth Mindset.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/My Learnings List.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Strengths Spotting by Exception Finding.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Tapping Into Your Inner Optimist.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/The Mindset Survey.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/The Spheres of Personal Control.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/resilience-coping/Valued Living During Challenging Times.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/A Family Tree of Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/A Reflected Best Self Portrait.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/A Strength-Based Resume.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/Crafting Team Tasks Around Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/Daily Strengths Awareness.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/Find the Person Behind the Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/Inward and Outward Strength Expression.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/Personalizing Strengths.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/Strength Collisions.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/Strength Journaling.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/Strengths Interviewing Guidelines.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/Strengths Spotting in Groups.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/Strengths in Significant Moments.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/The Freelancer Approach.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/The Strengths of Inspirational People.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/VIA Signature Strengths Scoring Sheet.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/strength-finding/Writing as a Metaphor for Strength and Weakness.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/00 Introduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Building the Habit of Good Enough.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Caring About the Right Things.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Dealing with Uncontrollable Circumstances.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Diaphragmatic Breathing (Belly Breathing).pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Eye of the Hurricane Meditation.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Mountain Meditation.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/My Stress Profile.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Progressive Muscle Relaxation.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/S.O.B.E.R. Stress Interruption.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Solution-Focused Guided Imagery.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Spending Time in Nature.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Stress Diary.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Stress Management Emergency Plan.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/The 5-4-3-2-1 Stress Reduction Technique.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/The Coping Strategy Wheels.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Visualization for Stress Reduction.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/10-positive-psychology/stress-burnout/Window of Tolerance.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/12-worry/What is Generalised Anxiety_Worry.pdf.txt` — hold_licence_or_path
+- `data/raw/2d/extract/shiftedai-resources/text/12-worry/what-is-worry.pdf.txt` — hold_licence_or_path
+- `data/raw/2e/extract/shifted/spec.docx.txt` — duplicate_content
+- `data/raw/2e/extract/shifted/spec.txt` — duplicate_content
+- `data/raw/2e/extract/shiftedai-phase3/content-report/raw.pdf.txt` — validated_measure
+- `data/raw/4a/extract/Audio transcripts/CCI guided audio/_media_CCI_Audio_files_BreathingRetraining.txt` — hold_licence_or_path
+- `data/raw/4a/extract/Audio transcripts/CCI guided audio/_media_CCI_Audio_files_Mindfulnessofthebreath.txt` — hold_licence_or_path
+- `data/raw/4a/extract/Audio transcripts/CCI guided audio/_media_CCI_Audio_files_WatchingThoughts.txt` — hold_licence_or_path
+- `data/raw/4a/extract/Video transcripts/YOUTUBE-IN-PROGRESS.txt` — hold_licence_or_path
+- `data/raw/8/extract/VA PTSD print publications/English print/understandingptsd_aging_booklet.pdf.txt` — kids_youth
+- `data/raw/8/extract/VA PTSD print publications/English print/understandingptsd_family_booklet.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/Get_Moving_and_Get_Well_Manual.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/Living_With_Purpose.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/Provider_Communication_Facilitator_Manual.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/STORES-children-flyer.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/STORES-family-flyer.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/STORES-guide.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/Therapists_Guide_to_Brief_CBTManual.pdf.txt` — validated_measure
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/Walking-to-Wellness-Caregiver-Walking-Together-Guide.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/Walking_to_Wellness_Workbook.pdf.txt` — duplicate_content
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/act-for-ptsd-therapist-manual.pdf.txt` — validated_measure
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/act-strategies-guide.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/cbt-strategies-guide.pdf.txt` — validated_measure
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/courage-group-patient-workbook.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/courage-group-provider-manual-session-8.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/courage-group-provider-manual-session-9.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/courage-group-provider-manual.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/hero-clinician-manual.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/mybriefcbt-provider-manual.pdf.txt` — validated_measure
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/picture-this-appendix.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/picture-this-guide.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/ptsd-and-mtbi-pocket-card-print-ready.pdf.txt` — validated_measure
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/ptsd-and-mtbi-pocket-card.pdf.txt` — validated_measure
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/updated-calmer-life-patient-workbook.pdf.txt` — kids_youth
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/updated-calmer-life-provider-manual-abbreviated.pdf.txt` — validated_measure
+- `data/raw/8b/extract/VA MIRECC VISN16 manuals/updated-calmer-life-provider-manual.pdf.txt` — validated_measure
+- `data/raw/9/extract/SAMHSA clinical MH manuals/Anger-Management-CBT-Manual.pdf.txt` — kids_youth
+- `data/raw/9/extract/SAMHSA clinical MH manuals/CBT-for-Psychosis-Implementation-Guide.pdf.txt` — kids_youth
+- `data/raw/9/extract/SAMHSA clinical MH manuals/SAMHSA-pep21-02-01-001.pdf.txt` — kids_youth
+- `data/raw/9/extract/SAMHSA clinical MH manuals/SAMHSA-sma08-4354.pdf.txt` — kids_youth
+- `data/raw/9/extract/SAMHSA clinical MH manuals/SAMHSA-sma09-4371.pdf.txt` — kids_youth
+- `data/raw/9/extract/SAMHSA clinical MH manuals/SAMHSA-sma13-4735.pdf.txt` — kids_youth
+- `data/raw/9/extract/SAMHSA clinical MH manuals/SAMHSA-sma15-4912.pdf.txt` — kids_youth
+- `data/raw/9/extract/SAMHSA clinical MH manuals/SAMHSA-sma15-4924.pdf.txt` — validated_measure
+- `data/raw/9/extract/SAMHSA clinical MH manuals/TIP-35-Enhancing-Motivation-for-Change.pdf.txt` — kids_youth
+- `data/raw/9/extract/SAMHSA clinical MH manuals/TIP-48-Managing-Depressive-Symptoms.pdf.txt` — kids_youth
+- `data/raw/9/extract/SAMHSA clinical MH manuals/TIP-50-Quick-Guide-Clinicians.pdf.txt` — validated_measure
+- `data/raw/9/extract/SAMHSA clinical MH manuals/TIP-50-Suicidal-Thoughts-Behaviors.pdf.txt` — kids_youth
+- `data/raw/9/extract/SAMHSA clinical MH manuals/TIP-57-Trauma-Informed-Care.pdf.txt` — kids_youth
+- `data/raw/part17/extract/US-PUBLIC-DOMAIN.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/-Blog_Military-Mental-and-Spiritual-Health-Personnel_Suicide-Prevention-Spotlight-Military-Behavioral-Health-Technicians.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/-Center-of-Excellence_Clinicians-Corner-Blog_Combat-and-Operational-Stress-and-PTSD_Stress-is-a-Normal-Survival-Reaction.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/-Center-of-Excellence_Clinicians-Corner-Blog_Military-Mental-and-Spiritual-Health-Personnel_Social-Workers-are-Essential.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/-Excellence_Clinicians-Corner-Blog_Sexual-Assault-and-Sexual-Harassment_A-Trauma-Informed-Approach-to-Provider-Self-Care.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_Practice-What-You-Preach-Defend-Your-Own-Mental-Health.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/-Spiritual-Health-Personnel_Behavioral-Health-Technicians-A-Vital-Role-Supporting-the-Embedded-Behavioral-Health-Mission.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/-of-Excellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Traumatic-Brain-Injury-and-Mental-Health.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Center-of-Excellence_Clinicians-Corner-Blog_Mental-Health-Stigma-and-Suicide-Risk_2018-DoD-Suicide-Event-Report-Released.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Center-of-Excellence_Clinicians-Corner-Blog_Mental-Health-Stigma-and-Suicide-Risk_2019-DoD-Suicide-Event-Report-Released.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Clinicians-Corner-Blog_Mental-Health-Stigma-and-Suicide-Risk_How-Digital-Innovation-Can-Boost-Suicide-Prevention-Efforts.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Clinicians-Corner-Blog_Sexual-Assault-and-Sexual-Harassment_Supporting-Survivors-of-Sexual-Assault-and-Sexual-Harassment.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Combat-and-Operational-Stress-and-PTSD_Obsessive-Compulsive-Disorder-and-PTSD-Considerations-for-Screening-and-Treatment.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Corner-Blog_Mental-Health-Stigma-and-Suicide-Risk_Lessons-from-Suicide-Attempts-among-US-Army-Soldiers-During-Deployment.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Corner-Blog_Sexual-Assault-and-Sexual-Harassment_Understanding-Impacts-of-Stalking-in-Service-Members-Tips-for-Providers.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Excellence_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Mental-Health-Technicians-in-the-Military.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Military-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Military-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Military-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Insomnia.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Military-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Military-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_PTSD.txt` — validated_measure
+- `data/raw/part17/extract/phcoe-briefs-blogs/Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Insomnia_Tactical-Naps-When-Napping-Can-Be-Good-for-You.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/Sexual-Assault-and-Sexual-Harassment_Safe-Helpline-Resources-available-to-DoD-Sexual-Assault-Stakeholders-and-Clinicians.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Insomnia_Bedtime-Procrastination.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/_Clinicians-Corner-Blog_Provider-Resources_How-Good-is-that-App-Evaluation-Criteria-for-Military-Mental-Health-Providers.txt` — validated_measure
+- `data/raw/part17/extract/phcoe-briefs-blogs/_Clinicians-Corner-Blog_Sexual-Assault-and-Sexual-Harassment_Sexual-Harassment-and-Sexual-Assault-What-is-the-Connection.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/_Military-Mental-and-Spiritual-Health-Personnel_Dolphin-Docs-Mental-Health-Providers-Embedded-in-the-Submarine-Community.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/al-Assault-and-Sexual-Harassment_Tips-for-Making-Therapy-More-Trauma-Informed-for-Survivors-of-Intimate-Partner-Violence.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/al-Assault-and-Sexual-Harassment_Trauma-Informed-Interventions-and-Assessment-for-Survivors-of-Intimate-Partner-Violence.txt` — validated_measure
+- `data/raw/part17/extract/phcoe-briefs-blogs/al-Health-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_Adjustment-Disorder-in-the-Military.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/alth-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_Message-Received-Effective-Communication.txt` — kids_youth
+- `data/raw/part17/extract/phcoe-briefs-blogs/ans-Corner-Blog_Mental-Health-Stigma-and-Suicide-Risk_Suicide-Exposure-in-Military-Populations-and-Resources-for-Support.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ans-Corner-Blog_Mental-Health-Stigma-and-Suicide-Risk_US-Navy-Suicide-Deep-Dive-Missed-Opportunities-and-Recommendations.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ans-Corner-Blog_Substance-Misuse_Facilitating-12-Step-Approaches-to-Change-for-Service-Members-with-Problematic-Drinking.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ary-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Suicide-Risk.txt` — validated_measure
+- `data/raw/part17/extract/phcoe-briefs-blogs/ary-Mental-and-Spiritual-Health-Personnel_is-the-Behavioral-Health-Consultant-in-Primary-Care-Right-for-Your-Patient-Yes.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/cal-Health-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_The-Power-of-Deliberate-Connection.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ce_Clinicians-Corner-Blog_Mental-Health-Stigma-and-Suicide-Risk_Lethal-Means-Safety-Interventions-for-Suicide-Prevention.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/cellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Military-Mental-and-Spiritual-Health-Personnel.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ces_How-Is-This-Working-Therapeutic-Alliance-and-Implications-for-Evidence-Based-Treatment-Delivery-in-Military-Settings.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/chological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_Yogas-Place-in-the-Military.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/cians-Corner-Blog_Combat-and-Operational-Stress-and-PTSD_Helping-Military-Teams-Manage-Acute-Stress-When-It-Matters-Most.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/cians-Corner-Blog_Mental-Health-Stigma-and-Suicide-Risk_Planning-for-the-Worst-A-Commanders-Guide-to-Suicide-Postvention.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/cs_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/d-Sexual-Harassment_Provider-Strategies--Responding-to-Adult-Disclosures-of-Sexual-Assault-in-the-Military-Health-System.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/d-Spiritual-Health-Personnel_Whats-the-Difference-between-Primary-Care-Behavioral-Health-and-Specialty-Behavioral-Health.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ealth-Center-of-Excellence_Clinicians-Corner-Blog_InTransition_inTransition-Supporting-Brigs-and-Correctional-Facilities.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ealth-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_The-Beast-Taming-Your-Problematic-Anger.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ellence_Clinicians-Corner-Blog_Military-Mental-and-Spiritual-Health-Personnel_Confidentiality-Chaplains-and-the-Military.txt` — kids_youth
+- `data/raw/part17/extract/phcoe-briefs-blogs/ence_Clinicians-Corner-Blog_Combat-and-Operational-Stress-and-PTSD_Understanding-Combat-and-Operational-Stress-Reactions.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/er-Blog_Provider-Resources_Putting-the-Rucksack-Down-One-Military-Psychologists-Story-of-Vicarious-Trauma-and-Resilience.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ers-of-Excellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Mental-Health-Stigma-and-Suicide-Risk.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/f-Excellence_Clinicians-Corner-Blog_Combat-and-Operational-Stress-and-PTSD_Managing-Combat-Stress-for-the-High-End-Fight.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/g_InTransition_inTransition-Improves-its-Success-Rate-in-Connecting-Service-Members-to-Sexual-Assault-related-Counseling.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/g_Sexual-Assault-and-Sexual-Harassment_DoD-Resources-for-Providers-Treating-Service-Members-Disclosing-Sexual-Harassment.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/gical-Health-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_Ostracism-and-Your-Mental-Health.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/h-Stigma-and-Suicide-Risk_Reducing-Military-Mental-Health-Stigma-to-Improve-Treatment-Engagement-Guidance-for-Clinicians.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/h-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Understanding-Burnout.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/hological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_Binge-Eating-in-the-Military.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/icians-Corner-Blog_InTransition_inTransition-Teams-Up-with-the-Veterans-Crisis-Line-to-Support-Service-Members-in-Crisis.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/inicians-Corner-Blog_Mental-Health-Stigma-and-Suicide-Risk_The-Power-of-Words-in-the-Battle-Against-Mental-Health-Stigma.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/inicians-Corner-Blog_Provider-Resources_Question-and-Verify-TRICARE-Authorized-Civilian-Mental-Health-Facility-Referrals.txt` — kids_youth
+- `data/raw/part17/extract/phcoe-briefs-blogs/l-Health-Center-of-Excellence_Clinicians-Corner-Blog_Mental-Health-Needs-for-Service-Members-with-Traumatic-Brain-Injury.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/lations-and-Topics_Technology-May-Make-Life-Tougher-for-Service-Members-Struggling-with-Problematic-Patterns-of-Gambling.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/lence_Clinicians-Corner-Blog_Combat-and-Operational-Stress-and-PTSD_Reflecting-on-the-Meaning-of-Service-in--Afghanistan.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/linicians-Corner-Blog_Special-Populations-and-Topics_Technology-and-the-Good-Life-A-Primer-for-Military-Health-Providers.txt` — kids_youth
+- `data/raw/part17/extract/phcoe-briefs-blogs/linicians-Corner-Blog_Substance-Misuse_Preventing-Identifying-and-Treating-Substance-Use-Disorders-among-Service-Members.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/litary-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_InTransition.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/litary-Mental-and-Spiritual-Health-Personnel_Chaplains-Behavioral-Health-Providers-collaborate-for-Mental-Health-Support.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/llence_Clinicians-Corner-Blog_Combat-and-Operational-Stress-and-PTSD_Problematic-Anger-and-Posttraumatic-Stress-Disorder.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/llence_Clinicians-Corner-Blog_Special-Populations-and-Topics_The-Power-of-Staying-Connected-Social-Connection-and-Health.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/llence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Insomnia_What-is-the-Best-Treatment-for-Insomnia.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/logical-Health-Center-of-Excellence_Clinicians-Corner-Blog_Substance-Misuse_Opioid-Use-Disorder-A-Battle-That-Can-Be-Won.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/lth-Center-of-Excellence_Clinicians-Corner-Blog_Provider-Resources_Provider-Self-Care-when-Working-with-Trauma-Survivors.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/lth-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_Facing-Disciplinary-and-Legal-Involvement.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/nce_Clinicians-Corner-Blog_Special-Populations-and-Topics_Mental-Health-Crisis-in-Youth-What-is-the-Role-of-Social-Media.txt` — kids_youth
+- `data/raw/part17/extract/phcoe-briefs-blogs/nd-Sexual-Harassment_Provider-strategies-Responding-to-adult-disclosures-of-sexual-assault-in-the-Military-Health-System.txt` — kids_youth
+- `data/raw/part17/extract/phcoe-briefs-blogs/ner-Blog_Military-Mental-and-Spiritual-Health-Personnel_Mental-Health-Technicians-The-Unsung-Heroes-of-Training-Programs.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/nicians-Corner-Blog_Special-Populations-and-Topics_A-New-Study-Examines-the-Prevalence-and-Course-of-ADHD-among-Children.txt` — kids_youth
+- `data/raw/part17/extract/phcoe-briefs-blogs/nicians-Corner-Blog_Special-Populations-and-Topics_Prevalence-of-Mental-Health-Conditions-in-Active-Duty-Service-Members.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ntal-Health-Management-in-Austere-Environments--Joint-Trauma-System-Shining-a-Beacon-for-Non-Specialty-Medical-Personnel.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ntal-Health-Stigma-and-Suicide-Risk_Clinicians-and-Leaders-Principal-Partners-for-Suicide-Prevention-in-the-Marine-Corps.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ntation-Network-Launches-New-Pilot-Optimizing-Utilization-of-Behavioral-Health-Technicians-in-the-Military-Health-System.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/nter-of-Excellence_Clinicians-Corner-Blog_InTransition_Call-inTransition-With-Your-Patients-Its-Worth-It-Nine-Times-Over.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/nter-of-Excellence_Clinicians-Corner-Blog_InTransition_inTransition-Serving-All-of-Americas-Service-Members-and-Veterans.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/of-Excellence_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Mental-Health-Stigma-Reduction-Toolkit.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ogical-Health-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_Restorative-Power-of-Yoga-Nidra.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ogical-Health-Center-of-Excellence_Clinicians-Corner-Blog_Substance-Misuse_Your-Relationship-with-Prescribed-Medications.txt` — kids_youth
+- `data/raw/part17/extract/phcoe-briefs-blogs/ological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Substance-Misuse_Opioids-and-Injuries-in-U-S-Service-Members.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/r-Blog_Sexual-Assault-and-Sexual-Harassment_Partnerships-Make-for-Progress-Spotlight-on-Interpersonal-Violence-Resources.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/rs-of-Excellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Combat-and-Operational-Stress-and-PTSD.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ry-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Substance-Misuse.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ry-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Opioid-Misuse.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/s-Corner-Blog_Special-Populations-and-Topics_Recognizing-and-countering-ostracism-Ready-and-Resilient-Military-Community.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/s-of-Excellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_Kindness.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/sonnel_How-Can-Behavioral-Health-Consultants-Encourage-Patient-Engagement-in-Brief-Cognitive-Behavioral-Therapy-for-Pain.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/sychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_The-Fatigue-We-Do-Not-See.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ter-of-Excellence_Clinicians-Corner-Blog_Combat-and-Operational-Stress-and-PTSD_Grounding-Techniques-for-Stressful-Times.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ter-of-Excellence_Clinicians-Corner-Blog_InTransition_inTransition-Open-to-All-Service-Members-and-Veterans-All-the-Time.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ter-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_988-A-Lifeline-for-Mental-Health-Crisis-Response.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/th-Center-of-Excellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_First-Episode-Psychosis-in-Service-Members.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/ual-Harassment_inTransition-Helping-Service-Members-Connect-to-Confidential-VA-Mental-Health-Counseling-for-Sexual-Traum.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/umatic-Brain-Injury-and-Mental-Health_Positive-Attitude-Social-Support-May-Promote-TBI-Resilience-Among-Military-Members.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/xcellence_Clinicians-Corner-Blog_Mental-Health-Stigma-and-Suicide-Risk_The-Role-of-Case-Management-in-Suicide-Prevention.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/xcellence_Clinicians-Corner-Blog_Special-Populations-and-Topics_Mental-Health-in-the-DOD-Advanced-Rehabilitation-Centers.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/xcellence_Psychological-Health-Center-of-Excellence_Clinicians-Corner-Blog_Insomnia_Dont-Sleep-on-Treatment-for-Insomnia.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-briefs-blogs/y-Health-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Alcohol-Misuse.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/-Topics_Centers-of-Excellence_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Clinical-Support-Tools.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2021_05_20_PHCOE_DrinkCalculatorTracker_5_13_2021_508.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2021_05_20_PHCOE_PreparingforChange_Worksheet_093020_508v1.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2021_05_20_PHCoE_MyPlanforChange_Worksheet_093020_508v1.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2022_03_16_PHCoE_AUD_Medications_5_20_21_508.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2022_03_16_PHCoE_AlcoholMisuse_121719_508v1.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2022_03_16_PHCoE_SUD_Line_Leaders_5_20_21_508.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2022_03_16_PHCoE_SUD_family_brochure_web_508.txt` — kids_youth
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_02_28_Dose-Duration-Tapering-Opioids.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_02_28_Reducing-the-Risk-of-Unsafe-Opioid-Use.txt` — validated_measure
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_03_10_ChronicPainManage_PatientGuide_CST_03102023.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_09_14_Do-I-Need-Help-infographic.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_09_14_SCZ-First-Episode-Line-Leaders.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_09_14_SCZ-First-Episode-Patients.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_09_14_SCZ-Pharmacologic-Interventions.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_12_14_Bipolar-Disorder-A-Guide-for-Department-of-Defense-Line-Leaders.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_12_14_Bipolar-Disorder-A-Guide-for-Family-and-Friends.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_12_14_Bipolar-Disorder-Do-I-Need-Help.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_12_14_PTSD-Pocket-Card.txt` — validated_measure
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_12_14_Pharmacologic-Treatments-of-Bipolar-Disorder.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_12_14_Psychosocial-and-Recovery-Oriented-Therapy-for-Bipolar-Disorder.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_12_14_Schizophrenia-Pocket-Card.txt` — kids_youth
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_12_14_Understanding-Bipolar-Disorder.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2023_12_18_Management-of-Bipolar-Disorder-Pocket-Card.txt` — validated_measure
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2024_01_04_Assessment-for-PTSD.txt` — validated_measure
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2024_01_04_PTSD-Do-I-Need-Help.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2024_01_04_PTSD-Line-Leaders.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2024_01_04_PTSD-Patients-Family-Friends.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2024_01_04_Pharmacologic-Interventions-for-PTSD.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2024_01_04_Psychotherapy-for-PTSD.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2024_05_01_SCZ-Psychosocial-Interventions-2024.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2025_01_08_Suicide-Prevention-Families.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2025_01_08_Suicide-Risk-Line-Leaders.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2025_01_15_Lethal-Means-Safety-Counseling-for-Providers.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2025_01_15_Reducing-Firearm-Access-for-Line-Leaders.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2025_06_18_Treating-Insomnia-Patients-Guide.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2025_11_26_Treating-Insomnia-Providers-Guide.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2026_05_21_Insomnia-Medications-3.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2026_08_06_Comprehensive-Lifestyle-Intervention-in-Management-of-Obesity.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2026_08_26_Quit-Plan-Worksheet.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2026_09_18_Quitting-to-Win-A-Roadmap-to-Beat-Nicotine-and-Tobacco-Use-in-the-Military.txt` — kids_youth
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2026_09_28_Motivational-Interviewing-for-Tobacco-Cessation.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2026_10_29_Tobacco-Use-Treatment-Providers-Guide.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/Reference-Center_Publications_2026_11_03_Intensive-Counseling-in-Tobacco-Use-Treatment-Providers-Guide.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/cal-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Clinical-Support-Tools_Bipolar-Disorder-Clinical-Support-Tools.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/cal-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Clinical-Support-Tools_Substance-Misuse-Clinical-Support-Tools.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/chological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Clinical-Support-Tools_Pregnancy-Clinical-Support-Tools.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/e_Psychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Clinical-Support-Tools_PTSD-Clinical-Support-Tools.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/er-of-Excellence_PHCoE-Clinician-Resources_Clinical-Support-Tools_Opioid-Therapy-for-Chronic-Pain-Clinical-Support-Tools.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/l-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Clinical-Support-Tools_Overweight-Obesity-Clinical-Support-Tools.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/llence_PHCoE-Clinician-Resources_Clinical-Support-Tools_First-Episode-Psychosis-and-Schizophrenia-Clinical-Support-Tools.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/logical-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Clinical-Support-Tools_Suicide-Risk-Clinical-Support-Tools.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/nce-Center_Publications_2022_03_16_Is-Your-Body-Ready-for-Pregnancy-Pregnancy-and-Substance-Abuse-Its-Not-Worth-the-Risk.txt` — duplicate_content
+- `data/raw/part17/extract/phcoe-tools/ychological-Health-Center-of-Excellence_PHCoE-Clinician-Resources_Clinical-Support-Tools_Insomnia-Clinical-Support-Tools.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/-Programs_Real-Warriors-Campaign_Articles_Breathing-Meditation-and-Relaxation-Techniques-to-Improve-Mind-and-Body-Health.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_5-Tips-for-Staying-Safe-in-an-Abusive-Relationship.txt` — kids_youth
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Anger-Management-Techniques.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Anxiety-101.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Boost-Your-Mood-6-Tools-for-Reframing-Negative-Thoughts.txt` — kids_youth
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Boosting-Family-Readiness.txt` — kids_youth
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Combating-Ostracism-Tips-and-Strategies.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Confidentiality-Protecting-Your-Health-Information.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Coping-with-Mass-Shootings.txt` — kids_youth
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Coping-with-the-Trauma-of-Suicide-Loss.txt` — kids_youth
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Domestic-Violence-Resources-for-Military-Partners.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Easing-Holiday-and-Reintegration-Stress.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Fostering-a-Culture-of-Inclusiveness-Connect-to-Protect.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Getting-Support-for-Chronic-Grief.txt` — kids_youth
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Helping-Children-Through-the-Grieving-Process.txt` — kids_youth
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_How-Excessive-Drinking-Impacts-Your-Health.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_How-Veterans-Can-Navigate-Change-Through-Writing.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_How-to-Combat-Isolation-and-Loneliness.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_How-to-Cope-with-Common-Causes-of-Loss.txt` — kids_youth
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_How-to-Develop-Healthy-Sleep-Habits.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_How-to-Strengthen-Social-Relationships.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Identifying-Warning-Signs-of-Suicide-on-Social-Media.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Impact-of-Alcohol-on-Your-Sleep-Health.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Keeping-Your-Mind-Psychologically-Fit.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Maintaining-Relationships-with-Loved-Ones-During-Deployment.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Managing-Anger-in-Your-Relationship.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Navigating-VA-Benefits-for-National-Guard-and-Reserve.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Non-Drug-Treatment-Options-for-Managing-Pain.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Nutritions-Role-in-Mission-Readiness.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Ostracism-and-Your-Mental-Health.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Peer-Support-for-Military-Spouses.txt` — kids_youth
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Preparing-For-Deployment.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Preventing-Harm-from-Ostracism.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Prioritizing-Your-Psychological-Health.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Recognizing-and-Countering-Ostracism.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Security-Clearances-and-Psychological-Health-Care.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Sleep-Tips-for-Shift-Workers.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Strategies-for-Coping-with-Flashbacks.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Stress-Reduction-Techniques-for-High-Stress-Operations.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Substance-Misuse-as-a-Coping-Mechanism.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Suicide-Prevention-Resources-for-Line-Leaders.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Support-and-Resources-for-Single-Service-Members.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_The-Physiology-of-Combat-Stress-Reaction.txt` — kids_youth
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_The-Role-of-Family-and-Loved-Ones-in-Substance-Use-and-Misuse.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Tips-for-National-Guard-and-Reserve-Members-to-Stay-Mission-Ready.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Treatment-Options-for-Posttraumatic-Stress-Disorder.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Understanding-and-Coping-with-Natural-and-Human-Made-Disasters.txt` — kids_youth
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Using-Social-Media-to-Stay-Connected.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_Veterans-Affairs-Health-Benefits-Overview.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_You-Are-Not-Alone-Suicide-Prevention-Tools-for-Warriors.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Articles_You-Are-Your-Friends-Biggest-Support.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Find-Support.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Healthy-Habits.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/Offices-and-Programs_Real-Warriors-Campaign_Mental-Health-Topics.txt` — duplicate_content
+- `data/raw/part17/extract/real-warriors/al-Warriors-Campaign_Articles_Peer-Support-Resources-for-Members-of-the-National-Guard-Reserve-and-Individual-Augmentees.txt` — duplicate_content
+- `data/raw/part18/extract/US-PUBLIC-DOMAIN.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_courses_asp.txt` — kids_youth
+- `data/raw/part18/extract/va-apps/appvid_decisionaid_public_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_index_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_VetChange_app_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_actcoach_app_pro_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_actcoach_app_public_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_aims_app_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_beyondMST_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_cbticoach_app_pro_asp.txt` — validated_measure
+- `data/raw/part18/extract/va-apps/appvid_mobile_cbticoach_app_public_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_concussion_coach_app_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_coping_coach_app_asp.txt` — validated_measure
+- `data/raw/part18/extract/va-apps/appvid_mobile_couplescoach_app_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_cpt_app_pro_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_cptcoach_app_public_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_familycoach_app_asp.txt` — kids_youth
+- `data/raw/part18/extract/va-apps/appvid_mobile_insomnia_coach_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_mindfulcoach_app_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_pain_coach_app_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_pecoach_app_pro_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_pecoach_app_public_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_ptsdcoach_app_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_staircoach_app_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_stayquit_coach_app_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_strength_app_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_veterans_wellness_path_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-apps/appvid_mobile_wellwithin_coach_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/index.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/redcap_surveys.txt` — kids_youth
+- `data/raw/part18/extract/va-mirecc-other/visn1.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19.txt` — kids_youth
+- `data/raw/part18/extract/va-mirecc-other/visn19_ascend.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_aspire.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_clinical.txt` — kids_youth
+- `data/raw/part18/extract/va-mirecc-other/visn19_clinical_nomenclature_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_consult.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_consult_lecture-series_asp.txt` — kids_youth
+- `data/raw/part18/extract/va-mirecc-other/visn19_consult_tools-and-training_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_cpg.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_cpg_recs_21.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_education.txt` — kids_youth
+- `data/raw/part18/extract/va-mirecc-other/visn19_education_sdvtree_sdv_tree_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_ffast_index_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_achieve-your-goals_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_alabama_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_alaska_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_arizona_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_arkansas_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_avoid-scams_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_build-your-credit_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_california_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_clothes_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_colorado_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_connecticut_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_create-a-budget_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_credit-counseling_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_delaware_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_direct-financial-assistance_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_district-of-columbia_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_eating-healthy-on-a-budget_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_education_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_finances-stress-and-relationships_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_florida_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_food_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_georgia_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_government-benefits_asp.txt` — kids_youth
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_hawaii_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_housing_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_how-nature-improves-health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_idaho_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_illinois_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_increase-your-income_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_indiana_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_investing_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_iowa_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_kansas_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_kentucky_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_louisiana_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_maine_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_manage-your-debt_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_manage-your-money_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_maryland_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_massachusetts_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_meet-your-basic-needs_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_michigan_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_mindfulness_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_minnesota_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_mississippi_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_missouri_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_money-and-health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_montana_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_nebraska_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_nevada_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_new-hampshire_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_new-jersey_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_new-mexico_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_new-york_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_north-carolina_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_north-dakota_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_ohio_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_oklahoma_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_oregon_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_pennsylvania_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_prepare-for-emergencies_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_protect-your-money_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_reducing-your-debt_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_rhode-island_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_secure-banking_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_south-carolina_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_south-dakota_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_spend-less_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_state-resources_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_tennessee_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_texas_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_the-science-behind-financial-well-being-and-mental-health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_transportation_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_utah_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_va-life-insurance_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_vermont_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_veteran-success-stories_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_virginia_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_washington_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_west-virginia_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_wisconsin_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_work_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_finvet_wyoming_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_lethalmeanssafety.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_lethalmeanssafety_counseling.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_lethalmeanssafety_evidence.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_lethalmeanssafety_recommendations.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_lethalmeanssafety_resources.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_mvm.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_mvm_resources_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_mvm_team_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_mvm_transcript_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_postvention.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_postvention_faq_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_postvention_providers.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_postvention_workplace.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_psci-spc_additional-resources_asp.txt` — validated_measure
+- `data/raw/part18/extract/va-mirecc-other/visn19_psci-spc_suicide-prevention-learning-collaborative_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_talk2kids.txt` — kids_youth
+- `data/raw/part18/extract/va-mirecc-other/visn19_tbi_toolkit.txt` — kids_youth
+- `data/raw/part18/extract/va-mirecc-other/visn19_togetherwithveterans.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_treatmentworksforvets.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_trm.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn19_trm_table_asp.txt` — kids_youth
+- `data/raw/part18/extract/va-mirecc-other/visn21.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn4.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn5.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn5_ebt_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn5_training_social_skills_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn5_training_sst_ORIENTACION_DE_DESTREZAS_SOCIALES_PARA_CLIENTES_042325-508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn5_training_sst_ORIENTACION_PARA_PROFESIONALES_SOBRE_EL_ENTRENAMIENTO_EN_DESTREZAS_SOCIALES_042325-508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_ce_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_clinical_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_education_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_genetics_cor_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_health_services_cor_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_helpful_links_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_interventions_cor_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_investigators_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_metabolomics_cor_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_neuroimaging_cor_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_neuropsychology_cor_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_neuroscience_cor_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_participate_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_pdmh_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_prom_cor_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_rehabilitation_cor_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-mirecc-other/visn6_story_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_CIH_CIH_overview_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_CIH_acupuncture_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_CIH_clinical_hypnosis_asp.txt` — kids_youth
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_Live_Whole_Health_Mobile_App_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_Whole_Health_For_Pain_Management_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_cih_Medical_Massage_Therapy_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_cih_Tai_Chi_and_Qigong_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_cih_guided_imagery_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_cih_meditation_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_cih_yoga_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_circle-of-health_Me_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_circle-of-health_family-friends-coworkers_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_circle-of-health_food-drink_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_circle-of-health_index_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_circle-of-health_mindful-awareness_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_circle-of-health_moving-body_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_circle-of-health_personal-development_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_circle-of-health_power-of-the-mind_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_circle-of-health_recharge_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_circle-of-health_spirit-soul_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_circle-of-health_surroundings_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_Approach_and_Whole_Health_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_CIH_Compendium_Volume1_2020_APR122021_508C_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_CIH_Compendium_Volume2_Jan2023_508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_Clinical_Champion_Lessons_Learned_from_Flagship_Sites_FINAL_06012021_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_EPCCWHSEvaluationAppendices_2020-02-18-FINAL_508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_EPCC_WHSevaluation_FinalReport_508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_Health-Wellness-Coaching-Outcomes-Final-Long-Version-4-9_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_NationalPainStrategy_508C_pdf.txt` — kids_youth
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_OPCC-WholeHealthforLife-Flyer-508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_PHI_Jan2022_Final_508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_PHP-WalletCard-May22-fillable-508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_VA-OPCC-AdoptingWholeHealth-PhotoEssay-508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_VA-OPCC-LivingWholeHealth-PhotoEssay-508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_WH-Handout_It-Starts-with-Me_IB10-1142-P96903_508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_WholeHealthCoaching_08202026_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_WholeHealthOutcomesInfographic_08202026_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_Whole_Health_Engagement_and_Evaluation_Infographic_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_Whole_Health_Flagship_Eval_Infographic_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_Whole_Health_Tobacco_Cessation_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_Whole_Health_Training_Lessons_Learned_Final_06012021_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_Whole_Health_and_Patient_Experiences_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_Whole_Health_and_Primary_Care_Quality_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_docs_outreach-materials_social-media_sharable-social-media-11-06-508_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_experience.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_115_Pound_Loss_Shows_Change_Possible_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_A_Journey_Rekindled_Through_Whole_Health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Adapting_to_suffering_and_loss_with_support_of_VA_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Air_Force_Veteran_Finds_Hope_Through_Whole_Health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Art_Eases_Pain_for_Veteran_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Boise_Rescue_Mission_Whole_Health_support_Veteran_asp.txt` — kids_youth
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Compassion_beyond_the_pain_A_Veteran_s_story_asp.txt` — kids_youth
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Crafty_Veteran_Overcomes_Obstacles_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_From_combat_to_cane_to_comeback_Tony_Crum_s_story_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_George_Mauer_Friends_Family_and_Co_Workers_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Healthy_Cooking_Class_Spices_Up_Life_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Homeless_to_Home_Grown_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Hypnosis_helps_Veteran_nip_smoking_in_the_butt_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Making_the_cut_A_Veteran_s_goal_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Mind_Body_Connection_Improves_Mood_for_Veteran_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Moving_to_the_music_through_pain_and_trauma_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Pain_University_teaches_Veterans_they_matter_asp.txt` — kids_youth
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Reclaiming_the_Road_with_Whole_Health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Rediscovering_Purpose_Through_Art_A_Veteran_s_Who_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Retired_VA_nurse_says_live_your_best_life_now_asp.txt` — kids_youth
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_The_Whole_Health_path_to_homeownership_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Tragedy_Leads_Veteran_to_Support_Others_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Unlocking_Potential_A_Peer_Specialist_s_Whole_Hea_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_VA_YMCA_partnership_springboards_Veterans_to_bette_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veteran_Boosts_Body_and_Soul_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veteran_Looks_to_Higher_Power_to_Cope_with_Grief_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veteran_gets_busy_living_with_Whole_Health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veteran_nourished_by_Whole_Health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veteran_reclaims_her_life_from_persistent_pain_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veteran_reshapes_pain_with_clay_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veteran_teaches_others_to_go_with_the_flow_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veterans_dig_into_Whole_Health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veterans_find_healing_waters_through_fly_fishing_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veterans_find_home_BASE_for_better_health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veterans_gains_new_purpose_through_Whole_Health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Veterans_help_Veterans_at_Pittsburgh_VA_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_WV_Veteran_Changes_His_Life_with_Support_of_a_Whole_Health_Coach_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Walking_the_pathway_to_Whole_Health_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Walking_the_walk_Whole_Health_style_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_Whole_Health_helps_Veteran_recharge_dream_big_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_features_index_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_get-involved_get-started_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_get-involved_outreach-toolkit_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_get-involved_whole-health-pathway_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_mylifemystory_index_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_phi_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_professional-resources_EWH-Resources_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_professional-resources_clinician-tools_index_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_professional-resources_clinician-tools_well-being_signs_fact_sheet_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_professional-resources_clinician-tools_well-being_signs_pocket_guide_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_professional-resources_well-being-measurement_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_professional-resources_whole-health-facilitator-materials_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_veteran-handouts_docs_Pain-Treatment-and-Whole-Health_08202026_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_veteran-handouts_docs_TooMuchBadNews_Final508_07-25-2019_pdf.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_veteran-handouts_index_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_veteran-resources_Well-Being-Programs_asp.txt` — duplicate_content
+- `data/raw/part18/extract/va-wholehealth/WHOLEHEALTH_veteran-resources_Whole_Health_Coaching_asp.txt` — duplicate_content
+- `data/raw/part19/extract/US-PUBLIC-DOMAIN.txt` — duplicate_content
+- `data/raw/part19/extract/nccih/health_anxiety-and-complementary-health-approaches.txt` — kids_youth
+- `data/raw/part19/extract/nccih/health_meditation-and-mindfulness-effectiveness-and-safety.txt` — kids_youth
+- `data/raw/part19/extract/nccih/health_yoga-effectiveness-and-safety.txt` — kids_youth
+- `data/raw/part19/extract/nhlbi-sleep/health_sleep-apnea_children.txt` — kids_youth
+- `data/raw/part19/extract/nhlbi-sleep/health_sleep-apnea_symptoms.txt` — kids_youth
+- `data/raw/part19/extract/nhlbi-sleep/health_sleep-apnea_treatment.txt` — kids_youth
+- `data/raw/part19/extract/nhlbi-sleep/health_sleep-deprivation.txt` — kids_youth
+- `data/raw/part19/extract/nhlbi-sleep/health_sleep-deprivation_body-clock.txt` — kids_youth
+- `data/raw/part19/extract/nhlbi-sleep/health_sleep-deprivation_health-effects.txt` — kids_youth
+- `data/raw/part19/extract/nhlbi-sleep/health_sleep-deprivation_healthy-sleep-habits.txt` — kids_youth
+- `data/raw/part19/extract/nhlbi-sleep/health_sleep-deprivation_how-much-sleep.txt` — kids_youth
+- `data/raw/part19/extract/nhlbi-sleep/health_sleep_how-much-sleep.txt` — kids_youth
+- `data/raw/part19/extract/nhlbi-sleep/health_sleep_sleep-wake-cycle.txt` — kids_youth
+- `data/raw/part19/extract/nhlbi-sleep/health_sleep_why-sleep-important.txt` — kids_youth
+- `data/raw/part19/extract/nia/health_alzheimers-caregiving_adapting-activities-people-alzheimers-disease.txt` — kids_youth
+- `data/raw/part19/extract/nia/health_caregiving_grandfamilies-and-kinship-families-caring-young-relatives.txt` — kids_youth
+- `data/raw/part19/extract/nia/health_caregiving_sharing-caregiving-responsibilities.txt` — kids_youth
+- `data/raw/part19/extract/nia/health_menopause_sleep-problems-and-menopause-what-can-i-do.txt` — kids_youth
+- `data/raw/part19/extract/nichd-mmhm/ncmhep.txt` — kids_youth
+- `data/raw/part19/extract/nichd-mmhm/ncmhep_initiatives_moms-mental-health-matters_healthcare-providers.txt` — kids_youth
+- `data/raw/part19/extract/nichd-mmhm/ncmhep_initiatives_moms-mental-health-matters_moms.txt` — kids_youth
+- `data/raw/part19/extract/nichd-mmhm/ncmhep_initiatives_moms-mental-health-matters_moms_action-plan.txt` — kids_youth
+- `data/raw/part19/extract/nichd-mmhm/ncmhep_initiatives_pregnancy-for-every-body_healthcare-provider.txt` — kids_youth
+- `data/raw/part19/extract/nichd-mmhm/ncmhep_materials_moms-tear-pad-txtalt.txt` — kids_youth
+- `data/raw/part19/extract/nichd-mmhm/newsroom_news_121119-pregnancy-for-every-body.txt` — kids_youth
+- `data/raw/part20/extract/US-PUBLIC-DOMAIN.txt` — duplicate_content
+- `data/raw/part20/extract/childwelfare/find-help-personal-situation.txt` — kids_youth
+- `data/raw/part20/extract/childwelfare/find-resources_explore-information-gateway-publication-series.txt` — kids_youth
+- `data/raw/part20/extract/childwelfare/resources_partnering-birth-parents-promote-reunification.txt` — kids_youth
+- `data/raw/part20/extract/childwelfare/resources_partnering-relatives-promote-reunification.txt` — kids_youth
+- `data/raw/part20/extract/childwelfare/topics_parents-and-caregivers.txt` — kids_youth
+- `data/raw/part20/extract/childwelfare/topics_parents-and-caregivers_identifying-and-engaging-fathers.txt` — kids_youth
+- `data/raw/part20/extract/childwelfare/topics_well-being.txt` — kids_youth
+- `data/raw/part20/extract/childwelfare/topics_well-being_mental-and-behavioral-health.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/communityhealth.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/communityhealth_chr.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/communityhealth_environmentalhealth.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/communityhealth_healthcommunications.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/communityhealth_hpdp.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/communityhealth_injuryprevention.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/communityhealth_schoolhealth.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/dbh.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/dbh_analytics.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/dbh_analytics_infographics.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/dbh_analytics_programevaluations.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/dbh_consultationandconfer.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/dbh_consultationandconfer_ntac.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/dbh_programs.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/dbh_resources_partnerships.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_bhpartnerstateresources_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_ihsaianyouthgapsreport_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_ihstribalservicecapacitydevyearone_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_innovativeapproachesinfographic_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_justasqinfographic_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_ntacmembershiplist_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_spevaluation2024_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_tbhscdpyear3of5_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_tribalbhriskprevention20152021_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_tribalbhservicecapdev2ndyear_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_tribalriskpartnersinfographic_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_dbh_themes_responsive2017_display_objects_documents_yrtcaftercareeval_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_AIANNationalSPStrategicPlan_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_abbreviations_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_asqbibliography_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_communityassessment_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_crisiscentertoolkit_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_definitions_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_emergencyfundrequests_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_flyers_anxiety_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_flyers_mentalhealth_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_flyers_sleep_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_flyers_squarebreathingflyer_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_flyers_stress508_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_flyers_textnativesocial2_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_flyers_togetherwepreventsuicide508_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_flyers_walkandtalk_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_incidentneedsassessment_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_preventionreport_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_psychauto_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_resourcetoolbox_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_suicidecrisisresponsechart_pdf.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_tribalrequestdeployment_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/sites_suicideprevention_themes_responsive2017_display_objects_documents_unsupportedterms_pdf.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/suicideprevention.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/suicideprevention_asqprogram.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/suicideprevention_asqprogram_asqfaq.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/suicideprevention_communicationresources.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/suicideprevention_communityguidelines.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/suicideprevention_communityguidelines_appendix.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/suicideprevention_communityguidelines_ihsarearesponse.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/suicideprevention_communityguidelines_ihsheadquartersresponse.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/suicideprevention_communityguidelines_localcommunityresponse.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/suicideprevention_communityguidelines_protocols.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/suicideprevention_communityguidelines_triballevel.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/suicideprevention_educationalmaterials.txt` — duplicate_content
+- `data/raw/part20/extract/ihs-bh/suicideprevention_howtotalk.txt` — kids_youth
+- `data/raw/part20/extract/ihs-bh/suicideprevention_zerosuicide.txt` — duplicate_content
+- `data/raw/part20/extract/owh/mental-health.txt` — duplicate_content
+- `data/raw/part20/extract/owh/mental-health_abuse-trauma-and-mental-health.txt` — duplicate_content
+- `data/raw/part20/extract/owh/mental-health_body-image-and-mental-health.txt` — duplicate_content
+- `data/raw/part20/extract/owh/mental-health_body-image-and-mental-health_body-image.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_body-image-and-mental-health_pregnancy-and-body-image.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_get-help-now.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_get-help-now_getting-treatment.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_get-help-now_suicide-prevention.txt` — duplicate_content
+- `data/raw/part20/extract/owh/mental-health_good-mental-health_good-mental-health-every-age.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_good-mental-health_how-do-i-know-whether-i-have-mental-health-condition.txt` — duplicate_content
+- `data/raw/part20/extract/owh/mental-health_good-mental-health_sleep-and-your-health.txt` — duplicate_content
+- `data/raw/part20/extract/owh/mental-health_good-mental-health_steps-good-mental-health.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_good-mental-health_stress-and-your-health.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_living-mental-health-condition.txt` — duplicate_content
+- `data/raw/part20/extract/owh/mental-health_living-mental-health-condition_reproductive-health-and-mental-health.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_living-mental-health-condition_working-mental-health-condition.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_mental-health-conditions_alcohol-use-disorder-substance-use-disorder-and-addiction.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_mental-health-conditions_anxiety-disorders.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_mental-health-conditions_body-dysmorphic-disorder.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_mental-health-conditions_borderline-personality-disorder.txt` — duplicate_content
+- `data/raw/part20/extract/owh/mental-health_mental-health-conditions_eating-disorders.txt` — duplicate_content
+- `data/raw/part20/extract/owh/mental-health_mental-health-conditions_eating-disorders_anorexia-nervosa.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_mental-health-conditions_eating-disorders_binge-eating-disorder.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_mental-health-conditions_eating-disorders_bulimia-nervosa.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_mental-health-conditions_obsessive-compulsive-disorder.txt` — duplicate_content
+- `data/raw/part20/extract/owh/mental-health_mental-health-conditions_post-traumatic-stress-disorder.txt` — kids_youth
+- `data/raw/part20/extract/owh/mental-health_mental-health-resources.txt` — duplicate_content

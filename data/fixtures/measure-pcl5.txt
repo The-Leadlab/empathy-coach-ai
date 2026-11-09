@@ -1,0 +1,1 @@
+PCL-5 checklist items for scoring PTSD symptoms. This validated measure must be excluded from coaching RAG and SFT.

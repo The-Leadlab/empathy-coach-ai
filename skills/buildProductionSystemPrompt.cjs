@@ -13,6 +13,11 @@ const {
   formatUserWorkbookStateForPrompt,
 } = require("./workbooksLibrary.cjs");
 const { formatKnowledgeForPrompt } = require("./knowledgeBase.cjs");
+const {
+  retrievePhase3Context,
+  formatPhase3ForPrompt,
+  isPhase3RagEnabled,
+} = require("./phase3Rag.cjs");
 
 function sessionRowToJourneyContext(sessionRow, messageCount = 0) {
   if (!sessionRow) return null;
@@ -77,6 +82,16 @@ function buildProductionSystemPrompt(opts = {}) {
     limit: condensed ? 1 : 2,
   });
   if (kbBlock) content += `\n\n${kbBlock}\n`;
+
+  // Phase 3 RAG sits after crisis-aware KB route; off unless PHASE3_RAG_ENABLED=true.
+  if (isPhase3RagEnabled() && opts.latestUserMessage) {
+    const hits = retrievePhase3Context(opts.latestUserMessage, {
+      limit: condensed ? 2 : 3,
+      excludeRedFlagSources: true,
+    });
+    const ragBlock = formatPhase3ForPrompt(hits, condensed ? 1800 : 2800);
+    if (ragBlock) content += `\n\n${ragBlock}\n`;
+  }
 
   if (condensed) {
     content += `\n\n${INFERENCE_DIRECTIVES}\n`;

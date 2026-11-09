@@ -63,6 +63,11 @@ Optional (for the chat function):
 | VLLM_REPETITION_PENALTY | Default `1.1` |
 | VLLM_TIMEOUT_MS | e.g. `60000` |
 | RUNPOD_ASYNC | Set `false` to disable async RunPod submit/poll |
+| PHASE3_RAG_ENABLED | Set `true` to inject Phase 3 SAFE corpus snippets into the system prompt (default off). |
+| PHASE3_EMBEDDING_PROVIDER | `hash` (default, offline) or `openai_compat` (reserved). |
+| PHASE3_VECTOR_URI | Path or override for `data/index/phase3-index.json`. |
+
+Same keys apply on **Vercel** → Project → Settings → Environment Variables.
 
 **Coach reply guard.** Every chat reply passes through `skills/coachReply.cjs` before it reaches the user: `<think>` blocks and `reasoning_content` are dropped, Qwen thinking is disabled (`enable_thinking: false`, `/no_think`, `<think>` stop sequence), and replies that read like planning ("We need to…", "the user", phase/step names) or — during Phase One intake — contain no question are rejected. A rejected reply is regenerated once with a stricter reminder, then sent to the fallback provider once, then replaced by a fixed question for the current intake element. Phase One intake turns ask the model for `{"state_update":…,"reply":…}` JSON; the server tracks which element (situation, trigger, rule, belief, strength, coping) comes next and the client stores that state in `chat_messages.generation_metadata.phaseOne`. Replies are not streamed; `createThinkStreamFilter()` exists for when streaming is added. Check behaviour against a deployment with `node scripts/eval-coach-replies.mjs --app https://<host>`.
 

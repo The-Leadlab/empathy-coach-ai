@@ -32,3 +32,13 @@ supabase/manual/
 shifted-landing-temp/
 .vercel
 .env*
+
+# Phase 3 corpus (keep fixtures; ignore bulky raw binaries)
+data/raw/**
+!data/raw/.gitkeep
+data/processed/*.jsonl
+data/sft/*.jsonl
+!data/sft/.gitkeep
+
+.venv-phase3/
+data/raw/_downloads/

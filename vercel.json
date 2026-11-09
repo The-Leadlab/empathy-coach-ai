@@ -6,7 +6,7 @@
   "functions": {
     "api/*.js": {
       "maxDuration": 60,
-      "includeFiles": "{netlify/functions/**,skills/**,config/**,knowledge-base/**}"
+      "includeFiles": "{netlify/functions/**,skills/**,config/**,knowledge-base/**,data/index/**,scripts/phase3/**}"
     }
   },
   "rewrites": [

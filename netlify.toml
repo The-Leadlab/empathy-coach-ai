@@ -48,7 +48,7 @@
 
 [functions."chat"]
   timeout = 60
-  included_files = ["knowledge-base/**"]
+  included_files = ["knowledge-base/**", "skills/**", "data/index/**", "scripts/phase3/**"]
 
 [functions."workbook-author"]
   timeout = 60
