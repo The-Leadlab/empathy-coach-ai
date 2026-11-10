@@ -214,7 +214,10 @@ async function pollRunPodJob(
       if (TERMINAL_FAIL.has(status) || pollData.fallback) {
         if (pollData.fallback) {
           opts?.onWarmingChange?.(false);
-          return requestFallback(payload, jobId, opts?.signal);
+          // Warming handoff: keep the RunPod job so the GPU finishes booting for later turns.
+          // Only cancel on real terminal failures below.
+          const cancelId = TERMINAL_FAIL.has(status) ? jobId : undefined;
+          return requestFallback(payload, cancelId, opts?.signal);
         }
         return {
           ok: false,

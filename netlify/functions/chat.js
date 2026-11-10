@@ -258,10 +258,11 @@ exports.handler = async (event) => {
         };
       }
       if (waitedMs >= fallbackAfterMs && fallbackConfigured()) {
+        // Groq answers this turn; leave the RunPod job running so the worker stays warm.
         return {
           statusCode: 200,
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ status, warming: true, fallback: true }),
+          body: JSON.stringify({ status, warming: true, fallback: true, keepJob: true }),
         };
       }
       return {
