@@ -19,7 +19,8 @@ function fallbackConfig() {
   ).trim();
   // Prefer a reliable chat model; gpt-oss often returns empty content for long coach prompts.
   const model = (process.env.FALLBACK_LLM_MODEL || "llama-3.1-8b-instant").trim();
-  const fallbackAfterMs = Number(process.env.RUNPOD_FALLBACK_AFTER_MS) || 75000;
+  // Cold GPU boot is often 2–4 min; serve Groq after a short wait so the first reply isn't stuck on warming.
+  const fallbackAfterMs = Number(process.env.RUNPOD_FALLBACK_AFTER_MS) || 12000;
   return { apiKey, apiUrl, model, fallbackAfterMs };
 }
 

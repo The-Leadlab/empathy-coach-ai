@@ -47,7 +47,11 @@ def load_jsonl_messages(path: Path) -> Dataset:
             line = line.strip()
             if not line:
                 continue
-            obj = json.loads(line)
+            try:
+                obj = json.loads(line)
+            except json.JSONDecodeError as e:
+                print(f"Skipping bad JSONL line {line_no}: {e}")
+                continue
             messages = sanitize_messages(obj.get("messages"))
             if len(messages) < 3:
                 continue

@@ -48,7 +48,7 @@ Add these so the **live site** works:
 | **FALLBACK_LLM_API_KEY** | Recommended | OpenAI-compatible API key used when RunPod is queued/failed. Falls back to `GROQ_API_KEY` if set. |
 | **FALLBACK_LLM_API_URL** | No | Default `https://api.groq.com/openai/v1/chat/completions` when `GROQ_API_KEY` is set. |
 | **FALLBACK_LLM_MODEL** | No | Default `llama-3.1-8b-instant`. |
-| **RUNPOD_FALLBACK_AFTER_MS** | No | Wait this long on `IN_QUEUE` before switching to fallback (default `75000`). |
+| **RUNPOD_FALLBACK_AFTER_MS** | No | Wait this long on `IN_QUEUE` before switching to Groq (default `12000`). Next turns use RunPod once a worker is warm. |
 | **GROQ_API_KEY** | Optional | Used for voice transcription and as fallback chat key when `FALLBACK_LLM_API_KEY` is unset. |
 | **VITE_SUPABASE_URL** | Yes | Supabase project URL, e.g. `https://wxxwxvauseqftyorhkkp.supabase.co`. Needed for auth, survey, chat storage. |
 | **VITE_SUPABASE_PUBLISHABLE_KEY** | Yes | Supabase anon/public key. Needed for auth and Supabase client in the browser. |
@@ -101,7 +101,7 @@ VLLM_MODEL=empathy-coach-qwen
 # FALLBACK_LLM_API_KEY=your-fallback-key
 # FALLBACK_LLM_API_URL=https://api.groq.com/openai/v1/chat/completions
 # FALLBACK_LLM_MODEL=llama-3.1-8b-instant
-# RUNPOD_FALLBACK_AFTER_MS=75000
+# RUNPOD_FALLBACK_AFTER_MS=12000
 # GROQ_API_KEY=your-groq-api-key
 ```
 
