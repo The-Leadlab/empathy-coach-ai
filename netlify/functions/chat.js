@@ -3,7 +3,7 @@
  * Production: RunPod Serverless vLLM via VLLM_* env vars (see docs/SUPER-PROMPT-RUNPOD-OWN-LLM.md)
  * - LLM_API_KEY = RunPod API key
  * - VLLM_API_URL = https://api.runpod.ai/v2/<endpoint-id>/openai/v1/chat/completions
- * - VLLM_MODEL = OPENAI_SERVED_MODEL_NAME_OVERRIDE (e.g. empathy-coach-qwen)
+ * - VLLM_MODEL = OPENAI_SERVED_MODEL_NAME_OVERRIDE (e.g. empathy-coach-qwen14)
  */
 const DEFAULT_LLM_URL = "https://openrouter.ai/api/v1/chat/completions";
 
@@ -486,7 +486,7 @@ exports.handler = async (event) => {
     };
   }
 
-  const model = process.env.VLLM_MODEL || (isRunPod ? "empathy-coach-qwen" : "meta-llama/llama-3.2-3b-instruct:free");
+  const model = process.env.VLLM_MODEL || (isRunPod ? "empathy-coach-qwen14" : "meta-llama/llama-3.2-3b-instruct:free");
 
   if (provider === "runpod" && (mode === "chat" || mode === "regenerate") && useRunPodAsync(url) && endpointId) {
     try {

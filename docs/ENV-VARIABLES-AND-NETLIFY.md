@@ -44,7 +44,7 @@ Add these so the **live site** works:
 |----------|----------|-------------|
 | **LLM_API_KEY** | Yes (for RunPod chat) | RunPod API key for `/api/chat` (primary coach). |
 | **VLLM_API_URL** | Yes (for RunPod) | RunPod OpenAI-compatible URL, e.g. `https://api.runpod.ai/v2/<endpoint-id>/openai/v1/chat/completions`. |
-| **VLLM_MODEL** | No (has default) | Served model name on RunPod (e.g. `empathy-coach-qwen`). |
+| **VLLM_MODEL** | No (has default) | Served model name on RunPod (e.g. `empathy-coach-qwen14`). |
 | **FALLBACK_LLM_API_KEY** | Recommended | OpenAI-compatible API key used when RunPod is queued/failed. Falls back to `GROQ_API_KEY` if set. |
 | **FALLBACK_LLM_API_URL** | No | Default `https://api.groq.com/openai/v1/chat/completions` when `GROQ_API_KEY` is set. |
 | **FALLBACK_LLM_MODEL** | No | Default `llama-3.1-8b-instant`. |
@@ -95,7 +95,7 @@ VITE_SUPABASE_PUBLISHABLE_KEY=your-anon-key
 # Primary: RunPod (async)
 VLLM_API_URL=https://api.runpod.ai/v2/YOUR_ENDPOINT/openai/v1/chat/completions
 LLM_API_KEY=your-runpod-api-key
-VLLM_MODEL=empathy-coach-qwen
+VLLM_MODEL=empathy-coach-qwen14
 
 # Fallback when RunPod is cold / queued (OpenAI-compatible, e.g. Groq)
 # FALLBACK_LLM_API_KEY=your-fallback-key
