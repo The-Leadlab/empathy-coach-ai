@@ -18,6 +18,7 @@ const {
   formatPhase3ForPrompt,
   isPhase3RagEnabled,
 } = require("./phase3Rag.cjs");
+const { formatSimonCanonForPrompt } = require("./simonCoachRules.cjs");
 
 function sessionRowToJourneyContext(sessionRow, messageCount = 0) {
   if (!sessionRow) return null;
@@ -49,7 +50,8 @@ const INFERENCE_DIRECTIVES = `# Live inference directives (this turn — highest
 5. Mirror the user's own words in your first sentence, then ask **one** new question that moves forward.
 6. If the user already answered the element you asked last turn, acknowledge it briefly and ask the **next** element — do not ask the same thing again.
 7. **Never repeat** action plans, "Task:" lines, or summary bullet lists from your previous reply — especially after the user said yes.
-8. **[[PROGRESS]] is invisible to the user.** Put it alone on the very last line, always closed: \`[[PROGRESS]]{...}[[/PROGRESS]]\`. Never omit \`[[/PROGRESS]]\`. No text after the closing tag.`;
+8. **Banned stock closings:** never write "What feels most pressing about that for you right now?", "You are noticing something real…", or "You're facing a challenge today…".
+9. **[[PROGRESS]] is invisible to the user.** Put it alone on the very last line, always closed: \`[[PROGRESS]]{...}[[/PROGRESS]]\`. Never omit \`[[/PROGRESS]]\`. No text after the closing tag.`;
 
 /**
  * @param {object} [opts]
@@ -106,6 +108,10 @@ function buildProductionSystemPrompt(opts = {}) {
   if (opts.conversationMemory?.trim()) {
     content += `\n\n# Conversation memory (authoritative — recall these details; do not re-ask)\n${opts.conversationMemory.trim()}\n`;
   }
+
+  // Layer 2: durable Simon canon (all old + new feedback), then fresh Supabase bullets.
+  const simonCanon = formatSimonCanonForPrompt({ forInference: condensed });
+  if (simonCanon) content += `\n\n${simonCanon}\n`;
 
   const trainerParts = [];
   if (opts.trainerRules?.trim()) trainerParts.push(opts.trainerRules.trim());

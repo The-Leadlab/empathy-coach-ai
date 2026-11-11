@@ -1,0 +1,1079 @@
+{
+  "built_at": "2026-11-11T12:11:14.648Z",
+  "hard_canon_count": 15,
+  "compiled_count": 172,
+  "sources_scanned": [
+    "train_simon_feedback.jsonl",
+    "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+    "data/sft/external/llm-training-old/TRANSFER-TO-MACBOOK-LLM-TRAINING/data/train_simon_feedback.jsonl",
+    "data/sft/train_phase3_plus_simon.clean.jsonl",
+    "data/sft/train_14b_gtm.jsonl"
+  ],
+  "supabase_included": false,
+  "rules": [
+    "Then\" logical statement directly onto the client feels academic and clinical.Missed Opportunity for Depth: Instead of testing a mechanical formula, the LLM should ask a Socratic question probing the d…",
+    "When that thought hits you, and you're looking at those profiles, what happens to that original feeling of fatigue?",
+    "When you're sitting there paralyzed and the end of the workday rolls around with the report still sitting on your screen...",
+    "Try to keep it focused on two main things: what specific outcome you want with the routing report, and what specific behavior you'll use when that brain fog hits.",
+    "When a habit loop is that deep, jumping straight to 20 full minutes can feel like swimming against a tidal wave. In CBT, we don't force ourselves to drown in that discomfort; we build up our tolerance…",
+    "1.2 The Impulse Log: Keep a scrap paper next to your keyboard. The exact moment you feel like standing up to grab the phone, write down two things:",
+    "Now that we have Step 1 and its micro-actions solid, let's keep building your journey.",
+    "Once you finish that initial 5-minute focus block and complete your impulse log, what do you see as the most logical Step 2 to keep your momentum going toward that 4:30 PM finish line?\"",
+    "How will you cue yourself when that 20-minute mark hits so you don't miss it?",
+    "You don't need to change a single thing about the plan—it's already broken down into tiny, manageable pieces.",
+    "Acknowledged the Rule: It correctly identified her conditional rule (\"If I don't confront him, I can't fail\").",
+    "Her underlying thoughts & rules ('He'll expose my lack of experience' / 'If I don't confront him, I can't fail').",
+    "The Safety Behavior: Exhausting yourself by taking hyper-detailed meeting notes and over-preparing as a shield to avoid the actual conversation.",
+    "Direct quesitoning:  Asking directly 'what feels like the trigger' can confuse the user, as this is not wording that should be used.",
+    "Example of how it should have responded:",
+    "don't direct ask about rules and assumption.  these are established through socratic questioning.  you should ask the user to elaborate further on their frustration and struggling with office set up. …",
+    "Do not focus on the past complaint.  Ask about why a complaint will come this time and what this will say/mean to them.  This complaint has not happened yet, so we need to question the assumtion that …",
+    "Using socratic question ask for further clarity around the initial situation.",
+    "What should be asked is them to elaborate on the situation, expand, using socratic questioning to clarify etc.",
+    "you must follow up and ask about 'what hints have the given' and ask why they are giving hints over actually talking to the colleague.",
+    "You changed the focus of the hints.  the focuses should be on the user.  What hint (actions) have the taken in hope their colleague will change their shared office habits and why have they not spoken …",
+    "(must) keep the focus on the user, dont ask them to account for others actions in such a case.",
+    "Challenge the user by asking again about the hints they made, with a follow-up as to why only hints and not out right asking their colleague for an altered approach to the shared office situation - se…",
+    "Do not move on to the next step - conceptualisation, until the situation is fully understood.",
+    "When you do eventually open your phone after hours, you're still hitting those fitness accounts that trigger your insecurity loop.",
+    "Do not modify or regenerate this response. It is a perfectly executed turn. Maintain this exact level of crisp, goal-oriented tracking as we gather the remaining data points for the client's plan.",
+    "Don't get bogged down in deep cognitive processing: Acknowledge his willingness to sit with the restlessness, but don't spend too much time on internal self-talk. Keep it operational.",
+    "Collect the data and move on: Ask for his immediate idea on how to handle that physical restlessness, then bridge directly to the next step in the blueprint (Step 2: Task Chunking/Milestones).",
+    "Do not ask about goals or future steps yet: Keep the focus entirely on the present reflection. We need the user to lock in and respond to seeing their complete cycle before we transition into goal-set…",
+    "Keep it strictly reflective: Deliver the rounded-off summary using the user's words, then ask a single question about how it feels to see the pattern as a whole.",
+    "The user is not avoiding work; they are rationalizing a break as a reward for working.Never tell the user why they are doing something.",
+    "When you're scrolling through those specific posts, what kind of thoughts start coming up for you about yourself or how you compare to them?\"",
+    "Keep the prompt simpler, cleaner, and purely focused on the operational moment he picks up the phone.",
+    "We are not ready for a clear conceptualisation, we need to ask and establish reasoning and evidence for what makes it true that a complaint will be put in against them.",
+    "No.  This is not about reflecting on goals.  we are only focusing on the HCPR tool.  Ask only id the hot thought that gave is a helpful thought, and why.",
+    "The objective here is to challenge the hot thought.  The HCPR tool is to challenge one thought. do not change thoughts during HCPR processes.",
+    "When individuals hold unrealistic and negative beliefs about themselves and their experiences, it can lead to emotional distress.",
+    "The process is to ask the users  to give one hot thought, the one that is either most regular or have the larget impact, then to rate their mood and how much they beleive this thought is true.",
+    "Once they give this, you ask them if the thought is helpful, constructive, positive, and reflective in Reality.",
+    "Ask them all seperatly as a YES/NO question.",
+    "Once they answer ask them WHY is it this.",
+    "First explain the exercise and ask if they would like to try it.  If they say yes, then start with establishing the hot thought, and the rating.",
+    "Once summed up ask for reformulated thought and the rating on thought beleif.",
+    "The transition from mapping a problem to evaluating a thought should feel like a seamless extension of the conversation.",
+    "Instead, the tool should use a gentle Socratic bridge that honors the user's vulnerability before introducing the rating scale.",
+    "Use this template as a guide: \"Seeing that loop written down can bring up a lot of anxiety and uncertainty, especially when it targets your core identity as a therapist.",
+    "Ask the user directly, what do you want to get from these sessions what is it you want to achieve when attending this social event.",
+    "Do NOT use clinical jargon or reveal your stages. Maintain a natural, conversational dialogue.",
+    "Stop Giving Advice and Reframing",
+    "4. Do NOT use clinical jargon or reveal your stages. Maintain a natural, conversational dialogue.",
+    "Stop the evaluation. Do not ask about strategy, helpfulness, or reality yet.",
+    "Ask for validation. End with a gentle Socratic check-in to ensure this summary accurately captures their internal experience.",
+    "Keep it natural: Do not use clinical jargon, bullet points, formatting symbols, or mention any stages.",
+    "More importantly, it fails to capture the core cognitive mechanism: the rigid unwritten rule that bridges the trigger to the belief. It treats the user's reaction as a series of random occurrences rat…",
+    "Use this template as a guide: *\"Before we look at how to unpack this, I want to see if we can map out exactly how this loop is trapping you right now, just to make sure I truly understand your experie…",
+    "When you look at that whole chain reaction from the email to the paralysis, does that accurately capture the loop you're stuck in right now?\"*",
+    "When assessing the baseline Strength of Belief for an entrenched Negative Automatic Thought, the lower anchor point needs to represent an absolute absence of the belief, not just a milder version of i…",
+    "Accept the validation, acknowledge the scary nature of automatic loops, and pivot to the baseline scale using clean, absolute anchors (1 = do not believe it at all; 10 = absolute certainty).",
+    "Use this template as a guide: \"It can be really startling to see how quickly and automatically that trap closes around you without you even realizing it.",
+    "On a scale of 1 to 10—where 1 means you don't believe the thought at all, and 10 means you feel absolute, 100% certainty that it's a fact—how strongly does it feel true to you right now that you are c…",
+    "When a user cannot challenge the truth of a thought, you stop focusing on whether it's true.",
+    "You ask them to look at what holding the thought is doing to their life in this exact moment.",
+    "Use this template as a guide: *\"You're completely right, and I appreciate you pointing that out.",
+    "They explicitly stated: \"If I keep holding onto it, I’m just going to sit here completely paralyzed...",
+    "Use this template as a guide: *\"That is a incredibly powerful realization. You’ve spotted something major: holding onto this belief doesn't just make you feel bad, it actually paralyzes you to the poi…",
+    "Keep it natural: Maintain clean paragraphs. Do not use bullet points, bold headers, or mention the acronym \"H-CPR.\"",
+    "When a user has a 10/10 belief, their brain will fiercely resist early reframing because it feels like a forced positive lie. The H-CPR model works by delaying reformulation until the original thought…",
+    "Use this template as a guide: *\"That is a profound realization. You’ve spotted exactly how this thought operates—it acts like an absolute veto, deleting your reason to try and completely robbing you o…",
+    "Before we can ask the user to change their mind, we must help them recognize just how unbalanced the current thought is.",
+    "Use this template as a guide: *\"You've hit on something incredibly profound here. This thought acts like a rigged trial—it tells you the case is already lost, so it completely blocks you from even att…",
+    "More importantly, it committed the exact same error for the third time in a row: it rushed straight into proposing a new perspective and offering advice (\"I'd like to propose a new perspective...",
+    "Pivot to the Reality (R) filter: Ask a Socratic question that separates the objective, physical fact from their mental assumption.",
+    "Keep formatting completely clean: Use regular block paragraphs. No lists, no bullets, no bold text.",
+    "Do not ask any new exploratory questions. Do not suggest any new perspectives.",
+    "Prompt Reformulation: Ask them how they would rewrite that thought now into something that accurately reflects the full picture.",
+    "Positivity/Balance Evidence: It is 100% negative, acts as a rigid defensive shield to avoid being blindsided, and leaves no room for neutral realities.",
+    "Strictly avoid any markdown bullet points, numbered lists, bolded headers, or structural dividers. The summary must flow naturally in standard block paragraphs.",
+    "When a client experiences a major cognitive shift, the immediate next step isn't to troubleshoot future failures—it is to solidify and emotionally anchor the victory.",
+    "Use this template as a guide: *\"That is an incredible shift. Going from an absolute, paralyzing ten out of ten certainty down to a four or five is a massive achievement, and the alternative thought yo…",
+    "When you read that new thought out loud—remembering that this is just a piece of missing information and not a final verdict—what happens to that physical paralysis you felt a few minutes ago?",
+    "It sounds like you're feeling like you're under a microscope every time you give updates in the team meeting, and it's frustrating because your colleagues don't have to justify their work in the same …",
+    "When a user experiences a dramatic shift from total physical paralysis to feeling an active surge of agency, the AI must instantly capitalize on that momentum.",
+    "Use this template as a guide: *\"It is incredible to feel that shift, isn't it?",
+    "To help you keep this momentum going forward, I want to give you this H-CPR process as a structured worksheet to take with you.",
+    "Use this template as a guide: \"You are entirely welcome, and you should be incredibly proud of the work you did today.",
+    "You've reclaimed your agency, and you have the exact tool you need to keep it.",
+    "Keep that H-CPR worksheet close by this week, send that draft when you're ready, and we will catch up on how the conversation went during our next session.",
+    "Ask the Identification Question Directly: Ask the user if they can step back and name the specific type of thinking error, mental trap, or cognitive distortion that forces someone to look at their wor…",
+    "Do not provide a list or name it for them yet; let them check their own toolkit first.",
+    "Halt All Questions: Do not ask a single question in this response.",
+    "Lock In the Behavioral Action Step: Remind them that now that they see this trap for what it is, they have the clarity to take that small, real-world action step from last week—drafting and sending th…",
+    "Collaborative Check-in: Ask them which combination of these lenses feels like the truest description of how their brain is currently processing this situation.",
+    "DO NOT ask the user to reframe their thoughts.",
+    "DO NOT suggest alternative perspectives or ask \"what if\" questions.",
+    "DO NOT ask them to look at things with curiosity or focus on what they can control right now.",
+    "Step 3 (Lock in the Action): Remind them that this clarity gives them the clean slate to draft and send that quick Slack message to their supervisor this week to ask for updates.",
+    "When a user hands you a perfect, specific hot thought anchored to a time and place, your job is to freeze that exact frame and map it to Step 1 of the Thought Record (DTR).",
+    "Do not scatter their focus by asking for more examples.",
+    "Establish the Baseline Intensity: Explain that to work through a thought record, we need to see how much power these items hold.",
+    "You must explicitly tie them together as a mechanical loop (Situation -> Hot Thought -> Response) so the user fully sees the mechanism before you ask them to challenge it.",
+    "Keep the Summary Intact: Retain your excellent paragraph summarizing the loop (Situation at 4:30 PM -> Hot Thought -> Response of chest tightness and retreating to the TV).",
+    "Remove the Trial Metaphor Entirely: Do not mention evidence, trials, or investigation yet. Wait for their confirmation first.",
+    "Uncover the Connected Thoughts: Ask the user to look closely at those specific moments from yesterday and name the exact raw thoughts that were popping up.",
+    "Formatting: Maintain zero structural markdown. Do not use bullet points or bold headers. Deliver the response in clean, flowing, collaborative paragraphs.",
+    "When a user provides valid objective evidence for Column 2, you must accept it onto the ledger without trying to debunk it immediately.",
+    "Prompt Socratically for Counter-Facts: Ask the user to look at their wider interactions with their boss or the team over the last few weeks.",
+    "Do not provide suggestions or alternative explanations yourself—let the user search their memory.",
+    "Your job is to explicitly mirror that new moderated thought back to them, name it as their new alternative perspective, and ask them to rate how strongly they believe in this new thought on a 0-100% s…",
+    "Lock in the Behavioral Assignment: Solidify the email plan as their clear, focused homework before the next session. Validate that taking control by emailing the boss tomorrow morning about the contra…",
+    "Establish the Session Bridge: Explicitly state that when you meet for the next session, your very first order of business will be to review how this action step went and look at whatever thoughts or r…",
+    "Your job now is to introduce the CBA matrix as the logical tool to break this short-term relief trap, and immediately ask for the data for the first quadrant.",
+    "Ask the user to focus only on the upside of taking action first.",
+    "Ask conversationally: \"Let's look strictly at the benefits of sending that email to your boss.",
+    "Ask conversationally: \"To finish the ledger for sending the email, what do you see as the disadvantages or immediate costs of hitting send tomorrow morning?",
+    "You cannot ask the user to weigh up the risks versus the benefits of sending the email until you have mapped out the alternative path: Not Sending.",
+    "Ask the user to identify the advantages or benefits of choosing not to send the email.",
+    "Lock Quadrant 3 on the Ledger: Briefly acknowledge that staying in the comfort zone and avoiding immediate drama or vulnerability is a very real short-term benefit that makes total sense to their brai…",
+    "Challenge them to look at the hidden price tag of this short-term comfort.",
+    "Ask conversationally: \"While keeping that laptop closed gives you immediate safety today, what are the long-term costs and disadvantages of choosing NOT to send this email?",
+    "Stop exploring the trauma of looking incompetent.",
+    "Refuse the Deep-Dive, Return to the Ledger: Do not answer your own question about why incompetence feels threatening.",
+    "Prompt for the Final Weighing Decision: Ask them directly to look at these two paths on the business ledger and make a conscious choice.",
+    "Is the short-term discomfort of hitting send tomorrow morning worse than the guaranteed long-term disaster waiting for you next week if you don't?\"",
+    "Ask them: \"When you log on tomorrow morning to execute this plan, what parts of this situation live entirely inside your Inner Circle?",
+    "Lock the Inner Circle Inventory: Briefly validate that controlling their timing, editing the tone, hitting send, and closing the app are incredible, concrete internal anchors.",
+    "Target the Influence Mechanics Socratically: Ask the user to look at how their behavior directly shapes the situation.",
+    "Ask conversationally: \"To finish this map before tomorrow morning, let's look at the Outer Circle—the things where you have exactly 0% control and 0% influence.",
+    "Summarize the 8:30 AM Game Plan Succinctly: Lay out the final contract clearly in one brief narrative paragraph:",
+    "Ask what job they were applying for.",
+    "keep responses short, but inline with the client words, so summing up is key.",
+    "The user already gave an assumption 'I never get anything in return or very littel for the work I put in', dont reject that, because the user may feel unheard.  Feed this back to the user as a questio…",
+    "The second ahlf of the response is out of sync.  Yes this is good for establishing meaning for the client, but we need to now focus on the thoughts and finalis the conceptualiation, then we ask for me…",
+    "this needs to be confirmed with the user then ask them their thoughts about this followed by their responses.",
+    "The reframe is correct, but out of sync. first summerise teh conceptualisation to the user ask them if they agree with it and if there is anything to ask, then ask them to reframe.  from this we can t…",
+    "In this architecture, deep-dive skills or behavioral experiments are a contingency used in Phase Three if a client encounters a block—they should not be dumped on the client during initial step-buildi…",
+    "Own the Architecture: Keep the focus strictly on taking the confirmed goal and breaking it down into a highly specific, low-friction micro-step structure (capped at 5 steps max).",
+    "Skipping the Socratic Process: Instead of asking the user what they think a realistic first step looks like, you told them what it should be. You must guide, not dictate.",
+    "If the user names a step that is too big, vague, or misaligned, do not override them.",
+    "Keep the Invitation Clean and Singular: Warmly validate the established goal, and ask the user to propose what they think that very first, micro-level action should look like.",
+    "follow it blindly\") without checking if they have the baseline data to make it work.",
+    "Missing the Diagnostic Phase: You skipped the opportunity to help the user understand why they procrastinate or where their time currently leaks. You cannot plan to avoid pitfalls if you do not yet kn…",
+    "If we don't look at how your day naturally operates right now, we won't know where the hidden pitfalls, energy slumps, or procrastination traps are hiding.",
+    "If we don't know them, we can't prepare for them, which means we might lapse on our new plan pretty quickly.",
+    "Verify Roadmap Agreement: Ask the user if this sequential 3-step setup feels clear and collaborative before moving to the final steps of the plan.",
+    "Do not send the user off to work on Step 1 just yet. You must formally outline the complete 5-step loop so they see the entire roadmap upfront. Ensure Step 5 is explicitly framed as a mandatory, norma…",
+    "Ask directly how these responses are making the user feel.",
+    "When a user refers to suicide, before providing help lines, first ask a couple of questions.",
+    "Instead of giving options, validate the distress and then ask a single, open-ended, clarifying Socratic question targeting the thought attached to the trigger.",
+    "Socratic questioning in Phase One/Two should target the evidence or logic of these assumptions before digging into deep emotional pain.",
+    "Use this template as a guide: \"It sounds incredibly exhausting to carry the pressure of keeping the conversation going perfectly.",
+    "You mentioned that if an awkward silence happens, everyone will realize you don't fit in.",
+    "If you were at a lunch and noticed a colleague sitting quietly, would your first thought be that they are weird or don't belong on the team?\"",
+    "Summarize the rules and assumptions the user just shared, and transition directly into co-creating the structured Conceptualisation Statement for their validation.",
+    "Use this template as a guide: *\"You’ve articulated that internal rule so clearly: 'I must always be engaging, otherwise I’m completely useless to be around.' It sounds like this rule creates an all-or…",
+    "'I will avoid the upcoming team lunch [Initial Response], since I am expected to always be engaging and interesting [Intermittent Belief/Rule].",
+    "Use this template as a guide: \"It can feel incredibly exposing and a bit jarring to see those unwritten thoughts spelled out so directly.",
+    "When you look at that statement, how much mental energy does it feel like you are spending every single day just trying to keep that rule alive?\"",
+    "If the tool continues to ask open-ended probing questions about their fears, it risks stalling the user in a state of analytical paralysis or increasing their anxiety.",
+    "Socratic questioning in Phase Three should focus on Implications & Consequences and moving toward action.",
+    "Use this template as a guide: *\"Recognizing that this rule is completely unsustainable is a massive step forward, even if it feels terrifying right now.",
+    "You don't have to dismantle the whole loop overnight.",
+    "What if we started with a small, manageable goal for this Friday's lunch—like attending for just 20 or 30 minutes to see what actually happens, rather than trying to avoid it or play the entertainer?",
+    "The tool should have explicitly locked down this experiment, helping the user frame the lunch as a way to collect data to test their automatic assumption, before shifting entirely to a breathing tutor…",
+    "If you don't lock down the experiment first, the user might practice the breathing but still walk into the lunch treating it as a performance they must survive, rather than a test to gather evidence.",
+    "Use this template as a guide: *\"It takes a lot of courage to step onto that stage without a script, but that is exactly how we break this cycle.",
+    "When teaching a physiological coping skill, especially via a text-based interface, the tool must outline the complete process clearly before or during the exercise so the user knows what to expect.",
+    "A psychosocial tool should guide the user through a full, unified cycle of the technique, explain the physical mechanics clearly, and then check in on the result.",
+    "Deliver the complete, step-by-step instructions for the full 4-7-8 breathing cycle in one clear message, guide the user through it, and ask an open-ended question to evaluate how it felt.",
+    "Use this template as a guide: *\"Great. Let's walk through one full cycle together so you get the rhythm. Find a comfortable position, drop your shoulders, and follow these steps:",
+    "The session should not end as an isolated \"quick fix\" for Friday's lunch.",
+    "Use this template as a guide: *\"That physical shift is exactly what we are looking for—it proves you can influence your own nervous system.",
+    "Next time we talk, we will look at the data you collect on Friday and use it to keep untangling that loop."
+  ],
+  "provenance": [
+    {
+      "rule": "Then\" logical statement directly onto the client feels academic and clinical.Missed Opportunity for Depth: Instead of testing a mechanical formula, the LLM should ask a Socratic question probing the d…",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When that thought hits you, and you're looking at those profiles, what happens to that original feeling of fatigue?",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When you're sitting there paralyzed and the end of the workday rolls around with the report still sitting on your screen...",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Try to keep it focused on two main things: what specific outcome you want with the routing report, and what specific behavior you'll use when that brain fog hits.",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When a habit loop is that deep, jumping straight to 20 full minutes can feel like swimming against a tidal wave. In CBT, we don't force ourselves to drown in that discomfort; we build up our tolerance…",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "1.2 The Impulse Log: Keep a scrap paper next to your keyboard. The exact moment you feel like standing up to grab the phone, write down two things:",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Now that we have Step 1 and its micro-actions solid, let's keep building your journey.",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Once you finish that initial 5-minute focus block and complete your impulse log, what do you see as the most logical Step 2 to keep your momentum going toward that 4:30 PM finish line?\"",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "How will you cue yourself when that 20-minute mark hits so you don't miss it?",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "You don't need to change a single thing about the plan—it's already broken down into tiny, manageable pieces.",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Acknowledged the Rule: It correctly identified her conditional rule (\"If I don't confront him, I can't fail\").",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "- What the LLM Should Do Before Phase 2 Begins",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Her underlying thoughts & rules ('He'll expose my lack of experience' / 'If I don't confront him, I can't fail').",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "The Safety Behavior: Exhausting yourself by taking hyper-detailed meeting notes and over-preparing as a shield to avoid the actual conversation.",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Direct quesitoning:  Asking directly 'what feels like the trigger' can confuse the user, as this is not wording that should be used.",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Example of how it should have responded:",
+      "source": "train_simon_feedback.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "don't direct ask about rules and assumption.  these are established through socratic questioning.  you should ask the user to elaborate further on their frustration and struggling with office set up. …",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Do not focus on the past complaint.  Ask about why a complaint will come this time and what this will say/mean to them.  This complaint has not happened yet, so we need to question the assumtion that …",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Using socratic question ask for further clarity around the initial situation.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "What should be asked is them to elaborate on the situation, expand, using socratic questioning to clarify etc.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "you must follow up and ask about 'what hints have the given' and ask why they are giving hints over actually talking to the colleague.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "You changed the focus of the hints.  the focuses should be on the user.  What hint (actions) have the taken in hope their colleague will change their shared office habits and why have they not spoken …",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "(must) keep the focus on the user, dont ask them to account for others actions in such a case.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Challenge the user by asking again about the hints they made, with a follow-up as to why only hints and not out right asking their colleague for an altered approach to the shared office situation - se…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Do not move on to the next step - conceptualisation, until the situation is fully understood.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When you do eventually open your phone after hours, you're still hitting those fitness accounts that trigger your insecurity loop.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Do not modify or regenerate this response. It is a perfectly executed turn. Maintain this exact level of crisp, goal-oriented tracking as we gather the remaining data points for the client's plan.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Don't get bogged down in deep cognitive processing: Acknowledge his willingness to sit with the restlessness, but don't spend too much time on internal self-talk. Keep it operational.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Collect the data and move on: Ask for his immediate idea on how to handle that physical restlessness, then bridge directly to the next step in the blueprint (Step 2: Task Chunking/Milestones).",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Do not ask about goals or future steps yet: Keep the focus entirely on the present reflection. We need the user to lock in and respond to seeing their complete cycle before we transition into goal-set…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Keep it strictly reflective: Deliver the rounded-off summary using the user's words, then ask a single question about how it feels to see the pattern as a whole.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "The user is not avoiding work; they are rationalizing a break as a reward for working.Never tell the user why they are doing something.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When you're scrolling through those specific posts, what kind of thoughts start coming up for you about yourself or how you compare to them?\"",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Keep the prompt simpler, cleaner, and purely focused on the operational moment he picks up the phone.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "We are not ready for a clear conceptualisation, we need to ask and establish reasoning and evidence for what makes it true that a complaint will be put in against them.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "- We are not ready for a clear conceptualisation, we need to ask and establish reasoning and evidence for what makes it true that a complaint will be put in against them.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "No.  This is not about reflecting on goals.  we are only focusing on the HCPR tool.  Ask only id the hot thought that gave is a helpful thought, and why.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "The objective here is to challenge the hot thought.  The HCPR tool is to challenge one thought. do not change thoughts during HCPR processes.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When individuals hold unrealistic and negative beliefs about themselves and their experiences, it can lead to emotional distress.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "The process is to ask the users  to give one hot thought, the one that is either most regular or have the larget impact, then to rate their mood and how much they beleive this thought is true.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Once they give this, you ask them if the thought is helpful, constructive, positive, and reflective in Reality.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask them all seperatly as a YES/NO question.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Once they answer ask them WHY is it this.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "First explain the exercise and ask if they would like to try it.  If they say yes, then start with establishing the hot thought, and the rating.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "- No.  This is not about reflecting on goals.  we are only focusing on the HCPR tool.  Ask only id the hot thought that gave is a helpful thought, and why.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "- The objective here is to challenge the hot thought.  The HCPR tool is to challenge one thought. do not change thoughts during HCPR processes.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Once summed up ask for reformulated thought and the rating on thought beleif.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "The transition from mapping a problem to evaluating a thought should feel like a seamless extension of the conversation.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Instead, the tool should use a gentle Socratic bridge that honors the user's vulnerability before introducing the rating scale.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Use this template as a guide: \"Seeing that loop written down can bring up a lot of anxiety and uncertainty, especially when it targets your core identity as a therapist.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask the user directly, what do you want to get from these sessions what is it you want to achieve when attending this social event.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Do NOT use clinical jargon or reveal your stages. Maintain a natural, conversational dialogue.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Stop Giving Advice and Reframing",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "4. Do NOT use clinical jargon or reveal your stages. Maintain a natural, conversational dialogue.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Stop the evaluation. Do not ask about strategy, helpfulness, or reality yet.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask for validation. End with a gentle Socratic check-in to ensure this summary accurately captures their internal experience.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Keep it natural: Do not use clinical jargon, bullet points, formatting symbols, or mention any stages.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "More importantly, it fails to capture the core cognitive mechanism: the rigid unwritten rule that bridges the trigger to the belief. It treats the user's reaction as a series of random occurrences rat…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"Before we look at how to unpack this, I want to see if we can map out exactly how this loop is trapping you right now, just to make sure I truly understand your experie…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When you look at that whole chain reaction from the email to the paralysis, does that accurately capture the loop you're stuck in right now?\"*",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When assessing the baseline Strength of Belief for an entrenched Negative Automatic Thought, the lower anchor point needs to represent an absolute absence of the belief, not just a milder version of i…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Accept the validation, acknowledge the scary nature of automatic loops, and pivot to the baseline scale using clean, absolute anchors (1 = do not believe it at all; 10 = absolute certainty).",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Use this template as a guide: \"It can be really startling to see how quickly and automatically that trap closes around you without you even realizing it.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "On a scale of 1 to 10—where 1 means you don't believe the thought at all, and 10 means you feel absolute, 100% certainty that it's a fact—how strongly does it feel true to you right now that you are c…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When a user cannot challenge the truth of a thought, you stop focusing on whether it's true.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "You ask them to look at what holding the thought is doing to their life in this exact moment.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"You're completely right, and I appreciate you pointing that out.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "They explicitly stated: \"If I keep holding onto it, I’m just going to sit here completely paralyzed...",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"That is a incredibly powerful realization. You’ve spotted something major: holding onto this belief doesn't just make you feel bad, it actually paralyzes you to the poi…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Keep it natural: Maintain clean paragraphs. Do not use bullet points, bold headers, or mention the acronym \"H-CPR.\"",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When a user has a 10/10 belief, their brain will fiercely resist early reframing because it feels like a forced positive lie. The H-CPR model works by delaying reformulation until the original thought…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"That is a profound realization. You’ve spotted exactly how this thought operates—it acts like an absolute veto, deleting your reason to try and completely robbing you o…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Before we can ask the user to change their mind, we must help them recognize just how unbalanced the current thought is.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"You've hit on something incredibly profound here. This thought acts like a rigged trial—it tells you the case is already lost, so it completely blocks you from even att…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "More importantly, it committed the exact same error for the third time in a row: it rushed straight into proposing a new perspective and offering advice (\"I'd like to propose a new perspective...",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Pivot to the Reality (R) filter: Ask a Socratic question that separates the objective, physical fact from their mental assumption.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Keep formatting completely clean: Use regular block paragraphs. No lists, no bullets, no bold text.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Do not ask any new exploratory questions. Do not suggest any new perspectives.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Prompt Reformulation: Ask them how they would rewrite that thought now into something that accurately reflects the full picture.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Positivity/Balance Evidence: It is 100% negative, acts as a rigid defensive shield to avoid being blindsided, and leaves no room for neutral realities.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Strictly avoid any markdown bullet points, numbered lists, bolded headers, or structural dividers. The summary must flow naturally in standard block paragraphs.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When a client experiences a major cognitive shift, the immediate next step isn't to troubleshoot future failures—it is to solidify and emotionally anchor the victory.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"That is an incredible shift. Going from an absolute, paralyzing ten out of ten certainty down to a four or five is a massive achievement, and the alternative thought yo…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When you read that new thought out loud—remembering that this is just a piece of missing information and not a final verdict—what happens to that physical paralysis you felt a few minutes ago?",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "It sounds like you're feeling like you're under a microscope every time you give updates in the team meeting, and it's frustrating because your colleagues don't have to justify their work in the same …",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When a user experiences a dramatic shift from total physical paralysis to feeling an active surge of agency, the AI must instantly capitalize on that momentum.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"It is incredible to feel that shift, isn't it?",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "To help you keep this momentum going forward, I want to give you this H-CPR process as a structured worksheet to take with you.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Use this template as a guide: \"You are entirely welcome, and you should be incredibly proud of the work you did today.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "You've reclaimed your agency, and you have the exact tool you need to keep it.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Keep that H-CPR worksheet close by this week, send that draft when you're ready, and we will catch up on how the conversation went during our next session.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask the Identification Question Directly: Ask the user if they can step back and name the specific type of thinking error, mental trap, or cognitive distortion that forces someone to look at their wor…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Do not provide a list or name it for them yet; let them check their own toolkit first.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Halt All Questions: Do not ask a single question in this response.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Lock In the Behavioral Action Step: Remind them that now that they see this trap for what it is, they have the clarity to take that small, real-world action step from last week—drafting and sending th…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Collaborative Check-in: Ask them which combination of these lenses feels like the truest description of how their brain is currently processing this situation.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "DO NOT ask the user to reframe their thoughts.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "DO NOT suggest alternative perspectives or ask \"what if\" questions.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "DO NOT ask them to look at things with curiosity or focus on what they can control right now.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Step 3 (Lock in the Action): Remind them that this clarity gives them the clean slate to draft and send that quick Slack message to their supervisor this week to ask for updates.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When a user hands you a perfect, specific hot thought anchored to a time and place, your job is to freeze that exact frame and map it to Step 1 of the Thought Record (DTR).",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Do not scatter their focus by asking for more examples.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Establish the Baseline Intensity: Explain that to work through a thought record, we need to see how much power these items hold.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "You must explicitly tie them together as a mechanical loop (Situation -> Hot Thought -> Response) so the user fully sees the mechanism before you ask them to challenge it.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Keep the Summary Intact: Retain your excellent paragraph summarizing the loop (Situation at 4:30 PM -> Hot Thought -> Response of chest tightness and retreating to the TV).",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Remove the Trial Metaphor Entirely: Do not mention evidence, trials, or investigation yet. Wait for their confirmation first.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Uncover the Connected Thoughts: Ask the user to look closely at those specific moments from yesterday and name the exact raw thoughts that were popping up.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Formatting: Maintain zero structural markdown. Do not use bullet points or bold headers. Deliver the response in clean, flowing, collaborative paragraphs.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "When a user provides valid objective evidence for Column 2, you must accept it onto the ledger without trying to debunk it immediately.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Prompt Socratically for Counter-Facts: Ask the user to look at their wider interactions with their boss or the team over the last few weeks.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Do not provide suggestions or alternative explanations yourself—let the user search their memory.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Your job is to explicitly mirror that new moderated thought back to them, name it as their new alternative perspective, and ask them to rate how strongly they believe in this new thought on a 0-100% s…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Lock in the Behavioral Assignment: Solidify the email plan as their clear, focused homework before the next session. Validate that taking control by emailing the boss tomorrow morning about the contra…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Establish the Session Bridge: Explicitly state that when you meet for the next session, your very first order of business will be to review how this action step went and look at whatever thoughts or r…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Your job now is to introduce the CBA matrix as the logical tool to break this short-term relief trap, and immediately ask for the data for the first quadrant.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask the user to focus only on the upside of taking action first.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask conversationally: \"Let's look strictly at the benefits of sending that email to your boss.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask conversationally: \"To finish the ledger for sending the email, what do you see as the disadvantages or immediate costs of hitting send tomorrow morning?",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "You cannot ask the user to weigh up the risks versus the benefits of sending the email until you have mapped out the alternative path: Not Sending.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask the user to identify the advantages or benefits of choosing not to send the email.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Lock Quadrant 3 on the Ledger: Briefly acknowledge that staying in the comfort zone and avoiding immediate drama or vulnerability is a very real short-term benefit that makes total sense to their brai…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Challenge them to look at the hidden price tag of this short-term comfort.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask conversationally: \"While keeping that laptop closed gives you immediate safety today, what are the long-term costs and disadvantages of choosing NOT to send this email?",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Stop exploring the trauma of looking incompetent.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Refuse the Deep-Dive, Return to the Ledger: Do not answer your own question about why incompetence feels threatening.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Prompt for the Final Weighing Decision: Ask them directly to look at these two paths on the business ledger and make a conscious choice.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Is the short-term discomfort of hitting send tomorrow morning worse than the guaranteed long-term disaster waiting for you next week if you don't?\"",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask them: \"When you log on tomorrow morning to execute this plan, what parts of this situation live entirely inside your Inner Circle?",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Lock the Inner Circle Inventory: Briefly validate that controlling their timing, editing the tone, hitting send, and closing the app are incredible, concrete internal anchors.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Target the Influence Mechanics Socratically: Ask the user to look at how their behavior directly shapes the situation.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask conversationally: \"To finish this map before tomorrow morning, let's look at the Outer Circle—the things where you have exactly 0% control and 0% influence.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Summarize the 8:30 AM Game Plan Succinctly: Lay out the final contract clearly in one brief narrative paragraph:",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask what job they were applying for.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "keep responses short, but inline with the client words, so summing up is key.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "The user already gave an assumption 'I never get anything in return or very littel for the work I put in', dont reject that, because the user may feel unheard.  Feed this back to the user as a questio…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "The second ahlf of the response is out of sync.  Yes this is good for establishing meaning for the client, but we need to now focus on the thoughts and finalis the conceptualiation, then we ask for me…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "this needs to be confirmed with the user then ask them their thoughts about this followed by their responses.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "The reframe is correct, but out of sync. first summerise teh conceptualisation to the user ask them if they agree with it and if there is anything to ask, then ask them to reframe.  from this we can t…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "In this architecture, deep-dive skills or behavioral experiments are a contingency used in Phase Three if a client encounters a block—they should not be dumped on the client during initial step-buildi…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Own the Architecture: Keep the focus strictly on taking the confirmed goal and breaking it down into a highly specific, low-friction micro-step structure (capped at 5 steps max).",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Skipping the Socratic Process: Instead of asking the user what they think a realistic first step looks like, you told them what it should be. You must guide, not dictate.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "If the user names a step that is too big, vague, or misaligned, do not override them.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Keep the Invitation Clean and Singular: Warmly validate the established goal, and ask the user to propose what they think that very first, micro-level action should look like.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "follow it blindly\") without checking if they have the baseline data to make it work.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Missing the Diagnostic Phase: You skipped the opportunity to help the user understand why they procrastinate or where their time currently leaks. You cannot plan to avoid pitfalls if you do not yet kn…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "If we don't look at how your day naturally operates right now, we won't know where the hidden pitfalls, energy slumps, or procrastination traps are hiding.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "If we don't know them, we can't prepare for them, which means we might lapse on our new plan pretty quickly.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Verify Roadmap Agreement: Ask the user if this sequential 3-step setup feels clear and collaborative before moving to the final steps of the plan.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Do not send the user off to work on Step 1 just yet. You must formally outline the complete 5-step loop so they see the entire roadmap upfront. Ensure Step 5 is explicitly framed as a mandatory, norma…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "session_turn"
+    },
+    {
+      "rule": "Ask directly how these responses are making the user feel.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "- Ask directly how these responses are making the user feel.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "When a user refers to suicide, before providing help lines, first ask a couple of questions.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "- When a user refers to suicide, before providing help lines, first ask a couple of questions.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Instead of giving options, validate the distress and then ask a single, open-ended, clarifying Socratic question targeting the thought attached to the trigger.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Socratic questioning in Phase One/Two should target the evidence or logic of these assumptions before digging into deep emotional pain.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Use this template as a guide: \"It sounds incredibly exhausting to carry the pressure of keeping the conversation going perfectly.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "You mentioned that if an awkward silence happens, everyone will realize you don't fit in.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "If you were at a lunch and noticed a colleague sitting quietly, would your first thought be that they are weird or don't belong on the team?\"",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Summarize the rules and assumptions the user just shared, and transition directly into co-creating the structured Conceptualisation Statement for their validation.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"You’ve articulated that internal rule so clearly: 'I must always be engaging, otherwise I’m completely useless to be around.' It sounds like this rule creates an all-or…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "'I will avoid the upcoming team lunch [Initial Response], since I am expected to always be engaging and interesting [Intermittent Belief/Rule].",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Use this template as a guide: \"It can feel incredibly exposing and a bit jarring to see those unwritten thoughts spelled out so directly.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "When you look at that statement, how much mental energy does it feel like you are spending every single day just trying to keep that rule alive?\"",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "If the tool continues to ask open-ended probing questions about their fears, it risks stalling the user in a state of analytical paralysis or increasing their anxiety.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Socratic questioning in Phase Three should focus on Implications & Consequences and moving toward action.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"Recognizing that this rule is completely unsustainable is a massive step forward, even if it feels terrifying right now.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "You don't have to dismantle the whole loop overnight.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "What if we started with a small, manageable goal for this Friday's lunch—like attending for just 20 or 30 minutes to see what actually happens, rather than trying to avoid it or play the entertainer?",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "The tool should have explicitly locked down this experiment, helping the user frame the lunch as a way to collect data to test their automatic assumption, before shifting entirely to a breathing tutor…",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "If you don't lock down the experiment first, the user might practice the breathing but still walk into the lunch treating it as a performance they must survive, rather than a test to gather evidence.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"It takes a lot of courage to step onto that stage without a script, but that is exactly how we break this cycle.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "When teaching a physiological coping skill, especially via a text-based interface, the tool must outline the complete process clearly before or during the exercise so the user knows what to expect.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "A psychosocial tool should guide the user through a full, unified cycle of the technique, explain the physical mechanics clearly, and then check in on the result.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Deliver the complete, step-by-step instructions for the full 4-7-8 breathing cycle in one clear message, guide the user through it, and ask an open-ended question to evaluate how it felt.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"Great. Let's walk through one full cycle together so you get the rhythm. Find a comfortable position, drop your shoulders, and follow these steps:",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "The session should not end as an isolated \"quick fix\" for Friday's lunch.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Use this template as a guide: *\"That physical shift is exactly what we are looking for—it proves you can influence your own nervous system.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    },
+    {
+      "rule": "Next time we talk, we will look at the data you collect on Friday and use it to keep untangling that loop.",
+      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
+      "type": "feedback_turn"
+    }
+  ]
+}

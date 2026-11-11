@@ -50,6 +50,8 @@ const SYSTEM_PROMPT = {
 const {
   buildRegenerationUserPrompt,
   buildRegenerationSystemContent,
+  extractExactTargetReply,
+  formatTrainerRuleForPrompt,
 } = require("../skills/regenerationHelpers.cjs");
 const {
   normalizeChatHistory,
@@ -96,8 +98,10 @@ async function fetchTrainerGlobalInstructions(limit = TRAINER_FEEDBACK_LIMIT) {
       if (r.apply_to_global_instructions === false) continue;
       const text = typeof r.feedback_text === "string" ? r.feedback_text.trim() : "";
       if (!text || seen.has(text)) continue;
+      const bullet = formatTrainerRuleForPrompt(text, 180);
+      if (!bullet) continue;
       seen.add(text);
-      lines.push(`- ${text}`);
+      lines.push(bullet);
     }
     return lines.length ? lines.join("\n") : "";
   } catch (err) {
@@ -197,6 +201,10 @@ app.post("/api/chat", async (req, res) => {
       return res.status(400).json({
         error: "regenerationContext.originalUserMessage and previousAssistantReply are required.",
       });
+    }
+    const exactTarget = extractExactTargetReply(regenerationContext?.feedbackList);
+    if (exactTarget) {
+      return res.json({ reply: exactTarget, provider: "feedback-exact", stateUpdate: null, phaseOne: null });
     }
     const [rawTrainerRules, rawExemplars] = await Promise.all([
       fetchTrainerGlobalInstructions(12),

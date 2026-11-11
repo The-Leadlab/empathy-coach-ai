@@ -1,0 +1,13 @@
+{
+  "exported_at": "2026-11-11T12:05:06.297Z",
+  "export_mode": "turns",
+  "total_lines": 68,
+  "by_export_type": {
+    "session_turn": 39,
+    "exact_target_turn": 28,
+    "starred_turn": 1
+  },
+  "assistant_targets": 276,
+  "session_branch_turns": 45,
+  "note": "JSONL = one training example per line. Use train_simon_feedback.summary.json to inspect counts."
+}

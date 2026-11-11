@@ -42,3 +42,7 @@ data/sft/*.jsonl
 
 .venv-phase3/
 data/raw/_downloads/
+
+# Vendor skills (cloned reference; Cursor loads from ~/.cursor/skills)
+skills/vendor/
+models/

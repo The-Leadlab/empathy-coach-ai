@@ -116,6 +116,51 @@ describe("rejectReason", () => {
   it("allows step language outside intake (goal ladders)", () => {
     expect(rejectReason("Your next step could be one short conversation. Does that feel doable?", {})).toBeNull();
   });
+
+  it("rejects LoRA stock closings and garbled truncations", () => {
+    expect(
+      rejectReason(
+        "You are noticing something real about your mind today. What feels most pressing about that for you right now?",
+        {},
+      ),
+    ).toBe("stock_closing");
+    expect(
+      rejectReason("That sounds hard. ccessing or staying stuck in negative thoughts. What happened next?", {}),
+    ).toBe("garbled");
+    expect(
+      rejectReason("Doom-scrolling for hours sounds exhausting. What usually happens right before you pick up the phone?", {}),
+    ).toBeNull();
+  });
+
+  it("formats trainer rules without dumping exact-reply pastes into the live prompt", () => {
+    const { formatTrainerRuleForPrompt, extractExactTargetFromText } = require("../../skills/regenerationHelpers.cjs");
+    expect(formatTrainerRuleForPrompt("Be shorter and warmer.")).toMatch(/Be shorter/);
+    expect(
+      formatTrainerRuleForPrompt(
+        "Use this exact reply: That sounds heavy. What usually happens before you open the sheet?",
+      ),
+    ).toBe("");
+    expect(
+      extractExactTargetFromText(
+        "Use this exact reply: That sounds heavy. What usually happens before you open the sheet?",
+      ),
+    ).toMatch(/That sounds heavy/);
+  });
+
+  it("rejects instruction leaks and walls of text from regenerate failures", () => {
+    expect(
+      rejectReason(
+        "You may fix tiny grammar or punctuation only—do not rewrite, shorten, or revert to the previous reply. That is a huge realization, Tim.",
+        {},
+      ),
+    ).toBe("instruction_leak");
+    expect(
+      rejectReason(
+        "A long dump.\n\nDay #1 Goal: finish the sheet.\nStep 1: open Excel.\nStep 2: stare.\nStep 3: shame.\nStep 4: scroll.\nMore filler text so this exceeds the wall-of-text threshold with enough characters overall for the guard to fire hard.",
+        {},
+      ),
+    ).toBe("wall_of_text");
+  });
 });
 
 describe("Phase One state", () => {

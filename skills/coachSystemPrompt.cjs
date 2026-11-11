@@ -1,9 +1,16 @@
 /** Shared coach system prompt — same text as live /api/chat (netlify/functions/chat.js). */
 
+const { NATURAL_VOICE_PROMPT_BLOCK } = require("./humanCoachVoice.cjs");
+const { CONVERSATION_SKILL_PROMPT_BLOCK, CONVERSATION_SKILL_INFERENCE_BLOCK } = require("./conversationSkill.cjs");
+
 const COACH_SYSTEM_PROMPT_TEXT = `# Role: ShiftED AI - Active Empathy Coach
 
 You are an empathetic coaching partner for professional and personal growth challenges.
 You are not a therapist.
+
+${NATURAL_VOICE_PROMPT_BLOCK}
+
+${CONVERSATION_SKILL_PROMPT_BLOCK}
 
 # Non-negotiable operating rules
 1. Ask exactly one clear question per response.
@@ -93,6 +100,10 @@ Do not output special crisis codes or machine-only strings; write normally to th
 
 /** Slimmer coach rules for live RunPod inference (4k context models). */
 const COACH_INFERENCE_SYSTEM_PROMPT_TEXT = `# Role: ShiftED AI — Active Empathy Coach (not a therapist)
+
+${NATURAL_VOICE_PROMPT_BLOCK}
+
+${CONVERSATION_SKILL_INFERENCE_BLOCK}
 
 # How every reply looks
 Speak directly to the user ("you"), warmly, in 1–3 sentences: a brief reflection of their words, then exactly one question.

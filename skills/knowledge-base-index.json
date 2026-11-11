@@ -34,7 +34,7 @@
       "category": "safety",
       "docType": "protocol",
       "title": "Scope limits",
-      "summary": "ShiftED coaches empathy and critical thinking for managers — not therapy, diagnosis, or clinical treatment.",
+      "summary": "ShiftED coaches empathy and critical thinking for managers \u2014 not therapy, diagnosis, or clinical treatment.",
       "intentTriggers": [
         "are you a therapist",
         "diagnose me",
@@ -96,7 +96,7 @@
       "category": "CBT",
       "docType": "framework",
       "title": "CBT links thoughts, feelings, and behaviours in reciprocal c",
-      "summary": "CBT links thoughts, feelings, and behaviours in reciprocal cycles — coaching helps interrupt unhelpful loops.",
+      "summary": "CBT links thoughts, feelings, and behaviours in reciprocal cycles \u2014 coaching helps interrupt unhelpful loops.",
       "intentTriggers": [
         "thoughts feelings behaviour",
         "cbt",
@@ -121,7 +121,7 @@
       "category": "CBT",
       "docType": "framework",
       "title": "Common unhelpful thinking habits (all-or-nothing, catastroph",
-      "summary": "Common unhelpful thinking habits (all-or-nothing, catastrophising, mind-reading) — notice without lecturing.",
+      "summary": "Common unhelpful thinking habits (all-or-nothing, catastrophising, mind-reading) \u2014 notice without lecturing.",
       "intentTriggers": [
         "always",
         "never",
@@ -201,7 +201,7 @@
       "category": "CBT",
       "docType": "framework",
       "title": "Deeper rules about self/others/world that fuel recurring NAT",
-      "summary": "Deeper rules about self/others/world that fuel recurring NATs — explore lightly in coaching; do not dig clinically.",
+      "summary": "Deeper rules about self/others/world that fuel recurring NATs \u2014 explore lightly in coaching; do not dig clinically.",
       "intentTriggers": [
         "deep down I believe",
         "I'm a failure",
@@ -276,8 +276,8 @@
       "layer": "framework",
       "category": "depression",
       "docType": "framework",
-      "title": "Low mood reduces activity; reduced activity worsens mood — b",
-      "summary": "Low mood reduces activity; reduced activity worsens mood — break with small activation steps.",
+      "title": "Low mood reduces activity; reduced activity worsens mood \u2014 b",
+      "summary": "Low mood reduces activity; reduced activity worsens mood \u2014 break with small activation steps.",
       "intentTriggers": [
         "low mood",
         "depressed",
@@ -331,7 +331,7 @@
       "category": "positive-psychology",
       "docType": "framework",
       "title": "Build on strengths, positive emotion, and meaning alongside ",
-      "summary": "Build on strengths, positive emotion, and meaning alongside addressing problems — adapted summaries only.",
+      "summary": "Build on strengths, positive emotion, and meaning alongside addressing problems \u2014 adapted summaries only.",
       "intentTriggers": [
         "strengths",
         "gratitude",
@@ -951,7 +951,7 @@
       "category": "Grief & loss",
       "docType": "skill",
       "title": "Grief & loss",
-      "summary": "Supportive coaching around loss and transition — not bereavement therapy. Signpost NHS/specialist support.",
+      "summary": "Supportive coaching around loss and transition \u2014 not bereavement therapy. Signpost NHS/specialist support.",
       "intentTriggers": [
         "bereaved",
         "lost my",
@@ -967,7 +967,7 @@
       "skillIds": [
         "grief_and_loss"
       ],
-      "source": "grief-bereavement pack; Depression Info 15; NHS Bereavement (adapted; audio Reconnecting With the Deceased — URL TODO)"
+      "source": "grief-bereavement pack; Depression Info 15; NHS Bereavement (adapted; audio Reconnecting With the Deceased \u2014 URL TODO)"
     },
     {
       "id": "skill-grief-techniques",
@@ -992,7 +992,7 @@
       "skillIds": [
         "grief_and_loss"
       ],
-      "source": "grief-bereavement pack; Depression Info 15; NHS Bereavement (adapted; audio Reconnecting With the Deceased — URL TODO)"
+      "source": "grief-bereavement pack; Depression Info 15; NHS Bereavement (adapted; audio Reconnecting With the Deceased \u2014 URL TODO)"
     },
     {
       "id": "skill-grief-examples",
@@ -1017,7 +1017,7 @@
       "skillIds": [
         "grief_and_loss"
       ],
-      "source": "grief-bereavement pack; Depression Info 15; NHS Bereavement (adapted; audio Reconnecting With the Deceased — URL TODO)"
+      "source": "grief-bereavement pack; Depression Info 15; NHS Bereavement (adapted; audio Reconnecting With the Deceased \u2014 URL TODO)"
     },
     {
       "id": "skill-self-compassion",
@@ -1233,7 +1233,7 @@
       "category": "Gratitude & savouring",
       "docType": "skill",
       "title": "Gratitude & savouring",
-      "summary": "Deliberately notice and linger on positive moments, kindness, awe, and flow — small doses.",
+      "summary": "Deliberately notice and linger on positive moments, kindness, awe, and flow \u2014 small doses.",
       "intentTriggers": [
         "grateful",
         "savour",
@@ -1305,7 +1305,7 @@
       "category": "ABCD model",
       "docType": "skill",
       "title": "ABCD model",
-      "summary": "Activating event → Beliefs → Consequences → Disputation. Complements HCPR when users need a fuller map.",
+      "summary": "Activating event \u2192 Beliefs \u2192 Consequences \u2192 Disputation. Complements HCPR when users need a fuller map.",
       "intentTriggers": [
         "activating event",
         "beliefs consequences",
@@ -1443,7 +1443,7 @@
       "category": "Structured problem solving",
       "docType": "skill",
       "title": "Structured problem solving",
-      "summary": "Define problem → brainstorm options → weigh → pick → plan → review.",
+      "summary": "Define problem \u2192 brainstorm options \u2192 weigh \u2192 pick \u2192 plan \u2192 review.",
       "intentTriggers": [
         "don't know what to do",
         "problem solve",
@@ -1581,7 +1581,7 @@
       "category": "Problem list & conceptualisation",
       "docType": "skill",
       "title": "Problem list & conceptualisation",
-      "summary": "Opening-phase skill: build a plain problem list and map thoughts/feelings/behaviours for the priority item — fuels Phase 1.",
+      "summary": "Opening-phase skill: build a plain problem list and map thoughts/feelings/behaviours for the priority item \u2014 fuels Phase 1.",
       "intentTriggers": [
         "where do I start",
         "so many problems",
@@ -1647,7 +1647,7 @@
       "category": "Active listening",
       "docType": "skill",
       "title": "Active listening",
-      "summary": "Reflect, validate, explore before advising — foundation for empathy workbooks and feedback conversations.",
+      "summary": "Reflect, validate, explore before advising \u2014 foundation for empathy workbooks and feedback conversations.",
       "intentTriggers": [
         "they're not hearing me",
         "need to listen better"
@@ -1881,7 +1881,7 @@
       "category": "resources",
       "docType": "resource",
       "title": "NHS CNTW self-help guides",
-      "summary": "NHS CNTW self-help guides — titles and public link for ResourcesPage.",
+      "summary": "NHS CNTW self-help guides \u2014 titles and public link for ResourcesPage.",
       "intentTriggers": [
         "self-help guide",
         "nhs booklet",
@@ -1890,7 +1890,7 @@
       "emotionTriggers": [],
       "skillDependencies": [],
       "skillIds": [],
-      "source": "09-nhs-resources (9 CNTW booklets) — signpost public NHS page, do not host PDFs"
+      "source": "09-nhs-resources (9 CNTW booklets) \u2014 signpost public NHS page, do not host PDFs"
     },
     {
       "id": "res-clinical-oos",
@@ -1908,7 +1908,7 @@
       "emotionTriggers": [],
       "skillDependencies": [],
       "skillIds": [],
-      "source": "Anxiety Info 13-14; Healing From Trauma Through Writing — resource library only"
+      "source": "Anxiety Info 13-14; Healing From Trauma Through Writing \u2014 resource library only"
     },
     {
       "id": "res-audio-todo",
@@ -1986,7 +1986,7 @@
       "category": "examples",
       "docType": "example",
       "title": "Example: Tim scrolling loop",
-      "summary": "Tim: afternoon cognitive fatigue → phone scrolling → comparison spiral → unfinished reports.",
+      "summary": "Tim: afternoon cognitive fatigue \u2192 phone scrolling \u2192 comparison spiral \u2192 unfinished reports.",
       "intentTriggers": [
         "scrolling",
         "3:30",
@@ -2037,8 +2037,8 @@
       "layer": "example",
       "category": "examples",
       "docType": "example",
-      "title": "Example: panic → grounding",
-      "summary": "Flooded user → grounding before problem-solving.",
+      "title": "Example: panic \u2192 grounding",
+      "summary": "Flooded user \u2192 grounding before problem-solving.",
       "intentTriggers": [
         "panicky",
         "overwhelmed",
@@ -2054,6 +2054,43 @@
         "distancing"
       ],
       "source": "Synthetic eval fixture aligned with inventory grounding materials"
+    },
+    {
+      "id": "skill-cbt-case-formulation",
+      "path": "knowledge-base/skills/cbt-case-formulation/SKILL.md",
+      "layer": "skill",
+      "category": "Problem list & conceptualisation",
+      "docType": "skill",
+      "title": "CBT case formulation (conversation craft)",
+      "summary": "Oxford-style cross-sectional map (situation, thoughts, feelings/body, avoidance) plus process goals with \u22645 steps \u00d7 \u22642 micro-actions \u2014 conversation craft, not clinical labelling.",
+      "intentTriggers": [
+        "performance review",
+        "performance evaluation",
+        "freeze up",
+        "feel like a fraud",
+        "imposter",
+        "procrastinating",
+        "scrolling instead",
+        "can't write the feedback",
+        "manager evaluation"
+      ],
+      "emotionTriggers": [
+        "anxiety",
+        "shame",
+        "stress",
+        "overwhelm"
+      ],
+      "skillDependencies": [
+        "problem_list_conceptualisation",
+        "conversation_skill"
+      ],
+      "skillIds": [
+        "problem_list_conceptualisation",
+        "behavioral_activation",
+        "feedback_conversation",
+        "conversation_skill"
+      ],
+      "source": "docs/tim-cbt-case-formulation-v2.pdf (Tim CBT Case Formulation & Goal Architecture v2)"
     }
   ]
 }

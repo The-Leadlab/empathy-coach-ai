@@ -56,6 +56,14 @@ function detectIntents(text) {
   if (/\b(feedback|difficult conversation|conflict at work|manager)\b/.test(t)) {
     intents.push("feedback");
   }
+  if (
+    /\b(performance (?:review|evaluation|appraisal)|freeze up|feel like a (?:total )?fraud|imposter|putting off|can't find the right words)\b/.test(
+      t
+    )
+  ) {
+    intents.push("conceptualise");
+    intents.push("feedback");
+  }
   if (/\b(problem list|where do i start|so many problems)\b/.test(t)) intents.push("conceptualise");
   if (/\b(grateful|gratitude|savour|savor|flow)\b/.test(t)) intents.push("gratitude");
   if (/\b(self[-\s]?critic|hard on myself|don't deserve)\b/.test(t)) intents.push("self_compassion");
@@ -105,8 +113,8 @@ const INTENT_TO_SKILLS = {
   grief: ["grief_and_loss", "self_compassion"],
   values: ["values_clarification", "micro_goals"],
   strengths: ["strengths_spotting"],
-  feedback: ["feedback_conversation", "growth_mindset"],
-  conceptualise: ["problem_list_conceptualisation", "distancing"],
+  feedback: ["feedback_conversation", "conversation_skill", "growth_mindset"],
+  conceptualise: ["conversation_skill", "problem_list_conceptualisation", "distancing"],
   gratitude: ["gratitude_and_savouring"],
   self_compassion: ["self_compassion"],
   growth: ["growth_mindset"],

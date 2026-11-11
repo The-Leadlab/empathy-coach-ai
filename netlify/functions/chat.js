@@ -60,6 +60,8 @@ const SYSTEM_PROMPT = {
 const {
   buildRegenerationUserPrompt,
   buildRegenerationSystemContent,
+  extractExactTargetReply,
+  formatTrainerRuleForPrompt,
 } = require("../../skills/regenerationHelpers.cjs");
 
 const NAME_JOURNEY_SYSTEM_PROMPT = {
@@ -102,8 +104,10 @@ async function fetchTrainerGlobalInstructions(limit = TRAINER_FEEDBACK_LIMIT) {
       if (r.apply_to_global_instructions === false) continue;
       const text = typeof r.feedback_text === "string" ? r.feedback_text.trim() : "";
       if (!text || seen.has(text)) continue;
+      const bullet = formatTrainerRuleForPrompt(text, 180);
+      if (!bullet) continue; // exact-reply pastes → training export, not live prompt
       seen.add(text);
-      lines.push(`- ${text}`);
+      lines.push(bullet);
     }
     if (lines.length === 0) {
       console.warn("No trainer feedback rows to inject (empty or all marked trainer-only).");
@@ -330,6 +334,15 @@ exports.handler = async (event) => {
         body: JSON.stringify({ error: "regenerationContext.originalUserMessage and previousAssistantReply are required." }),
       };
     }
+    // When Simon pastes the exact reply, never send it through the LoRA — it ignores feedback and leaks instructions.
+    const exactTarget = extractExactTargetReply(regenerationContext?.feedbackList);
+    if (exactTarget) {
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reply: exactTarget, provider: "feedback-exact", stateUpdate: null, phaseOne: null }),
+      };
+    }
     const [rawTrainerRules, rawExemplars] = await Promise.all([
       fetchTrainerGlobalInstructions(INFERENCE_TRAINER_LIMIT),
       fetchStarredAssistantExemplars(INFERENCE_EXEMPLAR_LIMIT, 280),
@@ -452,6 +465,11 @@ exports.handler = async (event) => {
 
   // Journey titles: prefer fast fallback so cold GPUs don't block naming
   if (mode === "name_journey" && fallbackConfigured()) {
+    return runFallback(null);
+  }
+
+  // Trainer "Regenerate from feedback": LoRA often ignores scripted feedback — use Groq for rewrites.
+  if (mode === "regenerate" && fallbackConfigured()) {
     return runFallback(null);
   }
 

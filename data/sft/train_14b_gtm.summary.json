@@ -1,0 +1,13 @@
+{
+  "train": 6716,
+  "eval": 584,
+  "by_source": {
+    "phase3_plus_simon": 4352,
+    "external:llm-training-old/TRANSFER-TO-MACBOOK-LLM-TRAINING/data/train_simon_feedback.jsonl": 2436,
+    "simon": 510,
+    "phase3": 2
+  },
+  "written_at": "2026-11-11T12:08:39.970Z",
+  "out_train": "data/sft/train_14b_gtm.jsonl",
+  "out_eval": "data/sft/eval_14b_gtm.jsonl"
+}

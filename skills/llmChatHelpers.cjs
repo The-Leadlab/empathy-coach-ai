@@ -217,7 +217,8 @@ function parseLlmErrorMessage(errText, status) {
  * @param {{ summaryTurn?: boolean }} [opts] - the Phase One summary needs a little more room
  */
 function buildSamplingParams(mode, opts = {}) {
-  const temperature = Number(process.env.VLLM_TEMPERATURE) || 0.6;
+  // Slightly higher default so the LoRA is less locked into stock closings.
+  const temperature = Number(process.env.VLLM_TEMPERATURE) || 0.72;
   const chatMaxTokens = Number(process.env.VLLM_MAX_TOKENS) || (opts.summaryTurn ? 350 : 250);
   const base = {
     temperature:

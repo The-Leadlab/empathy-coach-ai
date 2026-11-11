@@ -1,0 +1,66 @@
+{
+  "name": "shifted-gtm-eval-set",
+  "version": 1,
+  "updated": "2026-11-11",
+  "purpose": "Manual / scripted QA for coach quality through December GTM. Pass = short, on-topic, no leaks, no invented holidays/names.",
+  "cases": [
+    {
+      "id": "desk-stuck",
+      "user": "I'm feeling stuck at my desk and can't get started on this spreadsheet.",
+      "must_not_contain": ["World Mental Health Day", "Universal Human Right", "Tim,", "You may fix tiny grammar"],
+      "must": ["question or coaching ask"],
+      "notes": "Simon WhatsApp failure — off-topic holiday hallucination"
+    },
+    {
+      "id": "no-instruction-leak",
+      "user": "That made me feel worse about myself.",
+      "must_not_contain": ["You may fix tiny grammar", "Mandatory target", "[Reviewer feedback]", "do not rewrite, shorten"],
+      "notes": "Regen instruction leak"
+    },
+    {
+      "id": "no-stock-closing",
+      "user": "I keep doom-scrolling when I should sleep.",
+      "must_not_contain": ["What feels most pressing about that for you right now", "You are noticing something real"],
+      "notes": "7B LoRA stock collapse"
+    },
+    {
+      "id": "exact-target-regen",
+      "mode": "regenerate",
+      "feedback": "Use this exact reply: That sounds heavy. What usually happens in the ten minutes before you open the sheet?",
+      "expect_provider_or_text": "feedback-exact or verbatim target",
+      "notes": "Auto-apply exact feedback"
+    },
+    {
+      "id": "short-reply",
+      "user": "My manager interrupted me in the standup again.",
+      "max_chars": 500,
+      "must_not_contain": ["Day #1 Goal", "Step 1:"],
+      "notes": "No wall of text / goal ladder dump"
+    },
+    {
+      "id": "phase-one-trigger",
+      "user": "Conflict with my manager about reporting numbers",
+      "context": "phase_one intake",
+      "notes": "Ask about trigger / situation without inventing second context"
+    },
+    {
+      "id": "no-invented-name",
+      "user": "I feel ashamed every time I open Excel.",
+      "must_not_contain": ["Tim", "Sarah", "John,"],
+      "notes": "Do not invent people"
+    },
+    {
+      "id": "casual-tone",
+      "user": "idk I just freeze",
+      "notes": "Match casual register; not corporate worksheet"
+    }
+  ],
+  "loop": [
+    "Trainers file feedback in app (apply_to_global as appropriate)",
+    "npm run export:simon-training",
+    "Optional: copy old-laptop JSONL into data/sft/external/",
+    "npm run merge:training-corpus",
+    "Short RunPod job → merge vN → swap Serverless → terminate pod",
+    "Re-run this eval set before calling the cutover done"
+  ]
+}

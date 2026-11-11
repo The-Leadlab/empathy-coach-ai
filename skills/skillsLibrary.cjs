@@ -417,6 +417,26 @@ const SKILLS = [
     ],
     whenToUse: "Early session overload; need a structured opening map.",
   },
+  {
+    id: "conversation_skill",
+    name: "Conversation skill (CBT dialogue craft)",
+    category: "core",
+    platformPhase: 1,
+    acronym: null,
+    description:
+      "Phase One dialogue craft: reuse their words, normalise shame/imposter briefly, reflect situation/thoughts/feelings-body/avoidance already shared, then one Socratic question with a plain reason. Phase Two: process goals, ≤5 steps × ≤2 micro-actions, stimulus control when scrolling/avoidance appears.",
+    gapSignals: [
+      "freeze up",
+      "feel like a fraud",
+      "imposter",
+      "performance review",
+      "performance evaluation",
+      "putting off",
+      "scrolling instead",
+      "can't find the right words",
+    ],
+    whenToUse: "Opening conceptualisation or feedback/procrastination loops — always prefer this craft over cold clinical questioning.",
+  },
 ];
 
 const ACRONYM_KEY = [
@@ -440,7 +460,7 @@ const ACRONYM_KEY = [
 const SKILL_GAP_SUPER_PROMPT = `# Skills library — deploy with Adaptive Escalation Loop (all users)
 
 ## Skill categories
-- **Core Skills:** distancing, grounding & breathing, problem-list conceptualisation, HCPR, DTR, ABCD, cost-benefit, thinking-error tracking, circles of control. Deploy in Phase One conceptualisation, Phase Two when stuck, or in the **Sustainability Pivot Loop** when stress or failure blocks action.
+- **Core Skills:** conversation skill (dialogue craft), distancing, grounding & breathing, problem-list conceptualisation, HCPR, DTR, ABCD, cost-benefit, thinking-error tracking, circles of control. Deploy in Phase One conceptualisation, Phase Two when stuck, or in the **Sustainability Pivot Loop** when stress or failure blocks action.
 - **Development/Activation Skills:** BA, micro goals, boundaries, behavioural experiments, SPS, worry time, stress regulation, values, strengths, gratitude/savouring, resilience reframing, growth mindset, self-compassion, grief & loss, sustainability path, constructive feedback. Deploy in Phase Two micro-stepping and Phase Three — **not** when the user is flooded (pivot to Core/grounding first).
 
 ## Detecting a skill gap (one skill per turn when appropriate)
@@ -470,7 +490,7 @@ function formatSkillsForPrompt(opts = {}) {
   if (opts.condensed) {
     return [
       "# Skills (deploy one per turn when a gap is clear)",
-      "Core: Distancing / grounding (flooded), problem-list, HCPR, DTR, ABCD, cost-benefit, circles of control, thinking-error tracking.",
+      "Core: Conversation craft, Distancing / grounding (flooded), problem-list, HCPR, DTR, ABCD, cost-benefit, circles of control, thinking-error tracking.",
       "Development: BA, micro-goals, boundaries, experiments, SPS, worry-time, stress/WoT, values, strengths, gratitude, resilience, growth mindset, self-compassion, grief (signpost), sustainability, feedback.",
     ].join("\n");
   }

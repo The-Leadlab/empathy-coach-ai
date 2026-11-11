@@ -22,12 +22,42 @@ import { createRequire } from "module";
 import { createClient } from "@supabase/supabase-js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const root = path.join(__dirname, "..");
 const require = createRequire(import.meta.url);
+
+/** Load gitignored .env / .env.local (same as build:simon-rules). */
+function loadEnvFiles() {
+  for (const name of [".env", ".env.local"]) {
+    const p = path.join(root, name);
+    if (!fs.existsSync(p)) continue;
+    for (const line of fs.readFileSync(p, "utf8").split("\n")) {
+      const t = line.trim();
+      if (!t || t.startsWith("#")) continue;
+      const eq = t.indexOf("=");
+      if (eq < 1) continue;
+      const key = t.slice(0, eq).trim();
+      let val = t.slice(eq + 1).trim();
+      if (
+        (val.startsWith('"') && val.endsWith('"')) ||
+        (val.startsWith("'") && val.endsWith("'"))
+      ) {
+        val = val.slice(1, -1);
+      }
+      if (key && process.env[key] === undefined) process.env[key] = val;
+    }
+  }
+}
+loadEnvFiles();
+
 const { buildProductionSystemPrompt, sessionRowToJourneyContext } = require("../skills/buildProductionSystemPrompt.cjs");
 const {
   resolveLatestRegeneratedAssistant,
   buildTrainingBranchMessages,
 } = require("../skills/messageVariants.cjs");
+const {
+  extractExactTargetFromText,
+  formatTrainerRuleForPrompt,
+} = require("../skills/regenerationHelpers.cjs");
 
 const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_KEY;
@@ -347,14 +377,22 @@ function buildTurnFromFeedback(fb, messageById, messagesBySession, sessionById, 
   if (!(assistant.content || "").trim()) return null;
 
   const feedbackText = (fb.feedback_text || "").trim();
+  // Prefer Simon's exact pasted reply as the assistant label (parity with feedback-exact).
+  const exactTarget = extractExactTargetFromText(feedbackText);
+  const assistantContent = (exactTarget || assistant.content || "").trim();
+  if (!assistantContent) return null;
+
   const raw = messagesBySession[assistant.session_id] || [];
   const messageCount = countDialogueMessagesBefore(raw, user.id);
+
+  // Exact pastes stay out of turnFeedback / global rules — they are the label.
+  const turnFeedback = exactTarget ? undefined : feedbackText || undefined;
 
   const systemContent = buildProductionSystemPrompt({
     trainerRules,
     exemplars,
     journeyContext: sessionRowToJourneyContext(sessionById[assistant.session_id], messageCount),
-    turnFeedback: feedbackText || undefined,
+    turnFeedback,
   });
 
   const prior = buildPriorContext(assistant.session_id, user.id, messagesBySession, messageById);
@@ -362,10 +400,14 @@ function buildTurnFromFeedback(fb, messageById, messagesBySession, sessionById, 
     { role: "system", content: systemContent },
     ...prior,
     { role: "user", content: user.content.trim() },
-    { role: "assistant", content: assistant.content.trim() },
+    { role: "assistant", content: assistantContent },
   ];
 
-  const exportType = assistant.id !== originalAssistant.id ? "regeneration_turn" : "feedback_turn";
+  const exportType = exactTarget
+    ? "exact_target_turn"
+    : assistant.id !== originalAssistant.id
+      ? "regeneration_turn"
+      : "feedback_turn";
 
   return {
     payload: {
@@ -374,6 +416,7 @@ function buildTurnFromFeedback(fb, messageById, messagesBySession, sessionById, 
       _feedback_id: fb.id,
       _message_id: assistant.id,
       _source_message_id: originalAssistant.id,
+      _exact_target: !!exactTarget,
       _dedupe_key: `msg:${assistant.id}:fb:${fb.id}`,
     },
   };
@@ -471,8 +514,10 @@ async function fetchTrainerGlobalInstructions(supabase) {
     if (r.apply_to_global_instructions === false) continue;
     const text = (r.feedback_text || "").trim();
     if (!text || seen.has(text)) continue;
+    const bullet = formatTrainerRuleForPrompt(text, 180);
+    if (!bullet) continue;
     seen.add(text);
-    lines.push(`- ${text}`);
+    lines.push(bullet);
   }
   return lines.join("\n");
 }

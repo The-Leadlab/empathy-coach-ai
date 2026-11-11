@@ -11,6 +11,8 @@
     "admin:reset-password": "node scripts/reset-admin-password.js",
     "export:simon-training": "node scripts/export-training-simon-feedback.js",
     "export:simon-training:count": "node scripts/export-training-simon-feedback.js --count-only",
+    "build:simon-rules": "node scripts/build-simon-coach-rules.mjs",
+    "merge:training-corpus": "node scripts/merge-training-corpus.mjs",
     "validate:training-jsonl": "node scripts/validate-training-jsonl.js",
     "split:training-jsonl": "node scripts/split-training-jsonl.js train.jsonl",
     "phase3:ingest": "node scripts/phase3/ingest.mjs",

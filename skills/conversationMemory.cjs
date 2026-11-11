@@ -2,6 +2,8 @@
  * Conversation memory + Phase One routing for live inference.
  */
 
+const { extractDisclosedCbtMap } = require("./conversationSkill.cjs");
+
 const PHASE_ONE_ELEMENT_ORDER = ["trigger", "rule", "belief", "strength", "coping"];
 
 const ELEMENT_ASK_PATTERNS = {
@@ -57,6 +59,9 @@ function buildConversationMemoryBlock(history, maxChars = 2200) {
   if (!Array.isArray(history) || history.length === 0) return "";
 
   const lines = [];
+  const disclosed = extractDisclosedCbtMap(history);
+  if (disclosed) lines.push(`- ${disclosed}`);
+
   for (const m of history.slice(-14)) {
     const label = m.role === "user" ? "User said" : "Coach said";
     const text = String(m.content || "")

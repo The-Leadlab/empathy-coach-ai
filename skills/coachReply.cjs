@@ -3,6 +3,8 @@
  * Shared by netlify/functions/chat.js (RunPod async + sync + fallback) and server/server.js.
  */
 
+const { naturalVoiceRejectReason, stripInstructionLeakPrefix } = require("./humanCoachVoice.cjs");
+
 const PHASE_ONE_ELEMENTS = ["situation", "trigger", "rule", "belief", "strength", "coping"];
 
 const STOP_SEQUENCES = ["<think>", "\nUser:", "<|im_end|>"];
@@ -186,6 +188,8 @@ function rejectReason(reply, opts = {}) {
   if (!visible) return "empty";
   if (isMetaText(visible, opts)) return "meta";
   if (opts.phaseOne && opts.element !== "summary" && !visible.includes("?")) return "no_question";
+  const voiceReject = naturalVoiceRejectReason(visible);
+  if (voiceReject) return voiceReject;
   return null;
 }
 
@@ -321,13 +325,16 @@ Already known (do not ask again): ${known || "nothing yet"}
 # Output format (required)
 Return only one JSON object, no other text:
 {"state_update":{"phase":1,"step":"${state.asking === "summary" ? "1.3" : state.asking === "situation" ? "1.1" : "1.2"}","captured":{"trigger":"","rule":"","belief":"","strength":null,"coping":""}},"reply":"..."}
-Fill "captured" only with what the user has actually said. "reply" is what the user sees: second person, warm, ${state.asking === "summary" ? "a short summary then one question" : "1-3 sentences, a brief reflection then exactly one question"}. Never mention phases, steps, the user in the third person, or your plan.
+Fill "captured" only with what the user has actually said. "reply" is what the user sees: second person, warm, natural, ${state.asking === "summary" ? "a short summary then one question" : "1-3 sentences, a brief reflection then exactly one question"}. Never mention phases, steps, the user in the third person, or your plan.
+Never end with "What feels most pressing about that for you right now?" or open with "You are noticing something real…".
 Example reply: That thought, "I'm not going anywhere in my job", sounds really heavy. On a scale from 0 to 100, how strongly do you believe it right now?`;
 }
 
 /** Stricter reminder used for the single regeneration attempt. */
 const REGENERATE_REMINDER = `# Your last draft was rejected
-It described your plan or talked about the user in the third person. Write only what the coach says to the user: second person, 1-3 sentences, one question. No reasoning, no phase or step names.`;
+Write only what the coach says to the user: second person, 1-3 natural sentences, one fresh question.
+No reasoning, no phase or step names, no third-person "the user".
+Do not use stock lines like "What feels most pressing about that for you right now?" or "You are noticing something real…".`;
 
 // ---------------------------------------------------------------------------
 // Deterministic last-resort replies
@@ -380,6 +387,7 @@ function finalizeCoachReply(rawText, opts = {}) {
     reply = isMetaText(visible, opts) ? [fallbackExtractReply(visible), hidden].filter(Boolean).join("\n") : text.trim();
   }
 
+  reply = stripInstructionLeakPrefix(reply);
   const reason = rejectReason(reply, opts);
   return { reply: reason ? "" : reply.trim(), stateUpdate, rejected: reason };
 }

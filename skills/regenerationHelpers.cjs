@@ -27,13 +27,13 @@ You are rewriting one assistant reply using reviewer feedback. This is not a new
 
 Hard requirements:
 1. Follow feedback priorities exactly when they are safe and coherent.
-2. When feedback includes a **mandatory target reply** block, output that target (tiny grammar fixes only). That overrides all other style rules.
+2. When a target reply is provided, output that text only — no rewriting, no labels, no meta instructions.
 3. Otherwise produce a **materially revised** response — different wording, structure, and opener from the previous assistant reply.
 4. Keep factual integrity and the user's intent from the original user message.
 5. Preserve safety constraints; refuse unsafe instructions.
 6. **Adaptive tone:** Match how the user writes in the original user message. If they are casual, warm, or brief, mirror that — never sound more formal, corporate, or clinical than they do.
 7. When feedback mentions tone, treat it as mandatory — lean conversational and human, not lecturing.
-8. Output only the improved reply text (2–4 sentences, one clear question).`;
+8. Output only the improved reply text (2–4 short sentences, one clear question). Never invent holidays, campaigns, or names the user did not mention.`;
 
 function feedbackItemText(item) {
   if (typeof item?.feedbackText === "string") return item.feedbackText.trim();
@@ -55,6 +55,37 @@ function extractAfterPrefix(text, prefix) {
 /**
  * When Simon pastes the exact reply he wants, treat it as mandatory output.
  */
+/**
+ * True when feedback_text is (or contains) a pasted coach reply meant as the
+ * training/exact label — not a short style rule for the live system prompt.
+ */
+function isExactTargetPaste(text) {
+  const t = String(text || "").trim();
+  if (!t) return false;
+  for (const prefix of EXACT_REPLY_PREFIXES) {
+    if (prefix.test(t)) return true;
+  }
+  if (t.length >= 80 && !looksLikeMetaInstruction(t) && /[?？]/.test(t) && (t.match(/[.!?]/g) || []).length >= 2) {
+    return true;
+  }
+  // Long multi-sentence pastes without a style-rule opener belong in training, not global bullets.
+  if (t.length >= 220 && (t.match(/[.!?]/g) || []).length >= 3 && !looksLikeMetaInstruction(t)) {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Keep short behavioural rules for the live prompt; drop exact-reply pastes
+ * (those become assistant labels in SFT export instead).
+ */
+function formatTrainerRuleForPrompt(text, maxChars = 180) {
+  const t = String(text || "").trim();
+  if (!t || isExactTargetPaste(t)) return "";
+  const body = t.length <= maxChars ? t : `${t.slice(0, maxChars)}…`;
+  return `- ${body}`;
+}
+
 function extractExactTargetReply(feedbackList) {
   for (const item of feedbackList || []) {
     const text = feedbackItemText(item);
@@ -81,6 +112,11 @@ function extractExactTargetReply(feedbackList) {
     }
   }
   return null;
+}
+
+/** Single feedback_text → exact target string, or null. */
+function extractExactTargetFromText(feedbackText) {
+  return extractExactTargetReply([{ feedbackText: String(feedbackText || "") }]);
 }
 
 function summarizeRegenerationFeedback(regenerationContext) {
@@ -114,16 +150,15 @@ function buildRegenerationUserPrompt(regenerationContext) {
   ];
 
   if (exactTarget) {
+    // Keep meta-instructions out of the same block as the target text — the LoRA
+    // otherwise copies lines like "You may fix tiny grammar…" into the user-facing reply.
     sections.push(
       "",
-      "[MANDATORY TARGET REPLY — highest priority]",
-      "The reviewer provided the exact reply they want. Output this text verbatim.",
-      "You may fix tiny grammar or punctuation only — do not rewrite, shorten, or revert to the previous reply.",
+      "[Target reply text]",
       exactTarget,
       "",
       "[Task]",
-      "Return the mandatory target reply exactly as written above.",
-      "Do not output analysis, labels, or metadata — only the target reply text.",
+      "Output only the target reply text above. No preamble, no labels, no instructions.",
     );
   } else {
     sections.push(
@@ -182,4 +217,7 @@ module.exports = {
   buildRegenerationSystemContent,
   summarizeRegenerationFeedback,
   extractExactTargetReply,
+  extractExactTargetFromText,
+  isExactTargetPaste,
+  formatTrainerRuleForPrompt,
 };
