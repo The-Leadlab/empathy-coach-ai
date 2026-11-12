@@ -5,7 +5,8 @@
 
 const { naturalVoiceRejectReason, stripInstructionLeakPrefix } = require("./humanCoachVoice.cjs");
 
-const PHASE_ONE_ELEMENTS = ["situation", "trigger", "rule", "belief", "strength", "coping"];
+// Hot Cross Bun first (situation → trigger/thought → emotion/body/behaviour), then rules/beliefs.
+const PHASE_ONE_ELEMENTS = ["situation", "trigger", "coping", "rule", "belief", "strength"];
 
 const STOP_SEQUENCES = ["<think>", "\nUser:", "<|im_end|>"];
 
@@ -199,17 +200,25 @@ function rejectReason(reply, opts = {}) {
 
 const ELEMENT_FOCUS_PATTERNS = {
   situation: /what happened|describe|tell me (more )?about (the|a|one) (situation|moment|time)/i,
-  trigger: /trigger|sets? (it|this) off|right before|spike|in the moment/i,
-  rule: /\bif\b.{0,40}\bthen\b|\brule\b|assumption/i,
-  belief: /what would (that )?(mean|happen|say)|fear (it|that) (would|says)|deeper (fear|worry)/i,
+  trigger: /trigger|sets? (it|this) off|right before|spike|in the moment|first thought|pops up/i,
+  rule: /\bif\b.{0,40}\bthen\b|(?:\ban? |\bthe |\byour )rule\b|assumption you|inner rule/i,
+  belief: /what would (that )?(mean|happen|say)|fear (it|that) (would|says)|deeper (fear|worry|belief)|not good enough|belief (that|behind|driving)/i,
   strength: /how strongly|0\s*(to|-|–)\s*100|out of 100|per ?cent/i,
-  coping: /body|feel in your|what do you (do|tend to do)|avoid|cope/i,
+  coping: /body|feel in your|what (emotion|feeling)|where do you feel|what do you (do|tend to do)|avoid|cope|scroll|phone/i,
 };
+
+const REPEAT_COMPLAINT_RE =
+  /\b(asked (this|that|the same|this question)|quite a few times|keep asking|already (told|said|answered|asked)|same question|repeating)\b/i;
 
 function detectAskedElement(assistantText) {
   const text = String(assistantText ?? "");
+  // Compound "rule or belief" from the LoRA — treat as belief so we don't re-fill rule forever.
+  if (/\brule\b.{0,20}\bbelief\b|\bbelief\b.{0,20}\brule\b/i.test(text)) {
+    if (ELEMENT_FOCUS_PATTERNS.strength.test(text)) return "strength";
+    return "belief";
+  }
   // Strength wording often also mentions "believe", so check it first.
-  for (const el of ["strength", "coping", "trigger", "rule", "belief", "situation"]) {
+  for (const el of ["strength", "coping", "trigger", "belief", "rule", "situation"]) {
     if (ELEMENT_FOCUS_PATTERNS[el].test(text)) return el;
   }
   return null;
@@ -295,6 +304,15 @@ function advancePhaseOneState({ prior, history = [], userMessage = "", presentin
     return { captured, asking: "summary", handshakeConfirmed: true };
   }
 
+  // User called out a re-ask — do not store the complaint as the answer; skip ahead.
+  if (asking && asking !== "summary" && REPEAT_COMPLAINT_RE.test(answer)) {
+    if (captured[asking] === undefined) {
+      captured[asking] = "(already covered — user asked not to repeat)";
+    }
+    captured = cleanCaptured(captured);
+    return { captured, asking: nextMissingElement(captured) };
+  }
+
   record(asking, answer);
   if (captured.situation === undefined && answer.split(/\s+/).length >= 12) {
     captured.situation = answer.slice(0, 300);
@@ -323,13 +341,14 @@ function isPhaseOneIntake(journeyContext, possibleCrisisLanguage) {
 
 const ELEMENT_ASK = {
   situation: "one concrete recent situation: what happened, who was there, when",
-  trigger: "what happened right before the feeling spiked (the trigger)",
-  rule: "the 'if… then…' rule or assumption they follow in that moment",
-  belief: "the deeper fear or belief behind that rule",
+  trigger: "the first thought or image that shows up in that moment (before digging into deep rules)",
+  coping:
+    "how that thought feels emotionally and in the body, and what they do or avoid next (e.g. phone, scrolling) — Hot Cross Bun map before rules",
+  rule: "only if still unclear: a light 'if… then…' assumption in everyday words — not clinical jargon",
+  belief: "only if still unclear: the self-evaluation underneath (e.g. not good enough) in their words",
   strength: "how strongly they believe that thought right now, from 0 to 100",
-  coping: "what they feel in their body and what they do or avoid in response",
   summary:
-    "a short plain-language summary of what they shared (situation, trigger, rule, belief, strength, coping), then ask if it fits",
+    "a short plain-language summary of what they shared (situation, thought, feelings/body, behaviour, any rule/belief, strength), then ask if it fits",
 };
 
 /** Appended to the system prompt on Phase One intake turns. */
@@ -342,12 +361,18 @@ function phaseOneTurnInstruction(state) {
 Ask about: ${ELEMENT_ASK[state.asking] || ELEMENT_ASK.trigger}
 Already known (do not ask again): ${known || "nothing yet"}
 
+Hard rules for this reply:
+- Ask ONLY the element above. Do not ask about rule/belief if the target is trigger or coping.
+- Never re-ask anything listed under Already known, even with different wording.
+- Do not jump to core beliefs before situation, thought, emotion/body, and behaviour are on the table.
+- Never invent a Tim scenario, panic-button framing, or workplace facts they did not say.
+
 # Output format (required)
 Return only one JSON object, no other text:
 {"state_update":{"phase":1,"step":"${state.asking === "summary" ? "1.3" : state.asking === "situation" ? "1.1" : "1.2"}","captured":{"trigger":"","rule":"","belief":"","strength":null,"coping":""}},"reply":"..."}
 Fill "captured" only with what the user has actually said. "reply" is what the user sees: second person, warm, natural, ${state.asking === "summary" ? "a short summary then one question" : "1-3 sentences, a brief reflection then exactly one question"}. Never mention phases, steps, the user in the third person, or your plan.
 Never end with "What feels most pressing about that for you right now?" or open with "You are noticing something real…".
-Example reply: That thought, "I'm not going anywhere in my job", sounds really heavy. On a scale from 0 to 100, how strongly do you believe it right now?`;
+Example reply: When that repetitive task hits and the phone comes out, what do you notice in your body in that exact moment?`;
 }
 
 /** Stricter reminder used for the single regeneration attempt. */
@@ -362,14 +387,18 @@ Do not use stock lines like "What feels most pressing about that for you right n
 
 const TEMPLATE_QUESTIONS = {
   situation: "Could you tell me about one recent moment when this happened — what happened, and who was there?",
-  trigger: "What was happening just before that feeling spiked?",
-  rule: "In that moment, is there a rule you notice yourself following, something like \"if… then…\"?",
-  belief: "If that rule were broken, what do you fear it would mean about you or what would happen?",
+  trigger: "When that moment starts, what's the first thought or urge that shows up?",
+  coping: "When that thought shows up, what do you notice in your body, and what do you tend to do next?",
+  rule: "In that moment, is there a simple 'if… then…' assumption you notice — in your own words?",
+  belief: "What does that moment seem to say about you, in your own words?",
   strength: "On a scale from 0 to 100, how strongly do you believe that thought right now?",
-  coping: "When that thought shows up, what do you notice in your body, and what do you tend to do or avoid?",
   summary: "Is there anything else about that moment you'd like to add before I sum up what I've heard?",
   general: "What feels most important for us to focus on next?",
 };
+
+const DOC_ANALYSIS_INSTRUCTION = `# This turn
+The user uploaded a document for analysis. Do NOT continue Phase One intake questions (no rule/belief/strength loops).
+Briefly summarise what matters from the document for their coaching situation, stay in their words, do not invent missing content or switch to a different person's case (e.g. Tim), and ask exactly one clear follow-up about how they want to use it.`;
 
 const CRISIS_TEMPLATE =
   "I'm really sorry things feel this heavy. When you say that, do you mean you're having thoughts of ending your life, or is it more a way of saying how bad this feels right now?";
@@ -434,9 +463,23 @@ function withRegenerateReminder(messages) {
 const HANDSHAKE_DONE_INSTRUCTION = `# This turn
 The user just confirmed your Phase One summary (Reflective Handshake). Do NOT re-summarize or ask if it captures things again. Acknowledge briefly in one short sentence, then start Phase Two: ask what a successful resolution of this challenge would look like for them (their target outcome).`;
 
+function isDocumentAnalysisTurn(userMessage) {
+  return /^\[Uploaded document for analysis:/i.test(String(userMessage ?? "").trim());
+}
+
 function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, history, userMessage }) {
   const crisis = !!possibleCrisisLanguage;
   if (mode !== "chat" && mode !== "regenerate") return { guard: null, phaseOne: null, turnInstruction: "" };
+
+  // PDF/transcript uploads are analysis turns — not Phase One element capture.
+  if (mode === "chat" && isDocumentAnalysisTurn(userMessage)) {
+    return {
+      phaseOne: null,
+      turnInstruction: DOC_ANALYSIS_INSTRUCTION,
+      guard: { jsonMode: false, phaseOne: false, element: null, crisis },
+    };
+  }
+
   const phaseOne =
     mode === "chat" && isPhaseOneIntake(journeyContext, crisis)
       ? advancePhaseOneState({

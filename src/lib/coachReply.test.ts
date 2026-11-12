@@ -168,15 +168,43 @@ describe("Phase One state", () => {
     const prior = { captured: { situation: "Meeting with my manager on Monday" }, asking: "trigger" };
     const next = advancePhaseOneState({ prior, history: [], userMessage: "When she interrupted me in front of the team" });
     expect(next.captured.trigger).toMatch(/interrupted/);
-    expect(next.asking).toBe("rule");
+    expect(next.asking).toBe("coping");
   });
 
   it("keeps asking for strength until a number is given", () => {
-    const prior = { captured: { situation: "s", trigger: "t", rule: "r", belief: "b" }, asking: "strength" };
+    const prior = {
+      captured: { situation: "s", trigger: "t", coping: "c", rule: "r", belief: "b" },
+      asking: "strength",
+    };
     expect(advancePhaseOneState({ prior, history: [], userMessage: "quite a lot" }).asking).toBe("strength");
     const done = advancePhaseOneState({ prior, history: [], userMessage: "about 80" });
     expect(done.captured.strength).toBe(80);
-    expect(done.asking).toBe("coping");
+    expect(done.asking).toBe("summary");
+  });
+
+  it("skips ahead when the user says the question was already asked", () => {
+    const prior = {
+      captured: { situation: "Scrolling at work", trigger: "Repetitive tasks" },
+      asking: "coping",
+    };
+    const next = advancePhaseOneState({
+      prior,
+      history: [],
+      userMessage: "I feel like you've asked this question quite a few times.",
+    });
+    expect(next.captured.coping).toMatch(/already covered/i);
+    expect(next.asking).toBe("rule");
+  });
+
+  it("does not run Phase One intake on uploaded document turns", () => {
+    const turn = prepareCoachTurn({
+      mode: "chat",
+      journeyContext: { platformPhase: 1, phaseOneStep: 2, phaseOneConfirmed: false },
+      history: [],
+      userMessage: "[Uploaded document for analysis: louise.pdf]\n\nPlease analyse.\n---\nhello\n---",
+    });
+    expect(turn.phaseOne).toBeNull();
+    expect(turn.turnInstruction).toMatch(/uploaded a document/i);
   });
 
   it("rebuilds state from history when no prior state is stored", () => {

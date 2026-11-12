@@ -77,7 +77,7 @@ function friendlyChatError(raw: string | undefined, status?: number): string {
 
 const TERMINAL_FAIL = new Set(["FAILED", "CANCELLED", "CANCELED", "TIMED_OUT", "TIMEOUT"]);
 
-const PHASE_ONE_KEYS = ["situation", "trigger", "rule", "belief", "strength", "coping"] as const;
+const PHASE_ONE_KEYS = ["situation", "trigger", "coping", "rule", "belief", "strength"] as const;
 
 /** Model-extracted values only fill gaps; what the server captured from the user's own words wins. */
 export function mergePhaseOneState(state: PhaseOneState, stateUpdate: unknown): PhaseOneState {

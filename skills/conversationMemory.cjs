@@ -4,14 +4,14 @@
 
 const { extractDisclosedCbtMap } = require("./conversationSkill.cjs");
 
-const PHASE_ONE_ELEMENT_ORDER = ["trigger", "rule", "belief", "strength", "coping"];
+const PHASE_ONE_ELEMENT_ORDER = ["trigger", "coping", "rule", "belief", "strength"];
 
 const ELEMENT_ASK_PATTERNS = {
-  trigger: /trigger|sets? it off|right before|what happens when|spike|sets this off|in the moment/i,
-  rule: /\bif\b.{0,40}\bthen\b|rule|assumption|inner voice|fear|worry|belief about/i,
-  belief: /how strongly|0\s*to\s*100|0-100|believe that|strength of belief|%\s*right now/i,
-  strength: /how strongly|0\s*to\s*100|0-100|strength of belief/i,
-  coping: /body|emotion|feel in your body|what do you do|cope|avoid|response when/i,
+  trigger: /trigger|sets? it off|right before|what happens when|spike|sets this off|in the moment|first thought|pops up/i,
+  coping: /body|emotion|feel in your body|what do you do|cope|avoid|response when|where do you feel/i,
+  rule: /\bif\b.{0,40}\bthen\b|(?:\ban? |\bthe |\byour )rule\b|assumption you|inner rule/i,
+  belief: /what.*believe|worst.*happen|expect.*happen|afraid.*would|deeper (fear|belief)|belief (that|behind|driving)/i,
+  strength: /how strongly|0\s*to\s*100|0-100|strength of belief|%\s*right now/i,
 };
 
 function detectAskedPhaseOneElements(assistantMessages) {
