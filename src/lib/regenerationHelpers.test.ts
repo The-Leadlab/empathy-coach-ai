@@ -58,6 +58,30 @@ describe("extractExactTargetReply", () => {
       ]),
     ).toBeNull();
   });
+
+  it("extracts Example from full Simon CBT review and strips wrapping quotes", () => {
+    const desired =
+      "Thank you for putting that into words, Tim—that is a massive thought to carry around.\nNotice how there are two powerful things happening in that thought: first, you're discounting your own position ('Who am I to evaluate him?'), and second, you're predicting the future and reading his mind ('He'll just reject it').\nWhen that exact thought—'Who am I to evaluate him, he'll just reject it'—runs through your head as you look at the screen, what emotion comes up for you right in that moment, and where do you feel it in your body?";
+    const feedback = `What was right:
+Accurate Reflection: It accurately captured Tim's thoughts.
+Spotting Underlying Rules: It correctly recognized a conditional rule.
+What was wrong:
+Jumping to Core/Intermediate Beliefs Too Soon: In CBT assessment this is premature.
+Any missed opportunities:
+Connecting Thought to Emotion & Physiology: It missed asking how he feels.
+Example of how it should have responded:
+"${desired}"`;
+    expect(extractExactTargetReply([{ feedbackText: feedback }])).toBe(desired);
+  });
+
+  it("does not treat a long review without an Example as the coach reply", () => {
+    const critique = `What was right:
+Accurate Reflection: It accurately captured and reflected Tim's exact automatic thoughts about authority.
+Spotting Underlying Rules: It correctly recognized a conditional rule about age and experience.
+What was wrong:
+Jumping to Core/Intermediate Beliefs Too Soon: Clients are usually too overwhelmed to analyze abstract rules before the Hot Cross Bun map is complete. Asking about a rule you're holding can sound test-like rather than exploratory.`;
+    expect(extractExactTargetReply([{ feedbackText: critique }])).toBeNull();
+  });
 });
 
 describe("buildRegenerationUserPrompt", () => {

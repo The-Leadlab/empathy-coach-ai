@@ -73,10 +73,27 @@ function sentenceCount(text) {
   return (String(text || "").match(/[.!?]/g) || []).length;
 }
 
+/** Reviewer write-ups must never be treated as the coach reply itself. */
+function looksLikeReviewDocument(text) {
+  const t = String(text || "");
+  return (
+    /\bwhat was (right|wrong)\b/i.test(t) ||
+    /\b(any )?missed opportunities\b/i.test(t) ||
+    /\bexample of how it should (have )?responded\b/i.test(t) ||
+    /\b(accurate reflection|clinical\/abstract jargon|jumping to core)\b/i.test(t)
+  );
+}
+
+function stripWrappingQuotes(text) {
+  const t = String(text || "").trim();
+  const m = t.match(/^["“]([\s\S]*)["”]$/);
+  return m ? m[1].trim() : t;
+}
+
 /** Full-text paste that is already the coach reply (no label wrapper). */
 function looksLikeWholeCoachPaste(text) {
   const t = String(text || "").trim();
-  if (!t || looksLikeMetaInstruction(t)) return false;
+  if (!t || looksLikeMetaInstruction(t) || looksLikeReviewDocument(t)) return false;
   const sentences = sentenceCount(t);
   if (t.length >= 80 && /[?？]/.test(t) && sentences >= 2) return true;
   if (t.length >= 220 && sentences >= 3) return true;
@@ -100,14 +117,16 @@ function extractViaInlineMarker(text) {
   for (const marker of INLINE_EXACT_MARKERS) {
     const match = text.match(marker);
     if (!match) continue;
-    const after = text.slice(match.index + match[0].length).replace(/^[\s:—–-]+/, "").trim();
+    const after = stripWrappingQuotes(
+      text.slice(match.index + match[0].length).replace(/^[\s:—–-]+/, "").trim(),
+    );
     // Drop a trailing "Example of…" wrapper's leading meta if marker was mid-prose.
     if (after.length >= 40) return after;
   }
   for (const prefix of EXACT_REPLY_PREFIXES) {
     const match = text.match(prefix);
     if (!match || match.index !== 0) continue;
-    const target = extractAfterPrefix(text, match[0]);
+    const target = stripWrappingQuotes(extractAfterPrefix(text, match[0]));
     if (target) return target;
   }
   return "";
