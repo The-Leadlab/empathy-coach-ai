@@ -7,6 +7,7 @@ const { buildProductionSystemPrompt } = require("./buildProductionSystemPrompt.c
 const { trimTrainerRules, trimExemplars } = require("./llmChatHelpers.cjs");
 const { buildConversationMemoryBlock } = require("./conversationMemory.cjs");
 
+/** Anchored at start — used by isExactTargetPaste / formatTrainerRuleForPrompt. */
 const EXACT_REPLY_PREFIXES = [
   /^use this (exact )?(reply|response|answer|text)/i,
   /^reply should be:/i,
@@ -20,6 +21,22 @@ const EXACT_REPLY_PREFIXES = [
   /^exact reply:/i,
   /^write this:/i,
   /^output this:/i,
+  /^example of how it should (have )?responded/i,
+  /^example (reply|response)/i,
+  /^desired (reply|response)/i,
+  /^target (reply|response)/i,
+  /^here(?:'s| is) (the |what )?(exact )?(reply|response)/i,
+  /^i am putting in text i want it to respond with/i,
+];
+
+/**
+ * Mid-string markers (Simon often prefaces the paste). First capture group is unused;
+ * match[0] is the label to strip; remainder is the target.
+ */
+const INLINE_EXACT_MARKERS = [
+  /example of how it should (?:have )?responded\s*:?\s*/i,
+  /(?:^|[\n.!?]\s*)(?:use this (?:exact )?(?:reply|response|answer|text)|reply should be|response should be|exact reply|wanted reply|desired (?:reply|response)|target (?:reply|response)|instead (?:say|reply|respond|write)|write this|output this|correct (?:reply|response)|the (?:reply|response) should be|replace with)\s*:?\s*/i,
+  /i am putting in text i want it to respond with[^:]*:\s*/i,
 ];
 
 const REGEN_TASK_BLOCK = `# Regeneration task (this request only)
@@ -52,9 +69,50 @@ function extractAfterPrefix(text, prefix) {
   return rest.length >= 20 ? rest : "";
 }
 
-/**
- * When Simon pastes the exact reply he wants, treat it as mandatory output.
- */
+function sentenceCount(text) {
+  return (String(text || "").match(/[.!?]/g) || []).length;
+}
+
+/** Full-text paste that is already the coach reply (no label wrapper). */
+function looksLikeWholeCoachPaste(text) {
+  const t = String(text || "").trim();
+  if (!t || looksLikeMetaInstruction(t)) return false;
+  const sentences = sentenceCount(t);
+  if (t.length >= 80 && /[?？]/.test(t) && sentences >= 2) return true;
+  if (t.length >= 220 && sentences >= 3) return true;
+  // Long second-person coaching paste without a closing question (Tim-style).
+  if (t.length >= 160 && sentences >= 2 && /\b(you|your|tim)\b/i.test(t)) return true;
+  return false;
+}
+
+/** Quoted fragment must look like a complete reply, not critique leftovers. */
+function isUsableQuotedTarget(quoted) {
+  const t = String(quoted || "").trim();
+  if (t.length < 60) return false;
+  if (looksLikeMetaInstruction(t)) return false;
+  if (/^[^\w]*[)\]]/.test(t)) return false;
+  if (!/^[A-ZÀ-ÖØ-Þ“"]/.test(t)) return false;
+  if (sentenceCount(t) < 1) return false;
+  return /[.!?…]["”]?$/.test(t) || /[?？]/.test(t);
+}
+
+function extractViaInlineMarker(text) {
+  for (const marker of INLINE_EXACT_MARKERS) {
+    const match = text.match(marker);
+    if (!match) continue;
+    const after = text.slice(match.index + match[0].length).replace(/^[\s:—–-]+/, "").trim();
+    // Drop a trailing "Example of…" wrapper's leading meta if marker was mid-prose.
+    if (after.length >= 40) return after;
+  }
+  for (const prefix of EXACT_REPLY_PREFIXES) {
+    const match = text.match(prefix);
+    if (!match || match.index !== 0) continue;
+    const target = extractAfterPrefix(text, match[0]);
+    if (target) return target;
+  }
+  return "";
+}
+
 /**
  * True when feedback_text is (or contains) a pasted coach reply meant as the
  * training/exact label — not a short style rule for the live system prompt.
@@ -62,17 +120,8 @@ function extractAfterPrefix(text, prefix) {
 function isExactTargetPaste(text) {
   const t = String(text || "").trim();
   if (!t) return false;
-  for (const prefix of EXACT_REPLY_PREFIXES) {
-    if (prefix.test(t)) return true;
-  }
-  if (t.length >= 80 && !looksLikeMetaInstruction(t) && /[?？]/.test(t) && (t.match(/[.!?]/g) || []).length >= 2) {
-    return true;
-  }
-  // Long multi-sentence pastes without a style-rule opener belong in training, not global bullets.
-  if (t.length >= 220 && (t.match(/[.!?]/g) || []).length >= 3 && !looksLikeMetaInstruction(t)) {
-    return true;
-  }
-  return false;
+  if (extractViaInlineMarker(t)) return true;
+  return looksLikeWholeCoachPaste(t);
 }
 
 /**
@@ -86,31 +135,28 @@ function formatTrainerRuleForPrompt(text, maxChars = 180) {
   return `- ${body}`;
 }
 
+/**
+ * When Simon pastes the exact reply he wants, treat it as mandatory output.
+ * Prefer labeled pastes over whole-text pastes over quoted fragments so a
+ * critique with a stray quote never wins over an "Example of how…" paste.
+ */
 function extractExactTargetReply(feedbackList) {
-  for (const item of feedbackList || []) {
-    const text = feedbackItemText(item);
-    if (!text) continue;
+  const texts = (feedbackList || []).map(feedbackItemText).filter(Boolean);
 
-    for (const prefix of EXACT_REPLY_PREFIXES) {
-      const match = text.match(prefix);
-      if (match) {
-        const target = extractAfterPrefix(text, match[0]);
-        if (target) return target;
-      }
-    }
-
-    const quoted = text.match(/["“]([^"”]{40,})["”]/);
-    if (quoted?.[1]) return quoted[1].trim();
-
-    if (
-      text.length >= 80 &&
-      !looksLikeMetaInstruction(text) &&
-      /[?？]/.test(text) &&
-      (text.match(/[.!?]/g) || []).length >= 2
-    ) {
-      return text;
-    }
+  for (const text of texts) {
+    const fromMarker = extractViaInlineMarker(text);
+    if (fromMarker) return fromMarker;
   }
+
+  for (const text of texts) {
+    if (looksLikeWholeCoachPaste(text)) return text;
+  }
+
+  for (const text of texts) {
+    const quoted = text.match(/["“]([^"”]{60,})["”]/);
+    if (quoted?.[1] && isUsableQuotedTarget(quoted[1])) return quoted[1].trim();
+  }
+
   return null;
 }
 
