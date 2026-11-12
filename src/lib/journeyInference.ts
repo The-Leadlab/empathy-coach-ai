@@ -3,7 +3,7 @@ import { detectPhaseOneFocusFromAssistant } from "@/lib/phaseOneRouting";
 import { withBeliefStrengthBeforeLocked } from "@/lib/beliefRatings";
 
 const HANDSHAKE_CONFIRM =
-  /\b(yes|yeah|yep|that's right|that is right|accurate|correct|sounds right|you've got it|spot on|that's me|that describes|operating right now|that's it|fits|makes sense)\b/i;
+  /\b(yes|yeah|yep|yup|that's right|that is right|accurate|correct|sounds right|you've got it|spot on|that's me|that describes|operating right now|that's it|fits|makes sense|it does|move on|capture[sd]?)\b/i;
 
 const HANDSHAKE_REJECT =
   /\b(not quite|not really|no|nope|missing|wrong|incorrect|doesn't fit|does not fit|not accurate)\b/i;
@@ -25,13 +25,19 @@ const BELIEF_PCT = /^(\d{1,3})\s*%?$/;
 
 function looksLikeSummary(text: string) {
   const t = text.toLowerCase();
+  if (text.length < 80) return false;
   return (
-    text.length > 180 &&
-    (t.includes("in summary") ||
-      t.includes("what i'm hearing") ||
-      t.includes("sounds like") ||
-      t.includes("operating right now") ||
-      (t.includes("when you") && t.includes("you tend to")))
+    t.includes("in summary") ||
+    t.includes("what i'm hearing") ||
+    t.includes("sounds like") ||
+    t.includes("you're saying") ||
+    t.includes("you are saying") ||
+    t.includes("operating right now") ||
+    t.includes("does that capture") ||
+    t.includes("does that sound") ||
+    t.includes("does that fit") ||
+    t.includes("does this capture") ||
+    (t.includes("when you") && t.includes("you tend to"))
   );
 }
 

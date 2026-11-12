@@ -373,9 +373,20 @@ exports.handler = async (event) => {
       userMessage,
     });
     // In intake, code picks the element; drop the client's regex-based hint so the prompt has one instruction.
-    const journeyContext = turn.phaseOne
+    // When the user just confirmed the Reflective Handshake, mark Phase Two in this turn's prompt.
+    let journeyContext = turn.phaseOne
       ? { ...body.journeyContext, phaseOneNextElement: null, askedPhaseOneElements: null }
       : body?.journeyContext;
+    if (turn.phaseOne?.handshakeConfirmed) {
+      journeyContext = {
+        ...journeyContext,
+        phaseOneConfirmed: true,
+        phaseOneStep: 3,
+        platformPhase: 2,
+        phaseOneNextElement: null,
+        askedPhaseOneElements: null,
+      };
+    }
     const systemContent = await buildChatSystemContent(
       !!body?.possibleCrisisLanguage,
       journeyContext,

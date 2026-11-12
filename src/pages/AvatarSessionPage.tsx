@@ -435,11 +435,12 @@ export default function AvatarSessionPage() {
 
   const applyJourneyUpdates = async (updates: Partial<JourneyState>) => {
     if (!sessionId || Object.keys(updates).length === 0) return;
+    // Keep local journey moving even if Supabase UPDATE fails (RLS), so Phase One can exit.
+    setJourneySession((prev) =>
+      prev && prev.id === sessionId ? { ...prev, ...updates, updated_at: new Date().toISOString() } : prev,
+    );
     try {
       await updateJourneyState(sessionId, updates);
-      setJourneySession((prev) =>
-        prev && prev.id === sessionId ? { ...prev, ...updates, updated_at: new Date().toISOString() } : prev,
-      );
     } catch {
       toast.error("Couldn't save your progress — please try again");
     }
@@ -705,6 +706,11 @@ export default function AvatarSessionPage() {
         toast.error("Couldn't save your progress — please try again");
       }
       const journeyUpdates = inferJourneyUpdates(text, previousAssistantContent, content, journeyState);
+      if (result.phaseOne?.handshakeConfirmed) {
+        journeyUpdates.phase_one_confirmed = true;
+        journeyUpdates.platform_phase = 2;
+        journeyUpdates.phase_one_step = 3;
+      }
       await applyJourneyUpdates(journeyUpdates);
       const mergedState = { ...journeyState, ...journeyUpdates };
       await applyProgressDashboardUpdates(content, mergedState, text);

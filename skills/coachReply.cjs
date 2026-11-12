@@ -239,6 +239,19 @@ function nextMissingElement(captured) {
   return PHASE_ONE_ELEMENTS.find((el) => captured[el] === undefined) ?? "summary";
 }
 
+/** Explicit Reflective Handshake confirmation (summary was just offered). */
+const HANDSHAKE_CONFIRM_RE =
+  /^\s*(yes|yeah|yep|yup|correct|exactly|right|true|sure|ok|okay|agreed)\b|\b(yes|yeah|yep)\b.{0,40}\b(does|it does|that's right|that is right|exactly|capture|sound|fit|move on)\b|\b(that's right|that is right|sounds right|you've got it|spot on|that's it|that captures|that describes|move on)\b/i;
+
+const HANDSHAKE_REJECT_RE =
+  /\b(not quite|not really|nope|missing|wrong|incorrect|doesn't fit|does not fit|not accurate)\b/i;
+
+function isHandshakeConfirm(text) {
+  const t = String(text ?? "").trim();
+  if (!t || HANDSHAKE_REJECT_RE.test(t)) return false;
+  return HANDSHAKE_CONFIRM_RE.test(t);
+}
+
 /**
  * Advances Phase One state with the user's latest message, then picks the next element to ask.
  * `prior` comes from the last assistant message's stored metadata; if missing, it is rebuilt
@@ -275,6 +288,13 @@ function advancePhaseOneState({ prior, history = [], userMessage = "", presentin
   if (presentingChallenge && captured.situation === undefined) {
     captured.situation = String(presentingChallenge).slice(0, 300);
   }
+
+  // Summary is not a captured field — "yes" must exit intake, not re-ask forever.
+  if (asking === "summary" && isHandshakeConfirm(answer)) {
+    captured = cleanCaptured(captured);
+    return { captured, asking: "summary", handshakeConfirmed: true };
+  }
+
   record(asking, answer);
   if (captured.situation === undefined && answer.split(/\s+/).length >= 12) {
     captured.situation = answer.slice(0, 300);
@@ -411,6 +431,9 @@ function withRegenerateReminder(messages) {
  * Decides, before the model runs, how this turn's reply is checked and (in Phase One intake)
  * which element to ask about.
  */
+const HANDSHAKE_DONE_INSTRUCTION = `# This turn
+The user just confirmed your Phase One summary (Reflective Handshake). Do NOT re-summarize or ask if it captures things again. Acknowledge briefly in one short sentence, then start Phase Two: ask what a successful resolution of this challenge would look like for them (their target outcome).`;
+
 function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, history, userMessage }) {
   const crisis = !!possibleCrisisLanguage;
   if (mode !== "chat" && mode !== "regenerate") return { guard: null, phaseOne: null, turnInstruction: "" };
@@ -423,6 +446,15 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
           presentingChallenge: journeyContext.presentingChallenge,
         })
       : null;
+
+  if (phaseOne?.handshakeConfirmed) {
+    return {
+      phaseOne: { ...phaseOne, handshakeConfirmed: true },
+      turnInstruction: HANDSHAKE_DONE_INSTRUCTION,
+      guard: { jsonMode: false, phaseOne: false, element: null, crisis },
+    };
+  }
+
   return {
     phaseOne,
     turnInstruction: phaseOne ? phaseOneTurnInstruction(phaseOne) : "",

@@ -208,6 +208,32 @@ describe("Phase One state", () => {
     expect(isPhaseOneIntake({ platformPhase: 2 }, false)).toBe(false);
     expect(isPhaseOneIntake({ platformPhase: 1, phaseOneStep: 3 }, false)).toBe(false);
   });
+
+  it("exits the summary loop when the user confirms the handshake", () => {
+    const prior = {
+      captured: {
+        situation: "Scrolling at work",
+        trigger: "Paralyzed by repetitive tasks",
+        rule: "Look for stimulating distraction",
+        belief: "Work is boring",
+        strength: 95,
+        coping: "Scroll phone 40 minutes",
+      },
+      asking: "summary",
+    };
+    const next = advancePhaseOneState({ prior, history: [], userMessage: "yes can we move on?" });
+    expect(next.handshakeConfirmed).toBe(true);
+
+    const turn = prepareCoachTurn({
+      mode: "chat",
+      journeyContext: { platformPhase: 1, phaseOneStep: 1, phaseOneConfirmed: false, phaseOneState: prior },
+      history: [],
+      userMessage: "yes",
+    });
+    expect(turn.phaseOne?.handshakeConfirmed).toBe(true);
+    expect(turn.guard?.phaseOne).toBe(false);
+    expect(turn.turnInstruction).toMatch(/Phase Two/i);
+  });
 });
 
 describe("finalizeCoachReply", () => {

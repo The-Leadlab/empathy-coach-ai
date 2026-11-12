@@ -18,6 +18,8 @@ export type ChatApiPayload = {
 export type PhaseOneState = {
   captured: Partial<Record<"situation" | "trigger" | "rule" | "belief" | "strength" | "coping", string | number>>;
   asking: string;
+  /** Set when the user confirms the Reflective Handshake summary. */
+  handshakeConfirmed?: boolean;
 };
 
 type CoachGuard = { jsonMode: boolean; phaseOne: boolean; element: string | null; crisis: boolean };

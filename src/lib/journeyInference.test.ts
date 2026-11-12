@@ -24,6 +24,17 @@ describe("inferJourneyUpdates", () => {
     expect(updates.platform_phase).toBe(2);
   });
 
+  it("confirms short capture-style summaries used in production", () => {
+    const summary =
+      "You're saying that when work feels repetitive and unfulfilling, you feel a bit paralyzed and then scroll on your phone for about 40 minutes to find a distraction. Does that capture what you're experiencing?";
+    const updates = inferJourneyUpdates("yes", summary, "Great.", {
+      ...DEFAULT_JOURNEY_STATE,
+      phase_one_step: 3,
+    });
+    expect(updates.phase_one_confirmed).toBe(true);
+    expect(updates.platform_phase).toBe(2);
+  });
+
   it("locks micro-goal confidence and enters Phase Three", () => {
     const updates = inferJourneyUpdates(
       "8",

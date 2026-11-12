@@ -229,9 +229,22 @@ app.post("/api/chat", async (req, res) => {
     }
     const history = normalizeChatHistory(chatHistory, userMessage);
     turn = prepareCoachTurn({ mode: "chat", journeyContext, possibleCrisisLanguage, history, userMessage });
+    let promptJourney = turn.phaseOne
+      ? { ...journeyContext, phaseOneNextElement: null, askedPhaseOneElements: null }
+      : journeyContext;
+    if (turn.phaseOne?.handshakeConfirmed) {
+      promptJourney = {
+        ...promptJourney,
+        phaseOneConfirmed: true,
+        phaseOneStep: 3,
+        platformPhase: 2,
+        phaseOneNextElement: null,
+        askedPhaseOneElements: null,
+      };
+    }
     const systemContent = await buildChatSystemContent(
       !!possibleCrisisLanguage,
-      turn.phaseOne ? { ...journeyContext, phaseOneNextElement: null, askedPhaseOneElements: null } : journeyContext,
+      promptJourney,
       history,
       true,
       userMessage,
