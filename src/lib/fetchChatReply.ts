@@ -24,7 +24,13 @@ export type PhaseOneState = {
 
 type CoachGuard = { jsonMode: boolean; phaseOne: boolean; element: string | null; crisis: boolean };
 
-export type ChatReplyOk = { ok: true; reply: string; provider?: string; phaseOne?: PhaseOneState | null };
+export type ChatReplyOk = {
+  ok: true;
+  reply: string;
+  provider?: string;
+  phaseOne?: PhaseOneState | null;
+  protocolState?: string | null;
+};
 export type ChatReplyErr = { ok: false; error: string; retryable?: boolean };
 export type ChatReplyResult = ChatReplyOk | ChatReplyErr;
 
@@ -137,7 +143,13 @@ async function requestFallback(
     body: JSON.stringify({ ...payload, provider: "fallback", cancelJobId, guardRejected }),
     signal,
   });
-  let data: { reply?: string; error?: string; provider?: string; phaseOne?: PhaseOneState | null };
+  let data: {
+    reply?: string;
+    error?: string;
+    provider?: string;
+    phaseOne?: PhaseOneState | null;
+    protocolState?: string | null;
+  };
   try {
     data = await response.json();
   } catch {
@@ -150,13 +162,19 @@ async function requestFallback(
       retryable: true,
     };
   }
-  return { ok: true, reply: data.reply ?? "", provider: data.provider || "fallback", phaseOne: data.phaseOne ?? null };
+  return {
+    ok: true,
+    reply: data.reply ?? "",
+    provider: data.provider || "fallback",
+    phaseOne: data.phaseOne ?? null,
+    protocolState: data.protocolState ?? null,
+  };
 }
 
 async function pollRunPodJob(
   jobId: string,
   payload: ChatApiPayload,
-  submitted: { guard?: CoachGuard | null; phaseOne?: PhaseOneState | null },
+  submitted: { guard?: CoachGuard | null; phaseOne?: PhaseOneState | null; protocolState?: string | null },
   opts?: {
     onWarmingChange?: (warming: boolean) => void;
     onElapsed?: (ms: number) => void;
@@ -209,6 +227,7 @@ async function pollRunPodJob(
           reply: pollData.reply ?? "",
           provider: pollData.provider || "runpod",
           phaseOne: submitted.phaseOne ? mergePhaseOneState(submitted.phaseOne, pollData.stateUpdate) : null,
+          protocolState: submitted.protocolState ?? null,
         };
       }
 
@@ -293,6 +312,7 @@ export async function fetchChatReply(
       fallback?: boolean;
       guard?: CoachGuard | null;
       phaseOne?: PhaseOneState | null;
+      protocolState?: string | null;
     };
     try {
       data = await response.json();
@@ -307,7 +327,12 @@ export async function fetchChatReply(
     if (response.status === 202 && data.jobId) {
       opts?.onWarmingChange?.(true);
       try {
-        return await pollRunPodJob(data.jobId, payload, { guard: data.guard, phaseOne: data.phaseOne }, opts);
+        return await pollRunPodJob(
+          data.jobId,
+          payload,
+          { guard: data.guard, phaseOne: data.phaseOne, protocolState: data.protocolState },
+          opts,
+        );
       } finally {
         opts?.onWarmingChange?.(false);
       }
@@ -321,7 +346,13 @@ export async function fetchChatReply(
       };
     }
 
-    return { ok: true, reply: data.reply ?? "", provider: data.provider, phaseOne: data.phaseOne ?? null };
+    return {
+      ok: true,
+      reply: data.reply ?? "",
+      provider: data.provider,
+      phaseOne: data.phaseOne ?? null,
+      protocolState: data.protocolState ?? null,
+    };
   } catch (err) {
     if (err instanceof DOMException && err.name === "AbortError") {
       return { ok: false, error: "Cancelled.", retryable: false };

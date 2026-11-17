@@ -4,7 +4,9 @@
 
 const { extractDisclosedCbtMap } = require("./conversationSkill.cjs");
 
-const PHASE_ONE_ELEMENT_ORDER = ["trigger", "coping", "rule", "belief", "strength"];
+const { PHASE_ONE_ELEMENTS } = require("./coachProtocolStates.cjs");
+// Skip "situation" for next-element hints (already captured as presenting challenge).
+const PHASE_ONE_ELEMENT_ORDER = PHASE_ONE_ELEMENTS.filter((el) => el !== "situation");
 
 const ELEMENT_ASK_PATTERNS = {
   trigger: /trigger|sets? it off|right before|what happens when|spike|sets this off|in the moment|first thought|pops up/i,
@@ -18,6 +20,11 @@ function detectAskedPhaseOneElements(assistantMessages) {
   const asked = new Set();
   for (const text of assistantMessages) {
     if (typeof text !== "string") continue;
+    // Compound "rule or belief" → treat as belief ask only (Hot Cross Bun: rule then belief).
+    if (/\brule\b.{0,20}\bbelief\b|\bbelief\b.{0,20}\brule\b/i.test(text)) {
+      asked.add("belief");
+      continue;
+    }
     for (const [element, pattern] of Object.entries(ELEMENT_ASK_PATTERNS)) {
       if (pattern.test(text)) asked.add(element);
     }
@@ -35,6 +42,7 @@ function nextPhaseOneElement(assistantMessages) {
 
 function detectPhaseOneFocusFromAssistant(assistantText) {
   if (typeof assistantText !== "string" || !assistantText.trim()) return null;
+  if (/\brule\b.{0,20}\bbelief\b|\bbelief\b.{0,20}\brule\b/i.test(assistantText)) return "belief";
   for (const [element, pattern] of Object.entries(ELEMENT_ASK_PATTERNS)) {
     if (pattern.test(assistantText)) return element;
   }

@@ -651,6 +651,7 @@ export default function AvatarSessionPage() {
       const generationMetadata = {
         provider: result.provider || "runpod",
         ...(result.phaseOne ? { phaseOne: result.phaseOne } : {}),
+        ...(result.protocolState ? { protocolState: result.protocolState } : {}),
       };
       let savedReply;
       try {

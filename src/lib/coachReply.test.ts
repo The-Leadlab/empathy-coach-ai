@@ -309,8 +309,27 @@ describe("turn preparation and fallback chain", () => {
       userMessage: "It happened again yesterday in the weekly meeting with everyone",
     });
     expect(turn.guard.jsonMode).toBe(true);
+    expect(turn.protocolState).toBe("MAP_CORE_COMPONENTS");
+    expect(turn.turnInstruction).toMatch(/MAP_CORE_COMPONENTS|Hot Cross Bun/);
     expect(turn.turnInstruction).toMatch(/# This turn/);
     expect(turn.turnInstruction).toMatch(/Output format/);
+  });
+
+  it("injects Phase Two hard-gate turnInstruction after handshake", () => {
+    const turn = prepareCoachTurn({
+      mode: "chat",
+      journeyContext: {
+        platformPhase: 2,
+        phaseOneConfirmed: true,
+        activeMicroGoal: "Draft one sentence",
+        microGoalConfidence: 5,
+      },
+      history: [],
+      userMessage: "Still nervous about sending it",
+    });
+    expect(turn.phaseOne).toBeNull();
+    expect(turn.protocolState).toBe("MICRO_STEPPING_AND_CONFIDENCE_CHECK");
+    expect(turn.turnInstruction).toMatch(/confidence|≥7|hard gate/i);
   });
 
   it("does not guard journey naming", () => {

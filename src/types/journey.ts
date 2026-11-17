@@ -1,6 +1,8 @@
 import type { PhaseOneState } from "@/lib/fetchChatReply";
+import { resolveProtocolState, type ProtocolState } from "@/lib/coachProtocolStates";
 
 export type PlatformPhase = 1 | 2 | 3;
+export type { ProtocolState };
 
 export type PhaseOneStep = 1 | 2 | 3;
 
@@ -97,6 +99,8 @@ export type JourneyContextPayload = {
   askedPhaseOneElements?: string | null;
   /** Server-tracked Phase One intake state from the previous coach reply. */
   phaseOneState?: PhaseOneState | null;
+  /** Miro 6-state machine label (derived). */
+  protocolState?: ProtocolState | null;
   progressSummary?: string | null;
   userGoals?: UserGoal[];
   phaseChecklist?: PhaseChecklistItem[];
@@ -317,7 +321,7 @@ export function toJourneyContextPayload(
     phaseOneState?: PhaseOneState | null;
   },
 ): JourneyContextPayload {
-  return {
+  const payload: JourneyContextPayload = {
     platformPhase: state.platform_phase,
     phaseOneStep: state.phase_one_step,
     phaseOneConfirmed: state.phase_one_confirmed,
@@ -339,6 +343,8 @@ export function toJourneyContextPayload(
     phaseChecklist: state.phase_checklist,
     practiceState: opts?.practiceState ?? null,
   };
+  payload.protocolState = resolveProtocolState(payload);
+  return payload;
 }
 
 export const PHASE_LABELS: Record<PlatformPhase, string> = {

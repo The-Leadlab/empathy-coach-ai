@@ -417,6 +417,7 @@ exports.handler = async (event) => {
       provider: replyProvider,
       stateUpdate: out.stateUpdate ?? null,
       phaseOne: turn?.phaseOne ? mergeStateUpdate(turn.phaseOne, out.stateUpdate) : null,
+      protocolState: turn?.protocolState ?? null,
     }),
   });
   const templateReply = () => {
@@ -520,6 +521,7 @@ exports.handler = async (event) => {
           provider: "runpod",
           guard,
           phaseOne: turn?.phaseOne ?? null,
+          protocolState: turn?.protocolState ?? null,
         }),
       };
     } catch (err) {

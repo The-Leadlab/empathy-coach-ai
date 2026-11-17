@@ -292,6 +292,7 @@ app.post("/api/chat", async (req, res) => {
       reply: out.reply,
       stateUpdate: out.stateUpdate ?? null,
       phaseOne: turn.phaseOne ? mergeStateUpdate(turn.phaseOne, out.stateUpdate) : null,
+      protocolState: turn.protocolState ?? null,
     });
   } catch (error) {
     console.error("Error connecting to vLLM:", error.message);

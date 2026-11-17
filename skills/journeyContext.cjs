@@ -3,6 +3,7 @@
  */
 
 const { formatPhaseOneNextElementInstruction } = require("./conversationMemory.cjs");
+const { resolveProtocolState, MAP_ORDER_LINE } = require("./coachProtocolStates.cjs");
 
 /** @typedef {1 | 2 | 3} PlatformPhase */
 
@@ -34,15 +35,24 @@ function formatJourneyContextForPrompt(ctx) {
 
   const phase = ctx.platformPhase ?? 1;
   const step = ctx.phaseOneStep ?? 1;
+  const protocolState = ctx.protocolState || resolveProtocolState(ctx);
   const lines = [
     "# Journey state for this conversation thread (internal — do not recite labels to user)",
+    `Protocol state (Miro machine, internal): ${protocolState}`,
     `Current platform phase (internal): ${phase}`,
     `Phase One step (internal): ${PHASE_ONE_STEP_LABELS[step] || step}`,
     `Phase One Reflective Handshake confirmed: ${ctx.phaseOneConfirmed ? "yes" : "no"}`,
+    `Map order (STATE 2): ${MAP_ORDER_LINE}`,
     `Sustainability Pivot active: ${ctx.sustainabilityPivotActive ? "yes — Core distancing skills only, halt BA" : "no"}`,
     `Architectural Backtrack active: ${ctx.architecturalBacktrackActive ? "yes — update Phase One assumptions before re-activation" : "no"}`,
     `Resuming existing thread: ${ctx.isResuming ? "yes" : "no"}`,
   ];
+  if (protocolState === "PHASE_2_GATE_LOCKED") {
+    lines.push("PHASE_2_GATE_LOCKED: confidence ≥7 — do not reopen Goal/ladder; check in on active sub-step only.");
+  }
+  if (protocolState === "MICRO_STEPPING_AND_CONFIDENCE_CHECK") {
+    lines.push("Hard gate: do not enter Phase Three practice until confidence ≥7 on the active sub-step.");
+  }
 
   if (ctx.presentingChallenge) {
     lines.push(`Presenting challenge on file: ${ctx.presentingChallenge}`);
@@ -123,10 +133,10 @@ function formatJourneyContextForPrompt(ctx) {
     } else if (step === 1) {
       lines.push("- Phase One Step 1.1: scenario extraction — one concrete situation.");
     } else if (step === 2) {
-      lines.push("- Phase One Step 1.2: map situation → trigger → rules → beliefs → strength % → coping.");
+      lines.push(`- Phase One Step 1.2: map ${MAP_ORDER_LINE}.`);
       if (ctx.presentingChallenge) {
         lines.push(
-          "- Presenting challenge already captured — do NOT re-ask for the main situation. Ask ONE missing 1.2 element (trigger, rule, belief, strength %, or coping).",
+          "- Presenting challenge already captured — do NOT re-ask for the main situation. Ask ONE missing 1.2 element in Hot Cross Bun order (trigger, coping, rule, belief, or strength %).",
         );
       }
       if (ctx.askedPhaseOneElements) {

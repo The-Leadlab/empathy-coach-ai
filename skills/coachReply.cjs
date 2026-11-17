@@ -4,9 +4,12 @@
  */
 
 const { naturalVoiceRejectReason, stripInstructionLeakPrefix } = require("./humanCoachVoice.cjs");
-
-// Hot Cross Bun first (situation → trigger/thought → emotion/body/behaviour), then rules/beliefs.
-const PHASE_ONE_ELEMENTS = ["situation", "trigger", "coping", "rule", "belief", "strength"];
+const {
+  PHASE_ONE_ELEMENTS,
+  resolveProtocolState,
+  protocolStateTurnInstruction,
+  PROTOCOL_STATES,
+} = require("./coachProtocolStates.cjs");
 
 const STOP_SEQUENCES = ["<think>", "\nUser:", "<|im_end|>"];
 
@@ -469,12 +472,15 @@ function isDocumentAnalysisTurn(userMessage) {
 
 function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, history, userMessage }) {
   const crisis = !!possibleCrisisLanguage;
-  if (mode !== "chat" && mode !== "regenerate") return { guard: null, phaseOne: null, turnInstruction: "" };
+  if (mode !== "chat" && mode !== "regenerate") {
+    return { guard: null, phaseOne: null, turnInstruction: "", protocolState: null };
+  }
 
-  // PDF/transcript uploads are analysis turns — not Phase One element capture.
+  // PDF/transcript uploads are analysis turns — not protocol capture.
   if (mode === "chat" && isDocumentAnalysisTurn(userMessage)) {
     return {
       phaseOne: null,
+      protocolState: null,
       turnInstruction: DOC_ANALYSIS_INSTRUCTION,
       guard: { jsonMode: false, phaseOne: false, element: null, crisis },
     };
@@ -483,24 +489,42 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
   const phaseOne =
     mode === "chat" && isPhaseOneIntake(journeyContext, crisis)
       ? advancePhaseOneState({
-          prior: journeyContext.phaseOneState,
+          prior: journeyContext?.phaseOneState,
           history,
           userMessage,
-          presentingChallenge: journeyContext.presentingChallenge,
+          presentingChallenge: journeyContext?.presentingChallenge,
         })
       : null;
 
   if (phaseOne?.handshakeConfirmed) {
     return {
       phaseOne: { ...phaseOne, handshakeConfirmed: true },
+      protocolState: PROTOCOL_STATES.GOAL_SETTING,
       turnInstruction: HANDSHAKE_DONE_INSTRUCTION,
       guard: { jsonMode: false, phaseOne: false, element: null, crisis },
     };
   }
 
+  // Enrich context with live Phase One asking so protocol state resolves correctly mid-map.
+  const ctxForProtocol = {
+    ...(journeyContext || {}),
+    phaseOneState: phaseOne || journeyContext?.phaseOneState || null,
+  };
+  if (phaseOne?.asking === "summary") {
+    ctxForProtocol.phaseOneStep = 3;
+  } else if (phaseOne && !ctxForProtocol.phaseOneConfirmed) {
+    ctxForProtocol.phaseOneStep = Math.max(ctxForProtocol.phaseOneStep || 1, 2);
+  }
+
+  const protocolState = resolveProtocolState(ctxForProtocol);
+  const stateInstruction = protocolStateTurnInstruction(protocolState, ctxForProtocol);
+  const intakeInstruction = phaseOne ? phaseOneTurnInstruction(phaseOne) : "";
+  const turnInstruction = [stateInstruction, intakeInstruction].filter(Boolean).join("\n\n");
+
   return {
     phaseOne,
-    turnInstruction: phaseOne ? phaseOneTurnInstruction(phaseOne) : "",
+    protocolState,
+    turnInstruction,
     guard: { jsonMode: !!phaseOne, phaseOne: !!phaseOne, element: phaseOne?.asking ?? null, crisis },
   };
 }
@@ -521,6 +545,8 @@ async function runGuarded(generate, guard, maxAttempts = 2) {
 
 module.exports = {
   PHASE_ONE_ELEMENTS,
+  PROTOCOL_STATES,
+  resolveProtocolState,
   STOP_SEQUENCES,
   stripThinking,
   createThinkStreamFilter,

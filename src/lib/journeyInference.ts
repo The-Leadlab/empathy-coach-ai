@@ -200,25 +200,28 @@ export function inferJourneyUpdates(
   const target = extractTargetOutcome(currentAssistant);
   if (target && current.phase_one_confirmed) updates.target_outcome = target;
 
-  // --- Phase Three ---
-  if (FAILURE_STRESS.test(user)) {
+  // --- Phase Three (only after handshake) ---
+  const confirmed = !!(updates.phase_one_confirmed ?? current.phase_one_confirmed);
+
+  if (confirmed && FAILURE_STRESS.test(user)) {
     updates.sustainability_pivot_active = true;
     updates.platform_phase = 3;
     updates.architectural_backtrack_active = false;
     updates.micro_goal_confidence = null;
   }
 
-  if (SUCCESS_EXEC.test(user) && !FAILURE_STRESS.test(user)) {
+  if (confirmed && SUCCESS_EXEC.test(user) && !FAILURE_STRESS.test(user)) {
     updates.sustainability_pivot_active = false;
     updates.architectural_backtrack_active = false;
     updates.last_check_in_at = new Date().toISOString();
   }
 
-  if (current.sustainability_pivot_active && STEADIER.test(user)) {
+  if (confirmed && current.sustainability_pivot_active && STEADIER.test(user)) {
     updates.architectural_backtrack_active = true;
   }
 
   if (
+    confirmed &&
     (current.architectural_backtrack_active || updates.architectural_backtrack_active) &&
     (looksLikeBacktrackQuestion(currentAssistant) || ASSUMPTION_SHIFT.test(user))
   ) {
@@ -228,18 +231,53 @@ export function inferJourneyUpdates(
     if (HANDSHAKE_CONFIRM.test(user) || ASSUMPTION_SHIFT.test(user)) {
       updates.architectural_backtrack_active = false;
       updates.sustainability_pivot_active = false;
+      // Return to STATE 5 — re-lock confidence before PHASE_2_GATE_LOCKED again
       updates.platform_phase = 2;
+      updates.micro_goal_confidence = null;
     }
   }
 
   if (
-    current.phase_one_confirmed &&
+    confirmed &&
     !updates.platform_phase &&
     current.active_micro_goal &&
     current.platform_phase === 2 &&
     (current.micro_goal_confidence ?? 0) >= 7
   ) {
     updates.platform_phase = 3;
+  }
+
+  // --- Hard gates (Miro STATES 3 / 5 / 6) — cannot soft-skip ---
+  const handshakeDone = !!(updates.phase_one_confirmed ?? current.phase_one_confirmed);
+  if (!handshakeDone) {
+    // STATE 3: no Goal / micro / confidence / Phase 3 until Reflective Handshake
+    delete updates.active_micro_goal;
+    delete updates.target_outcome;
+    delete updates.micro_goal_confidence;
+    if (updates.platform_phase != null && updates.platform_phase > 1 && !updates.phase_one_confirmed) {
+      updates.platform_phase = 1;
+    }
+    delete updates.sustainability_pivot_active;
+    delete updates.architectural_backtrack_active;
+  } else {
+    const nextConf = updates.micro_goal_confidence ?? current.micro_goal_confidence;
+    const nextMicro = updates.active_micro_goal ?? current.active_micro_goal;
+    const pivot =
+      !!(updates.sustainability_pivot_active ?? current.sustainability_pivot_active) ||
+      !!(updates.architectural_backtrack_active ?? current.architectural_backtrack_active);
+
+    // STATE 5: confidence < 7 keeps Phase Two (no PHASE_2_GATE_LOCKED)
+    if (typeof updates.micro_goal_confidence === "number" && updates.micro_goal_confidence < 7) {
+      updates.platform_phase = 2;
+    }
+
+    // STATE 6: Phase Three only when confidence ≥7 + active micro, or explicit pivot
+    const wantPhase3 = updates.platform_phase === 3;
+    if (wantPhase3 && !pivot) {
+      if (typeof nextConf !== "number" || nextConf < 7 || !nextMicro) {
+        updates.platform_phase = 2;
+      }
+    }
   }
 
   return updates;

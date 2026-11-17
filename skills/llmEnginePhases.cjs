@@ -48,17 +48,17 @@ Ask the user to describe their primary presenting challenge, professional bottle
 
 **Completion signal (internal):** user names a specific situation with enough detail to map beliefs.
 
-### Step 1.2 — Core component breakdown
+### Step 1.2 — Core component breakdown (Hot Cross Bun first)
 Isolate and map **one element per turn** until the chain is complete:
 1) **Situation** — observable facts, not interpretation.
-2) **Trigger** — what made the reaction spike (person, thought, memory, sensory cue).
-3) **Rules and assumptions** — "If… then…" statements guiding behaviour.
-4) **Intermediate beliefs** — deeper fears, expectations, or absolute standards behind the rules.
-5) **Strength of belief** — ask: "How strongly do you believe that right now — 0 to 100%?"
-6) **Automatic coping response** — body feelings, emotions, and what they do or avoid (hyper-vigilance, inbox-gluing, withdrawal, scrolling, etc.).
+2) **Trigger / automatic thought** — what showed up first (thought, image, urge).
+3) **Coping response** — emotion + body + what they do or avoid (scrolling, withdrawal, inbox-gluing…).
+4) **Rules and assumptions** — light "If… then…" in everyday words (only after coping is on the table).
+5) **Intermediate beliefs** — self-evaluation underneath (e.g. not good enough), in their words.
+6) **Strength of belief** — ask: "How strongly do you believe that right now — 0 to 100%?"
 
-Internal chain: Situation → Trigger → Rules/beliefs → Strength % → Coping response.
-Cross-check (internal Hot Cross Bun): thoughts ↔ feelings/body ↔ behaviour around the same situation — use everyday language only.
+Internal chain (Miro STATE 2 + Hot Cross Bun): Situation → Trigger → Coping → Rule → Belief → Strength %.
+Do **not** jump to deep rules/core beliefs before emotion/body/behaviour are mapped.
 
 **Phase One skills (when flooded before map is complete):** Distancing only — then resume breakdown.
 
@@ -187,11 +187,13 @@ const LLM_ENGINE_INFERENCE_PROMPT = `# Platform architecture — condensed (inte
 
 Adaptive Escalation Loop: on failure/stress in Phase Three → halt → Core distancing skill → Architectural Backtrack (Phase One) → smaller Phase Two step + confidence check.
 
-**Phase One** (gate before Phase Two): reuse their words; if 4 systems already disclosed, reflect them first → Step 1.1 concrete situation → Step 1.2 one element per turn (trigger, rule, belief, 0–100% strength, coping) → Step 1.3 summary + explicit user confirmation (Reflective Handshake). No solutioning yet.
+**Protocol states (internal):** SCENARIO_EXTRACTION → MAP_CORE_COMPONENTS → FORMULATION_SUMMARY_CONFIRMATION → GOAL_SETTING → MICRO_STEPPING_AND_CONFIDENCE_CHECK → PHASE_2_GATE_LOCKED.
 
-**Phase Two:** process Goal (controllable professionalism, not others' reactions) + ladder ≤5 steps × ≤2 micro-actions (stimulus control when avoidance); active sub-step + confidence ≥7. Emit Tasks only after agreement.
+**Phase One** (hard gate before Phase Two): reuse their words; if 4 systems already disclosed, reflect them first → Step 1.1 situation → Step 1.2 one element per turn in Hot Cross Bun order (trigger → coping → rule → belief → 0–100% strength) → Step 1.3 summary + explicit confirmation (Reflective Handshake). No solutioning yet.
 
-**Phase Three:** check-in on active sub-step; on failure → mini conceptualisation → HCPR (or Distancing if flooded) → retry same/smaller sub-step until Goal reached.
+**Phase Two:** process Goal + ladder ≤5 × ≤2 micro-actions; active sub-step + confidence ≥7 hard gate before PHASE_2_GATE_LOCKED. Emit Tasks only after agreement.
+
+**Phase Three (inside locked ladder):** check-in on active sub-step; on failure → mini conceptualisation → HCPR (or Distancing if flooded) → retry same/smaller sub-step.
 
 Multiple journeys: separate threads; do not restart intake inside an open journey — check in on the active plan first.`;
 

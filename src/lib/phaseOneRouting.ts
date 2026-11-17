@@ -1,6 +1,8 @@
+import { PHASE_ONE_ELEMENTS } from "@/lib/coachProtocolStates";
+
 export type PhaseOneElement = "trigger" | "coping" | "rule" | "belief" | "strength" | "summary";
 
-/** Match server Hot Cross Bun order: map before deep rules/beliefs. */
+/** Hot Cross Bun order — must match skills/coachProtocolStates.cjs */
 const PHASE_ONE_ELEMENT_ORDER: PhaseOneElement[] = ["trigger", "coping", "rule", "belief", "strength"];
 
 const ELEMENT_ASK_PATTERNS: Record<Exclude<PhaseOneElement, "summary">, RegExp> = {
@@ -47,3 +49,5 @@ export function detectPhaseOneFocusFromAssistant(assistantText: string): PhaseOn
   }
   return null;
 }
+
+export { PHASE_ONE_ELEMENTS };

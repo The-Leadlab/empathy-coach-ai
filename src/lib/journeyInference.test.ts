@@ -66,4 +66,47 @@ describe("inferJourneyUpdates", () => {
     );
     expect(updates.sustainability_pivot_active).toBe(true);
   });
+
+  it("hard gate: confidence below 7 stays in Phase Two", () => {
+    const updates = inferJourneyUpdates(
+      "4",
+      "On a scale of 1-10, how confident are you?",
+      "Let's shrink it.",
+      {
+        ...DEFAULT_JOURNEY_STATE,
+        phase_one_confirmed: true,
+        platform_phase: 2,
+        active_micro_goal: "Send one boundary email by 10am",
+      },
+    );
+    expect(updates.micro_goal_confidence).toBe(4);
+    expect(updates.platform_phase).toBe(2);
+  });
+
+  it("hard gate: no Phase Two fields before Reflective Handshake", () => {
+    const updates = inferJourneyUpdates(
+      "ok",
+      "",
+      "Your next small step is: send one email by Friday. How confident are you 1-10?",
+      {
+        ...DEFAULT_JOURNEY_STATE,
+        phase_one_confirmed: false,
+        phase_one_step: 2,
+      },
+    );
+    expect(updates.active_micro_goal).toBeUndefined();
+    expect(updates.micro_goal_confidence).toBeUndefined();
+    expect(updates.platform_phase === 3 || updates.platform_phase === 2).toBeFalsy();
+  });
+
+  it("hard gate: failure language before handshake does not open Phase Three", () => {
+    const updates = inferJourneyUpdates(
+      "I couldn't do it, I was too anxious",
+      "",
+      "I hear you.",
+      { ...DEFAULT_JOURNEY_STATE, phase_one_confirmed: false, phase_one_step: 2 },
+    );
+    expect(updates.sustainability_pivot_active).toBeUndefined();
+    expect(updates.platform_phase).not.toBe(3);
+  });
 });
