@@ -18,7 +18,7 @@ const {
   formatPhase3ForPrompt,
   isPhase3RagEnabled,
 } = require("./phase3Rag.cjs");
-const { formatSimonCanonForPrompt } = require("./simonCoachRules.cjs");
+const { formatSimonCanonForPrompt, loadJulyProductCanon } = require("./simonCoachRules.cjs");
 
 function sessionRowToJourneyContext(sessionRow, messageCount = 0) {
   if (!sessionRow) return null;
@@ -64,9 +64,19 @@ const INFERENCE_DIRECTIVES = `# Live inference directives (this turn — highest
  * @param {string} [opts.latestUserMessage] - current user turn for KB skill router retrieval
  * @param {string} [opts.turnInstruction] - code-chosen instruction for this turn (Phase One intake)
  */
+function formatJulySpeakingBarEarly() {
+  const rules = loadJulyProductCanon().slice(0, 12);
+  if (!rules.length) return "";
+  return `# July speaking bar (pinned — Simon meeting + training-feedback prompt)
+${rules.map((r) => `- ${r}`).join("\n")}`;
+}
+
 function buildProductionSystemPrompt(opts = {}) {
   const condensed = !!opts.forInference;
   let content = condensed ? COACH_INFERENCE_SYSTEM_PROMPT_TEXT : COACH_SYSTEM_PROMPT_TEXT;
+  // Pin July/Simon speaking rules near the top so head-truncation cannot strip tone.
+  const julyBar = formatJulySpeakingBarEarly();
+  if (julyBar) content += `\n\n${julyBar}\n`;
   content += `\n\n${formatLlmEnginePhasesForPrompt({ condensed })}\n`;
 
   const journeyBlock = formatJourneyContextForPrompt(opts.journeyContext);
@@ -74,25 +84,34 @@ function buildProductionSystemPrompt(opts = {}) {
 
   content += `\n\n${formatSkillsForPrompt({ condensed })}\n`;
   content += `\n\n${formatProgressDashboardForPrompt({ condensed })}\n`;
-  content += `\n\n${formatWorkbooksForPrompt({ condensed })}\n`;
 
-  const practiceBlock = formatUserWorkbookStateForPrompt(opts.journeyContext?.practiceState);
-  if (practiceBlock) content += `\n\n${practiceBlock}\n`;
+  // Knowledge / workbooks / Phase3 RAG only after Reflective Handshake (or when no live journey).
+  // Pre-handshake: skills + protocol only — protects July tone from KB dumps.
+  const jc = opts.journeyContext;
+  const allowKnowledge =
+    !jc || !!jc.phaseOneConfirmed || !!jc.sustainabilityPivotActive || !!jc.architecturalBacktrackActive;
 
-  const kbBlock = formatKnowledgeForPrompt(opts.latestUserMessage || "", {
-    condensed,
-    limit: condensed ? 1 : 2,
-  });
-  if (kbBlock) content += `\n\n${kbBlock}\n`;
+  if (allowKnowledge) {
+    content += `\n\n${formatWorkbooksForPrompt({ condensed })}\n`;
 
-  // Phase 3 RAG sits after crisis-aware KB route; off unless PHASE3_RAG_ENABLED=true.
-  if (isPhase3RagEnabled() && opts.latestUserMessage) {
-    const hits = retrievePhase3Context(opts.latestUserMessage, {
-      limit: condensed ? 2 : 3,
-      excludeRedFlagSources: true,
+    const practiceBlock = formatUserWorkbookStateForPrompt(jc?.practiceState);
+    if (practiceBlock) content += `\n\n${practiceBlock}\n`;
+
+    const kbBlock = formatKnowledgeForPrompt(opts.latestUserMessage || "", {
+      condensed,
+      limit: condensed ? 1 : 2,
     });
-    const ragBlock = formatPhase3ForPrompt(hits, condensed ? 1800 : 2800);
-    if (ragBlock) content += `\n\n${ragBlock}\n`;
+    if (kbBlock) content += `\n\n${kbBlock}\n`;
+
+    // Phase 3 RAG: intent-routed; off unless PHASE3_RAG_ENABLED=true.
+    if (isPhase3RagEnabled() && opts.latestUserMessage) {
+      const hits = retrievePhase3Context(opts.latestUserMessage, {
+        limit: condensed ? 1 : 2,
+        excludeRedFlagSources: true,
+      });
+      const ragBlock = formatPhase3ForPrompt(hits, condensed ? 1200 : 2200);
+      if (ragBlock) content += `\n\n${ragBlock}\n`;
+    }
   }
 
   if (condensed) {
@@ -100,16 +119,13 @@ function buildProductionSystemPrompt(opts = {}) {
     content += `\n8b. **[[WORKBOOK]] is invisible.** When recommending a Development Skills workbook, close with \`[[WORKBOOK]]{"id":"<catalogue_id>","reason":"…"}[[/WORKBOOK]]\` using only catalogue ids. At most one per reply. After [[PROGRESS]] if both appear.\n`;
   }
 
-  // Before conversation memory: context trimming drops everything from that header onwards.
+  // Turn instruction + Simon/July speaking bar BEFORE conversation memory.
+  // trimSystemContent may drop memory/exemplars under pressure — tone rules must survive.
   if (opts.turnInstruction?.trim()) {
     content += `\n\n${opts.turnInstruction.trim()}\n`;
   }
 
-  if (opts.conversationMemory?.trim()) {
-    content += `\n\n# Conversation memory (authoritative — recall these details; do not re-ask)\n${opts.conversationMemory.trim()}\n`;
-  }
-
-  // Layer 2: durable Simon canon (all old + new feedback), then fresh Supabase bullets.
+  // Layer 2: July product canon + Simon hard/compiled rules, then live Supabase bullets.
   const simonCanon = formatSimonCanonForPrompt({ forInference: condensed });
   if (simonCanon) content += `\n\n${simonCanon}\n`;
 
@@ -122,6 +138,10 @@ function buildProductionSystemPrompt(opts = {}) {
 
   if (opts.exemplars?.trim()) {
     content += `\n\n# Admin-starred exemplar replies (pattern to emulate)\n${opts.exemplars.trim()}\n`;
+  }
+
+  if (opts.conversationMemory?.trim()) {
+    content += `\n\n# Conversation memory (authoritative — recall these details; do not re-ask)\n${opts.conversationMemory.trim()}\n`;
   }
 
   if (opts.turnFeedback?.trim()) {

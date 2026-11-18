@@ -19,8 +19,10 @@ function fallbackConfig() {
   ).trim();
   // Prefer a reliable chat model; gpt-oss often returns empty content for long coach prompts.
   const model = (process.env.FALLBACK_LLM_MODEL || "llama-3.1-8b-instant").trim();
-  // Cold GPU boot is often 2–4 min; serve Groq after a short wait so the first reply isn't stuck on warming.
-  const fallbackAfterMs = Number(process.env.RUNPOD_FALLBACK_AFTER_MS) || 12000;
+  // Cold GPU boot is often 2–4 min. Prefer RunPod 14B tone: wait ~90s before Groq (was 12s).
+  // Override with RUNPOD_FALLBACK_AFTER_MS; set 0 to fall back immediately when configured.
+  const raw = process.env.RUNPOD_FALLBACK_AFTER_MS;
+  const fallbackAfterMs = raw === undefined || raw === "" ? 90000 : Number(raw);
   return { apiKey, apiUrl, model, fallbackAfterMs };
 }
 

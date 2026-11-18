@@ -37,22 +37,27 @@ const HARD_CANON = [
 const NOISE_LINE =
   /^(what (was |is )?(correct|good|wrong|right|works)|the good|assessment|critical |training mode|direct core|\[|try again|this is a training|this is a great|good response|no need for further|what needs fixing|what the llm|ritical error|context and system)/i;
 
-function loadCompiledRules() {
-  const candidates = [
-    path.join(__dirname, "..", "data", "simon-coach-rules.json"),
-    path.join(__dirname, "simon-coach-rules.json"),
-  ];
-  for (const p of candidates) {
-    try {
-      if (!fs.existsSync(p)) continue;
-      const raw = JSON.parse(fs.readFileSync(p, "utf8"));
-      const rules = Array.isArray(raw?.rules) ? raw.rules : [];
-      return rules.map((r) => String(r || "").trim()).filter(Boolean);
-    } catch {
-      /* ignore corrupt file */
-    }
+function loadRulesFromJson(filePath) {
+  try {
+    if (!fs.existsSync(filePath)) return [];
+    const raw = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    const rules = Array.isArray(raw?.rules) ? raw.rules : [];
+    return rules.map((r) => String(r || "").trim()).filter(Boolean);
+  } catch {
+    return [];
   }
-  return [];
+}
+
+function loadCompiledRules() {
+  const root = path.join(__dirname, "..", "data");
+  const simon = loadRulesFromJson(path.join(root, "simon-coach-rules.json"));
+  if (simon.length) return simon;
+  return loadRulesFromJson(path.join(__dirname, "simon-coach-rules.json"));
+}
+
+/** July 2026 product decisions + Simon training feedback prompt (from old-laptop hunt). */
+function loadJulyProductCanon() {
+  return loadRulesFromJson(path.join(__dirname, "..", "data", "july-product-canon.json"));
 }
 
 function dedupeRules(rules) {
@@ -78,13 +83,16 @@ function dedupeRules(rules) {
  */
 function formatSimonCanonForPrompt(opts = {}) {
   const forInference = !!opts.forInference;
-  const maxRules = opts.maxRules ?? (forInference ? 28 : 48);
+  const maxRules = opts.maxRules ?? (forInference ? 36 : 48);
   const compiled = loadCompiledRules();
-  const merged = dedupeRules([...HARD_CANON, ...compiled]).slice(0, maxRules);
+  const julyCanon = loadJulyProductCanon();
+  // July product decisions first (meeting + feedback prompt), then hard canon, then compiled feedback.
+  const merged = dedupeRules([...julyCanon, ...HARD_CANON, ...compiled]).slice(0, maxRules);
   if (!merged.length) return "";
   const bullets = merged.map((r) => `- ${r}`).join("\n");
-  return `# Simon coach canon (Layer 2 — all trainer feedback, old + new)
+  return `# Simon coach canon (Layer 2 — July product bar + all trainer feedback)
 Mandatory for every learner. Overrides generic LoRA habits when safe. Safety always wins.
+Includes Jul 2026 meeting decisions and Simon training-feedback prompt recovered from the old laptop.
 When Simon marked an exact reply for this turn, the exact-target path still wins over these bullets.
 ${bullets}`;
 }
@@ -98,5 +106,6 @@ module.exports = {
   formatSimonCanonForPrompt,
   getSimonHardCanon,
   loadCompiledRules,
+  loadJulyProductCanon,
   dedupeRules,
 };

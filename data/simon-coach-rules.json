@@ -1,7 +1,7 @@
 {
-  "built_at": "2026-11-11T12:11:14.648Z",
-  "hard_canon_count": 15,
-  "compiled_count": 172,
+  "built_at": "2026-11-18T16:06:54.769Z",
+  "hard_canon_count": 21,
+  "compiled_count": 164,
   "sources_scanned": [
     "train_simon_feedback.jsonl",
     "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
@@ -9,7 +9,7 @@
     "data/sft/train_phase3_plus_simon.clean.jsonl",
     "data/sft/train_14b_gtm.jsonl"
   ],
-  "supabase_included": false,
+  "supabase_included": true,
   "rules": [
     "Then\" logical statement directly onto the client feels academic and clinical.Missed Opportunity for Depth: Instead of testing a mechanical formula, the LLM should ask a Socratic question probing the d…",
     "When that thought hits you, and you're looking at those profiles, what happens to that original feeling of fatigue?",
@@ -31,7 +31,6 @@
     "Using socratic question ask for further clarity around the initial situation.",
     "What should be asked is them to elaborate on the situation, expand, using socratic questioning to clarify etc.",
     "you must follow up and ask about 'what hints have the given' and ask why they are giving hints over actually talking to the colleague.",
-    "You changed the focus of the hints.  the focuses should be on the user.  What hint (actions) have the taken in hope their colleague will change their shared office habits and why have they not spoken …",
     "(must) keep the focus on the user, dont ask them to account for others actions in such a case.",
     "Challenge the user by asking again about the hints they made, with a follow-up as to why only hints and not out right asking their colleague for an altered approach to the shared office situation - se…",
     "Do not move on to the next step - conceptualisation, until the situation is fully understood.",
@@ -75,12 +74,9 @@
     "You ask them to look at what holding the thought is doing to their life in this exact moment.",
     "Use this template as a guide: *\"You're completely right, and I appreciate you pointing that out.",
     "They explicitly stated: \"If I keep holding onto it, I’m just going to sit here completely paralyzed...",
-    "Use this template as a guide: *\"That is a incredibly powerful realization. You’ve spotted something major: holding onto this belief doesn't just make you feel bad, it actually paralyzes you to the poi…",
     "Keep it natural: Maintain clean paragraphs. Do not use bullet points, bold headers, or mention the acronym \"H-CPR.\"",
     "When a user has a 10/10 belief, their brain will fiercely resist early reframing because it feels like a forced positive lie. The H-CPR model works by delaying reformulation until the original thought…",
-    "Use this template as a guide: *\"That is a profound realization. You’ve spotted exactly how this thought operates—it acts like an absolute veto, deleting your reason to try and completely robbing you o…",
     "Before we can ask the user to change their mind, we must help them recognize just how unbalanced the current thought is.",
-    "Use this template as a guide: *\"You've hit on something incredibly profound here. This thought acts like a rigged trial—it tells you the case is already lost, so it completely blocks you from even att…",
     "More importantly, it committed the exact same error for the third time in a row: it rushed straight into proposing a new perspective and offering advice (\"I'd like to propose a new perspective...",
     "Pivot to the Reality (R) filter: Ask a Socratic question that separates the objective, physical fact from their mental assumption.",
     "Keep formatting completely clean: Use regular block paragraphs. No lists, no bullets, no bold text.",
@@ -89,7 +85,6 @@
     "Positivity/Balance Evidence: It is 100% negative, acts as a rigid defensive shield to avoid being blindsided, and leaves no room for neutral realities.",
     "Strictly avoid any markdown bullet points, numbered lists, bolded headers, or structural dividers. The summary must flow naturally in standard block paragraphs.",
     "When a client experiences a major cognitive shift, the immediate next step isn't to troubleshoot future failures—it is to solidify and emotionally anchor the victory.",
-    "Use this template as a guide: *\"That is an incredible shift. Going from an absolute, paralyzing ten out of ten certainty down to a four or five is a massive achievement, and the alternative thought yo…",
     "When you read that new thought out loud—remembering that this is just a piece of missing information and not a final verdict—what happens to that physical paralysis you felt a few minutes ago?",
     "It sounds like you're feeling like you're under a microscope every time you give updates in the team meeting, and it's frustrating because your colleagues don't have to justify their work in the same …",
     "When a user experiences a dramatic shift from total physical paralysis to feeling an active surge of agency, the AI must instantly capitalize on that momentum.",
@@ -147,11 +142,9 @@
     "The reframe is correct, but out of sync. first summerise teh conceptualisation to the user ask them if they agree with it and if there is anything to ask, then ask them to reframe.  from this we can t…",
     "In this architecture, deep-dive skills or behavioral experiments are a contingency used in Phase Three if a client encounters a block—they should not be dumped on the client during initial step-buildi…",
     "Own the Architecture: Keep the focus strictly on taking the confirmed goal and breaking it down into a highly specific, low-friction micro-step structure (capped at 5 steps max).",
-    "Skipping the Socratic Process: Instead of asking the user what they think a realistic first step looks like, you told them what it should be. You must guide, not dictate.",
     "If the user names a step that is too big, vague, or misaligned, do not override them.",
     "Keep the Invitation Clean and Singular: Warmly validate the established goal, and ask the user to propose what they think that very first, micro-level action should look like.",
     "follow it blindly\") without checking if they have the baseline data to make it work.",
-    "Missing the Diagnostic Phase: You skipped the opportunity to help the user understand why they procrastinate or where their time currently leaks. You cannot plan to avoid pitfalls if you do not yet kn…",
     "If we don't look at how your day naturally operates right now, we won't know where the hidden pitfalls, energy slumps, or procrastination traps are hiding.",
     "If we don't know them, we can't prepare for them, which means we might lapse on our new plan pretty quickly.",
     "Verify Roadmap Agreement: Ask the user if this sequential 3-step setup feels clear and collaborative before moving to the final steps of the plan.",
@@ -164,7 +157,6 @@
     "You mentioned that if an awkward silence happens, everyone will realize you don't fit in.",
     "If you were at a lunch and noticed a colleague sitting quietly, would your first thought be that they are weird or don't belong on the team?\"",
     "Summarize the rules and assumptions the user just shared, and transition directly into co-creating the structured Conceptualisation Statement for their validation.",
-    "Use this template as a guide: *\"You’ve articulated that internal rule so clearly: 'I must always be engaging, otherwise I’m completely useless to be around.' It sounds like this rule creates an all-or…",
     "'I will avoid the upcoming team lunch [Initial Response], since I am expected to always be engaging and interesting [Intermittent Belief/Rule].",
     "Use this template as a guide: \"It can feel incredibly exposing and a bit jarring to see those unwritten thoughts spelled out so directly.",
     "When you look at that statement, how much mental energy does it feel like you are spending every single day just trying to keep that rule alive?\"",
@@ -179,10 +171,10 @@
     "When teaching a physiological coping skill, especially via a text-based interface, the tool must outline the complete process clearly before or during the exercise so the user knows what to expect.",
     "A psychosocial tool should guide the user through a full, unified cycle of the technique, explain the physical mechanics clearly, and then check in on the result.",
     "Deliver the complete, step-by-step instructions for the full 4-7-8 breathing cycle in one clear message, guide the user through it, and ask an open-ended question to evaluate how it felt.",
-    "Use this template as a guide: *\"Great. Let's walk through one full cycle together so you get the rhythm. Find a comfortable position, drop your shoulders, and follow these steps:",
     "The session should not end as an isolated \"quick fix\" for Friday's lunch.",
     "Use this template as a guide: *\"That physical shift is exactly what we are looking for—it proves you can influence your own nervous system.",
-    "Next time we talk, we will look at the data you collect on Friday and use it to keep untangling that loop."
+    "Next time we talk, we will look at the data you collect on Friday and use it to keep untangling that loop.",
+    "When that exact thought—'Who am I to evaluate him, he's just going to reject it'—runs through your mind as you look at the screen, what specific emotion comes up for you right then, and where do you f…"
   ],
   "provenance": [
     {
@@ -287,11 +279,6 @@
     },
     {
       "rule": "you must follow up and ask about 'what hints have the given' and ask why they are giving hints over actually talking to the colleague.",
-      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
-      "type": "session_turn"
-    },
-    {
-      "rule": "You changed the focus of the hints.  the focuses should be on the user.  What hint (actions) have the taken in hope their colleague will change their shared office habits and why have they not spoken …",
       "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
       "type": "session_turn"
     },
@@ -526,11 +513,6 @@
       "type": "session_turn"
     },
     {
-      "rule": "Use this template as a guide: *\"That is a incredibly powerful realization. You’ve spotted something major: holding onto this belief doesn't just make you feel bad, it actually paralyzes you to the poi…",
-      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
-      "type": "session_turn"
-    },
-    {
       "rule": "Keep it natural: Maintain clean paragraphs. Do not use bullet points, bold headers, or mention the acronym \"H-CPR.\"",
       "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
       "type": "session_turn"
@@ -541,17 +523,7 @@
       "type": "session_turn"
     },
     {
-      "rule": "Use this template as a guide: *\"That is a profound realization. You’ve spotted exactly how this thought operates—it acts like an absolute veto, deleting your reason to try and completely robbing you o…",
-      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
-      "type": "session_turn"
-    },
-    {
       "rule": "Before we can ask the user to change their mind, we must help them recognize just how unbalanced the current thought is.",
-      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
-      "type": "session_turn"
-    },
-    {
-      "rule": "Use this template as a guide: *\"You've hit on something incredibly profound here. This thought acts like a rigged trial—it tells you the case is already lost, so it completely blocks you from even att…",
       "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
       "type": "session_turn"
     },
@@ -592,11 +564,6 @@
     },
     {
       "rule": "When a client experiences a major cognitive shift, the immediate next step isn't to troubleshoot future failures—it is to solidify and emotionally anchor the victory.",
-      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
-      "type": "session_turn"
-    },
-    {
-      "rule": "Use this template as a guide: *\"That is an incredible shift. Going from an absolute, paralyzing ten out of ten certainty down to a four or five is a massive achievement, and the alternative thought yo…",
       "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
       "type": "session_turn"
     },
@@ -886,11 +853,6 @@
       "type": "session_turn"
     },
     {
-      "rule": "Skipping the Socratic Process: Instead of asking the user what they think a realistic first step looks like, you told them what it should be. You must guide, not dictate.",
-      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
-      "type": "session_turn"
-    },
-    {
       "rule": "If the user names a step that is too big, vague, or misaligned, do not override them.",
       "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
       "type": "session_turn"
@@ -902,11 +864,6 @@
     },
     {
       "rule": "follow it blindly\") without checking if they have the baseline data to make it work.",
-      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
-      "type": "session_turn"
-    },
-    {
-      "rule": "Missing the Diagnostic Phase: You skipped the opportunity to help the user understand why they procrastinate or where their time currently leaks. You cannot plan to avoid pitfalls if you do not yet kn…",
       "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
       "type": "session_turn"
     },
@@ -981,11 +938,6 @@
       "type": "feedback_turn"
     },
     {
-      "rule": "Use this template as a guide: *\"You’ve articulated that internal rule so clearly: 'I must always be engaging, otherwise I’m completely useless to be around.' It sounds like this rule creates an all-or…",
-      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
-      "type": "feedback_turn"
-    },
-    {
       "rule": "'I will avoid the upcoming team lunch [Initial Response], since I am expected to always be engaging and interesting [Intermittent Belief/Rule].",
       "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
       "type": "feedback_turn"
@@ -1056,11 +1008,6 @@
       "type": "feedback_turn"
     },
     {
-      "rule": "Use this template as a guide: *\"Great. Let's walk through one full cycle together so you get the rhythm. Find a comfortable position, drop your shoulders, and follow these steps:",
-      "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
-      "type": "feedback_turn"
-    },
-    {
       "rule": "The session should not end as an isolated \"quick fix\" for Friday's lunch.",
       "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
       "type": "feedback_turn"
@@ -1074,6 +1021,11 @@
       "rule": "Next time we talk, we will look at the data you collect on Friday and use it to keep untangling that loop.",
       "source": "data/sft/external/phase1_phase2_simon_jun2026.jsonl",
       "type": "feedback_turn"
+    },
+    {
+      "rule": "When that exact thought—'Who am I to evaluate him, he's just going to reject it'—runs through your mind as you look at the screen, what specific emotion comes up for you right then, and where do you f…",
+      "source": "supabase:chat_feedback",
+      "type": "live"
     }
   ]
 }

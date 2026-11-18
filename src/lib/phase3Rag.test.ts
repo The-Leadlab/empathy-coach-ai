@@ -65,4 +65,27 @@ describe("phase3Rag", () => {
     });
     expect(prompt).toContain("Reference notes (internal");
   });
+
+  it("skips RAG and workbooks before Reflective Handshake even when flag on", () => {
+    process.env.PHASE3_RAG_ENABLED = "true";
+    clearPhase3IndexCache();
+    const prompt = buildProductionSystemPrompt({
+      forInference: true,
+      latestUserMessage: "stress sleep irritability concentration",
+      journeyContext: { phaseOneConfirmed: false, platformPhase: 1 },
+    });
+    expect(prompt).not.toContain("Reference notes (internal");
+    expect(prompt).not.toContain("# Workbooks");
+  });
+
+  it("allows RAG after Handshake when flag on", () => {
+    process.env.PHASE3_RAG_ENABLED = "true";
+    clearPhase3IndexCache();
+    const prompt = buildProductionSystemPrompt({
+      forInference: true,
+      latestUserMessage: "stress sleep irritability concentration",
+      journeyContext: { phaseOneConfirmed: true, platformPhase: 2 },
+    });
+    expect(prompt).toContain("Reference notes (internal");
+  });
 });

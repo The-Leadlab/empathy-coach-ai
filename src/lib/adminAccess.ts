@@ -9,6 +9,7 @@ export const NAMED_TRAINER_ADMINS = [
   "josh@admin.com",
   "simon@admin.com",
   "louise@admin.com",
+  "ali@admin.com",
 ];
 
 export function isNamedTrainerAdmin(email: string | undefined | null): boolean {

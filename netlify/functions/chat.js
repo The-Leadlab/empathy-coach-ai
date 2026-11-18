@@ -72,8 +72,9 @@ Capture the main topic or situation (work conflict, feedback anxiety, burnout, e
 };
 
 const TRAINER_FEEDBACK_LIMIT = 25;
-const INFERENCE_TRAINER_LIMIT = 6;
-const INFERENCE_EXEMPLAR_LIMIT = 2;
+/** Live inference: denser Simon gold (July bar) without blowing 4k context. */
+const INFERENCE_TRAINER_LIMIT = 12;
+const INFERENCE_EXEMPLAR_LIMIT = 4;
 
 async function fetchTrainerGlobalInstructions(limit = TRAINER_FEEDBACK_LIMIT) {
   const baseUrl = (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "").replace(/\/$/, "");
@@ -166,8 +167,8 @@ async function buildChatSystemContent(
     fetchTrainerGlobalInstructions(forInference ? INFERENCE_TRAINER_LIMIT : TRAINER_FEEDBACK_LIMIT),
     fetchStarredAssistantExemplars(forInference ? INFERENCE_EXEMPLAR_LIMIT : 8, forInference ? 280 : 480),
   ]);
-  const trainerRules = forInference ? trimTrainerRules(rawTrainerRules, 6, 120) : rawTrainerRules;
-  const exemplars = forInference ? trimExemplars(rawExemplars, 2, 160) : rawExemplars;
+  const trainerRules = forInference ? trimTrainerRules(rawTrainerRules, 12, 140) : rawTrainerRules;
+  const exemplars = forInference ? trimExemplars(rawExemplars, 4, 200) : rawExemplars;
   const conversationMemory = buildConversationMemoryBlock(history, forInference ? 1000 : 2200);
   let content = buildProductionSystemPrompt({
     trainerRules,

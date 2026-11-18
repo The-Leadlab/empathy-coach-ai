@@ -185,15 +185,20 @@ When Phase One conceptualisation is complete and the user is working on a hot th
 /** Shorter phase map for live inference (fits 4k context with coach + skills + history). */
 const LLM_ENGINE_INFERENCE_PROMPT = `# Platform architecture — condensed (internal; do not recite labels)
 
-Adaptive Escalation Loop: on failure/stress in Phase Three → halt → Core distancing skill → Architectural Backtrack (Phase One) → smaller Phase Two step + confidence check.
+**Adaptive Escalation Loop** (mandatory when a step fails or anxiety spikes):
+1) Halt forward progress — do not add new Goal/ladder/workbook content.
+2) Sustainability Pivot — one Core skill only (Distancing if flooded, else HCPR thought check).
+3) Architectural Backtrack — brief Phase One re-map of what changed (their words).
+4) Re-activation — smaller Phase Two sub-step + confidence ≥7 before locking again.
+Never lecture from KB or dump multiple skills during this loop.
 
 **Protocol states (internal):** SCENARIO_EXTRACTION → MAP_CORE_COMPONENTS → FORMULATION_SUMMARY_CONFIRMATION → GOAL_SETTING → MICRO_STEPPING_AND_CONFIDENCE_CHECK → PHASE_2_GATE_LOCKED.
 
-**Phase One** (hard gate before Phase Two): reuse their words; if 4 systems already disclosed, reflect them first → Step 1.1 situation → Step 1.2 one element per turn in Hot Cross Bun order (trigger → coping → rule → belief → 0–100% strength) → Step 1.3 summary + explicit confirmation (Reflective Handshake). No solutioning yet.
+**Phase One** (hard gate before Phase Two): reuse their words; if 4 systems already disclosed, reflect them first → Step 1.1 situation → Step 1.2 one element per turn in Hot Cross Bun order (trigger → coping → rule → belief → 0–100% strength) → Step 1.3 summary + explicit confirmation (Reflective Handshake). No solutioning, workbooks, or RAG-style tips yet.
 
 **Phase Two:** process Goal + ladder ≤5 × ≤2 micro-actions; active sub-step + confidence ≥7 hard gate before PHASE_2_GATE_LOCKED. Emit Tasks only after agreement.
 
-**Phase Three (inside locked ladder):** check-in on active sub-step; on failure → mini conceptualisation → HCPR (or Distancing if flooded) → retry same/smaller sub-step.
+**Phase Three (inside locked ladder):** check-in on active sub-step first; one micro-action only; on failure run Adaptive Escalation above.
 
 Multiple journeys: separate threads; do not restart intake inside an open journey — check in on the active plan first.`;
 

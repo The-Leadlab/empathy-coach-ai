@@ -163,10 +163,12 @@ function trimSystemContent(content, maxTokens) {
   let text = String(content || "");
   if (estimateTokens(text) <= maxTokens) return text;
 
+  // Drop optional bulk first. Never strip July speaking bar / Simon canon — tone SSOT without 7B weights.
   const dropSections = [
-    /# Admin-starred exemplar replies[\s\S]*/i,
-    /# Trainer global standards[\s\S]*/i,
-    /# Conversation memory[\s\S]*/i,
+    /# Simon feedback for this training turn[\s\S]*?(?=\n# |$)/i,
+    /# Conversation memory[\s\S]*?(?=\n# |$)/i,
+    /# Admin-starred exemplar replies[\s\S]*?(?=\n# |$)/i,
+    /# Trainer global standards[\s\S]*?(?=\n# |$)/i,
     /## Sequential stage lock[\s\S]*?(?=## |\n# |$)/i,
   ];
   for (const pattern of dropSections) {
@@ -174,7 +176,36 @@ function trimSystemContent(content, maxTokens) {
     if (estimateTokens(text) <= maxTokens) return text;
   }
 
-  return truncateToTokenBudget(text, maxTokens);
+  // Preserve pinned July bar + Simon canon across final head/tail truncate.
+  const preserveRes = [
+    /# July speaking bar[\s\S]*?(?=\n# |$)/i,
+    /# Simon coach canon[\s\S]*?(?=\n# |$)/i,
+  ];
+  const preserved = [];
+  for (const re of preserveRes) {
+    const m = text.match(re);
+    if (m) {
+      preserved.push(m[0].trim());
+      text = text.replace(m[0], "\n").trim();
+    }
+  }
+  const reserve = preserved.reduce((n, block) => n + estimateTokens(block), 0);
+  const coreBudget = Math.max(180, maxTokens - reserve - 8);
+  let core = truncateToTokenBudget(text, coreBudget);
+  if (preserved.length) {
+    // Re-insert tone blocks after the Role/Natural-voice head when possible.
+    const anchor = core.search(/\n# Platform architecture|\n# Journey state|\n# Skills|\n# Live inference/i);
+    const block = preserved.join("\n\n");
+    core =
+      anchor > 0
+        ? `${core.slice(0, anchor)}\n\n${block}\n${core.slice(anchor)}`.trim()
+        : `${core}\n\n${block}`.trim();
+  }
+  if (estimateTokens(core) <= maxTokens) return core;
+  // Last resort: keep Role head + preserved tone only.
+  const head = truncateToTokenBudget(text, Math.max(120, Math.floor(maxTokens * 0.45)));
+  const tone = truncateToTokenBudget(preserved.join("\n\n"), Math.max(80, Math.floor(maxTokens * 0.5)));
+  return truncateToTokenBudget(`${head}\n\n${tone}`.trim(), maxTokens);
 }
 
 function isContextLengthError(errText) {

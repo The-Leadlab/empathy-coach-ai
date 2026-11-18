@@ -89,6 +89,21 @@ async function main() {
   console.log(`Processing ${adminUsers.length} admin user(s)...`);
   for (const user of adminUsers) {
     const result = await upsertAdminUser(supabase.auth.admin, user.email, user.password);
+    if (result.id && result.id !== "unknown") {
+      const { error: roleErr } = await supabase.from("user_roles").upsert(
+        { user_id: result.id, role: "admin" },
+        { onConflict: "user_id,role" },
+      );
+      if (roleErr) {
+        // Fallback if unique constraint name differs — try plain insert ignore
+        const { error: insErr } = await supabase
+          .from("user_roles")
+          .insert({ user_id: result.id, role: "admin" });
+        if (insErr && !/duplicate|unique/i.test(insErr.message || "")) {
+          console.warn(`user_roles warn for ${user.email}: ${roleErr.message || insErr.message}`);
+        }
+      }
+    }
     console.log(`${result.action.toUpperCase()}: ${user.email} (${result.id})`);
   }
   console.log("Done.");
