@@ -156,6 +156,8 @@ export default function AvatarSessionPage() {
   const pendingSpeakTimeoutRef = useRef<number | null>(null);
   const chatAbortRef = useRef<AbortController | null>(null);
   const activeJobIdRef = useRef<string | null>(null);
+  /** Tracks last coach provider so we can toast when Groq → trained model switches. */
+  const lastCoachProviderRef = useRef<string | null>(null);
   const { speak, stop, isSpeaking } = useSpeechSynthesis();
 
   const buildDisplayMessages = (allMessages: StoredMessage[], activeMessageId: string | null) => {
@@ -641,6 +643,20 @@ export default function AvatarSessionPage() {
         setIsAiResponding(false);
         return;
       }
+      const replyProvider = result.provider || "runpod";
+      const prevProvider = lastCoachProviderRef.current;
+      lastCoachProviderRef.current = replyProvider;
+      if (
+        prevProvider &&
+        prevProvider !== "runpod" &&
+        replyProvider === "runpod"
+      ) {
+        toast.success("Trained coach is ready", {
+          description: "Switched from quick start to your ShiftED model.",
+          position: "bottom-right",
+          duration: 5000,
+        });
+      }
       const workbookRec = parseWorkbookRecommendation(content);
       const { displayContent } = extractProgressUpdates(content, journeyState);
       const reply: TranscriptMessage = {
@@ -649,7 +665,7 @@ export default function AvatarSessionPage() {
         content: displayContent || content,
       };
       const generationMetadata = {
-        provider: result.provider || "runpod",
+        provider: replyProvider,
         ...(result.phaseOne ? { phaseOne: result.phaseOne } : {}),
         ...(result.protocolState ? { protocolState: result.protocolState } : {}),
       };
