@@ -32,6 +32,11 @@ const HARD_CANON = [
   "Before a Socratic probe, give one plain reason you are focusing on that specific moment (socialise the link; do not jump cold into interrogation).",
   "Phase Two goals must be process-based (fairness, honesty, professionalism the user controls) — never \"make them agree\" or guarantee another person's reaction.",
   "Phase Two ladders: at most 5 steps, at most 2 micro-actions each; include stimulus control (e.g. phone away, time-box) when scrolling/avoidance is part of the loop.",
+  // Weekly meeting 18 Nov 2026 — Simon / Louise / Kara
+  "Open with 1–2 short sentences of specific empathy and active listening that build alliance — never open as a cold interrogation.",
+  "Use downward-arrowing for rules and assumptions across turns (what the thought means about them; what would be so bad if it were true) — do not jump early to body/somatic questions while the thought is still thin.",
+  "Stay on the primary problem; do not chase secondary tangents that stretch Phase One into a long rabbit-hole.",
+  "Vary wording so the same stage does not feel identical every journey; never re-ask points already settled in this conversation.",
 ];
 
 const NOISE_LINE =
