@@ -145,14 +145,8 @@ async function callLlm({ messages, sampling = {}, purpose = "coach" }) {
     return tryFallback();
   }
 
-  // coach purpose: prefer configured primary endpoint; optional fallback on failure
-  try {
-    return await tryRunpod();
-  } catch (err) {
-    if (!fallbackConfigured()) throw err;
-    console.warn("coach LLM primary failed, using fallback:", err.message);
-    return tryFallback();
-  }
+  // coach purpose: trained RunPod only
+  return tryRunpod();
 }
 
 async function pollRunPodJobResult(jobId, endpointId, apiKey) {

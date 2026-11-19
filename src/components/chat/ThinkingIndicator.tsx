@@ -4,17 +4,16 @@ import { Button } from "@/components/ui/button";
 
 type ThinkingIndicatorProps = {
   className?: string;
-  /** When true, show cold-start copy (RunPod scale-to-zero). */
+  /** Kept for callers; waiting copy is always "Thinking". */
   isWarming?: boolean;
   /** Elapsed ms from parent poll (optional). */
   elapsedMs?: number;
-  /** Offer retry/cancel when no fallback is expected after a long wait. */
   onRetry?: () => void;
   onCancel?: () => void;
 };
 
 /**
- * Waiting state: "Thinking" + elapsed time. At ~60–90s mentions switching to backup.
+ * Waiting state: "Thinking" + elapsed time.
  */
 export default function ThinkingIndicator({
   className,
@@ -33,25 +32,11 @@ export default function ThinkingIndicator({
 
   const sec = typeof elapsedMs === "number" ? Math.floor(elapsedMs / 1000) : elapsedSec;
 
-  const title = isWarming
-    ? sec < 20
-      ? "Getting ready"
-      : "Still starting up"
-    : sec < 8
-      ? "Thinking"
-      : sec < 25
-        ? "Still thinking"
-        : "Taking a bit longer";
+  const title = sec < 8 ? "Thinking" : sec < 25 ? "Still thinking" : "Taking a bit longer";
 
   let hint: string | null = null;
-  if (isWarming || sec >= 60) {
-    if (sec >= 60 && sec < 90) {
-      hint = "Switching to the fast backup if the GPU is still waking…";
-    } else if (sec >= 90) {
-      hint = "This is taking longer than usual.";
-    } else if (isWarming) {
-      hint = "The coach GPU may be waking up after idle.";
-    }
+  if (sec >= 90) {
+    hint = "This is taking longer than usual.";
   } else if (sec >= 25) {
     hint = "Longer replies can take a moment.";
   }
@@ -90,9 +75,7 @@ export default function ThinkingIndicator({
             ) : null}
           </div>
         ) : null}
-        <span className="sr-only">
-          {isWarming ? "The coach is starting up." : "The coach is thinking."}
-        </span>
+        <span className="sr-only">The coach is thinking.</span>
       </div>
     </div>
   );

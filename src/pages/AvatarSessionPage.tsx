@@ -1052,15 +1052,13 @@ export default function AvatarSessionPage() {
     messages[messages.length - 1]?.role === "user" &&
     !isAiResponding &&
     !isCoachWarming;
-  const statusLabel = isCoachWarming
-    ? "Getting ready"
-    : isAiResponding
-      ? "Thinking"
-      : isSpeaking
-        ? "Speaking"
-        : lastIsUserWithoutReply || retryUserMessageId
-          ? "No reply yet — Retry"
-          : "Ready";
+  const statusLabel = isCoachWarming || isAiResponding
+    ? "Thinking"
+    : isSpeaking
+      ? "Speaking"
+      : lastIsUserWithoutReply || retryUserMessageId
+        ? "No reply yet — Retry"
+        : "Ready";
 
   const showThinkingStatus = isAiResponding || isCoachWarming;
 

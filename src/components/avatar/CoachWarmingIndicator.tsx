@@ -26,11 +26,11 @@ export default function CoachWarmingIndicator() {
       <div className="flex items-center gap-3">
         <Loader2 className="h-5 w-5 shrink-0 animate-spin text-primary" aria-hidden />
         <div className="min-w-0 flex-1 space-y-2">
-          <p className="text-sm font-medium text-foreground">Getting ready…</p>
+          <p className="text-sm font-medium text-foreground">Thinking…</p>
           <Progress value={progress} className="h-1.5 bg-primary/15" />
         </div>
       </div>
-      <span className="sr-only">Alex is starting up. This may take a few minutes after idle.</span>
+      <span className="sr-only">The coach is thinking.</span>
     </div>
   );
 }

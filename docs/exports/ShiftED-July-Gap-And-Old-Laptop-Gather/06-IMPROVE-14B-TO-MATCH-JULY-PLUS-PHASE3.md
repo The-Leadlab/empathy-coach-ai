@@ -1,54 +1,46 @@
 # Improve current 14B to match July — with Phase 3 kept
 
-**Status (18 Nov 2026 evening):** P0–P2 live in code. Old-laptop hunt closed (**no 7B weights**). July meeting + Simon feedback prompt distilled into `data/july-product-canon.json` and injected via Simon canon. Gold export + SFT mix ready. Admin test user: `ali@admin.com`. Set `RUNPOD_FALLBACK_AFTER_MS=90000` on Vercel + redeploy.
+**Status (19 Nov 2026 morning):** Continued SFT **v2 is live** on Serverless (`MODEL_NAME` → `empathy-coach-qwen14-merged-v2`). Coach chat is **RunPod-only** (no Groq). Journey voice playback defaults off. Waiting UI says **Thinking** (no GPU copy).
 
 Assumption: July 7B weights stay missing. We close the quality gap on **this** stack.
 
 ---
 
-## Priority order (do in sequence)
+## Done
 
-### P0 — Make live answers sound like July (no train)
+| Item | Result |
+|------|--------|
+| P0 wait longer / stop Groq as default voice | Groq removed from coach path; trained 14B only |
+| Condensed July / Simon density in live prompt | Shipped earlier (canon + speaking bar) |
+| STATES 1–6 + Hot Cross Bun | Live |
+| Trainer gold / stars in prompt | Live |
+| Continued SFT v2 (221×3 + gold + hard-negs) | Trained, on volume, endpoint pointed |
+| Journey mute by default | Live |
 
-1. **Stop Groq from being the default voice**  
-   Cold-start / timeout → Wait longer for RunPod 14B; Groq only for crisis/timeout last resort. July feel dies on fallback.
+---
 
-2. **Restore condensed prompt density** from July full archive  
-   Bring back into the *live condensed* path (without blowing context):  
-   - one-question / plain-language / mirror rules (tight)  
-   - Adaptive Escalation: Sustainability Pivot → Architectural Backtrack (short)  
-   - tonality / user-similarity bullets from Simon global standards  
+## New timeline (next)
 
-3. **Keep hard STATES 1–6** (Hot Cross Bun order, handshake, confidence ≥7, `PHASE_2_GATE_LOCKED`) — these already beat July soft gates.
+### Now — verify live feel (1–2 days)
 
-4. **Re-inject trainer gold every turn**  
-   Export all `chat_feedback` where `apply_to_global_instructions` + all `admin_quality_star` messages → ensure prompt builder still loads them with a sane token budget.
+1. Run Simon scripts on production against **v2** (handshake, one question, no jargon, Hot Cross Bun).
+2. Star / flag turns that still feel “wrong” vs July — feed `chat_feedback` + `admin_quality_star`.
+3. Confirm cold-start still only shows **Thinking** (no backup / GPU messaging).
 
-### P1 — Knowledge without drowning tone
+### Next — quality loop (this week)
 
-1. **Do not dump full KB every turn.** Intent-route Phase 3 resources (July research rule: FT=tone, RAG=knowledge, Prompt=orchestration).  
-2. Fill or ignore empty Supabase `skills` / `workbooks` — until filled, keep **code** `skillsLibrary` as SSOT.  
-3. Phase 3 practice steps: one micro-action; no workbook lecture mid-Handshake.
+1. Export new gold from flagged turns → append to SFT mix (don’t retrain from zero).
+2. Keep Phase 3 RAG gated until Handshake; one micro-action max mid-intake.
+3. Optional: short continued adapter pass **only** if blind preference vs July still fails on ≥3 scripts.
 
-### P2 — User-similarity data loop
+### Later — only if needed
 
-1. Export Jul–Nov Supabase threads that Simon starred or rated high → `data/sft/exports/gold_jul_nov.jsonl`  
-2. Diff against `train_simon_feedback.jsonl` — add only **new** gold turns  
-3. Optional continued SFT on **14B** (or adapter-only) with mix:  
-   - 40% Simon-style short coach turns  
-   - 40% Phase3+protocol compliance turns  
-   - 20% hard-negative (jargon, multi-question, skipped handshake)  
-
-### P3 — Only if old-laptop hunt finds adapters
-
-1. Merge July LoRA onto base 7B → A/B vs 14B on same Simon scripts  
-2. Or use July replies as **teacher** to distill into 14B (preference pairs)
+1. If old-laptop adapters appear → A/B vs current v2 (don’t retrain 7B from scratch).
+2. Preference pairs (July teacher → 14B) only after script failures are logged.
 
 ---
 
 ## Acceptance tests (Simon scripts)
-
-Same scripts as July testing. Pass when:
 
 | Check | Target |
 |-------|--------|
@@ -59,12 +51,14 @@ Same scripts as July testing. Pass when:
 | Clinical jargon | 0 |
 | Blind preference (Simon) | ≥ July on 8/10 clips |
 | Phase3 pivot on stuck | Present without dumping KB |
+| Provider | RunPod 14B v2 only (never Groq) |
 
 ---
 
 ## What NOT to do
 
-- Retrain 7B from scratch “to be July” unless weights/adapters found — expensive, duplicates 14B work  
-- Expand condensed prompt back to full 50k every inference turn  
-- Revert Hot Cross Bun to July map order (clinical conflict already resolved)  
+- Re-enable Groq (or any third-party) as coach fallback
+- Retrain 7B from scratch “to be July” unless weights/adapters found
+- Expand condensed prompt back to full 50k every turn
+- Revert Hot Cross Bun to July map order
 - Delete Phase 3 to match July surface area
