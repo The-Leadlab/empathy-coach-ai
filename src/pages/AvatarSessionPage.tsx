@@ -139,7 +139,7 @@ export default function AvatarSessionPage() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isSessionLoading, setIsSessionLoading] = useState(true);
   const [isToolsOpen, setIsToolsOpen] = useState(false);
-  const [voiceEnabled, setVoiceEnabled] = useState(true);
+  const [voiceEnabled, setVoiceEnabled] = useState(false);
   const [isAiResponding, setIsAiResponding] = useState(false);
   const [chatError, setChatError] = useState<string | null>(null);
   const [retryUserMessageId, setRetryUserMessageId] = useState<string | null>(null);
