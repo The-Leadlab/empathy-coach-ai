@@ -1,23 +1,28 @@
 /**
- * Optional OpenAI-compatible fallback chat. Coach traffic uses trained RunPod only.
- * GROQ_API_KEY is ignored for chat — opt in only with FALLBACK_LLM_API_KEY + FALLBACK_LLM_API_URL.
+ * OpenAI-compatible fallback chat (e.g. Groq) when RunPod is queued/failed.
+ * Env names only — keys live in Netlify / Vercel.
  */
 
 const { stripThinking, contentFromChoice } = require("./coachReply.cjs");
 
 function fallbackConfigured() {
-  const key = (process.env.FALLBACK_LLM_API_KEY || "").trim();
-  const url = (process.env.FALLBACK_LLM_API_URL || "").trim();
-  return Boolean(key && url);
+  const key = (process.env.FALLBACK_LLM_API_KEY || process.env.GROQ_API_KEY || "").trim();
+  return Boolean(key);
 }
 
 function fallbackConfig() {
-  const apiKey = (process.env.FALLBACK_LLM_API_KEY || "").trim();
-  const apiUrl = (process.env.FALLBACK_LLM_API_URL || "").trim();
+  const apiKey = (process.env.FALLBACK_LLM_API_KEY || process.env.GROQ_API_KEY || "").trim();
+  const hasGroq = Boolean((process.env.GROQ_API_KEY || "").trim());
+  const apiUrl = (
+    process.env.FALLBACK_LLM_API_URL ||
+    (hasGroq ? "https://api.groq.com/openai/v1/chat/completions" : "")
+  ).trim();
+  // Prefer a reliable chat model; gpt-oss often returns empty content for long coach prompts.
   const model = (process.env.FALLBACK_LLM_MODEL || "llama-3.1-8b-instant").trim();
-  // Unused for coach while fallback is off; kept for optional opt-in hosts.
+  // While the trained 14B GPU cold-starts, Groq covers early turns (name/rapport).
+  // Override with RUNPOD_FALLBACK_AFTER_MS; set 0 to fall back immediately when configured.
   const raw = process.env.RUNPOD_FALLBACK_AFTER_MS;
-  const fallbackAfterMs = raw === undefined || raw === "" ? 90000 : Number(raw);
+  const fallbackAfterMs = raw === undefined || raw === "" ? 12000 : Number(raw);
   return { apiKey, apiUrl, model, fallbackAfterMs };
 }
 
@@ -70,7 +75,7 @@ async function pickAvailableModel(apiUrl, apiKey, exclude = []) {
     .filter((m) => m && m.id && m.active !== false)
     .map((m) => m.id)
     .filter((id) => !skip.has(id) && !NON_CHAT_MODEL.test(id));
-  const preferred = [(process.env.FALLBACK_LLM_MODEL || "").trim(), ...PREFERRED_MODELS].filter(Boolean);
+  const preferred = [(process.env.GROQ_MODEL || "").trim(), ...PREFERRED_MODELS].filter(Boolean);
   return preferred.find((id) => ids.includes(id)) || ids[0] || null;
 }
 

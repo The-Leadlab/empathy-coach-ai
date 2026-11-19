@@ -466,8 +466,38 @@ function withRegenerateReminder(messages) {
 const HANDSHAKE_DONE_INSTRUCTION = `# This turn
 The user just confirmed your Phase One summary (Reflective Handshake). Do NOT re-summarize or ask if it captures things again. Acknowledge briefly in one short sentence, then start Phase Two: ask what a successful resolution of this challenge would look like for them (their target outcome).`;
 
+const RAPPORT_INTRO_INSTRUCTION = `# This turn — soft start (get to know them)
+Do NOT start Phase One mapping, Hot Cross Bun, rules, beliefs, ladders, or goals yet.
+Ask ONE simple question only. Priority (skip anything they already answered):
+1) Their name
+2) What they prefer to be called
+3) Rough age only if it feels natural — never pressure
+4) One light check-in (how they are today / what brought them here) — still warm, not clinical
+Keep 1–2 short sentences + one question. Once you have a preferred name, use it once.`;
+
+const SOFT_ENTER_PHASE_ONE_INSTRUCTION = `# This turn — soft transition into coaching
+You know them a little. Stay gentle. Acknowledge them by preferred name if known, then ask ONE soft question about the main challenge or situation they want help with.
+Do not jump into rules, beliefs, body scans, or ladders yet.`;
+
 function isDocumentAnalysisTurn(userMessage) {
   return /^\[Uploaded document for analysis:/i.test(String(userMessage ?? "").trim());
+}
+
+/** First few turns: learn name / preferred address before clinical Phase One. */
+function needsRapportIntro(journeyContext, history, userMessage) {
+  if (!journeyContext || typeof journeyContext !== "object") return false;
+  if (journeyContext.phaseOneConfirmed || journeyContext.presentingChallenge) return false;
+  if ((journeyContext.phaseOneStep ?? 1) >= 2) return false;
+  if (journeyContext.isResuming && journeyContext.activeMicroGoal) return false;
+  const prior = journeyContext.phaseOneState;
+  if (prior?.asking === "summary" || prior?.handshakeConfirmed) return false;
+  const captured = prior?.captured && typeof prior.captured === "object" ? prior.captured : null;
+  if (captured && Object.keys(captured).length >= 2) return false;
+  const userTurns = (history || []).filter((m) => m?.role === "user").length + (userMessage ? 1 : 0);
+  if (userTurns > 3) return false;
+  const blob = [...(history || []).map((m) => m?.content || ""), userMessage || ""].join("\n").toLowerCase();
+  const hasName = /\b(my name is|call me|you can call me)\s+[a-z][a-z'-]{1,30}\b/i.test(blob);
+  return !hasName || userTurns <= 2;
 }
 
 function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, history, userMessage }) {
@@ -482,6 +512,16 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
       phaseOne: null,
       protocolState: null,
       turnInstruction: DOC_ANALYSIS_INSTRUCTION,
+      guard: { jsonMode: false, phaseOne: false, element: null, crisis },
+    };
+  }
+
+  // Soft opener while GPU warms / first messages: name and simple rapport first.
+  if (mode === "chat" && !crisis && needsRapportIntro(journeyContext, history, userMessage)) {
+    return {
+      phaseOne: null,
+      protocolState: null,
+      turnInstruction: RAPPORT_INTRO_INSTRUCTION,
       guard: { jsonMode: false, phaseOne: false, element: null, crisis },
     };
   }
@@ -519,7 +559,11 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
   const protocolState = resolveProtocolState(ctxForProtocol);
   const stateInstruction = protocolStateTurnInstruction(protocolState, ctxForProtocol);
   const intakeInstruction = phaseOne ? phaseOneTurnInstruction(phaseOne) : "";
-  const turnInstruction = [stateInstruction, intakeInstruction].filter(Boolean).join("\n\n");
+  const softEnter =
+    phaseOne?.asking === "situation" && !(journeyContext?.presentingChallenge)
+      ? SOFT_ENTER_PHASE_ONE_INSTRUCTION
+      : "";
+  const turnInstruction = [softEnter, stateInstruction, intakeInstruction].filter(Boolean).join("\n\n");
 
   return {
     phaseOne,

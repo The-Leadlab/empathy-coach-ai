@@ -130,6 +130,47 @@ export async function cancelChatJob(jobId: string): Promise<void> {
   }
 }
 
+async function requestFallback(
+  payload: ChatApiPayload,
+  cancelJobId: string | undefined,
+  signal?: AbortSignal,
+  guardRejected = false,
+): Promise<ChatReplyResult> {
+  if (cancelJobId) await cancelChatJob(cancelJobId);
+  const response = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...payload, provider: "fallback", cancelJobId, guardRejected }),
+    signal,
+  });
+  let data: {
+    reply?: string;
+    error?: string;
+    provider?: string;
+    phaseOne?: PhaseOneState | null;
+    protocolState?: string | null;
+  };
+  try {
+    data = await response.json();
+  } catch {
+    return { ok: false, error: "The coach is unavailable right now. Please try again.", retryable: true };
+  }
+  if (!response.ok) {
+    return {
+      ok: false,
+      error: friendlyChatError(data.error, response.status),
+      retryable: true,
+    };
+  }
+  return {
+    ok: true,
+    reply: data.reply ?? "",
+    provider: data.provider || "fallback",
+    phaseOne: data.phaseOne ?? null,
+    protocolState: data.protocolState ?? null,
+  };
+}
+
 async function pollRunPodJob(
   jobId: string,
   payload: ChatApiPayload,
@@ -178,11 +219,7 @@ async function pollRunPodJob(
       }
       if (pollRes.ok && pollData.guardRejected) {
         opts?.onWarmingChange?.(false);
-        return {
-          ok: false,
-          error: "The coach reply did not pass quality checks. Please try again.",
-          retryable: true,
-        };
+        return requestFallback(payload, undefined, opts?.signal, true);
       }
       if (pollRes.ok && pollData.status === "COMPLETED") {
         return {
@@ -195,7 +232,14 @@ async function pollRunPodJob(
       }
 
       const status = String(pollData.status || "").toUpperCase();
-      if (TERMINAL_FAIL.has(status)) {
+      if (TERMINAL_FAIL.has(status) || pollData.fallback) {
+        if (pollData.fallback) {
+          opts?.onWarmingChange?.(false);
+          // Warming handoff: keep the RunPod job so the GPU finishes booting for later turns.
+          // Only cancel on real terminal failures below.
+          const cancelId = TERMINAL_FAIL.has(status) ? jobId : undefined;
+          return requestFallback(payload, cancelId, opts?.signal);
+        }
         return {
           ok: false,
           error: friendlyChatError(pollData.error, pollRes.status),
@@ -214,11 +258,11 @@ async function pollRunPodJob(
       if (!status || status === "UNKNOWN") {
         unknownStreak += 1;
         if (unknownStreak >= 8) {
-          return {
-            ok: false,
+          return requestFallback(payload, jobId, opts?.signal).catch(() => ({
+            ok: false as const,
             error: "The coach did not respond. Please try again.",
             retryable: true,
-          };
+          }));
         }
       } else {
         unknownStreak = 0;
@@ -230,6 +274,8 @@ async function pollRunPodJob(
   }
 
   await cancelChatJob(jobId);
+  const fallbackAttempt = await requestFallback(payload, undefined, opts?.signal).catch(() => null);
+  if (fallbackAttempt?.ok) return fallbackAttempt;
 
   return {
     ok: false,
@@ -239,7 +285,7 @@ async function pollRunPodJob(
 }
 
 /**
- * Calls /api/chat. RunPod chat uses async submit + poll (trained model only).
+ * Calls /api/chat. RunPod chat uses async submit + poll; falls back to OpenAI-compatible host when queued too long.
  */
 export async function fetchChatReply(
   payload: ChatApiPayload,

@@ -2,9 +2,9 @@ import type { JourneyState } from "@/types/journey";
 
 export const NEW_JOURNEY_WELCOME = `Welcome — I'm **Alex**, your AI coaching partner.
 
-This is **one continuous journey** you can return to anytime. We'll start by understanding what's going on for you before any action planning.
+Before we dig into anything hard, I'd like to know you a little. We'll go gently, one step at a time.
 
-**What's the main challenge, stressor, or situation you're facing right now?** Describe it in your own words.`;
+**What should I call you?**`;
 
 export function buildWelcomeMessage(state: Partial<JourneyState>): string {
   if (state.platform_phase === 3 && state.active_micro_goal) {

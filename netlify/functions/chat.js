@@ -471,8 +471,25 @@ exports.handler = async (event) => {
     return runFallback(typeof body?.cancelJobId === "string" ? body.cancelJobId : null, !!body?.guardRejected);
   }
 
-  // Coach uses trained RunPod only (no Groq / third-party chat fallback).
+  // Skip RunPod while paused / for testing (set COACH_LLM_PROVIDER=fallback on the host)
+  if ((process.env.COACH_LLM_PROVIDER || "").trim().toLowerCase() === "fallback" && fallbackConfigured()) {
+    return runFallback(null);
+  }
+
+  // Journey titles: prefer fast fallback so cold GPUs don't block naming
+  if (mode === "name_journey" && fallbackConfigured()) {
+    return runFallback(null);
+  }
+
+  // Trainer "Regenerate from feedback": LoRA often ignores scripted feedback — use Groq for rewrites.
+  if (mode === "regenerate" && fallbackConfigured()) {
+    return runFallback(null);
+  }
+
   if (!apiKey || apiKey.trim() === "") {
+    if (fallbackConfigured()) {
+      return runFallback(null);
+    }
     console.error(
       "LLM not connected: LLM_API_KEY is not set in Netlify environment variables (use your RunPod API key). Redeploy after saving.",
     );
@@ -509,7 +526,10 @@ exports.handler = async (event) => {
         }),
       };
     } catch (err) {
-      console.error("RunPod async submit failed:", err.message);
+      console.error("RunPod async submit failed, using fallback if configured:", err.message);
+      if (fallbackConfigured()) {
+        return runFallback(null);
+      }
       return {
         statusCode: 502,
         body: JSON.stringify({
@@ -597,9 +617,12 @@ exports.handler = async (event) => {
       guard,
     );
     if (out) return okReply(out, replyProvider);
-    return templateReply();
+    return runFallback(null, true);
   } catch (err) {
     console.error("Error connecting to LLM:", err.message);
+    if (fallbackConfigured()) {
+      return runFallback(null);
+    }
     if (err.status) {
       return {
         statusCode: err.status === 429 ? 429 : 502,

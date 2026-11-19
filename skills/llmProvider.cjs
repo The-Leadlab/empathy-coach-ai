@@ -145,8 +145,14 @@ async function callLlm({ messages, sampling = {}, purpose = "coach" }) {
     return tryFallback();
   }
 
-  // coach purpose: trained RunPod only
-  return tryRunpod();
+  // coach purpose: trained RunPod first; Groq/fallback if primary fails
+  try {
+    return await tryRunpod();
+  } catch (err) {
+    if (!fallbackConfigured()) throw err;
+    console.warn("coach LLM primary failed, using fallback:", err.message);
+    return tryFallback();
+  }
 }
 
 async function pollRunPodJobResult(jobId, endpointId, apiKey) {
