@@ -471,11 +471,6 @@ exports.handler = async (event) => {
     return runFallback(typeof body?.cancelJobId === "string" ? body.cancelJobId : null, !!body?.guardRejected);
   }
 
-  // Skip RunPod while paused / for testing (set COACH_LLM_PROVIDER=fallback on the host)
-  if ((process.env.COACH_LLM_PROVIDER || "").trim().toLowerCase() === "fallback" && fallbackConfigured()) {
-    return runFallback(null);
-  }
-
   // Journey titles: prefer fast fallback so cold GPUs don't block naming
   if (mode === "name_journey" && fallbackConfigured()) {
     return runFallback(null);
@@ -500,6 +495,24 @@ exports.handler = async (event) => {
   }
 
   const model = process.env.VLLM_MODEL || (isRunPod ? "empathy-coach-qwen14" : "meta-llama/llama-3.2-3b-instruct:free");
+
+  // Soft start: Groq answers now; still kick RunPod so min=0 workers boot for later trained turns.
+  if (mode === "chat" && turn?.rapport && fallbackConfigured() && useRunPodAsync(url) && endpointId) {
+    try {
+      if (estimateMessagesTokens(messages) > 3400) {
+        messages = trimMessagesForContext(messages, {
+          aggressive: true,
+          minHistoryMessages: 0,
+          reserveOutputTokens: 450,
+        });
+      }
+      const warmId = await submitRunPodJob(endpointId, apiKey, messages, sampling);
+      console.log("RunPod warm kick during Groq rapport:", warmId);
+    } catch (err) {
+      console.warn("RunPod warm kick failed:", err.message);
+    }
+    return runFallback(null);
+  }
 
   if (provider === "runpod" && (mode === "chat" || mode === "regenerate") && useRunPodAsync(url) && endpointId) {
     try {

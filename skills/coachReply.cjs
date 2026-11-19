@@ -523,6 +523,7 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
       protocolState: null,
       turnInstruction: RAPPORT_INTRO_INSTRUCTION,
       guard: { jsonMode: false, phaseOne: false, element: null, crisis },
+      rapport: true,
     };
   }
 
