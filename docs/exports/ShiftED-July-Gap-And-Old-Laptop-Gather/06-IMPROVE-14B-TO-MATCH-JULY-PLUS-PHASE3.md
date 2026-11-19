@@ -16,7 +16,7 @@ Assumption: July 7B weights stay missing. We close the quality gap on **this** s
 | Capacity | No usable 48GB stock in EU-RO-1 for those pools at the time |
 | Earlier same session | Old deploy still answered via **Groq gpt-oss-20b** — felt fast; new deploy waits for 14B |
 
-**Fixes applied:** purged 44 queued jobs; widened pools to also include `BLACKWELL_32` + `BLACKWELL_96` (still EU-RO-1 so the volume mounts). Retry a message; first cold start can still take 1–3 minutes while the worker loads ~28G.
+**Fixes applied:** purged 44 queued jobs; widened pools to also include `BLACKWELL_32` + `BLACKWELL_96` (still EU-RO-1 so the volume mounts). **Groq restored** as interim coach after ~12s while 14B cold-starts; new journeys open with name/rapport first, then soft Phase One once the trained model is answering.
 
 ---
 
