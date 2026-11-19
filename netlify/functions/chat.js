@@ -28,6 +28,9 @@ const {
   cancelRunPodJob,
   isRunPodTerminalFailure,
   useRunPodAsync,
+  getRunPodHealth,
+  countLiveWorkers,
+  ensureRunPodWarm,
 } = require("../../skills/runpodAsync.cjs");
 const {
   fallbackConfigured,
@@ -496,22 +499,28 @@ exports.handler = async (event) => {
 
   const model = process.env.VLLM_MODEL || (isRunPod ? "empathy-coach-qwen14" : "meta-llama/llama-3.2-3b-instruct:free");
 
-  // Soft start: Groq answers now; still kick RunPod so min=0 workers boot for later trained turns.
-  if (mode === "chat" && turn?.rapport && fallbackConfigured() && useRunPodAsync(url) && endpointId) {
+  // First messages: Groq answers now; a tiny RunPod job wakes min=0 workers. Once ready, trained model takes over.
+  if (mode === "chat" && useRunPodAsync(url) && endpointId && apiKey?.trim()) {
+    let workersUp = false;
     try {
-      if (estimateMessagesTokens(messages) > 3400) {
-        messages = trimMessagesForContext(messages, {
-          aggressive: true,
-          minHistoryMessages: 0,
-          reserveOutputTokens: 450,
-        });
-      }
-      const warmId = await submitRunPodJob(endpointId, apiKey, messages, sampling);
-      console.log("RunPod warm kick during Groq rapport:", warmId);
+      workersUp = countLiveWorkers(await getRunPodHealth(endpointId, apiKey)) > 0;
     } catch (err) {
-      console.warn("RunPod warm kick failed:", err.message);
+      console.warn("RunPod health unavailable:", err.message);
     }
-    return runFallback(null);
+    if (!workersUp) {
+      try {
+        const warmId = await ensureRunPodWarm(endpointId, apiKey);
+        if (warmId) console.log("RunPod warm kick on first/cold turn:", warmId);
+      } catch (err) {
+        console.warn("RunPod warm kick failed:", err.message);
+      }
+      if (fallbackConfigured()) {
+        return runFallback(null);
+      }
+    } else if (turn?.rapport && fallbackConfigured()) {
+      // Worker already up, but still soft-start on Groq for name/rapport only.
+      return runFallback(null);
+    }
   }
 
   if (provider === "runpod" && (mode === "chat" || mode === "regenerate") && useRunPodAsync(url) && endpointId) {

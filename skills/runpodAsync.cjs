@@ -139,6 +139,53 @@ function useRunPodAsync(vllmApiUrl) {
   return String(vllmApiUrl || "").includes("runpod.ai");
 }
 
+/** Snapshot of queue + workers for cold-start decisions. */
+async function getRunPodHealth(endpointId, apiKey, timeoutMs = 4000) {
+  const res = await fetch(`${runPodApiBase(endpointId)}/health`, {
+    headers: { Authorization: `Bearer ${apiKey.trim()}` },
+    signal: AbortSignal.timeout(timeoutMs),
+  });
+  const text = await res.text();
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    throw new Error(`RunPod /health invalid JSON (${res.status})`);
+  }
+  if (!res.ok) throw new Error(`RunPod /health ${res.status}: ${text.slice(0, 200)}`);
+  return data;
+}
+
+function countLiveWorkers(health) {
+  const w = health?.workers || {};
+  return (w.ready || 0) + (w.idle || 0) + (w.running || 0) + (w.initializing || 0);
+}
+
+/**
+ * Tiny job that only exists to scale a min=0 worker. Skips if already warm or queued.
+ * @returns {Promise<string|null>} job id or null when no kick needed
+ */
+async function ensureRunPodWarm(endpointId, apiKey) {
+  if (!endpointId || !apiKey?.trim()) return null;
+  let health;
+  try {
+    health = await getRunPodHealth(endpointId, apiKey);
+  } catch (err) {
+    console.warn("RunPod health check failed:", err.message);
+    health = null;
+  }
+  if (health && (countLiveWorkers(health) > 0 || (health.jobs?.inQueue || 0) > 0)) {
+    return null;
+  }
+  return submitRunPodJob(
+    endpointId,
+    apiKey,
+    [{ role: "user", content: "ok" }],
+    { temperature: 0, max_tokens: 1 },
+    15000,
+  );
+}
+
 module.exports = {
   parseRunPodEndpointId,
   runPodApiBase,
@@ -149,4 +196,7 @@ module.exports = {
   cancelRunPodJob,
   isRunPodTerminalFailure,
   useRunPodAsync,
+  getRunPodHealth,
+  countLiveWorkers,
+  ensureRunPodWarm,
 };
