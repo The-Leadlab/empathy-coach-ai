@@ -171,6 +171,15 @@ const META_PATTERN =
 // Goal ladders in later phases legitimately say "Step 1" and "next step", so these only count during intake.
 const INTAKE_ONLY_PATTERN = /\bStep \d|next step/i;
 const THIRD_PERSON_PATTERN = /\b(the user|the client|user's|the coachee)\b/i;
+/** Simon regression: goals / shared goals before handshake confirmation. */
+const EARLY_GOAL_PATTERN =
+  /\bshared goal\b|\bgoal when giving (?:the )?feedback\b|\bfeedback goal\b|\btarget outcome\b|\bmicro-?goal\b|\bladder of (?:at most )?\d*\s*steps\b|\bwhat would (?:a )?successful resolution\b|\bwhat(?:'s| is) (?:our |the )?(?:shared )?goal\b/i;
+
+const PRE_GOAL_PROTOCOL = new Set([
+  PROTOCOL_STATES.SCENARIO_EXTRACTION,
+  PROTOCOL_STATES.MAP_CORE_COMPONENTS,
+  PROTOCOL_STATES.FORMULATION_SUMMARY_CONFIRMATION,
+]);
 
 /** Hidden app tags are not shown to the user, so they are excluded from guard checks. */
 function stripHiddenTags(text) {
@@ -186,12 +195,19 @@ function isMetaText(text, opts = {}) {
   return !!opts.phaseOne && INTAKE_ONLY_PATTERN.test(visible);
 }
 
+function isPreGoalTurn(opts = {}) {
+  if (opts.phaseOne) return true;
+  if (opts.protocolState && PRE_GOAL_PROTOCOL.has(opts.protocolState)) return true;
+  return false;
+}
+
 /** Why a reply should be rejected, or null when it is fine to show. */
 function rejectReason(reply, opts = {}) {
   const visible = stripHiddenTags(reply);
   if (!visible) return "empty";
   if (isMetaText(visible, opts)) return "meta";
   if (opts.phaseOne && opts.element !== "summary" && !visible.includes("?")) return "no_question";
+  if (isPreGoalTurn(opts) && EARLY_GOAL_PATTERN.test(visible)) return "early_goal";
   const voiceReject = naturalVoiceRejectReason(visible);
   if (voiceReject) return voiceReject;
   return null;
@@ -368,7 +384,9 @@ Hard rules for this reply:
 - Ask ONLY the element above. Do not ask about rule/belief if the target is trigger or coping.
 - Never re-ask anything listed under Already known, even with different wording.
 - Do not jump to core beliefs before situation, thought, emotion/body, and behaviour are on the table.
-- Never invent a Tim scenario, panic-button framing, or workplace facts they did not say.
+- If asking about trigger/thought: deepen meaning or evidence — do not skim and jump ahead.
+- Never invent a Tim scenario, panic-button framing, stock training story, or workplace facts they did not say.
+- HARD BAN: goals, shared goals, feedback goals, ladders, target outcomes — Reflective Handshake is not done yet.
 
 # Output format (required)
 Return only one JSON object, no other text:
@@ -542,7 +560,13 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
       phaseOne: { ...phaseOne, handshakeConfirmed: true },
       protocolState: PROTOCOL_STATES.GOAL_SETTING,
       turnInstruction: HANDSHAKE_DONE_INSTRUCTION,
-      guard: { jsonMode: false, phaseOne: false, element: null, crisis },
+      guard: {
+        jsonMode: false,
+        phaseOne: false,
+        element: null,
+        protocolState: PROTOCOL_STATES.GOAL_SETTING,
+        crisis,
+      },
     };
   }
 
@@ -570,7 +594,13 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
     phaseOne,
     protocolState,
     turnInstruction,
-    guard: { jsonMode: !!phaseOne, phaseOne: !!phaseOne, element: phaseOne?.asking ?? null, crisis },
+    guard: {
+      jsonMode: !!phaseOne,
+      phaseOne: !!phaseOne,
+      element: phaseOne?.asking ?? null,
+      protocolState,
+      crisis,
+    },
   };
 }
 

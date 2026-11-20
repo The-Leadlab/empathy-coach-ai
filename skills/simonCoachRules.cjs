@@ -12,6 +12,9 @@ const path = require("path");
 const HARD_CANON = [
   "Reflect and briefly summarise what the user said and feels before asking your one question.",
   "Stay in conceptualisation until evidence, meaning, and the hot thought are clear — do not jump to goals, ladders, or techniques early.",
+  "Before Reflective Handshake confirmation: never ask for a Goal, shared goal, goal when giving feedback, target outcome, or ladder steps.",
+  "When a thought appears, deepen it at least once (what it means about them, or what evidence supports/challenges it) before moving on — do not skim thoughts and skip to goals.",
+  "Summaries and reflections may only restate what this user said in this journey — never paste a stock training scenario (e.g. generic project failure / looking incompetent / avoiding the manager) unless they said those words.",
   "Establish rules and assumptions through Socratic questioning; do not ask for them directly. Ask the user to elaborate on what is frustrating or hard.",
   "Stay locked on the exact person and situation the user named. Do not invent a second context, holiday, campaign, news story, or named person they did not mention.",
   "Never mention World Mental Health Day, awareness campaigns, or calendar events unless the user brought them up.",

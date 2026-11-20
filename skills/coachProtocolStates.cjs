@@ -74,23 +74,25 @@ function protocolStateTurnInstruction(state, ctx = {}) {
   switch (state) {
     case PROTOCOL_STATES.SCENARIO_EXTRACTION:
       return `# Protocol state: SCENARIO_EXTRACTION (STATE 1)
-Ask for one concrete recent situation (who, where, when, what happened). No rules, beliefs, goals, or advice yet.
-One short reflection + exactly one question.`;
+Ask for one concrete recent situation (who, where, when, what happened). No rules, beliefs, goals, shared goals, feedback goals, ladders, or advice yet.
+Only use facts from this journey. One short reflection + exactly one question.`;
 
     case PROTOCOL_STATES.MAP_CORE_COMPONENTS:
       return `# Protocol state: MAP_CORE_COMPONENTS (STATE 2)
 Map Hot Cross Bun order — one missing element per turn only:
-situation → trigger/thought → emotion/body/behaviour (coping) → light if…then rule → belief → 0–100 strength.
-Do not jump to core beliefs before coping is on the table. Do not re-ask known elements. No goals yet.`;
+situation → trigger/thought → deepen the thought (what it means / evidence) → emotion/body/behaviour (coping) → light if…then rule → belief → 0–100 strength.
+After the first thought, go one step deeper before leaving thoughts (downward-arrow or evidence) — do not skim and skip.
+Do not jump to core beliefs before coping is on the table. Do not re-ask known elements.
+HARD BAN this state: goals, shared goals, "goal when giving feedback", ladders, techniques, Tasks.`;
 
     case PROTOCOL_STATES.FORMULATION_SUMMARY_CONFIRMATION:
       return `# Protocol state: FORMULATION_SUMMARY_CONFIRMATION (STATE 3 — hard gate)
-Present a short plain-language summary of situation, thought, feelings/body, behaviour, and any rule/belief/strength.
-Ask if it fits. Do NOT move to goals until the user explicitly confirms. If they correct one part, update that part only.`;
+Present a short plain-language summary using ONLY what this user said in this journey (situation, thought, feelings/body, behaviour, any rule/belief/strength). Never invent a training scenario or workplace story they did not share.
+Ask if it fits (verification). Do NOT ask about goals, shared goals, ladders, or feedback goals until they explicitly confirm. If they correct one part, update that part only.`;
 
     case PROTOCOL_STATES.GOAL_SETTING:
       return `# Protocol state: GOAL_SETTING (STATE 4)
-Phase One handshake is done. Co-create a process Goal (controllable professionalism — not others' reactions) and a ladder of at most 5 steps (≤2 micro-actions each).
+Phase One handshake is confirmed. Only now co-create a process Goal (controllable professionalism — not others' reactions) and a ladder of at most 5 steps (≤2 micro-actions each).
 Do NOT emit Tasks / [[PROGRESS]] ladder writes until they explicitly agree the plan. One question per turn.`;
 
     case PROTOCOL_STATES.MICRO_STEPPING_AND_CONFIDENCE_CHECK: {

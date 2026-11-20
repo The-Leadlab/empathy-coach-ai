@@ -117,6 +117,25 @@ describe("rejectReason", () => {
     expect(rejectReason("Your next step could be one short conversation. Does that feel doable?", {})).toBeNull();
   });
 
+  it("rejects early goal / shared-goal asks during Phase One", () => {
+    expect(
+      rejectReason("What shared goal do you want when giving the feedback? What matters most?", {
+        phaseOne: true,
+        element: "trigger",
+      }),
+    ).toBe("early_goal");
+    expect(
+      rejectReason("What would a successful resolution look like for you?", {
+        protocolState: "MAP_CORE_COMPONENTS",
+      }),
+    ).toBe("early_goal");
+    expect(
+      rejectReason("What would a successful resolution look like for you?", {
+        protocolState: "GOAL_SETTING",
+      }),
+    ).toBeNull();
+  });
+
   it("rejects LoRA stock closings and garbled truncations", () => {
     expect(
       rejectReason(
