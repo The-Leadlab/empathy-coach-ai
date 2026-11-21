@@ -288,11 +288,28 @@ describe("Phase One state", () => {
     expect(merged.captured).toEqual({ trigger: "user words", rule: "If X then Y" });
   });
 
-  it("only applies to Phase One steps 1–2 outside crisis", () => {
+  it("keeps Phase One intake through summary (step 3) until handshake confirm", () => {
     expect(isPhaseOneIntake({ platformPhase: 1, phaseOneStep: 2 }, false)).toBe(true);
+    expect(isPhaseOneIntake({ platformPhase: 1, phaseOneStep: 3 }, false)).toBe(true);
+    expect(isPhaseOneIntake({ platformPhase: 1, phaseOneStep: 3, phaseOneConfirmed: true }, false)).toBe(false);
     expect(isPhaseOneIntake({ platformPhase: 1, phaseOneStep: 2 }, true)).toBe(false);
     expect(isPhaseOneIntake({ platformPhase: 2 }, false)).toBe(false);
-    expect(isPhaseOneIntake({ platformPhase: 1, phaseOneStep: 3 }, false)).toBe(false);
+  });
+
+  it("recomputes asking after merge so rule cannot stick once captured", () => {
+    const merged = mergeStateUpdate(
+      {
+        captured: {
+          situation: "desk",
+          trigger: "fog",
+          coping: "scroll",
+          rule: "if fog then phone",
+        },
+        asking: "rule",
+      },
+      { captured: { belief: "" } },
+    );
+    expect(merged.asking).toBe("belief");
   });
 
   it("exits the summary loop when the user confirms the handshake", () => {

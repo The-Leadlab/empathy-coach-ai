@@ -363,14 +363,17 @@ function advancePhaseOneState({ prior, history = [], userMessage = "", presentin
 function mergeStateUpdate(state, stateUpdate) {
   const fromModel = cleanCaptured(stateUpdate?.captured);
   const captured = { ...fromModel, ...cleanCaptured(state?.captured) };
-  return { captured, asking: state?.asking ?? nextMissingElement(captured) };
+  // Recompute asking from merged capture so a sticky element cannot linger after fill.
+  const asking = nextMissingElement(captured);
+  return { captured, asking: state?.asking === "summary" ? "summary" : asking };
 }
 
-/** Phase One intake turns (steps 1.1–1.2, plus the handshake summary) use the JSON contract. */
+/** Phase One intake turns (map + Reflective Handshake summary) use the JSON contract. */
 function isPhaseOneIntake(journeyContext, possibleCrisisLanguage) {
   if (possibleCrisisLanguage || !journeyContext || typeof journeyContext !== "object") return false;
   if ((journeyContext.platformPhase ?? 1) !== 1) return false;
-  if (journeyContext.phaseOneConfirmed || (journeyContext.phaseOneStep ?? 1) >= 3) return false;
+  // Stay in intake through step 3 (summary/handshake). Only exit after explicit confirmation.
+  if (journeyContext.phaseOneConfirmed) return false;
   if (journeyContext.sustainabilityPivotActive || journeyContext.architecturalBacktrackActive) return false;
   if (journeyContext.isResuming && journeyContext.activeMicroGoal) return false;
   return true;

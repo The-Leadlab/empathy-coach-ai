@@ -177,15 +177,24 @@ for (const [i, pair] of pairs.entries()) {
       error: result.error ?? null,
     };
     history.push({ role: "user", content: pair.user }, { role: "assistant", content: current });
-    if (result.phaseOne) phaseOneState = result.phaseOne;
-    if (phaseOneState?.asking === "summary") phaseOneStep = 2;
-    if (/that's (it|pretty much)|exactly|makes complete sense/i.test(pair.user)) phaseOneStep = 3;
+    if (result.phaseOne) {
+      phaseOneState = result.phaseOne;
+    }
+    if (result.phaseOne?.handshakeConfirmed) {
+      phaseOneStep = 3;
+    } else if (phaseOneState?.asking === "summary") {
+      phaseOneStep = 3;
+    } else if (phaseOneState?.asking) {
+      phaseOneStep = 2;
+    }
+    turnMeta.protocolState = result.protocolState ?? null;
+    turnMeta.asking = result.phaseOne?.asking ?? phaseOneState?.asking ?? null;
   } else {
     // Offline: still run prepareCoachTurn to see what the server would ask next.
     turnMeta = prepareCoachTurn({
       mode: "chat",
       userMessage: pair.user,
-      chatHistory: history,
+      history,
       journeyContext: {
         platformPhase: 1,
         phaseOneStep,
@@ -197,7 +206,8 @@ for (const [i, pair] of pairs.entries()) {
     });
     history.push({ role: "user", content: pair.user }, { role: "assistant", content: pair.july });
     if (turnMeta.phaseOne) phaseOneState = turnMeta.phaseOne;
-    if (phaseOneState?.asking === "summary") phaseOneStep = 2;
+    if (phaseOneState?.asking === "summary") phaseOneStep = 3;
+    else if (phaseOneState?.asking) phaseOneStep = 2;
   }
 
   if (/\b(feel|foggy|exhausted|guilt|crushing|heavy|paralyz)/i.test(pair.user)) feelingsKnown = true;

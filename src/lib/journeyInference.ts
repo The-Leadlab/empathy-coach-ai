@@ -81,11 +81,6 @@ function appendBreakdownNote(current: string | null, label: string, value: strin
   return `${current.trim()}\n${line}`.slice(0, 600);
 }
 
-function breakdownLineCount(summary: string | null): number {
-  if (!summary?.trim()) return 0;
-  return summary.split("\n").filter((line) => line.trim().includes(":")).length;
-}
-
 export function inferJourneyUpdates(
   userMessage: string,
   previousAssistantMessage: string,
@@ -144,17 +139,8 @@ export function inferJourneyUpdates(
       }
     }
 
-    const summarySoFar = updates.conceptualisation_summary ?? current.conceptualisation_summary;
-    const breakdownLines = breakdownLineCount(summarySoFar);
-    const hasBeliefPct = typeof (updates.belief_strength_pct ?? current.belief_strength_pct) === "number";
-
-    if (
-      (current.phase_one_step === 2 || updates.phase_one_step === 2) &&
-      (breakdownLines >= 3 || hasBeliefPct)
-    ) {
-      updates.phase_one_step = 3;
-    }
-
+    // Step 3 = summary/handshake turn only. Do not jump here just because a few map notes exist —
+    // that exited Phase One intake early and left rule/belief/strength sticky.
     if (looksLikeSummary(currentAssistant)) {
       updates.phase_one_step = 3;
       updates.conceptualisation_summary = currentAssistant.slice(0, 600);

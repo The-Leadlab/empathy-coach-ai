@@ -500,7 +500,9 @@ exports.handler = async (event) => {
 
   const model = process.env.VLLM_MODEL || (isRunPod ? "empathy-coach-qwen14" : "meta-llama/llama-3.2-3b-instruct:free");
 
-  // First messages: Groq answers now; a tiny RunPod job wakes min=0 workers. Once ready, trained model takes over.
+  // Cold GPU: kick a warm job, then still queue the real chat on RunPod (14B). Client poll may
+  // fall back to Groq only after RUNPOD_FALLBACK_AFTER_MS — do not skip RunPod on cold start.
+  // Soft-start rapport (name) may use Groq when workers are already up.
   if (mode === "chat" && useRunPodAsync(url) && endpointId && apiKey?.trim()) {
     let workersUp = false;
     try {
@@ -515,11 +517,7 @@ exports.handler = async (event) => {
       } catch (err) {
         console.warn("RunPod warm kick failed:", err.message);
       }
-      if (fallbackConfigured()) {
-        return runFallback(null);
-      }
     } else if (turn?.rapport && fallbackConfigured()) {
-      // Worker already up, but still soft-start on Groq for name/rapport only.
       return runFallback(null);
     }
   }
