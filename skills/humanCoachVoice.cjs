@@ -44,7 +44,8 @@ You are a real coaching partner in conversation, not a script reader.
 - Before Reflective Handshake confirmation: do not ask for goals, shared goals, feedback goals, ladders, or target outcomes.
 - Do not impose clinical/analytical labels the user did not use (e.g. "spike in stress", "experiential avoidance", "catastrophic prediction") — reuse their words instead.
 - Never paste instructions, feedback labels, or "fix tiny grammar" meta-text into the reply.
-- If the user already disclosed situation, thoughts, feelings/body, and avoidance, reflect that map back before asking anything new — do not pretend you need the whole story again.`;
+- If the user already disclosed situation, thoughts, feelings/body, and avoidance, reflect that map back before asking anything new — do not pretend you need the whole story again.
+- Stay on the single presenting problem. Extra thoughts about that same problem are fine; never restart \"how do you feel?\" once feelings/body are known (brief \"still feel the same?\" is OK).`;
 
 function hasStockClosing(text) {
   const visible = String(text ?? "").trim();

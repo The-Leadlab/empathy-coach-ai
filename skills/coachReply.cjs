@@ -174,6 +174,11 @@ const THIRD_PERSON_PATTERN = /\b(the user|the client|user's|the coachee)\b/i;
 /** Simon regression: goals / shared goals before handshake confirmation. */
 const EARLY_GOAL_PATTERN =
   /\bshared goal\b|\bgoal when giving (?:the )?feedback\b|\bfeedback goal\b|\btarget outcome\b|\bmicro-?goal\b|\bladder of (?:at most )?\d*\s*steps\b|\bwhat would (?:a )?successful resolution\b|\bwhat(?:'s| is) (?:our |the )?(?:shared )?goal\b/i;
+/** Simon 21 Nov voice: re-interviewing feelings after coping is known. Reinforcement ("still feel the same?") is allowed. */
+const FEELING_REASK_PATTERN =
+  /\b(?:how (?:are|do|did|does) you feel\b|how (?:did|does) (?:that|this|it) (?:feel|make you feel)\b|what (?:emotion|feeling)s?\b|where (?:in your body|do you feel)\b|how did you feel about\b|what(?:'s| is) (?:coming up |showing up )?(?:for you )?emotionally\b)/i;
+const FEELING_REINFORCE_OK =
+  /\b(?:still feel|feel the same|same (?:about|way)|feel(?:ing)? (?:the )?same)\b/i;
 
 const PRE_GOAL_PROTOCOL = new Set([
   PROTOCOL_STATES.SCENARIO_EXTRACTION,
@@ -208,6 +213,17 @@ function rejectReason(reply, opts = {}) {
   if (isMetaText(visible, opts)) return "meta";
   if (opts.phaseOne && opts.element !== "summary" && !visible.includes("?")) return "no_question";
   if (isPreGoalTurn(opts) && EARLY_GOAL_PATTERN.test(visible)) return "early_goal";
+  // Feelings already captured — ban a fresh feeling/body interview (except when asking coping, or brief reinforcement).
+  if (
+    opts.feelingsKnown &&
+    opts.phaseOne &&
+    opts.element !== "coping" &&
+    opts.element !== "summary" &&
+    FEELING_REASK_PATTERN.test(visible) &&
+    !FEELING_REINFORCE_OK.test(visible)
+  ) {
+    return "feeling_reask";
+  }
   const voiceReject = naturalVoiceRejectReason(visible);
   if (voiceReject) return voiceReject;
   return null;
@@ -383,6 +399,8 @@ Already known (do not ask again): ${known || "nothing yet"}
 Hard rules for this reply:
 - Ask ONLY the element above. Do not ask about rule/belief if the target is trigger or coping.
 - Never re-ask anything listed under Already known, even with different wording.
+- Stay locked on the single presenting problem — do not open a second scenario.
+- If coping/feelings/body are already known and you are deepening thoughts or rules/beliefs: do NOT reopen "how do you feel?" — brief "still feel the same?" is OK, then advance.
 - Do not jump to core beliefs before situation, thought, emotion/body, and behaviour are on the table.
 - If asking about trigger/thought: deepen meaning or evidence — do not skim and jump ahead.
 - Never invent a Tim scenario, panic-button framing, stock training story, or workplace facts they did not say.
@@ -590,6 +608,12 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
       : "";
   const turnInstruction = [softEnter, stateInstruction, intakeInstruction].filter(Boolean).join("\n\n");
 
+  const feelingsKnown = !!(
+    phaseOne?.captured?.coping ||
+    (typeof journeyContext?.phaseOneState?.captured?.coping === "string" &&
+      journeyContext.phaseOneState.captured.coping.trim())
+  );
+
   return {
     phaseOne,
     protocolState,
@@ -599,6 +623,7 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
       phaseOne: !!phaseOne,
       element: phaseOne?.asking ?? null,
       protocolState,
+      feelingsKnown,
       crisis,
     },
   };

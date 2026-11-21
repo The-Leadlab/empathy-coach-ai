@@ -79,9 +79,10 @@ Only use facts from this journey. One short reflection + exactly one question.`;
 
     case PROTOCOL_STATES.MAP_CORE_COMPONENTS:
       return `# Protocol state: MAP_CORE_COMPONENTS (STATE 2)
-Map Hot Cross Bun order — one missing element per turn only:
+Map Hot Cross Bun order — one missing element per turn only, locked to the single presenting problem:
 situation → trigger/thought → deepen the thought (what it means / evidence) → emotion/body/behaviour (coping) → light if…then rule → belief → 0–100 strength.
 After the first thought, go one step deeper before leaving thoughts (downward-arrow or evidence) — do not skim and skip.
+New thoughts about the *same* situation deepen meaning/evidence; do not restart Hot Cross Bun feelings/body once coping is known (brief \"still feel the same?\" OK).
 Do not jump to core beliefs before coping is on the table. Do not re-ask known elements.
 HARD BAN this state: goals, shared goals, "goal when giving feedback", ladders, techniques, Tasks.`;
 

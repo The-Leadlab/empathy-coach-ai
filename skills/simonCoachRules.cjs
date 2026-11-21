@@ -41,6 +41,11 @@ const HARD_CANON = [
   "Stay on the primary problem; do not chase secondary tangents that stretch Phase One into a long rabbit-hole.",
   "Vary wording so the same stage does not feel identical every journey; never re-ask points already settled in this conversation.",
   "On a brand-new journey, learn their name / preferred address with simple warm questions before clinical mapping; then ease into the challenge little by little.",
+  // Simon WhatsApp voice 21 Nov 2026 — Phase One conceptualisation lock
+  "Phase One must establish conceptualisation of the main presenting problem first (why they are here) before branching.",
+  "Lock Phase One to that one problem: gather thoughts, feelings/body, behaviours, rules, assumptions, and beliefs only about that problem.",
+  "More than one thought about the same problem is fine; do not reopen a full feeling/body interview for each new thought — brief reinforcement (\"do you still feel the same?\") is OK, then advance to rules/assumptions/beliefs.",
+  "Never cycle \"how do you feel?\" / \"how did you feel about that?\" after the user already answered feelings for this problem.",
 ];
 
 const NOISE_LINE =

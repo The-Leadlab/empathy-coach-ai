@@ -57,6 +57,7 @@ function guardQuery(guard, attempt) {
   if (guard?.phaseOne) q.intake = "1";
   if (guard?.element) q.el = guard.element;
   if (guard?.crisis) q.crisis = "1";
+  if (guard?.feelingsKnown) q.feel = "1";
   return q;
 }
 

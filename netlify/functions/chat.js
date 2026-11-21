@@ -232,6 +232,7 @@ exports.handler = async (event) => {
           phaseOne: q.intake === "1",
           element: q.el || null,
           crisis: q.crisis === "1",
+          feelingsKnown: q.feel === "1",
         };
         const out = finalizeCoachReply(extractReplyFromRunPodOutput(data.output), guard);
         if (out.rejected) {

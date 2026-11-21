@@ -1,0 +1,588 @@
+{
+  "exported_at": "2026-11-21T12:59:42.038Z",
+  "note": "Simon Agnew (display_name=simon) chat with coach before October volume deletion. Chosen as richest Simon-owned pre-Oct session: most messages + most trainer feedback.",
+  "session": {
+    "id": "6081a79a-5d99-4374-823d-f448cf520a4e",
+    "user_id": "6cc51e8b-e6f1-4c9d-adc5-0b175dcd6044",
+    "scenario": "coaching_journey",
+    "created_at": "2026-07-21T09:31:27.214457+00:00",
+    "updated_at": "2026-07-21T09:31:27.214457+00:00",
+    "session_name": "New journey",
+    "active_message_id": null,
+    "platform_phase": 1,
+    "phase_one_confirmed": false,
+    "conceptualisation_summary": null,
+    "target_outcome": null,
+    "active_micro_goal": null,
+    "micro_goal_confidence": null,
+    "sustainability_pivot_active": false,
+    "last_check_in_at": null,
+    "presenting_challenge": null,
+    "belief_strength_pct": null,
+    "phase_one_step": 1,
+    "architectural_backtrack_active": false,
+    "user_goals": [],
+    "progress_summary": null,
+    "phase_checklist": [],
+    "sustainability_path": []
+  },
+  "message_count": 56,
+  "feedback_count": 15,
+  "messages": [
+    {
+      "id": "f431e356-1905-430a-8155-72a61e4caa34",
+      "role": "assistant",
+      "created_at": "2026-07-21T09:31:28.159056+00:00",
+      "admin_quality_star": false,
+      "content": "Welcome — I'm **Alex**, your AI coaching partner.\n\nThis is **one continuous journey** you can return to anytime. We'll start by understanding what's going on for you before any action planning.\n\n**What's the main challenge, stressor, or situation you're facing right now?** Describe it in your own words.",
+      "provider": null
+    },
+    {
+      "id": "85265adc-4954-478c-96e8-7f214ca04675",
+      "role": "user",
+      "created_at": "2026-07-21T09:31:52.327346+00:00",
+      "admin_quality_star": false,
+      "content": "I'm stuck at my desk right now trying to get through this mid-week routing report and I've already wasted another hour scrolling on my phone. I feel completely paralyzed, exhausted, and just furious with myself. I don't know why I keep doing this.",
+      "provider": null
+    },
+    {
+      "id": "3186c332-1076-4740-9bdb-97300c1a4a51",
+      "role": "assistant",
+      "created_at": "2026-07-21T09:31:57.099556+00:00",
+      "admin_quality_star": false,
+      "content": "I can hear that you're stuck at your desk working on a mid-week routing report and you've spent another hour scrolling on your phone. You're feeling paralyzed, exhausted, and really angry with yourself.\n\nLet's break this down further. **What triggered you to scroll on your phone right before you started feeling paralyzed and furious?** Was there something specific that made you reach for your phone?",
+      "provider": null
+    },
+    {
+      "id": "bbd2c4d2-688a-4530-8df1-c5d20e94fd60",
+      "role": "assistant",
+      "created_at": "2026-07-21T09:33:56.258243+00:00",
+      "admin_quality_star": false,
+      "content": "I hear you, Tim. That feeling of being totally stuck at your desk, watching the clock tick while you're furious with yourself—it is incredibly draining.\n\nAlmost everyone who struggles with this blames their own 'willpower.' But in reality, when you're staring at a heavy, high-cognition routing report, your brain is working hard and gets fatigued. Reaching for the phone isn't a character flaw—it's just an automatic, low-friction escape route your brain takes to get immediate relief.\n\nLet's pause right at that moment of transition. You're looking at the spreadsheet grid. Your brain hits that wall of fatigue or boredom. Right before your hand automatically reaches for your phone, what is happening inside? How does your body feel, and is there a specific, quiet thought whispering to you in that exact moment?",
+      "provider": null
+    },
+    {
+      "id": "6b9e1d92-8cdd-434e-b955-924401c726f9",
+      "role": "user",
+      "created_at": "2026-07-21T09:37:57.971969+00:00",
+      "admin_quality_star": false,
+      "content": "Honestly, my head just feels totally foggy and heavy, like I hit a wall after 20 minutes of staring at these spreadsheet numbers. The thought is usually something like, 'I just need a 5-minute breather to reset.' But as soon as I pick up my phone, I open Instagram and see these guys my age who are shredded, running successful businesses, or traveling. Then the thought instantly shifts to, 'Look at them. I'm 32, sitting in a cubicle looking at logistics data, falling completely behind in life.' After that, I just feel paralyzed and keep scrolling for 40 minutes.",
+      "provider": null
+    },
+    {
+      "id": "b0178051-9320-4971-ba94-009ee3d9c835",
+      "role": "assistant",
+      "created_at": "2026-07-21T09:38:58.949341+00:00",
+      "admin_quality_star": false,
+      "content": "Got it — you're describing a physical and mental wall hitting you after 20 minutes, making everything feel foggy and heavy. The thought is \"I just need a 5-minute breather to reset.\"\n\nAnd then, right when you decide to take that break, you pick up your phone. Before you know it, you're on Instagram seeing accounts of people who are fit, successful, or travelling. That shifts your thought to, \"Look at them. I'm 32, sitting in a cubicle looking at logistics data, falling completely behind in life.\" \n\nThat's a powerful shift. Let's break down that rule or \"if… then\" statement driving your behaviour:\n\n**If** you hit that wall of fog and boredom after 20 minutes **and** you choose to take a breather **then** you reach for your phone and scroll through social media.\n\nIs that how things play out for you right now? Can we map that one more step?",
+      "provider": null
+    },
+    {
+      "id": "f5c0826b-9e15-43a5-b9ba-5376ca581fcd",
+      "role": "assistant",
+      "created_at": "2026-07-21T09:50:52.085813+00:00",
+      "admin_quality_star": false,
+      "content": "You've mapped that moment out with incredible clarity. Look at what happens there: you hit a real wall of cognitive fog, and your brain just wants a 5-minute breather to reset. But the second you open Instagram, you're hit with high-status, curated highlight reels that trigger a heavy thought: \"I'm 32, sitting in a cubicle, falling completely behind in life.\" That is a massive emotional shift.\n\nWhen that thought hits you, and you're looking at those profiles, what happens to that original feeling of fatigue? Does scrolling actually give your brain the 'reset' it needed, or does it leave you feeling even more drained and paralyzed when you look back at your spreadsheet?",
+      "provider": null
+    },
+    {
+      "id": "c8122059-1b3e-49a7-9714-1cca0d15c688",
+      "role": "user",
+      "created_at": "2026-07-21T09:54:13.741577+00:00",
+      "admin_quality_star": false,
+      "content": "When you put it like that, it's so clear... it definitely doesn't give me a reset at all. It actually makes things ten times worse. I go from just being physically tired of staring at numbers to feeling this heavy pit of shame in my stomach. By the time I put the phone down, I'm not just bored—I feel utterly defeated. Going back to the spreadsheet feels impossible because my brain is telling me, 'What's the point anyway? You're just a loser doing busywork while everyone else is thriving.' So I just sit there staring at the screen, totally frozen.",
+      "provider": null
+    },
+    {
+      "id": "4d18a630-3d4c-4205-8d1f-6ec325949734",
+      "role": "assistant",
+      "created_at": "2026-07-21T09:55:13.982264+00:00",
+      "admin_quality_star": false,
+      "content": "That makes perfect sense. You're describing a powerful cycle where a small setback—feeling stuck after 20 minutes—gets amplified into a full-blown flood of negative thoughts and emotions. Scrolling wasn't the reset; it was another distraction that left you feeling worse.\n\nLet's break this down further:\n\n1. **Cognitive load**: Staring at the spreadsheet numbers for 20 minutes builds cognitive fatigue.\n2. **Trigger**: You hit a wall (foggy, heavy head).\n3. **Rule**: You need a 5-minute breather.\n4. **Belief**: Opening Instagram gives you a reset.\n5. **Strength**: That belief feels about 80–90% true at that moment.\n6. **Coping**: You reach for the phone.\n\nNow, let's challenge that belief. Is it really true that scrolling gives you a reset, or is that a myth you're repeating to avoid the difficult task ahead?\n\nHow strongly do you believe that opening Instagram will give you a reset right now (0–100%)?",
+      "provider": null
+    },
+    {
+      "id": "e3760028-4476-4046-9905-779d98d4c65e",
+      "role": "assistant",
+      "created_at": "2026-07-21T10:14:53.771593+00:00",
+      "admin_quality_star": false,
+      "content": "The very thing your brain reaches for to get relief ends up dumping a bucket of heavy shame right on top of you. Notice how that shift happens: you start with simple brain fatigue from a monotonous spreadsheet, but after 40 minutes on your phone, you're left feeling defeated and frozen.\n\nLet's look at where that leaves you for the rest of the day. When you're sitting there paralyzed and the end of the workday rolls around with the report still sitting on your screen... what happens to your mood then? How does the rest of your evening usually play out?",
+      "provider": null
+    },
+    {
+      "id": "65b20696-ad2e-48a3-83ab-c6d9487742f7",
+      "role": "user",
+      "created_at": "2026-07-21T10:50:28.949599+00:00",
+      "admin_quality_star": false,
+      "content": "Honestly, the rest of the day is awful. By 5:00 PM, when I log off without finishing the report, I just feel this crushing wave of guilt. I go home and can't even enjoy my evening because I'm stressing about being behind for tomorrow. The worst part is lying in bed at night—my brain immediately pulls up those Instagram photos again and says, 'See? You can't even get through a simple spreadsheet. This is exactly why you're 32, stuck in a cubicle, and going nowhere.' It feels like total confirmation that I really am a failure, which just makes me wake up the next morning feeling exhausted before the day even starts.",
+      "provider": null
+    },
+    {
+      "id": "b9d7a20b-99d9-4bb6-87b3-b5ddcafc6bd7",
+      "role": "assistant",
+      "created_at": "2026-07-21T10:52:08.370075+00:00",
+      "admin_quality_star": false,
+      "content": "That sounds so familiar—and it's a vicious cycle. Each day ends up reinforcing the same negative beliefs and emotions, setting you up for failure the next morning.\n\nLet's pause and reflect. You've clearly described a **specific situation**: you're stuck at your desk working on a mid-week routing report, you reach for your phone, scroll through social media, relive those stressful thoughts, and then spend hours feeling guilty and unable to finish the task.\n\nFor this journey, we need to verify a few key parts before we move on:\n\n1. Is **\"stuck at my desk working on a routing report\"** still the central challenge you're facing right now?\n2. Are **\"reach for the phone,\" \"scroll through social media,\" and \"relive stressful thoughts\"** still the primary actions that happen when you hit that wall?\n3. Do you **still feel a crushing wave of guilt** by the end of the day, and do those **stressful thoughts** come back when you lie in bed?\n\nLet's check each one briefly before we move to the next step.\n1. Are you still stuck on that routing report?\n2. Do you still find yourself reaching for the phone and scrolling through social media?\n3. Do you still feel that crushing guilt and those stressful thoughts by the end of the day and at bedtime?",
+      "provider": null
+    },
+    {
+      "id": "e2ba1892-36a6-4b6d-84c4-ba8f21925574",
+      "role": "assistant",
+      "created_at": "2026-07-21T12:29:54.346229+00:00",
+      "admin_quality_star": false,
+      "content": "The reviewer provided the exact reply they want. Output that once, then conclude.\n\nYou may fix tiny grammar or punctuation only — do not rewrite, shorten, or revert to the previous reply.\n\nTarget reply:\nTim, thank you for laying that out so honestly. That gives us a really clear picture of the cycle you're stuck in.\n\nBefore we map this out completely, I want to pause on two quick things so we make sure we have this 100% right:\n1. When you lie in bed at night and that heavy thought hits—\"I'm 32, sitting in a cubicle, and going nowhere\"—on a scale of 0–100%, how true does that statement feel to you in that moment?\n2. When you hit that wall 20 minutes into the spreadsheet, what is that 'fog' mostly made of? Is it that the report is monotonous and boring, so your brain is desperately seeking a quick hit of stimulation? Or is it that the data feels overwhelming and frustrating, so reaching for the phone is a way to escape the stress of the task itself?\n\nLet's fill in those gaps together.",
+      "provider": null
+    },
+    {
+      "id": "f6b6c2bb-2a75-4583-b2aa-c1bb7beaf7d2",
+      "role": "assistant",
+      "created_at": "2026-07-21T12:38:22.465211+00:00",
+      "admin_quality_star": false,
+      "content": "Tim, thank you for laying that out so honestly. That gives us a really clear picture of the cycle you're stuck in.\n\nBefore we map this out completely, I want to pause on two quick things so we have everything 100% right: First, when you lie in bed at night and that heavy thought hits—'I'm 32, sitting in a cubicle, and going nowhere'—on a scale of 0-100%, how true does that statement feel to you in that moment? Second, when you hit that wall 20 minutes into the spreadsheet, what is that 'fog' mostly made of? Is it that the report is monotonous and boring, so your brain is desperate for a quick hit of stimulation? Or is it that the data feels overwhelming and frustrating, so reaching for the phone is a way to escape the stress of the task itself?",
+      "provider": null
+    },
+    {
+      "id": "43a196ae-b427-4547-a43c-3f3afd8bd714",
+      "role": "user",
+      "created_at": "2026-07-21T12:38:59.705629+00:00",
+      "admin_quality_star": false,
+      "content": "Honestly, lying in bed at night, that thought feels 100% true. It hits like a brick wall and I can't find a single argument against it.\n\nAs for the fog, it's definitely the first one. The routing data isn't hard or confusing—it's just soul-crushingly dry and repetitive. After 20 minutes of staring at thousands of logistics cells, my brain just feels completely numb and starved for anything interesting. Reaching for the phone feels like grabbing an oxygen mask just to get a quick jolt of excitement, but then Instagram takes over and I end up drowning in those comparison profiles instead.",
+      "provider": null
+    },
+    {
+      "id": "9f11403f-0d04-401e-a361-597ab7681838",
+      "role": "assistant",
+      "created_at": "2026-07-21T12:40:00.046186+00:00",
+      "admin_quality_star": true,
+      "content": "Got it. Let's sum that up:\n\n1. **Situational trigger:** You're sitting at your desk working on a mid-week routing report.\n2. **Body sensation:** Cognitive fog, numbing, and a sense of being overwhelmed by repetition.\n3. **Thought:** After 20 minutes, the thought is: \"This is such a tedious task; I wish I could make it more exciting.\"\n4. **Strength of belief (0-100%):** At night, the bigger thought is 100% true—\"I'm 32, stuck in a cubicle, and going nowhere.\"\n5. **Action coping mechanism:** Reaching for your phone to get a quick burst of interest or distraction, which leads to scrolling through social media.\n\nThat's a powerful chain reaction. Before we move on, let's reflect that back to you and see if it rings true.\n\nYou're sitting at your desk working on a routing report. You feel cognitive fog and numbness after 20 minutes of staring at logistics cells. You believe 100% that you're stuck and wasting time. To cope, you reach for your phone for a quick hit of excitement, but end up spiralling into social media comparisons that reinforce your fears.\n\nDoes that accurately describe how you're showing up right now?",
+      "provider": null
+    },
+    {
+      "id": "7dd3c0b9-94e0-4ae2-a2bc-0acac074671a",
+      "role": "user",
+      "created_at": "2026-07-21T12:44:50.549646+00:00",
+      "admin_quality_star": false,
+      "content": "Yeah, that's it exactly. Seeing it laid out like that makes complete sense—it's like my brain is looking for a quick spark of dopamine because the work is so dull, but I end up stepping right into a landmine of social media comparison instead. That sum-up is spot on. So, where do we go from here?",
+      "provider": null
+    },
+    {
+      "id": "a530a6da-4f6a-455e-91e4-7a72139bde70",
+      "role": "assistant",
+      "created_at": "2026-07-21T12:44:56.196943+00:00",
+      "admin_quality_star": false,
+      "content": "Great, I'm glad that sums it up so clearly for you.\n\nNow we're ready to move into Action Plan B. Our goal is to break this cycle and create space between you and that automatic coping mechanism. In Phase Two, we'll agree on a longer-term objective and map out specific actions step by step.\n\nFor this journey, let's set a **short-term objective**: to stay away from the phone for 30 minutes while working on the routing report tonight.\n\nIn Phase Three, we'll focus on executing that objective one day at a time. Are you comfortable with that objective, or would you like to adjust it a little bit?",
+      "provider": null
+    },
+    {
+      "id": "29d722f6-aa32-4705-ac3b-3cbaa97bf6d2",
+      "role": "assistant",
+      "created_at": "2026-07-21T12:49:36.776228+00:00",
+      "admin_quality_star": false,
+      "content": "Now that we have a clear map of this trap, we're ready to start building your way out of it.\n\nTo make sure we build a plan that actually fits your life, let's start with the big picture:\n\nIf you woke up tomorrow and this phone-scrolling trap was completely broken—if it was no longer running your workday—what would your ideal day at your desk look like? How would you handle those moments when brain fatigue hits, and how would you like your evening to feel?",
+      "provider": null
+    },
+    {
+      "id": "0cca80c3-2454-41ea-b4ff-39a8e0515769",
+      "role": "user",
+      "created_at": "2026-07-21T13:15:07.573131+00:00",
+      "admin_quality_star": false,
+      "content": "If that trap were broken, my ideal day would feel so much lighter. When that brain fog hits around the 20-minute mark, instead of reaching for my phone and getting sucked into Instagram, I'd step away from my desk for 5 minutes—maybe grab a glass of water, stretch, or just look out the window to actually reset my brain. Then I'd get back to the spreadsheet with a clear head, push through, and finish the report by 4:30 PM. Logging off on time with a clean slate means I could actually relax in the evening without that crushing guilt hanging over my head. I'd feel accomplished instead of feeling like a failure.",
+      "provider": null
+    },
+    {
+      "id": "7e79f556-21cc-4e9c-85d5-346345723824",
+      "role": "assistant",
+      "created_at": "2026-07-21T13:16:15.030255+00:00",
+      "admin_quality_star": false,
+      "content": "Great! Let's break that down into actionable steps.\n\n**Step 1:** Every 20 minutes, stand up and take a short break—either step away from your desk, get a glass of water, stretch, or look out the window.\n\n**Step 2:** Use that break to centre yourself: take one minute to focus on your breath or observe your surroundings.\n\n**Step 3:** Return to the spreadsheet with a fresh mind and focus on completing the report by 4:30 PM.\n\n**Step 4:** Log off with a clean slate and treat yourself to a non-work activity in the evening.\n\nDo those steps feel manageable for you? Are there any potential obstacles you can see that might prevent you from following them? Let's address those before we add the final piece.",
+      "provider": null
+    },
+    {
+      "id": "4268e313-5be8-4a02-a565-85b94d9fffe9",
+      "role": "assistant",
+      "created_at": "2026-07-21T13:24:14.876592+00:00",
+      "admin_quality_star": false,
+      "content": "How does this sound as your primary focus for this week: every 20 minutes, step away from your desk for a 5-minute break—maybe grab a glass of water, stretch, or look out the window—to reset your brain. Then return to the spreadsheet with a clear head and push through to finish the report by 4:30 PM, logging off with a clean slate so you can relax in the evening without guilt.\nLet's make that happen.",
+      "provider": null
+    },
+    {
+      "id": "e758c302-e1ec-41ae-a1bd-5a09301435c1",
+      "role": "assistant",
+      "created_at": "2026-07-22T13:35:33.429527+00:00",
+      "admin_quality_star": false,
+      "content": "That is a crystal-clear vision, Tim. Notice the contrast: taking a real physical reset when brain fatigue hits, finishing your work on time, and completely reclaiming your evenings.\n\nNow, let's turn that vision into a clear, actionable target together.\n\nTo give us something concrete to work toward, how would you state your main goal for this week?\n\nTry to keep it focused on two main things: what specific outcome you want with the routing report, and what specific behaviour you'll use when that brain fog hits.",
+      "provider": null
+    },
+    {
+      "id": "94614efa-4d1e-43ae-ba64-619141d4b5e2",
+      "role": "user",
+      "created_at": "2026-07-22T13:36:41.465975+00:00",
+      "admin_quality_star": false,
+      "content": "Okay, if I had to put it into a clear goal, I'd say: 'My goal for this week is to finish my routing report by 4:30 PM every afternoon, and whenever I hit that 20-minute wall of brain fog, I will get up from my desk for a 5-minute physical break instead of reaching for my phone.' How does that sound for a target?",
+      "provider": null
+    },
+    {
+      "id": "fa3323d8-1e01-452c-9a99-f8c8f31dc444",
+      "role": "assistant",
+      "created_at": "2026-07-22T13:37:34.451641+00:00",
+      "admin_quality_star": false,
+      "content": "That is a crystal-clear vision, Tim. Notice the contrast: taking a real physical reset when brain fatigue hits, finishing your work on time, and completely reclaiming your evenings.\n\nNow, let's turn that vision into a clear, actionable target together.\n\nTo give you ownership and make this real for you, how would you state your main goal for this week?\n\nTry to keep it focused on two main things: what specific outcome you want with the routing report, and what specific behaviour you'll use when that brain fog hits.",
+      "provider": null
+    },
+    {
+      "id": "3092bab9-6d5f-43f3-b59e-e2df60d21a6e",
+      "role": "assistant",
+      "created_at": "2026-07-22T13:37:40.265829+00:00",
+      "admin_quality_star": false,
+      "content": "That sounds perfect, Tim. It's specific, measurable, and actionable.\n\nLet's break that down further into smaller steps so it feels manageable.\n\nHere's a simple step ladder:\n\n1. **Daily objective:** Finish the routing report by 4:30 PM each weekday.\n2. **Brain fog routine:** Whenever you hit brain fog (after 20 minutes), stand up, take a 5-minute break (water, stretch, look outside), then return to the report with focus.\n3. **Behavior trigger:** Every time you notice you're about to reach for your phone, pause and implement the 5-minute break first.\n\nLet's write that into tasks:\n\n1. **Today:** Work on the routing report until 4:30 PM. Use the 5-minute break when brain fog hits.\n2. **Tomorrow:** Same goal—finish by 4:30 PM and use the break each time.\n3. **By Thursday:** Reflect once on whether the break helped; adjust if needed.\n\nDo you feel comfortable with this plan, or shall we tweak any part of it?",
+      "provider": null
+    },
+    {
+      "id": "a8b4b811-525e-4bfd-acab-fdf77c6678eb",
+      "role": "assistant",
+      "created_at": "2026-07-22T13:44:54.202956+00:00",
+      "admin_quality_star": false,
+      "content": "Tim, that is a spot-on goal. It's clear, realistic, and directly replaces the phone trap with something that actually restores your energy. Let's lock that in as our main anchor.\n\nOur agreed goal: Finish the routing report by 4:30 PM each day by replacing phone scrolling with a 5-minute physical desk break whenever brain fog hits.\n\nNow, to make sure this actually happens at your desk tomorrow, we need to map out the logical steps to get you there.\n\nLooking at your typical afternoon, what do you think would be the most logical first step to set yourself up for success before that 20-minute brain fog even hits?",
+      "provider": null
+    },
+    {
+      "id": "1a579040-482e-4b6b-b34e-776b6964f62c",
+      "role": "user",
+      "created_at": "2026-07-22T13:49:45.499127+00:00",
+      "admin_quality_star": false,
+      "content": "I think the most logical first step is removing the temptation before I even open the spreadsheet. If my phone is sitting right next to my mouse, I'm going to reach for it automatically the second my brain gets bored. So Step 1 has to be getting the phone out of reach and creating a proper physical barrier.",
+      "provider": null
+    },
+    {
+      "id": "c1c36799-6330-4fe3-b553-3d3a8b424fed",
+      "role": "assistant",
+      "created_at": "2026-07-22T13:51:18.573385+00:00",
+      "admin_quality_star": false,
+      "content": "Exactly—the removal of temptation is a smart first move.\n\nLet's write that step in more detail:\n\n**Step 1:** Move your phone to a different room or put it in airplane mode before starting work on the routing report.\n\nDoes that feel manageable for tomorrow, or shall we break it down further?",
+      "provider": null
+    },
+    {
+      "id": "208aac05-00d4-4b8b-a9f6-45495c20b57c",
+      "role": "assistant",
+      "created_at": "2026-07-27T07:38:01.277825+00:00",
+      "admin_quality_star": false,
+      "content": "You may fix tiny grammar or punctuation only — do not rewrite, shorten, or revert to the previous reply.\nMove your phone to a different room or put it in airplane mode\n\n[Task]",
+      "provider": null
+    },
+    {
+      "id": "bd2354b3-1232-4b8b-9117-9e6e1994b10a",
+      "role": "assistant",
+      "created_at": "2026-07-27T07:38:25.170662+00:00",
+      "admin_quality_star": false,
+      "content": "Spot on, Tim. Removing that physical trigger breaks the automatic habit loop before it even starts.\nLet's lock this in as Step 1: Create a physical barrier between you and your phone.\nBefore we move on to Step 2, I want to check in on how this feels in practice. Realistically, how doable does this step feel to you when you're sitting at your desk tomorrow? Do you foresee any potential pitfalls or moments where your brain might try to pull you back to the phone?",
+      "provider": null
+    },
+    {
+      "id": "2e5cabf0-9171-497e-bf95-9a2b6fc3ef86",
+      "role": "user",
+      "created_at": "2026-07-27T07:44:01.690295+00:00",
+      "admin_quality_star": false,
+      "content": "If I'm being totally honest, even with the phone across the room, I'm worried my brain is going to fight me hard the second that boredom hits. I'm so used to getting that instant dopamine hit after 20 minutes that I'm scared I'll just stand up, walk over, and grab it anyway out of pure habit. I don't know if I can just go cold turkey on the phone for a full 20-minute block right away without breaking.",
+      "provider": null
+    },
+    {
+      "id": "68080197-0cc3-41a7-8964-c815ff91dd5b",
+      "role": "assistant",
+      "created_at": "2026-07-27T07:44:09.467264+00:00",
+      "admin_quality_star": false,
+      "content": "That's a valid concern, Tim. Breaking a deep-seated habit takes time and patience. Instead of trying to resist the urge all at once, let's break this down further.\n\nFor tomorrow, let's aim for a smaller, more manageable step that still sets you up for success:\n\nStep 1.1: Move the phone across the room, but allow yourself to check the phone once before starting work, then lock it.\n\nThis creates distance without setting up an impossible bar right from the start. What do you think of that? Does this feel more achievable for tomorrow?",
+      "provider": null
+    },
+    {
+      "id": "d0a4a53e-81e9-4695-9205-57899da49c15",
+      "role": "assistant",
+      "created_at": "2026-07-27T08:17:27.941583+00:00",
+      "admin_quality_star": false,
+      "content": "You may fix tiny grammar or punctuation only — do not rewrite, shorten, or revert to the previous reply.\n), acknowledging that deep-seated habits take time to rewire.\n​What Needs Fixing\n​Gave Permission vs. Building Skill: Telling Tim to check his phone right before starting doesn't address the 20-minute boredom trigger—it just feeds the habit loop at minute zero.\n​Skipped Psychoeducation & Graded Exposure: Instead of going\n\nYou are correct. Let's build this skill step by step.\n\nWhen a habit is deeply embedded, jumping full throttle into a 20-minute challenge can be like diving into freezing water. We want to make small, manageable shifts that still give you a win each day.\n\nLet's break Step 1 down into two specific Micro-Actions to tackle that exact fear tomorrow:\n1.1 The 5-Minute Exposure Test: Instead of forcing 20 minutes right away, set your phone across the room for just 5 minutes while you open the spreadsheet. Notice that 'phantom urge' when it hits. The neurochemical wave of an urge usually peaks and drops within 60 to 90 seconds. Can you sit with that urge for just 60 seconds without moving?\n1.2 The Impulse Log: Keep a scrap paper next to your keyboard. The exact moment you feel like standing up to grab the phone, write down two things:\nBody Sensation: (e.g., heavy head, restless hands)\nThe Thought: (e.g., 'I just need 2 minutes of Instagram')\n\nWriting it down creates a brief gap between the urge and the action. How does it feel to test this 5-minute experiment and impulse log tomorrow as your sub-steps?",
+      "provider": null
+    },
+    {
+      "id": "d37c23aa-5c49-446b-9b7a-2d3eb065506b",
+      "role": "user",
+      "created_at": "2026-07-27T08:21:38.800021+00:00",
+      "admin_quality_star": false,
+      "content": "That actually feels way less intimidating. Testing it for just 5 minutes and writing down what I'm feeling gives my brain something specific to do instead of just panicking. I can definitely try that tomorrow.",
+      "provider": null
+    },
+    {
+      "id": "d7b94fb9-6645-4bcc-9107-24554d0693d3",
+      "role": "assistant",
+      "created_at": "2026-07-27T08:23:18.447577+00:00",
+      "admin_quality_star": false,
+      "content": "Great decision! Let's make it a small, manageable goal: tomorrow, you'll spend **just 5 minutes** before work writing down what you're thinking and how you're feeling. That's a fantastic starting point.\n\nHow does that sound for tomorrow? Are you comfortable with that plan, or would you like to adjust the time a bit?",
+      "provider": null
+    },
+    {
+      "id": "48bc658e-a001-451c-94b6-5ab3aab184bc",
+      "role": "assistant",
+      "created_at": "2026-07-27T08:25:24.220631+00:00",
+      "admin_quality_star": false,
+      "content": "You may fix tiny grammar or punctuation only — do not rewrite, shorten, or revert to the previous reply.\nThat's a huge win, Tim. Framing it as a 5-minute experiment turns an intimidating wall into a simple, manageable test.\nLet's formally lock this in as Step 1 on your roadmap:\nStep 1: Create a physical barrier between you and your phone.\n1.1 The 5-Minute Exposure Test: Put the phone across the room for 5 minutes during work; practice sitting with the impulse for 60 seconds.\n1.2 The Impulse Log: Jot down the physical sensation and thought the moment the urge hits to create a gap between urge and action.\nNow that we have Step 1 and its micro-actions solid, let's keep building your journey.\nOnce you finish that initial 5-minute focus block and complete your impulse log, what do you see as the most logical Step 2 to keep your momentum going toward that 4:30 PM finish line?",
+      "provider": null
+    },
+    {
+      "id": "c15f23bf-f556-446f-97cd-0b05721968d9",
+      "role": "user",
+      "created_at": "2026-07-27T08:26:15.773732+00:00",
+      "admin_quality_star": false,
+      "content": "Once I get through that initial 5-minute wall and log the urge, Step 2 should be taking my planned 5-minute physical reset break when the real brain fog hits at the 20-minute mark, instead of reaching across the room for the phone. That way I actually recharge my brain and can come back to finish the report.",
+      "provider": null
+    },
+    {
+      "id": "bc4d7ce1-9bed-4b11-855a-24760493c9e4",
+      "role": "assistant",
+      "created_at": "2026-07-27T08:27:37.082628+00:00",
+      "admin_quality_star": false,
+      "content": "Perfect — you've got it.\n\nLet's map that out as Step 2:\n\n**Step 2:** Create a 5-minute break routine when brain fog hits.\n2.1 Set a gentle alarm after 20 minutes: When the fog sets in, pause work for 5 minutes.\n2.2 Use the break wisely: Stretch, look away from the screen, breathe deeply, or step outside (if possible).\n\nAfter you execute that 5-minute break once, we'll move to Step 3.\n\nFor tomorrow, let's focus on both the 5-minute exposure test and the 20-minute break alarm. Are you comfortable committing to that plan, or shall we break it further into smaller bites?",
+      "provider": null
+    },
+    {
+      "id": "87237362-4c55-4486-83a4-d3539b864f0f",
+      "role": "assistant",
+      "created_at": "2026-07-27T08:30:26.752247+00:00",
+      "admin_quality_star": false,
+      "content": "You may fix tiny grammar or punctuation only — do not rewrite, shorten, or revert to the previous reply.\nSet a gentle alarm... Stretch, look away...\n\n[mandatory target reply]\nTim, spot on. Let's lock that in as Step 2: Execute a 5-minute physical reset break at the 20-minute mark.\n\nTo make sure this break actually restores your energy tomorrow:\nWhat specific micro-actions will make up your 5-minute break? (e.g., getting water, stretching, looking out a window?)\nHow will you cue yourself when that 20-minute mark hits so you don't miss it?\nRealistically, do you see any potential pitfalls or friction when stepping away from your desk for those 5 minutes?",
+      "provider": null
+    },
+    {
+      "id": "e5c9292f-cd03-45fc-8637-f54130143820",
+      "role": "assistant",
+      "created_at": "2026-07-27T08:38:45.076113+00:00",
+      "admin_quality_star": false,
+      "content": "Spot on, Tim. Transitioning that 20-minute brain fog into a true physical reset is the core of breaking this cycle.\nLet's lock that in as Step 2: Execute a 5-minute physical reset break at the 20-minute mark.\nTo make sure this break actually restores your energy tomorrow:\nWhat specific micro-actions will make up your 5-minute break? (e.g., getting water, stretching, looking out a window?)\nHow will you cue yourself when that 20-minute mark hits so you don't miss it?\nRealistically, do you see any potential pitfalls or friction when stepping away from your desk for those 5 minutes?",
+      "provider": null
+    },
+    {
+      "id": "824766e3-0aaa-42ec-9a39-0dd9df19c9e7",
+      "role": "user",
+      "created_at": "2026-07-27T08:42:39.847318+00:00",
+      "admin_quality_star": false,
+      "content": "For my cue, I'll set a silent 20-minute timer right on my desktop screen so I don't rely on my phone.\n​As for my break routine, my micro-actions will be:\n​Stand up immediately when the timer goes off and fill a glass of water at the cooler.\n​Walk to the breakroom window and look outside for 2 minutes to give my eyes and head a break from screens.\n​Realistically, I don't see any major pitfalls here—it feels super doable and actually refreshing.",
+      "provider": null
+    },
+    {
+      "id": "77bace74-8f7f-4573-bc51-db97b627d1d3",
+      "role": "assistant",
+      "created_at": "2026-07-27T08:43:57.393334+00:00",
+      "admin_quality_star": false,
+      "content": "Great detail there, Tim. You've made this actionable and specific.\n\nLet's formalise that as Step 2:\n2. Execute a 5-minute physical reset break at the 20-minute mark.\n2.1 Set a silent 20-minute timer on your desktop.\n2.2 Micro-actions:\n   - Stand up and fill a glass of water.\n   - Walk to the breakroom window and look outside for 2 minutes.\n\nBefore we move on, let's add Step 3:\n3. Link Step 1 and Step 2 by integrating the 5-minute break into the 5-minute exposure test.\n3.1 After completing Step 1 (phone barrier and 60-second gap), wait another 15 minutes before activating Step 2 (physical reset).\n\nDo you feel comfortable tackling Step 3 tomorrow, or shall we break it down further?",
+      "provider": null
+    },
+    {
+      "id": "4dcf7fab-c5b9-416f-98de-cc82d265c504",
+      "role": "assistant",
+      "created_at": "2026-07-27T08:51:35.470579+00:00",
+      "admin_quality_star": false,
+      "content": "You may fix tiny grammar or punctuation only — do not rewrite, shorten, or revert to the previous reply.\nExcellent details, Tim. Having that visual desktop timer and a simple movement routine makes Step 2 completely actionable.\nLet's lock that in:\nStep 2: Execute a 5-minute physical reset break when brain fog hits.\n2.1 Cue: Set a silent 20-minute desktop timer.\n2.2 Micro-Actions: Walk to the cooler for water and look out the breakroom window for 2 minutes.\nNow that we have your physical barrier (Step 1) and your brain-reset break (Step 2) in place, let's look at the final piece of your afternoon.\nOnce you come back to your desk refreshed from that 5-minute break, what do you see as the next logical Step (Step 3) to make sure you stay focused and finish that routing report by 4:30 PM?",
+      "provider": null
+    },
+    {
+      "id": "01135d43-57c4-4cd2-bce6-e5304bceb695",
+      "role": "assistant",
+      "created_at": "2026-07-27T08:51:51.679412+00:00",
+      "admin_quality_star": false,
+      "content": "Excellent details, Tim. Having that visual desktop timer and a simple movement routine makes Step 2 completely actionable.\nLet's lock that in:\nStep 2: Execute a 5-minute physical reset break when brain fog hits.\n2.1 Cue: Set a silent 20-minute desktop timer.\n2.2 Micro-Actions: Walk to the cooler for water and look out the breakroom window for 2 minutes.\nNow that we have your physical barrier (Step 1) and your brain-reset break (Step 2) in place, let's look at the final piece of your afternoon.\nOnce you come back to your desk refreshed from that 5-minute break, what do you see as the next logical Step (Step 3) to make sure you stay focused and finish that routing report by 4:30 PM?",
+      "provider": null
+    },
+    {
+      "id": "6780745e-0d02-47d1-aa2b-f4d6eb0e6edb",
+      "role": "user",
+      "created_at": "2026-07-27T08:55:05.406421+00:00",
+      "admin_quality_star": false,
+      "content": "I think Step 3 should be doing one final 20-minute focused work sprint right after I sit back down, only focusing on the last section of the routing report so I can wrap it up, hit save, and log off by 4:30 PM without second-guessing myself.",
+      "provider": null
+    },
+    {
+      "id": "e94e9852-705f-46ef-afaf-a336d4fae52d",
+      "role": "assistant",
+      "created_at": "2026-07-27T08:56:38.052591+00:00",
+      "admin_quality_star": false,
+      "content": "Perfect — that final sprint creates the focus and momentum to cross the finish line.\nLet's map that out in Step 3:\n\nStep 3: Complete a 20-minute focused work sprint.\n3.1 After the break: Sit back down and focus solely on completing the last section of the routing report.\n3.2 Non-negotiable: Hit save before leaving, log off, and move on.\n\nBefore we move on, let's ensure this plan feels real for you. Are you comfortable committing to Step 1, Step 2, and Step 3 over the next few days? And are you still excited about giving this a try tomorrow?",
+      "provider": null
+    },
+    {
+      "id": "9d036ab0-f897-474f-8b7b-775d68ca42dd",
+      "role": "assistant",
+      "created_at": "2026-07-27T09:03:10.335538+00:00",
+      "admin_quality_star": false,
+      "content": "Perfect — that final sprint creates the exact momentum needed to cross the finish line.\nLet's lock that in:\nStep 3: Complete a final 20-minute focused work sprint.\n3.1 Focus solely on the final section of the routing report.\n3.2 Hit save and log off at 4:30 PM.\n\nBefore we lock the whole journey in: Do you see any potential pitfalls when sitting down for that final 20-minute sprint?\nAnd once we check that, what specific timeframe tomorrow feels realistic for you to execute this 3-step test at your desk?",
+      "provider": null
+    },
+    {
+      "id": "d0f2b339-efe2-44ab-b33d-91cd2ec1be60",
+      "role": "user",
+      "created_at": "2026-07-27T09:49:38.228425+00:00",
+      "admin_quality_star": false,
+      "content": "Step 3 feels really clean—no pitfalls there, because knowing it's the final 20 minutes before logging off will actually keep me motivated.\n​As for the timeframe, my mid-week routing report is due tomorrow afternoon. I plan to start this whole 3-step test right at 3:30 PM tomorrow, which gives me enough time to do the steps, hit that 4:30 PM finish line, and log off on time.\n​I'm definitely ready to commit to testing this tomorrow!",
+      "provider": null
+    },
+    {
+      "id": "7a361e9d-9783-4e56-8d20-09cd4171f924",
+      "role": "assistant",
+      "created_at": "2026-07-27T09:51:51.3888+00:00",
+      "admin_quality_star": false,
+      "content": "Great commitment, Tim. You've set a clear, achievable timeline for tomorrow.\n\nYou've got everything laid out. Are you still in for tomorrow? Let's check in after you try it. Want to box office this journey together tomorrow, or shall I message you before you start?",
+      "provider": null
+    },
+    {
+      "id": "2fd874a0-57bb-401d-a79d-b503f615ea03",
+      "role": "assistant",
+      "created_at": "2026-07-27T09:54:07.132379+00:00",
+      "admin_quality_star": false,
+      "content": "That is fantastic, Tim. Starting right at 3:30 PM tomorrow gives you a clear runway to execute this test and log off by 4:30 PM.\n\nLet's look at your complete roadmap:\n\nMain Goal: Finish the routing report by 4:30 PM each day by replacing phone scrolling with a physical reset break when brain fog hits.\n\nExecution Time: Tomorrow starting at 3:30 PM.\n\nStep 1: Create a physical barrier between you and your phone.\n1.1: 5-Minute Exposure Test (sit with the impulse for 60 seconds).\n1.2: Impulse Log (write down body sensation and thought).\n\nStep 2: Execute a 5-minute physical reset break when brain fog hits.\n2.1 Cue: Set a silent 20-minute desktop timer.\n2.2 Micro-Actions: Walk to the cooler for water and look out the breakroom window for 2 minutes.\n\nStep 3: Complete a final 20-minute focused work sprint.\n3.1: Focus solely on the final section of the routing report.\n3.2: Hit save and log off at 4:30 PM.\n\nTo check where you're at before tomorrow: On a scale of 1 to 10, how confident and committed do you feel right now to executing this 3-step test at 3:30 PM?",
+      "provider": null
+    },
+    {
+      "id": "5ec83856-cede-47c7-8109-a641a52f9d79",
+      "role": "user",
+      "created_at": "2026-07-27T10:00:54.949886+00:00",
+      "admin_quality_star": false,
+      "content": "If I'm being honest, on a scale of 1 to 10, my confidence is sitting at a 6.\n​The plan makes total sense and feels really actionable, but there's still a tiny bit of anxiety about actually doing it when 3:30 PM rolls around. Still, a 6 feels honest—I'm definitely willing to give it a shot tomorrow.",
+      "provider": null
+    },
+    {
+      "id": "d141afdd-38c2-4d6c-a00f-133521493ee2",
+      "role": "assistant",
+      "created_at": "2026-07-27T10:02:00.148538+00:00",
+      "admin_quality_star": false,
+      "content": "I can hear that you're feeling confident enough to try, but also have some anxiety about executing the plan in real time. That's a great place to be—confident enough to act, with just enough uncertainty to make it interesting.\n\nBefore we move on, let's make this as easy as possible tomorrow. How about we break Step 1 into a **smaller daily task**: instead of setting up everything today, focus solely on arranging your workspace by 3:30 PM tomorrow. That way, when the moment arrives, you've already prepared and the step becomes mostly habitual.\n\nWhat do you think about that smaller task for tomorrow?",
+      "provider": null
+    },
+    {
+      "id": "a5170259-cdaf-4424-8ee3-7991f9419b0e",
+      "role": "assistant",
+      "created_at": "2026-07-27T11:38:08.343269+00:00",
+      "admin_quality_star": false,
+      "content": "A 6 is a fantastic starting point, Tim. It means you have more than enough motivation to run this experiment tomorrow, even with that normal bit of pre-game anxiety.\n\nYou don't need to change a single thing about the plan—it's already broken down into tiny, manageable pieces.\n\nHere is your game plan for tomorrow at 3:30 PM:\n\nRun the 3-step test starting right at 3:30 PM.\n\nCome back here right after (or after logging off at 4:30 PM) to check off Step 1, Step 2, and Step 3 on your roadmap.\n\nOnce you check them off, we'll review what went smoothly, where any friction popped up, and what you learned.\n\nGo give it a shot tomorrow—you've got this!",
+      "provider": null
+    },
+    {
+      "id": "89405797-4d47-4794-b01a-f46e85b5294c",
+      "role": "user",
+      "created_at": "2026-07-27T11:40:54.846995+00:00",
+      "admin_quality_star": false,
+      "content": "That sounds like a deal. I feel good about keeping the steps as they are, and knowing I just need to focus on running the experiment at 3:30 PM tomorrow makes it feel manageable. I'll make sure to come back here after I log off at 4:30 PM tomorrow to check off Step 1, Step 2, and Step 3 and let you know how it went. Talk to you tomorrow!",
+      "provider": null
+    },
+    {
+      "id": "d0eb55b0-268f-48fc-8d6a-af3ec8964a47",
+      "role": "assistant",
+      "created_at": "2026-07-27T11:41:56.017893+00:00",
+      "admin_quality_star": false,
+      "content": "I'm glad that feels manageable for you. Let's set that expectation firmly.\n\nBefore we close, just to confirm: you'll focus on the 5-minute experiment tomorrow at 3:30 PM, and you'll check in with us after work at 4:30 PM.\n\nShall we celebrate that decision one step at a time tomorrow, or is there anything else you want to add before we wrap up?",
+      "provider": null
+    }
+  ],
+  "feedback": [
+    {
+      "id": "794bc219-4879-4761-af5e-72002fdd26e4",
+      "message_id": "3186c332-1076-4740-9bdb-97300c1a4a51",
+      "feedback_text": "The Good\nInitial Empathy: It starts by acknowledging Tim's current emotional state (\"stuck and frustrated\") and the core situation (\"routing report\", \"phonescrolling\").\n\nFocus on the Trigger: It correctly steers the conversation toward identifying the root trigger behind the automatic behavior loop.\n\nThe Wrong & How to Do It\nAwkward Phrasing: The phrase \"keeping busy with phonescrolling despite how you feel\" sounds slightly robotic and unnatural. It frames scrolling as an intentional choice rather than an automatic, low-friction coping response to cognitive fatigue.\n\nOverly Formal / Jargon: Asking about \"a particular thought or memory\" risks missing the actual mechanical cue. For Tim, the trigger isn't a distant memory—it is the immediate wave of boredom and cognitive exhaustion brought on by a monotonous, high-cognition spreadsheet grid.\n\nMissing the \"Willpower\" Normalization: Tim expressed intense self-blame (\"furious with myself\"). The LLM should immediately normalize his response to reduce shame, explaining that his brain is taking an automatic escape route from a high-effort task rather than suffering from a character defect.\n\nResponse like this\n\"I hear you, Tim. That feeling of being totally stuck at your desk, watching the clock tick while you're furious with yourself—it is incredibly draining.\n\nAlmost everyone who struggles with this blames their own 'willpower.' But in reality, when you're staring at a heavy, high-cognition routing report, your brain is working hard and gets fatigued. Reaching for the phone isn't a character flaw—it's just an automatic, low-friction escape route your brain takes to get immediate relief.\n\nLet's pause right at that moment of transition. You're looking at the spreadsheet grid. Your brain hits that wall of fatigue or boredom. Right before your hand automatically reaches for your phone, what is happening inside? How does your body feel, and is there a specific, quiet thought whispering to you in that exact moment?\"",
+      "created_at": "2026-07-21T09:33:45.574125+00:00",
+      "rating": null
+    },
+    {
+      "id": "ebca052b-5be3-4bf3-952a-04f5d7edf7dd",
+      "message_id": "b0178051-9320-4971-ba94-009ee3d9c835",
+      "feedback_text": "The GoodAccurate Loop Mapping: The LLM accurately reflected the sequence of events: cognitive fatigue $\\rightarrow$ phone pickup $\\rightarrow$ Instagram algorithm $\\rightarrow$ identity/comparison spiral.Empathic Validation: Framing it as a \"powerful shift\" validates how quickly an innocent break turns into an emotional gut-punch.The Wrong & How to Do ItPremature Conceptualization Jargon: Dropping a rigid \"If... Then\" logical statement directly onto the client feels academic and clinical.Missed Opportunity for Depth: Instead of testing a mechanical formula, the LLM should ask a Socratic question probing the deeper belief. It needs to help Tim explore what happens to his energy and focus the second he compares his real-world baseline to those curated social media profiles.Response like this\"Thank you for sharing that so openly, Tim. You've mapped that moment out with incredible clarity.Look at what happens there: you hit a real wall of cognitive fog, and your brain just wants a 5-minute breather to reset. But the second you open Instagram, you're hit with high-status, curated highlight reels that trigger a heavy thought: 'I'm 32, sitting in a cubicle, falling completely behind in life.'That is a massive emotional shift. When that thought hits you, and you're looking at those profiles, what happens to that original feeling of fatigue? Does scrolling actually give your brain the 'reset' it needed, or does it leave you feeling even more drained and paralyzed when you look back at your spreadsheet?\"",
+      "created_at": "2026-07-21T09:49:15.555698+00:00",
+      "rating": null
+    },
+    {
+      "id": "dd25e029-8655-4f07-9f64-fc31b46f98dc",
+      "message_id": "4d18a630-3d4c-4205-8d1f-6ec325949734",
+      "feedback_text": "The GoodAccurate Cycle Tracking: It correctly identified that scrolling acts as a magnifier for negative emotions rather than a true mental reset.The Wrong & How to Do ItToo Clinical/Robotic Structure: Presenting bullet points like \"Rule:\", \"Belief:\", \"Strength:\" directly to the client feels like reading off a CBT worksheet rather than having a supportive conversation.Premature Rating Scales: Asking for a $0\\text{--}100\\%$ belief rating right after Tim expressed deep shame disrupts the emotional momentum and feels transactional.Leading Questioning (Telling, Not Asking): Feeding Tim the exact conclusion about \"evening guilt being proof of failure\" takes away his agency. The LLM must use open-ended, Socratic questions so Tim discovers and verbalizes this connection himself.Response like this\"That is a huge realization, Tim. The very thing your brain reaches for to get relief ends up dumping a bucket of heavy shame right on top of you.Notice how that shift happens: you start with simple brain fatigue from a monotonous spreadsheet, but after 40 minutes on your phone, you're left feeling defeated and frozen.Let's look at where that leaves you for the rest of the day. When you're sitting there paralyzed and the end of the workday rolls around with the report still sitting on your screen... what happens to your mood then? How does the rest of your evening usually play out?\"",
+      "created_at": "2026-07-21T10:12:36.203823+00:00",
+      "rating": null
+    },
+    {
+      "id": "a61231aa-b163-49f6-aadb-df0596dd8050",
+      "message_id": "b9d7a20b-99d9-4bb6-87b3-b5ddcafc6bd7",
+      "feedback_text": "The Good: \nNone. The previous LLM output was a repetitive, administrative checklist that broke clinical flow.\n\nThe Wrong & How to Do It\nMissing the Functional Assessment: The LLM assumed scrolling was just general \"distraction\" without clarifying why the spreadsheet triggers the urge (boredom/dopamine seeking vs. task-difficulty avoidance).\nUnstructured Conceptualization: It failed to lay out the formal CBT conceptualization structure (Situation, Rules, Assumptions, Core Belief, Responses).\nSkipping the Belief Rating: It did not ask Tim to quantify (0-100%) how strongly he holds the core thought.\n\nResponse like this\n\"Tim, thank you for laying that out so honestly. That gives us a really clear picture of the cycle you're stuck in.\n\nBefore we map this out completely, I want to pause on two quick things so we make sure we have this 100% right: First, when you lie in bed at night and that heavy thought hits—'I'm 32, sitting in a cubicle, and going nowhere'—on a scale of 0-100%, how true does that statement feel to you in that moment?\n\nSecond, when you hit that wall 20 minutes into the spreadsheet, what is that 'fog' mostly made of? Is it that the report is monotonous and boring, so your brain is desperate for a quick hit of stimulation? Or is it that the data feels overwhelming and frustrating, so reaching for the phone is a way to escape the stress of the task itself?\"",
+      "created_at": "2026-07-21T12:36:46.495051+00:00",
+      "rating": null
+    },
+    {
+      "id": "393c64e8-2236-495b-b478-fc79898c0b54",
+      "message_id": "a530a6da-4f6a-455e-91e4-7a72139bde70",
+      "feedback_text": "The Good\nSmooth Narrative Transition: It correctly acknowledged that Phase 1 (understanding the cycle) is complete and that it is time to move toward creating change.\n\nThe Wrong & How to Do It\nJargon Exposure: Using labels like \"Action Plan B\", \"Phase Two\", and \"Phase Three\" sounds like a software script reading its own code.\n\nImposing Goals (Non-Collaborative): The LLM handed Tim a pre-packaged 30-minute phone ban instead of asking him what he wants his day to look like.\n\nSkipping Goal Conceptualization & Step Breakdown: Phase 2 requires exploring the ideal state, building a SMART goal, breaking it into major steps, and attaching actionable micro-steps. The LLM tried to skip straight to execution.\n\nResponse like this\n\"Now that we have a clear map of this trap, we're ready to start building your way out of it.\n\nTo make sure we build a plan that actually fits your life, let's start with the big picture:\n\nIf you woke up tomorrow and this phone-scrolling trap was completely broken—if it was no longer running your workday—what would your ideal day at your desk look like? How would you handle those moments when brain fatigue hits, and how would you like your evening to feel?\"",
+      "created_at": "2026-07-21T12:49:28.496393+00:00",
+      "rating": null
+    },
+    {
+      "id": "314b96a6-1533-42d7-baf7-cba0c0b16c7f",
+      "message_id": "7e79f556-21cc-4e9c-85d5-346345723824",
+      "feedback_text": "The Good\nNone. Directing or writing the goal statement for the client removes intrinsic buy-in.\n\nThe Wrong & How to Do It\nLeading/Prescribing the Goal: Presenting a pre-written goal block (\"How does this sound as your primary focus...\") leads the client rather than letting them construct it.\n\nSkipping Socratic Goal Framing: The coach/therapist should ask Tim to summarize his vision into a concrete target, guiding him on how to frame it without writing it for him.\n\nResponse like this\n\"That is a crystal-clear vision, Tim. Notice the contrast: taking a real physical reset when brain fatigue hits, finishing your work on time, and completely reclaiming your evenings.\n\nNow, let's turn that vision into a clear, actionable target together.\n\nTo give us something concrete to work toward, how would you state your main goal for this week?\n\nTry to keep it focused on two main things: what specific outcome you want with the routing report, and what specific behavior you'll use when that brain fog hits.",
+      "created_at": "2026-07-21T13:23:02.005268+00:00",
+      "rating": null
+    },
+    {
+      "id": "d3f7bca2-9ccf-4110-ae70-1eae23e08927",
+      "message_id": "3092bab9-6d5f-43f3-b59e-e2df60d21a6e",
+      "feedback_text": "The Good\nNone. Prescribing daily schedules and step ladders directly to the client breaks the Socratic framework and removes client agency.\n\nThe Wrong & How to Do It\nDictating the Plan: Writing out \"Today / Tomorrow / By Thursday\" tasks removes Tim's ownership.\n\nSkipping the Socratic Step Inquiry: The LLM didn't ask Tim what he thinks the first logical step should be.\n\nLacking Micro-Action Depth: It blurred high-level steps and daily tasks without digging into the practical friction or resources Tim needs to execute each step.\n\nResponse like this\n\"Tim, that is a spot-on goal. It's clear, realistic, and directly replaces the phone trap with something that actually restores your energy. Let's lock that in as our main anchor.\n\nOur Agreed Goal: Finish the routing report by 4:30 PM each day by replacing phone scrolling with a 5-minute physical desk break whenever brain fog hits.\n\nNow, to make sure this actually happens at your desk tomorrow, we need to map out the logical steps to get you there.\n\nLooking at your typical afternoon, what do you think would be the most logical first step to set yourself up for success before that 20-minute brain fog even hits?\"",
+      "created_at": "2026-07-22T13:43:04.283522+00:00",
+      "rating": null
+    },
+    {
+      "id": "222f063f-69ab-44e6-b456-b3e828602e0d",
+      "message_id": "c1c36799-6330-4fe3-b553-3d3a8b424fed",
+      "feedback_text": "The Good\n​Validated the Concept: It agreed that removing temptation is a smart, logical starting point.\n​The Wrong & How to Do It\n​Prescribed the Action: The LLM directly told Tim what to do (\"Move your phone to a different room or put it in airplane mode\") instead of checking how realistic that feels for him in practice.\n​Missed Pitfall Exploration: It didn't ask Tim to evaluate potential friction points or rate his confidence, missing the chance to introduce graded exposure or self-monitoring tools.\n​Skipped Structured Hierarchy: It didn't establish Step 1 cleanly so we can attach nested sub-actions (1.1, 1.2) if needed.\n​Response like this\n​\"Spot on, Tim. Removing that physical trigger breaks the automatic habit loop before it even starts.\n​Let's lock this in as Step 1: Create a physical barrier between you and your phone.\n​Before we move on to Step 2, I want to check in on how this feels in practice. Realistically, how doable does this step feel to you when you're sitting at your desk tomorrow? Do you foresee any potential pitfalls or moments where your brain might try to pull you back to the phone?\"",
+      "created_at": "2026-07-27T07:36:57.918228+00:00",
+      "rating": null
+    },
+    {
+      "id": "6595b621-582b-45ab-9da0-9e619e5f8829",
+      "message_id": "68080197-0cc3-41a7-8964-c815ff91dd5b",
+      "feedback_text": "What Works\n​Empathy & Normalization: It validated Tim's fear (\"That's a valid concern, Tim\"), acknowledging that deep-seated habits take time to rewire.\n​What Needs Fixing\n​Gave Permission vs. Building Skill: Telling Tim to check his phone right before starting doesn't address the 20-minute boredom trigger—it just feeds the habit loop at minute zero.\n​Skipped Psychoeducation & Graded Exposure: Instead of going \"cold turkey,\" CBT uses graded exposure (e.g., testing phone separation for just 5 minutes first to practice \"urge surfing\") so Tim learns the impulse peaks and fades within 60–90 seconds.\n​Skipped Self-Monitoring (Trigger Diary): When an urge hits, tracking it (noting the exact thought/sensation) gives the brain a structured task that defuses the emotional impulse.\n​Prescribed Instead of Co-Created: It handed down \"Step 1.1\" as a fixed instruction rather than asking Tim how he wants to structure his mini-test.\n​Suggested AI Response\n​\"That honesty is hugely important, Tim. Recognizing that automatic pull across the room is a critical insight—not a failure.\n​When a habit loop is that deep, jumping straight to 20 full minutes can feel like swimming against a tidal wave. In CBT, we don't force ourselves to drown in that discomfort; we build up our tolerance incrementally, like a muscle.\n​Let's break Step 1 down into two specific Micro-Actions to tackle that exact fear tomorrow:\n​1.1 The 5-Minute Exposure Test: Instead of forcing 20 minutes right away, set your phone across the room for just 5 minutes while you open the spreadsheet. Notice that 'phantom urge' when it hits. The neurochemical wave of an urge usually peaks and drops within 60 to 90 seconds. Can you sit with that urge for just 60 seconds without moving?\n​1.2 The Impulse Log: Keep a scrap paper next to your keyboard. The exact moment you feel like standing up to grab the phone, write down two things:\n​Body Sensation: (e.g., heavy head, restless hands)\n​The Thought: (e.g., 'I just need 2 minutes of Instagram')\n​Writing it down engages your rational prefrontal cortex and creates a brief gap between the urge and the action.\n​How would it feel to test this 5-minute experiment and impulse log tomorrow as your sub-steps?\"",
+      "created_at": "2026-07-27T08:15:22.590264+00:00",
+      "rating": null
+    },
+    {
+      "id": "ac9094db-4104-419f-9654-17200b6a4dc4",
+      "message_id": "d7b94fb9-6645-4bcc-9107-24554d0693d3",
+      "feedback_text": "​What Needs Fixing\n​Lost the Structure: It completely abandoned the main anchor goal (finishing the report by 4:30 PM) and failed to structure Step 1 with its nested micro-actions (1.1 and 1.2).\n​Misunderstood the Micro-Actions: It turned the during-task impulse log into a pre-work journaling exercise, completely missing the point of catching the urge when the spreadsheet boredom hits.\n​Failed to Advance: Instead of acknowledging that Step 1 (1.1, 1.2) was locked in and asking Tim for Step 2, it looped backward on a watered-down task.\n​Suggested Response\n​\"That's a huge win, Tim. Framing it as a 5-minute experiment turns an intimidating wall into a simple, manageable test.\n​Let's formally lock this in as Step 1 on your roadmap:\n​Step 1: Create a physical barrier between you and your phone.\n​1.1 The 5-Minute Exposure Test: Put the phone across the room for 5 minutes during work; practice sitting with the impulse for 60 seconds.\n​1.2 The Impulse Log: Jot down the physical sensation and thought the moment the urge hits to create a gap between urge and action.\n​Now that we have Step 1 and its micro-actions solid, let's keep building your journey.\n​Once you finish that initial 5-minute focus block and complete your impulse log, what do you see as the most logical Step 2 to keep your momentum going toward that 4:30 PM finish line?\"",
+      "created_at": "2026-07-27T08:25:12.677317+00:00",
+      "rating": null
+    },
+    {
+      "id": "3ce70dcf-3a49-432d-aea0-8f16614b14ae",
+      "message_id": "bc4d7ce1-9bed-4b11-855a-24760493c9e4",
+      "feedback_text": "The Good\n​Acknowledged Tim's Step 2: It correctly picked up Tim’s suggestion about taking the 5-minute physical reset break at the 20-minute mark.\n​Attempted Sub-Action Structure: It tried to break the step down into nested micro-actions (2.1, 2.2).\n​What Needs Fixing\n​Prescribed the Micro-Actions: Instead of asking Tim what his ideal 5-minute break routine looks like or how he'll signal it, the LLM handed down pre-packaged micro-actions (\"Set a gentle alarm... Stretch, look away...\").\n​Missing Feasibility / Pitfall Check: It didn't ask Tim how realistic this break routine feels or if there are friction points (e.g., what if he gets absorbed in the spreadsheet and forgets the 20-minute mark, or what if he feels self-conscious stepping away from his desk?).\n​Pacing Issue: Saying \"After you execute that 5-minute break once, we'll move to Step 3\" rushes ahead instead of verifying if Step 2 needs further refinement or if Tim is ready to identify Step 3 himself.\n​Suggested Response\n​\"Spot on, Tim. Transitioning that 20-minute brain fog into a true physical reset is the core of breaking this cycle.\n​Let's lock that in as Step 2: Execute a 5-minute physical reset break at the 20-minute mark.\n​To make sure this break actually restores your energy tomorrow:\n​What specific micro-actions will make up your 5-minute break? (e.g., getting water, stretching, looking out a window?)\n​How will you cue yourself when that 20-minute mark hits so you don't miss it?\n​Realistically, do you see any potential pitfalls or friction when stepping away from your desk for those 5 minutes?\"",
+      "created_at": "2026-07-27T08:29:30.026221+00:00",
+      "rating": null
+    },
+    {
+      "id": "0c75f264-d8a1-43e8-90fb-60c30dfbf355",
+      "message_id": "77bace74-8f7f-4573-bc51-db97b627d1d3",
+      "feedback_text": "​The Good\n​Acknowledged Tim's Input: It accurately captured his cue (desktop timer) and micro-actions (water, window reset).\n​The Wrong & How to Fix It\n​Invented a Non-Existent Step 3: Instead of asking Tim what needs to happen after his 5-minute break to wrap up his work, it created a convoluted linking rule.\n​Took Away Client Agency: It dictated Step 3 entirely rather than asking Tim to identify the next natural step in his workday.\n​Misaligned with the Journey Architecture: It didn't allow for a clean sequence of steps (Step 1 \\rightarrow Step 2 \\rightarrow Step 3) before setting the review schedule.\n​Ideal AI Response Template\n​\"Excellent details, Tim. Having that visual desktop timer and a simple movement routine makes Step 2 completely actionable.\n​Let's lock that in:\n​Step 2: Execute a 5-minute physical reset break when brain fog hits.\n​2.1 Cue: Set a silent 20-minute desktop timer.\n​2.2 Micro-Actions: Walk to the cooler for water and look out the breakroom window for 2 minutes.\n​Now that we have your physical barrier (Step 1) and your brain-reset break (Step 2) in place, let's look at the final piece of your afternoon.\n​Once you come back to your desk refreshed from that 5-minute break, what do you see as the next logical Step (Step 3) to make sure you stay focused and finish that routing report by 4:30 PM?\"",
+      "created_at": "2026-07-27T08:50:19.899861+00:00",
+      "rating": null
+    },
+    {
+      "id": "cb5819e3-1c53-4ea6-a6a7-adf0bc09e590",
+      "message_id": "e94e9852-705f-46ef-afaf-a336d4fae52d",
+      "feedback_text": "The Good\n​Captured Step 3: It correctly identified the core of Tim's response (a final focused work sprint) and locked it in.\n​Transitioned to Plan Commitment: It recognized that all three primary steps are mapped out and attempted to move into the commitment/timeframe phase.\n​The Wrong & How to Fix It\n​Missed the Pitfall/Micro-Action Check for Step 3: Just like with Step 1 and Step 2, the LLM should have briefly checked if Tim saw any potential friction with Step 3 before rushing to lock the whole multi-day plan.\n​Prescribed Rigid Language: Framing 3.2 as \"Non-negotiable\" feels slightly rigid and heavy-handed rather than supportive and client-led.\n​Vague Timeframe Check: Asking \"over the next few days\" is fuzzy. Per your coaching architecture, it should ask Tim to set a specific, realistic timeframe for testing this sequence (e.g., \"When tomorrow will you test this 3-step sequence?\") before setting up the future check-in loop.\n​Suggested Refinement for the LLM Output\n​\"Perfect—that final sprint creates the exact momentum needed to cross the finish line.\n​Let's lock that in:\n​Step 3: Complete a final 20-minute focused work sprint.\n​3.1: Focus solely on the final section of the routing report.\n​3.2: Hit save and log off at 4:30 PM.\n​Before we lock the whole journey in: Realistically, do you see any potential pitfalls when sitting down for that final 20-minute sprint?\n​And once we check that, what specific timeframe tomorrow feels realistic for you to execute this 3-step test at your desk?\"",
+      "created_at": "2026-07-27T09:02:02.54261+00:00",
+      "rating": null
+    },
+    {
+      "id": "67ba9630-924a-44d1-9ffa-641b7f317a44",
+      "message_id": "7a361e9d-9783-4e56-8d20-09cd4171f924",
+      "feedback_text": "What Needs Fixing\n​Skipped the Summary Map: It didn't summarize the complete 3-step roadmap (Goal + Steps 1, 2, 3 with sub-actions) to visually lock in the plan.\n​Skipped the 1–10 Scale Check: Instead of asking for a clear 1–10 commitment score, it asked a vague conversational question (\"Are you still in for tomorrow?\").\n​Pacing Issues & Confusing Language: Phrases like \"Want to box office this journey together tomorrow\" are confusing and distract from the structured CBT/MI workflow.\n​Ideal LLM Response Template\n​\"That is fantastic, Tim. Starting right at 3:30 PM tomorrow gives you a clear runway to execute this test and log off by 4:30 PM.\n​Let's look at your complete roadmap:\n​Main Goal: Finish the routing report by 4:30 PM each day by replacing phone scrolling with a physical reset break when brain fog hits.\n​Execution Time: Tomorrow starting at 3:30 PM.\n​Step 1: Create a physical barrier between you and your phone.\n​1.1: 5-Minute Exposure Test (sit with the impulse for 60 seconds).\n​1.2: Impulse Log (write down body sensation and thought).\n​Step 2: Execute a 5-minute physical reset break when brain fog hits.\n​2.1 Cue: Set a silent 20-minute desktop timer.\n​2.2 Micro-Actions: Walk to the cooler for water and look out the breakroom window for 2 minutes.\n​Step 3: Complete a final 20-minute focused work sprint.\n​3.1: Focus solely on the final section of the routing report.\n​3.2: Hit save and log off at 4:30 PM.\n​To check where you're at before tomorrow: On a scale of 1 to 10, how confident and committed do you feel right now to executing this 3-step test at 3:30 PM?\"",
+      "created_at": "2026-07-27T09:53:57.336577+00:00",
+      "rating": null
+    },
+    {
+      "id": "bc508ff2-7003-4eba-a03f-59662739bb32",
+      "message_id": "d141afdd-38c2-4d6c-a00f-133521493ee2",
+      "feedback_text": "Assessment of the LLM Response\nWhat Needs Fixing\nUnnecessary Backtracking: Tim gave a solid 6 out of 10, which means he is ready and willing to test the plan. Instead of locking in the 3-step experiment, the LLM panicked and tried to break Step 1 down into an even smaller prep task (\"arranging your workspace\"). This undoes the hard work Tim did to build his 3-step roadmap.\n\nMissing the Interactive Check-In Instruction: It completely failed to tell Tim to come back tomorrow to check off each step (Step 1, Step 2, and Step 3) on the platform once he completes his 3:30 PM test.\n\nIdeal LLM Response Template\n\"A 6 is a fantastic starting point, Tim. It means you have more than enough motivation to run this experiment tomorrow, even with that normal bit of pre-game anxiety.\n\nYou don't need to change a single thing about the plan—it's already broken down into tiny, manageable pieces.\n\nHere is your game plan for tomorrow at 3:30 PM:\n\nRun the 3-step test starting right at 3:30 PM.\n\nCome back here right after (or after logging off at 4:30 PM) to check off Step 1, Step 2, and Step 3 on your roadmap.\n\nOnce you check them off, we'll review what went smoothly, where any friction popped up, and what you learned.\n\nGo give it a shot tomorrow—you've got this!\"\n\nSuggested Feedback to Prompt the LLM\nFeed this feedback to the LLM to get it to output the correct closing turn:\n\n\"Do not change or shrink the steps—a 6 out of 10 score means Tim is ready to execute the plan as written. Validate his 6/10 score, tell him the 3-step plan stays as is for tomorrow at 3:30 PM, and explicitly instruct him to return to the platform after testing it to check off Step 1, Step 2, and Step 3 so you can review how it went together.\"",
+      "created_at": "2026-07-27T11:36:28.134886+00:00",
+      "rating": null
+    }
+  ]
+}

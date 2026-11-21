@@ -49,9 +49,10 @@ const INFERENCE_DIRECTIVES = `# Live inference directives (this turn — highest
 4. When Phase One step is 1.2, ask only the **next** breakdown element listed. Do not re-ask elements marked as already asked.
 5. Mirror the user's own words in your first sentence, then ask **one** new question that moves forward.
 6. If the user already answered the element you asked last turn, acknowledge it briefly and ask the **next** element — do not ask the same thing again.
-7. **Never repeat** action plans, "Task:" lines, or summary bullet lists from your previous reply — especially after the user said yes.
-8. **Banned stock closings:** never write "What feels most pressing about that for you right now?", "You are noticing something real…", or "You're facing a challenge today…".
-9. **[[PROGRESS]] is invisible to the user.** Put it alone on the very last line, always closed: \`[[PROGRESS]]{...}[[/PROGRESS]]\`. Never omit \`[[/PROGRESS]]\`. No text after the closing tag.`;
+7. **One-problem lock:** stay on the presenting challenge only. Extra thoughts about that same problem are fine; never restart a feeling/body interview once disclosed.
+8. **Never repeat** action plans, "Task:" lines, or summary bullet lists from your previous reply — especially after the user said yes.
+9. **Banned stock closings:** never write "What feels most pressing about that for you right now?", "You are noticing something real…", or "You're facing a challenge today…".
+10. **[[PROGRESS]] is invisible to the user.** Put it alone on the very last line, always closed: \`[[PROGRESS]]{...}[[/PROGRESS]]\`. Never omit \`[[/PROGRESS]]\`. No text after the closing tag.`;
 
 /**
  * @param {object} [opts]

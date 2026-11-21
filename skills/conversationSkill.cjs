@@ -11,7 +11,8 @@ const CONVERSATION_SKILL_PROMPT_BLOCK = `# Conversation skill (mandatory — Pha
 2. **Normalise briefly** when shame or imposter feelings show up — one plain sentence that lowers pressure, then continue. Do not lecture.
 3. **Reflect the 4 systems already disclosed** (situation → thoughts → feelings/body → what they do/avoid) in everyday language before asking anything new. Only name what they already said; do not invent missing pieces.
 4. **One Socratic question** that targets the next missing link in the map. Briefly say *why* you are asking about that moment (so the cognitive model is socialised, not jumped into).
-5. Stay in conceptualisation — no goals, shared goals, feedback goals, ladders, or techniques until Reflective Handshake is confirmed. Deepen the hot thought (meaning/evidence) before leaving thoughts.
+5. Stay in conceptualisation of the **single presenting problem** — no goals, shared goals, feedback goals, ladders, or techniques until Reflective Handshake is confirmed. Deepen the hot thought (meaning/evidence) before leaving thoughts.
+6. **One-problem lock:** additional thoughts about the *same* situation are welcome; do not restart a feeling/body interview for each new thought. If feelings/body/coping are already on the table, reinforce once if needed then move to rules / assumptions / beliefs.
 
 ## Phase Two goal architecture (when handshake is done)
 - Define success as **process** the user controls (honest, fair, professional delivery) — never as guaranteeing someone else's agreement or emotional reaction.
@@ -25,7 +26,8 @@ const CONVERSATION_SKILL_PROMPT_BLOCK = `# Conversation skill (mandatory — Pha
 - If the user already answered an element, acknowledge and move to the next — do not re-ask.`;
 
 const CONVERSATION_SKILL_INFERENCE_BLOCK = `# Conversation skill (condensed)
-Phase One: reuse their words → brief normalise if shame/imposter → reflect situation/thoughts/feelings-body/avoidance they already gave → deepen the hot thought once → one Socratic question on the next missing link (explain why that moment) → no goals/shared goals yet.
+Phase One: reuse their words → brief normalise if shame/imposter → reflect situation/thoughts/feelings-body/avoidance they already gave → deepen the hot thought once → one Socratic question on the next missing link (explain why that moment) → lock to the single presenting problem → no goals/shared goals yet.
+Extra thoughts on the *same* problem OK; never re-interview feelings/body once disclosed (brief \"still feel the same?\" OK, then rules/assumptions/beliefs).
 Phase Two: process goals (controllable fairness/professionalism, not others' reactions); ≤5 steps × ≤2 micro-actions; stimulus control inside steps when avoidance shows; one micro-action at a time.
 Never invent names/facts; never use clinical jargon they did not use.`;
 
@@ -61,11 +63,11 @@ function extractDisclosedCbtMap(history) {
     found.push("automatic thoughts / self-talk present");
   }
   if (
-    /\b(stuck|stressed|anxious|anxiety|dread|freeze|frozen|overwhelm|guilty|shame|afraid|fear|tension|tight|heart|breath)\b/i.test(
+    /\b(stuck|stressed|anxious|anxiety|dread|freeze|frozen|overwhelm|guilty|guilt|shame|afraid|fear|tension|tight|heart|breath|foggy|exhausted|paralyz|crushing|heavy)\b/i.test(
       lower
     )
   ) {
-    found.push("feelings / body cues present");
+    found.push("feelings / body cues present — do not re-ask how they feel");
   }
   if (
     /\b(scroll(?:ing)?|close(?:d)? (?:my )?(?:laptop|doc)|put(?:ting)? off|procrastinat|avoid|delete(?:d|ing)?|rewrit|phone|instagram|social media)\b/i.test(

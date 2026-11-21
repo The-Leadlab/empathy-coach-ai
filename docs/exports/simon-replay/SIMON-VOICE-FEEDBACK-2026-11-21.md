@@ -1,0 +1,20 @@
+# Simon voice feedback — 2026-11-21
+
+Transcribed locally with Whisper `base` from WhatsApp `.opus` notes.
+
+## Note 1 (~62s) — Nikki headphones test
+
+Okay, so I've done two tests this morning. The first one I wasn't particularly happy with, so I thought I would try something new. I got Nikki to wear some headphones and then got her to respond to the AI and see how that sort of played out. Very, very similar. Again, it's going around in circle. It's not really understanding what it is that she's saying. For example, it asks, how do you feel? How did you hear about this change? And then you say it and then it asks you another question and then it ends up asking you the same sort of question again about, okay, well, how did you feel about that? When you've already said how you feel about it. So just wanted to give feedback on exactly what we went through this morning. I put the transcripts in the group. There's something different about it, which feels better, but again, it's not... It's not getting to the goal that we're after.
+
+## Note 2 (~165s) — Phase One conceptualisation focus
+
+Morning, morning. We're seeing the same yesterday. Is what Louise has just said. What it could be is that the system is not focused on establishing the main issue or slash problem on why the user's coming. So I don't know if you could put in a rule to the system to say establish the conceptualisation around this problem first only. You know, that's what we're trying to frame here. So let's just give you an example. The case that they were doing Tim. The situation is this Tim is a new manager and he's got to give a performance evaluation to a member of his team. And he's worried that the team members are going to reject it. And then obviously the thoughts around this are, you know, who am I to to evaluate him. He's been a job longer blah, blah, blah, things like that. So the model needs to ask the established the thoughts, the feelings and the behaviors in the associated rules and assumptions around that problem only. That is what the initial conceptualization is not to continue ask how someone's feeling on say another thought that they've had. So if you know you bring in the second thought that's fine. You can have more than one thought for one problem. That's great. But continue to ask over and over again. The feeling on a new thought. Right. A simple question that the system can ask is, old, do you feel the same about this? You still feel sad about it? You feel, you know, that's fine. That's reinforcement. That's great. But cycling around and around. That I think that's the issue here is that I think it needs to be put into. It needs to be the sorry. I'm getting myself confused now. Phase one needs to be compartmentalized. You're asking the concept, it's establishing conceptualization only around that the problem that they're bringing. The initial problem. So the thoughts, the feelings and the responses. So if you get the thoughts from the responses, start establishing the roles and the assumptions in the inner and the beliefs about it. If that does not make sense, I will try and focus my brain a bit more. And give it a bit more clear.
+
+## Extracted Layer-2 requirements (from audio)
+
+1. **Stop circling:** do not re-ask the same feeling / "how did you hear about this" style question after the user already answered.
+2. **Establish the main problem first:** Phase One must conceptualise *why the user is here* before branching.
+3. **One-problem lock:** for the presenting situation only, gather thoughts, feelings, behaviours, rules, assumptions, and beliefs tied to that problem.
+4. **Multiple thoughts OK:** more than one thought for the same problem is fine; do not treat each new thought as a fresh feeling interview.
+5. **Reinforcement vs re-interview:** "Do you feel the same about this?" is OK; cycling "how do you feel?" on every new thought is not.
+6. **Phase One compartmentalised:** stay in conceptualisation of the initial problem; if thoughts come from responses, move into rules / assumptions / beliefs — not a new emotional intake loop.

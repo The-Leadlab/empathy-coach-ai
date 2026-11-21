@@ -22,7 +22,13 @@ export type PhaseOneState = {
   handshakeConfirmed?: boolean;
 };
 
-type CoachGuard = { jsonMode: boolean; phaseOne: boolean; element: string | null; crisis: boolean };
+type CoachGuard = {
+  jsonMode: boolean;
+  phaseOne: boolean;
+  element: string | null;
+  crisis: boolean;
+  feelingsKnown?: boolean;
+};
 
 export type ChatReplyOk = {
   ok: true;
@@ -110,6 +116,7 @@ function guardQuery(guard: CoachGuard | null | undefined, attempt: number): stri
   if (guard.phaseOne) q.set("intake", "1");
   if (guard.element) q.set("el", guard.element);
   if (guard.crisis) q.set("crisis", "1");
+  if (guard.feelingsKnown) q.set("feel", "1");
   return `&${q.toString()}`;
 }
 

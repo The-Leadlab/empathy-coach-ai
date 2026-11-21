@@ -136,6 +136,30 @@ describe("rejectReason", () => {
     ).toBeNull();
   });
 
+  it("rejects feeling re-interview when coping already known, allows reinforcement", () => {
+    expect(
+      rejectReason("That second thought is heavy. How do you feel about it?", {
+        phaseOne: true,
+        element: "belief",
+        feelingsKnown: true,
+      }),
+    ).toBe("feeling_reask");
+    expect(
+      rejectReason("That second thought is heavy. Do you still feel the same about it?", {
+        phaseOne: true,
+        element: "belief",
+        feelingsKnown: true,
+      }),
+    ).toBeNull();
+    expect(
+      rejectReason("When that thought shows up, what do you notice in your body?", {
+        phaseOne: true,
+        element: "coping",
+        feelingsKnown: false,
+      }),
+    ).toBeNull();
+  });
+
   it("rejects LoRA stock closings and garbled truncations", () => {
     expect(
       rejectReason(
