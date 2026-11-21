@@ -1,0 +1,38 @@
+---
+description: Auth, rate limits, and validation for ShiftED LLM and admin API routes
+globs:
+  - api/**
+  - netlify/functions/**
+  - server/**
+  - src/lib/fetchChatReply.ts
+  - src/lib/fetchAdminTranslation.ts
+  - src/lib/workbookAuthorApi.ts
+  - src/lib/phase3Api.ts
+---
+
+# API routes (Netlify / Vercel / Express)
+
+Canonical handlers live in `netlify/functions/*.js`. `api/*.js` only adapts those handlers for Vercel. `server/server.js` is the local Express clone — keep authz and validation in sync across all three.
+
+## Required checks on every handler
+
+1. Allow only the methods the route needs (`POST` for chat/translate/transcribe/author; `GET`/`DELETE` for RunPod job poll/cancel). Reject the rest with 405.
+2. Resolve `Authorization: Bearer <jwt>`, call `supabase.auth.getUser(token)`, 401 if missing/invalid.
+3. For admin routes (`workbook-author`, any future trainer/export API): require `user_roles.role = 'admin'` for that `user.id`. Do not treat `NAMED_TRAINER_ADMINS` or `*@admin.com` as sufficient.
+4. Apply a per-IP / per-user rate limit before calling RunPod, Groq, OpenAI, or OpenRouter.
+5. Parse the body with a zod schema. `chat` needs a bounded `userMessage` + `chatHistory`; `transcribe` needs `audioBase64`; `translate` needs `text` + lang enums from `skills/adminTranslate.cjs`.
+
+## Secrets
+
+- Provider URLs and keys: `process.env.LLM_API_KEY`, `VLLM_API_URL`, `VLLM_MODEL`, `GROQ_API_KEY`, `OPENAI_API_KEY`, `FALLBACK_LLM_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`.
+- Never read `import.meta.env` here. Never return raw provider error bodies to the client.
+
+## Do not ship
+
+- Open CORS (`Access-Control-Allow-Origin: *`) on these routes.
+- Unauthenticated `/api/chat` GET/POST/DELETE (job poll/cancel included).
+- Unauthenticated `/api/translate` or `/api/transcribe`.
+- Service-role Supabase calls that skip the user JWT check.
+
+When adding a route, add a matching Vercel wrapper in `api/` and the same authz in `server/server.js`.
+---
