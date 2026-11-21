@@ -162,7 +162,8 @@ function countLiveWorkers(health) {
 }
 
 /**
- * Tiny job that only exists to scale a min=0 worker. Skips if already warm or queued.
+ * Tiny job that only exists to scale a min=0 worker (October-style: pay after warm kick).
+ * Skips when a worker is already live. Still kicks when the queue is empty and cold.
  * @returns {Promise<string|null>} job id or null when no kick needed
  */
 async function ensureRunPodWarm(endpointId, apiKey) {
@@ -174,7 +175,11 @@ async function ensureRunPodWarm(endpointId, apiKey) {
     console.warn("RunPod health check failed:", err.message);
     health = null;
   }
-  if (health && (countLiveWorkers(health) > 0 || (health.jobs?.inQueue || 0) > 0)) {
+  if (health && countLiveWorkers(health) > 0) {
+    return null;
+  }
+  // One queued warm job is enough to request a worker; don't pile more.
+  if (health && (health.jobs?.inQueue || 0) > 0) {
     return null;
   }
   return submitRunPodJob(

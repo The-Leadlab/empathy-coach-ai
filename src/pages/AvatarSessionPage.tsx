@@ -5,6 +5,7 @@ import ChatInput from "@/components/chat/ChatInput";
 import { detectCrisis } from "@/components/safety/CrisisDetector";
 import { useAuth } from "@/hooks/useAuth";
 import { useSpeechSynthesis } from "@/hooks/useSpeechSynthesis";
+import { warmCoachLlm } from "@/lib/warmCoachLlm";
 import {
   fetchJourneyById,
   renameChatSession,
@@ -404,6 +405,8 @@ export default function AvatarSessionPage() {
     };
 
     bootstrapJourney();
+    // October-style: kick RunPod scale-up as soon as the journey session opens.
+    warmCoachLlm("session_open");
 
     return () => {
       isMounted = false;

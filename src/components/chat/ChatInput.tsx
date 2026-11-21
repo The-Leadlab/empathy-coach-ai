@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, KeyboardEvent } from "react";
 import { Loader2, Mic, Paperclip, Send, Square, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { readUploadedConversationFile, UPLOAD_ACCEPT } from "@/lib/readUploadedConversationFile";
+import { warmCoachLlm } from "@/lib/warmCoachLlm";
 import { toast } from "sonner";
 
 interface Props {
@@ -145,6 +146,7 @@ export default function ChatInput({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={handleKeyDown}
+        onFocus={() => warmCoachLlm("composer_focus")}
         placeholder={isMobile ? "What's on your mind?" : "Describe the situation, or attach a PDF / transcript…"}
         rows={1}
         className="flex-1 resize-none bg-transparent text-sm px-2 py-2 outline-none text-foreground placeholder:text-muted-foreground"

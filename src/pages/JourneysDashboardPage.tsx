@@ -34,6 +34,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import { warmCoachLlm } from "@/lib/warmCoachLlm";
 
 function journeyDisplayName(journey: ChatSession): string {
   const name = journey.session_name?.trim();
@@ -86,9 +87,16 @@ export default function JourneysDashboardPage() {
     loadJourneys();
   }, [user]);
 
+  useEffect(() => {
+    if (!user) return;
+    // Warm GPU while they pick / open a journey (before first chat turn).
+    warmCoachLlm("journeys_dashboard");
+  }, [user]);
+
   const handleCreateJourney = async () => {
     if (!user || creating) return;
     setCreating(true);
+    warmCoachLlm("new_journey");
     try {
       const journey = await createNewJourney(user.id);
       navigate(`/testing/avatar/session/${journey.id}`);

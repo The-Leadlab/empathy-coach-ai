@@ -316,6 +316,51 @@ exports.handler = async (event) => {
     };
   }
 
+  // Journey open / sign-in path: scale min=0 worker before the user types (no chat text).
+  if (body?.mode === "warm") {
+    if (!apiKey?.trim() || !endpointId || !useRunPodAsync(url)) {
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ warming: false, skipped: true, reason: "runpod_not_configured" }),
+      };
+    }
+    try {
+      let workersUp = false;
+      try {
+        workersUp = countLiveWorkers(await getRunPodHealth(endpointId, apiKey)) > 0;
+      } catch (_) {
+        /* health optional */
+      }
+      if (workersUp) {
+        return {
+          statusCode: 200,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ warming: false, alreadyWarm: true, provider: "runpod" }),
+        };
+      }
+      const jobId = await ensureRunPodWarm(endpointId, apiKey);
+      console.log("RunPod journey warm kick:", jobId || "(already queued)", body?.reason || "");
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          warming: true,
+          jobId: jobId || null,
+          provider: "runpod",
+          reason: body?.reason || null,
+        }),
+      };
+    } catch (err) {
+      console.warn("RunPod warm mode failed:", err.message);
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ warming: false, error: "warm_failed" }),
+      };
+    }
+  }
+
   const preferFallback = body?.provider === "fallback";
   const mode =
     body?.mode === "regenerate" ? "regenerate" : body?.mode === "name_journey" ? "name_journey" : "chat";
