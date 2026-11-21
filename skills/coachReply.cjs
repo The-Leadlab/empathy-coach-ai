@@ -173,12 +173,14 @@ const INTAKE_ONLY_PATTERN = /\bStep \d|next step/i;
 const THIRD_PERSON_PATTERN = /\b(the user|the client|user's|the coachee)\b/i;
 /** Simon regression: goals / shared goals before handshake confirmation. */
 const EARLY_GOAL_PATTERN =
-  /\bshared goal\b|\bgoal when giving (?:the )?feedback\b|\bfeedback goal\b|\btarget outcome\b|\bmicro-?goal\b|\bladder of (?:at most )?\d*\s*steps\b|\bwhat would (?:a )?successful resolution\b|\bwhat(?:'s| is) (?:our |the )?(?:shared )?goal\b/i;
+  /\bshared goal\b|\bgoal when giving (?:the )?feedback\b|\bfeedback goal\b|\btarget outcome\b|\bmicro-?goal\b|\bladder of (?:at most )?\d*\s*steps\b|\bwhat would (?:a )?successful resolution\b|\bwhat(?:'s| is) (?:our |the )?(?:shared )?goal\b|\bwant to achieve (?:this|the) week\b|\bpinned a clear (?:deadline|goal)\b|\byour goal for this week\b|\bclear deadline\b.{0,40}\beach (?:day|afternoon)\b/i;
 /** Simon 21 Nov voice: re-interviewing feelings after coping is known. Reinforcement ("still feel the same?") is allowed. */
 const FEELING_REASK_PATTERN =
-  /\b(?:how (?:are|do|did|does) you feel\b|how (?:did|does) (?:that|this|it) (?:feel|make you feel)\b|what (?:emotion|feeling)s?\b|where (?:in your body|do you feel)\b|how did you feel about\b|what(?:'s| is) (?:coming up |showing up )?(?:for you )?emotionally\b)/i;
+  /\b(?:how (?:are|do|did|does) you feel\b|how (?:did|does) (?:that|this|it) (?:feel|make you feel)\b|what (?:emotion|feeling)s?\b|where (?:in your body|do you feel)\b|how did you feel about\b|what(?:'s| is) (?:coming up |showing up )?(?:for you )?emotionally\b|notice (?:in )?your body\b|in your body when\b|what(?:'s| is) (?:happening )?in your body\b)/i;
 const FEELING_REINFORCE_OK =
   /\b(?:still feel|feel the same|same (?:about|way)|feel(?:ing)? (?:the )?same)\b/i;
+const FEELING_DISCLOSED_RE =
+  /\b(feel(?:ing|s)?|foggy|exhausted|guilt|shame|paralyz|anxious|anxiety|dread|crushing|heavy|furious|defeated|stuck|overwhelm)\b/i;
 
 const PRE_GOAL_PROTOCOL = new Set([
   PROTOCOL_STATES.SCENARIO_EXTRACTION,
@@ -504,12 +506,10 @@ The user just confirmed your Phase One summary (Reflective Handshake). Do NOT re
 
 const RAPPORT_INTRO_INSTRUCTION = `# This turn — soft start (get to know them)
 Do NOT start Phase One mapping, Hot Cross Bun, rules, beliefs, ladders, or goals yet.
-Ask ONE simple question only. Priority (skip anything they already answered):
-1) Their name
-2) What they prefer to be called
-3) Rough age only if it feels natural — never pressure
-4) One light check-in (how they are today / what brought them here) — still warm, not clinical
-Keep 1–2 short sentences + one question. Once you have a preferred name, use it once.`;
+Ask ONE simple question only (one question mark). Priority (skip anything they already answered):
+1) Their name — prefer "What should I call you?" as the single ask
+2) Only later turns: light check-in on what brought them here
+Keep 1–2 short sentences + exactly one question. Do not ask name and preferred-name in the same reply.`;
 
 const SOFT_ENTER_PHASE_ONE_INSTRUCTION = `# This turn — soft transition into coaching
 You know them a little. Stay gentle. Acknowledge them by preferred name if known, then ask ONE soft question about the main challenge or situation they want help with.
@@ -608,10 +608,16 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
       : "";
   const turnInstruction = [softEnter, stateInstruction, intakeInstruction].filter(Boolean).join("\n\n");
 
+  const capturedForFeel =
+    phaseOne?.captured || journeyContext?.phaseOneState?.captured || null;
+  const userBlob = [history, [{ role: "user", content: userMessage }]]
+    .flat()
+    .filter((m) => m && m.role === "user" && typeof m.content === "string")
+    .map((m) => m.content)
+    .join("\n");
   const feelingsKnown = !!(
-    phaseOne?.captured?.coping ||
-    (typeof journeyContext?.phaseOneState?.captured?.coping === "string" &&
-      journeyContext.phaseOneState.captured.coping.trim())
+    (typeof capturedForFeel?.coping === "string" && capturedForFeel.coping.trim()) ||
+    FEELING_DISCLOSED_RE.test(userBlob)
   );
 
   return {

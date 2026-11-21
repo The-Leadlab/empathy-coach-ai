@@ -145,6 +145,12 @@ describe("rejectReason", () => {
       }),
     ).toBe("feeling_reask");
     expect(
+      rejectReason(
+        "I hear the fog. What's the first thing you notice in your body when you start to feel that paralysis?",
+        { phaseOne: true, element: "trigger", feelingsKnown: true },
+      ),
+    ).toBe("feeling_reask");
+    expect(
       rejectReason("That second thought is heavy. Do you still feel the same about it?", {
         phaseOne: true,
         element: "belief",
@@ -158,6 +164,15 @@ describe("rejectReason", () => {
         feelingsKnown: false,
       }),
     ).toBeNull();
+  });
+
+  it("rejects affirming a weekly goal before handshake", () => {
+    expect(
+      rejectReason(
+        "You've pinned a clear deadline—4:30 PM every day. Does that capture everything you want to achieve this week?",
+        { phaseOne: true, element: "rule" },
+      ),
+    ).toBe("early_goal");
   });
 
   it("rejects LoRA stock closings and garbled truncations", () => {
