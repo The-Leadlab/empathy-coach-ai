@@ -173,6 +173,12 @@ describe("rejectReason", () => {
         { phaseOne: true, element: "rule" },
       ),
     ).toBe("early_goal");
+    expect(
+      rejectReason("That sounds like a solid target. What would a day look like for you?", {
+        phaseOne: true,
+        element: "summary",
+      }),
+    ).toBe("early_goal");
   });
 
   it("rejects LoRA stock closings and garbled truncations", () => {

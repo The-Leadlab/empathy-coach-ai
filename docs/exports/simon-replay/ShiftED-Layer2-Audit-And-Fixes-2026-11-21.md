@@ -133,3 +133,20 @@ Saved under `docs/exports/simon-replay/`:
 - [ ] ≤1 question per reply; alliance-first opener  
 - [ ] Feedback with apply-to-global appears in “Trainer global standards” when service role set  
 - [ ] Starred replies appear as exemplars when service role set  
+
+---
+
+## 9. Live replay results (2026-11-21, local Groq fallback)
+
+Pushed commits `4d4ae93` + `b7ff5fa`. Live golden user turns (max 6) against Layer-2 stack:
+
+| Check | Result |
+|-------|--------|
+| no feeling re-ask when known | **Pass** |
+| no early goal before handshake | **Pass** |
+| single-question rapport opener | **Pass** ("What should I call you?") |
+| Match July turn-for-turn depth / tone | **Not yet** — current replies are shorter; July was longer/multi-question (and would fail today’s wall/meta guards) |
+| Phase One advance past `rule` | Soft — still sticky on rule in replay state |
+| Production host | `https://shifted-ai-mauve.vercel.app` responding; provider often `fallback` (Groq), not always RunPod 14B |
+
+Honest status: talk *rules* now enforce Simon’s voice constraints; the model is **not** a July twin. Next if needed: more Layer-2 on rule→belief→summary advance, then optional short continued SFT — still no full retrain.

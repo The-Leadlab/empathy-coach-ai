@@ -173,7 +173,7 @@ const INTAKE_ONLY_PATTERN = /\bStep \d|next step/i;
 const THIRD_PERSON_PATTERN = /\b(the user|the client|user's|the coachee)\b/i;
 /** Simon regression: goals / shared goals before handshake confirmation. */
 const EARLY_GOAL_PATTERN =
-  /\bshared goal\b|\bgoal when giving (?:the )?feedback\b|\bfeedback goal\b|\btarget outcome\b|\bmicro-?goal\b|\bladder of (?:at most )?\d*\s*steps\b|\bwhat would (?:a )?successful resolution\b|\bwhat(?:'s| is) (?:our |the )?(?:shared )?goal\b|\bwant to achieve (?:this|the) week\b|\bpinned a clear (?:deadline|goal)\b|\byour goal for this week\b|\bclear deadline\b.{0,40}\beach (?:day|afternoon)\b/i;
+  /\bshared goal\b|\bgoal when giving (?:the )?feedback\b|\bfeedback goal\b|\btarget outcome\b|\bmicro-?goal\b|\bladder of (?:at most )?\d*\s*steps\b|\bwhat would (?:a )?successful resolution\b|\bwhat(?:'s| is) (?:our |the )?(?:shared )?goal\b|\bwant to achieve (?:this|the) week\b|\bpinned a clear (?:deadline|goal)\b|\byour goal for this week\b|\bclear deadline\b.{0,40}\beach (?:day|afternoon)\b|\bsolid (?:target|goal)\b|\bgoal for this week\b/i;
 /** Simon 21 Nov voice: re-interviewing feelings after coping is known. Reinforcement ("still feel the same?") is allowed. */
 const FEELING_REASK_PATTERN =
   /\b(?:how (?:are|do|did|does) you feel\b|how (?:did|does) (?:that|this|it) (?:feel|make you feel)\b|what (?:emotion|feeling)s?\b|where (?:in your body|do you feel)\b|how did you feel about\b|what(?:'s| is) (?:coming up |showing up )?(?:for you )?emotionally\b|notice (?:in )?your body\b|in your body when\b|what(?:'s| is) (?:happening )?in your body\b)/i;
@@ -410,6 +410,7 @@ Hard rules for this reply:
 - If asking about trigger/thought: deepen meaning or evidence — do not skim and jump ahead.
 - Never invent a Tim scenario, panic-button framing, stock training story, or workplace facts they did not say.
 - HARD BAN: goals, shared goals, feedback goals, ladders, target outcomes — Reflective Handshake is not done yet.
+- If the user volunteers a weekly goal early, briefly park it ("we can lock that after we check the map") and continue the element above — do not affirm or refine the goal yet.
 
 # Output format (required)
 Return only one JSON object, no other text:

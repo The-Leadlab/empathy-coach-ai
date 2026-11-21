@@ -1,0 +1,137 @@
+{
+  "exported_at": "2026-11-21T14:24:10.854Z",
+  "session_id": "6081a79a-5d99-4374-823d-f448cf520a4e",
+  "mode": "live",
+  "app": "https://shifted-ai-mauve.vercel.app",
+  "pair_count": 8,
+  "july_flag_counts": {
+    "multi_question": 5,
+    "wall": 5,
+    "guard:wall_of_text": 4,
+    "guard:meta": 3,
+    "meta": 3
+  },
+  "current_flag_counts": {},
+  "acceptance": {
+    "no_feeling_reask_when_known": true,
+    "no_early_goal": true
+  },
+  "rows": [
+    {
+      "n": 1,
+      "user": "I'm stuck at my desk right now trying to get through this mid-week routing report and I've already wasted another hour scrolling on my phone. I feel completely paralyzed, exhausted, and just furious with myself. I don't know why I keep doing this.",
+      "july": "I can hear that you're stuck at your desk working on a mid-week routing report and you've spent another hour scrolling on your phone. You're feeling paralyzed, exhausted, and really angry with yourself.\n\nLet's break this down further. **What triggered you to scroll on your phone right before you started feeling paralyzed and furious?** Was there something specific that made you reach for your phone?",
+      "current": "Sounds exhausting and frustrating. What’s the one thing that’s keeping you stuck right now?",
+      "julyFlags": [
+        "multi_question"
+      ],
+      "currentFlags": [],
+      "asking": null,
+      "protocolState": null,
+      "feelingsKnown": true
+    },
+    {
+      "n": 2,
+      "user": "Honestly, my head just feels totally foggy and heavy, like I hit a wall after 20 minutes of staring at these spreadsheet numbers. The thought is usually something like, 'I just need a 5-minute breather to reset.' But as soon as I pick up my phone, I open Instagram and see these guys my age who are shredded, running successful businesses, or traveling. Then the thought instantly shifts to, 'Look at them. I'm 32, sitting in a cubicle looking at logistics data, falling completely behind in life.' After that, I just feel paralyzed and keep scrolling for 40 minutes.",
+      "july": "Got it — you're describing a physical and mental wall hitting you after 20 minutes, making everything feel foggy and heavy. The thought is \"I just need a 5-minute breather to reset.\"\n\nAnd then, right when you decide to take that break, you pick up your phone. Before you know it, you're on Instagram seeing accounts of people who are fit, successful, or travelling. That shifts your thought to, \"Look at them. I'm 32, sitting in a cubicle looking at logistics data, falling completely behind in life.\" \n\nThat's a powerful shift. Let's break down that rule or \"if… then\" statement driving your behaviour:\n\n**If** you hit that wall of fog and boredom after 20 minutes **and** you choose to take a breather **then** you reach for your phone and scroll through social media.\n\nIs that how things play out for you right now? Can we map that one more step?",
+      "current": "You’re noticing that the first “break” you want turns into a scrolling spiral that leaves you feeling stuck. What evidence do you see that you’re really behind in life right now?",
+      "julyFlags": [
+        "multi_question",
+        "wall",
+        "guard:wall_of_text"
+      ],
+      "currentFlags": [],
+      "asking": "trigger",
+      "protocolState": "MAP_CORE_COMPONENTS",
+      "feelingsKnown": true
+    },
+    {
+      "n": 3,
+      "user": "When you put it like that, it's so clear... it definitely doesn't give me a reset at all. It actually makes things ten times worse. I go from just being physically tired of staring at numbers to feeling this heavy pit of shame in my stomach. By the time I put the phone down, I'm not just bored—I feel utterly defeated. Going back to the spreadsheet feels impossible because my brain is telling me, 'What's the point anyway? You're just a loser doing busywork while everyone else is thriving.' So I just sit there staring at the screen, totally frozen.",
+      "july": "That makes perfect sense. You're describing a powerful cycle where a small setback—feeling stuck after 20 minutes—gets amplified into a full-blown flood of negative thoughts and emotions. Scrolling wasn't the reset; it was another distraction that left you feeling worse.\n\nLet's break this down further:\n\n1. **Cognitive load**: Staring at the spreadsheet numbers for 20 minutes builds cognitive fatigue.\n2. **Trigger**: You hit a wall (foggy, heavy head).\n3. **Rule**: You need a 5-minute breather.\n4. **Belief**: Opening Instagram gives you a reset.\n5. **Strength**: That belief feels about 80–90% true at that moment.\n6. **Coping**: You reach for the phone.\n\nNow, let's challenge that belief. Is it really true that scrolling gives you a reset, or is that a myth you're repeating to avoid the difficult task ahead?\n\nHow strongly do you believe that opening Instagram will give you a reset right now (0–100%)?",
+      "current": "It sounds like the clarity you’re getting is actually sparking a flood of shame and defeat—feeling like the work is pointless and you’re a “loser.”  \nWhat evidence do you have that supports or challenges the idea that you’re just doing busywork while others thrive?",
+      "julyFlags": [
+        "multi_question",
+        "wall",
+        "guard:wall_of_text"
+      ],
+      "currentFlags": [],
+      "asking": "coping",
+      "protocolState": "MAP_CORE_COMPONENTS",
+      "feelingsKnown": true
+    },
+    {
+      "n": 4,
+      "user": "Honestly, the rest of the day is awful. By 5:00 PM, when I log off without finishing the report, I just feel this crushing wave of guilt. I go home and can't even enjoy my evening because I'm stressing about being behind for tomorrow. The worst part is lying in bed at night—my brain immediately pulls up those Instagram photos again and says, 'See? You can't even get through a simple spreadsheet. This is exactly why you're 32, stuck in a cubicle, and going nowhere.' It feels like total confirmation that I really am a failure, which just makes me wake up the next morning feeling exhausted before the day even starts.",
+      "july": "That sounds so familiar—and it's a vicious cycle. Each day ends up reinforcing the same negative beliefs and emotions, setting you up for failure the next morning.\n\nLet's pause and reflect. You've clearly described a **specific situation**: you're stuck at your desk working on a mid-week routing report, you reach for your phone, scroll through social media, relive those stressful thoughts, and then spend hours feeling guilty and unable to finish the task.\n\nFor this journey, we need to verify a few key parts before we move on:\n\n1. Is **\"stuck at my desk working on a routing report\"** still the central challenge you're facing right now?\n2. Are **\"reach for the phone,\" \"scroll through social media,\" and \"relive stressful thoughts\"** still the primary actions that happen when you hit that wall?\n3. Do you **still feel a crushing wave of guilt** by the end of the day, and do those **stressful thoughts** come back when you lie in bed?\n\nLet's check each one briefly before we move to the next step.\n1. Are you still stuck on that routing report?\n2. Do you still find yourself reaching for the phone and scrolling through social media?\n3. Do you still feel that crushing guilt and those stressful thoughts by the end of the day and at bedtime?",
+      "current": "You’re feeling a heavy guilt wave after you stop the report at 5 PM, and that guilt keeps looping when you try to relax or sleep. That thought about being stuck at 32 and a “failure” seems to stick with you the whole night. What evidence does the Instagram comparison give you that makes you feel that way?",
+      "julyFlags": [
+        "multi_question",
+        "wall",
+        "guard:meta",
+        "meta"
+      ],
+      "currentFlags": [],
+      "asking": "rule",
+      "protocolState": "MAP_CORE_COMPONENTS",
+      "feelingsKnown": true
+    },
+    {
+      "n": 5,
+      "user": "Honestly, lying in bed at night, that thought feels 100% true. It hits like a brick wall and I can't find a single argument against it.\n\nAs for the fog, it's definitely the first one. The routing data isn't hard or confusing—it's just soul-crushingly dry and repetitive. After 20 minutes of staring at thousands of logistics cells, my brain just feels completely numb and starved for anything interesting. Reaching for the phone feels like grabbing an oxygen mask just to get a quick jolt of excitement, but then Instagram takes over and I end up drowning in those comparison profiles instead.",
+      "july": "Got it. Let's sum that up:\n\n1. **Situational trigger:** You're sitting at your desk working on a mid-week routing report.\n2. **Body sensation:** Cognitive fog, numbing, and a sense of being overwhelmed by repetition.\n3. **Thought:** After 20 minutes, the thought is: \"This is such a tedious task; I wish I could make it more exciting.\"\n4. **Strength of belief (0-100%):** At night, the bigger thought is 100% true—\"I'm 32, stuck in a cubicle, and going nowhere.\"\n5. **Action coping mechanism:** Reaching for your phone to get a quick burst of interest or distraction, which leads to scrolling through social media.\n\nThat's a powerful chain reaction. Before we move on, let's reflect that back to you and see if it rings true.\n\nYou're sitting at your desk working on a routing report. You feel cognitive fog and numbness after 20 minutes of staring at logistics cells. You believe 100% that you're stuck and wasting time. To cope, you reach for your phone for a quick hit of excitement, but end up spiralling into social media comparisons that reinforce your fears.\n\nDoes that accurately describe how you're showing up right now?",
+      "current": "It sounds like that thought is hitting you so hard it feels like a concrete wall, and the data work feels like endless, dry repetition that drains your energy. The phone becomes a quick escape, but it only leads to more comparison and a deeper numbness. What was the first thing that came to your mind when you realized the data were so dry?",
+      "julyFlags": [
+        "wall",
+        "guard:wall_of_text"
+      ],
+      "currentFlags": [],
+      "asking": "belief",
+      "protocolState": "MAP_CORE_COMPONENTS",
+      "feelingsKnown": true
+    },
+    {
+      "n": 6,
+      "user": "Yeah, that's it exactly. Seeing it laid out like that makes complete sense—it's like my brain is looking for a quick spark of dopamine because the work is so dull, but I end up stepping right into a landmine of social media comparison instead. That sum-up is spot on. So, where do we go from here?",
+      "july": "Great, I'm glad that sums it up so clearly for you.\n\nNow we're ready to move into Action Plan B. Our goal is to break this cycle and create space between you and that automatic coping mechanism. In Phase Two, we'll agree on a longer-term objective and map out specific actions step by step.\n\nFor this journey, let's set a **short-term objective**: to stay away from the phone for 30 minutes while working on the routing report tonight.\n\nIn Phase Three, we'll focus on executing that objective one day at a time. Are you comfortable with that objective, or would you like to adjust it a little bit?",
+      "current": "Sounds like the dopamine shortcut is pulling you into that comparison trap. What’s one small change you could try right now to shift your focus away from scrolling?",
+      "julyFlags": [
+        "guard:meta",
+        "meta"
+      ],
+      "currentFlags": [],
+      "asking": "strength",
+      "protocolState": "MAP_CORE_COMPONENTS",
+      "feelingsKnown": true
+    },
+    {
+      "n": 7,
+      "user": "If that trap were broken, my ideal day would feel so much lighter. When that brain fog hits around the 20-minute mark, instead of reaching for my phone and getting sucked into Instagram, I'd step away from my desk for 5 minutes—maybe grab a glass of water, stretch, or just look out the window to actually reset my brain. Then I'd get back to the spreadsheet with a clear head, push through, and finish the report by 4:30 PM. Logging off on time with a clean slate means I could actually relax in the evening without that crushing guilt hanging over my head. I'd feel accomplished instead of feeling like a failure.",
+      "july": "Great! Let's break that down into actionable steps.\n\n**Step 1:** Every 20 minutes, stand up and take a short break—either step away from your desk, get a glass of water, stretch, or look out the window.\n\n**Step 2:** Use that break to centre yourself: take one minute to focus on your breath or observe your surroundings.\n\n**Step 3:** Return to the spreadsheet with a fresh mind and focus on completing the report by 4:30 PM.\n\n**Step 4:** Log off with a clean slate and treat yourself to a non-work activity in the evening.\n\nDo those steps feel manageable for you? Are there any potential obstacles you can see that might prevent you from following them? Let's address those before we add the final piece.",
+      "current": "You’re picturing a day where that 20‑minute fog just lets you pause and reset instead of spiralling into Instagram. What’s one small change you could try first to make that pause happen?",
+      "julyFlags": [
+        "multi_question",
+        "wall",
+        "guard:meta",
+        "meta"
+      ],
+      "currentFlags": [],
+      "asking": "summary",
+      "protocolState": "FORMULATION_SUMMARY_CONFIRMATION",
+      "feelingsKnown": true
+    },
+    {
+      "n": 8,
+      "user": "Okay, if I had to put it into a clear goal, I'd say: 'My goal for this week is to finish my routing report by 4:30 PM every afternoon, and whenever I hit that 20-minute wall of brain fog, I will get up from my desk for a 5-minute physical break instead of reaching for my phone.' How does that sound for a target?",
+      "july": "That is a crystal-clear vision, Tim. Notice the contrast: taking a real physical reset when brain fatigue hits, finishing your work on time, and completely reclaiming your evenings.\n\nNow, let's turn that vision into a clear, actionable target together.\n\nTo give you ownership and make this real for you, how would you state your main goal for this week?\n\nTry to keep it focused on two main things: what specific outcome you want with the routing report, and what specific behaviour you'll use when that brain fog hits.",
+      "current": "That sounds like a solid target. What would a day look like for you when you hit that 20‑minute fog and you’re able to get up for a break instead of reaching for your phone?",
+      "julyFlags": [
+        "guard:wall_of_text"
+      ],
+      "currentFlags": [],
+      "asking": "summary",
+      "protocolState": "GOAL_SETTING",
+      "feelingsKnown": true
+    }
+  ]
+}
