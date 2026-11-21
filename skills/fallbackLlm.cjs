@@ -5,7 +5,20 @@
 
 const { stripThinking, contentFromChoice } = require("./coachReply.cjs");
 
+/**
+ * Groq/OpenAI-compat fallback. Off when COACH_DISABLE_FALLBACK=1|true|yes
+ * or LLM_FALLBACK=0|off|false — keeps coach text on RunPod / VLLM only.
+ */
+function fallbackDisabled() {
+  const hard = (process.env.COACH_DISABLE_FALLBACK || "").trim().toLowerCase();
+  if (hard === "1" || hard === "true" || hard === "yes" || hard === "on") return true;
+  const soft = (process.env.LLM_FALLBACK || "").trim().toLowerCase();
+  if (soft === "0" || soft === "off" || soft === "false" || soft === "no") return true;
+  return false;
+}
+
 function fallbackConfigured() {
+  if (fallbackDisabled()) return false;
   const key = (process.env.FALLBACK_LLM_API_KEY || process.env.GROQ_API_KEY || "").trim();
   return Boolean(key);
 }
@@ -169,6 +182,7 @@ function currentFallbackModel() {
 
 module.exports = {
   fallbackConfigured,
+  fallbackDisabled,
   fallbackConfig,
   callFallbackChat,
   currentFallbackModel,
