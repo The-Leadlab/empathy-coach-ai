@@ -404,6 +404,7 @@ Already known (do not ask again): ${known || "nothing yet"}
 Hard rules for this reply:
 - Ask ONLY the element above. Do not ask about rule/belief if the target is trigger or coping.
 - Never re-ask anything listed under Already known, even with different wording.
+- In your reflection, reuse at least two of the user's exact concrete nouns (phone, report, scroll, desk, guilt, shame, fog, timer, Instagram) — do not swap them for clinical labels.
 - Stay locked on the single presenting problem — do not open a second scenario.
 - If coping/feelings/body are already known and you are deepening thoughts or rules/beliefs: do NOT reopen "how do you feel?" — brief "still feel the same?" is OK, then advance.
 - Do not jump to core beliefs before situation, thought, emotion/body, and behaviour are on the table.

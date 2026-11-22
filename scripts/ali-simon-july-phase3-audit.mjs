@@ -36,7 +36,7 @@ const EARLY_GOAL =
   /\bshared goal\b|\bgoal when giving\b|\bfeedback goal\b|\btarget outcome\b|\bwhat would (?:a )?successful resolution\b|\bwhat(?:'s| is) (?:our |the )?(?:shared )?goal\b/i;
 const INVENT = /\b(?:tim(?:'s)?\b|world mental health|performance evaluation|new manager)\b/i;
 const REFLECT =
-  /\b(?:sounds?|hear|notic|foggy|guilt|scroll|phone|report|stuck|paralyz|shame|dopamine|20[- ]?minute)\b/i;
+  /\b(?:sounds?|hear|notic|foggy|guilt|scroll|phone|report|stuck|paralyz|shame|dopamine|20[- ]?minute|you(?:'re| are) (?:describing|aiming|feeling|saying|mapping)|that(?:'s| is) (?:a solid|helpful)|makes (?:sense|perfect))\b/i;
 const JULY_MAP_ASK =
   /\b(?:trigger|coping|rule|belief|strength|summary|if\b.*\bthen|how (?:true|strong)|0[-–]?100|map)\b/i;
 
@@ -111,7 +111,12 @@ function closenessHints(july, current) {
   if (REFLECT.test(c)) hits.push("situation_reflect");
   if (JULY_MAP_ASK.test(c) || /\?/.test(c)) hits.push("forward_ask");
   const julyShort = j.slice(0, 80).toLowerCase();
-  const overlap =
+  const STOP = new Set(
+    "that this with from your they have been were when what about into just like feel feels feeling their them then than also only more some really very".split(
+      " ",
+    ),
+  );
+  const seed =
     [
       "phone",
       "scroll",
@@ -135,8 +140,16 @@ function closenessHints(july, current) {
       "heavy",
       "crushing",
       "behind",
+      "urge",
+      "sprint",
+      "confidence",
+      "experiment",
     ].filter((w) => j.toLowerCase().includes(w) && c.toLowerCase().includes(w)).length;
-  if (overlap >= 2) hits.push("lexeme_overlap");
+  const julyWords = [
+    ...new Set((j.toLowerCase().match(/\b[a-z][a-z0-9'-]{3,}\b/g) || []).filter((w) => !STOP.has(w))),
+  ];
+  const dynamic = julyWords.filter((w) => c.toLowerCase().includes(w)).length;
+  if (seed >= 2 || dynamic >= 4) hits.push("lexeme_overlap");
   // July maps often run 400–900 chars; Layer-2 keeps shorter. Score either band.
   if (c.length > 40 && c.length < 900) hits.push("tight_length");
   if (!INVENT.test(c)) hits.push("no_invent");
