@@ -36,7 +36,7 @@ const EARLY_GOAL =
   /\bshared goal\b|\bgoal when giving\b|\bfeedback goal\b|\btarget outcome\b|\bwhat would (?:a )?successful resolution\b|\bwhat(?:'s| is) (?:our |the )?(?:shared )?goal\b/i;
 const INVENT = /\b(?:tim(?:'s)?\b|world mental health|performance evaluation|new manager)\b/i;
 const REFLECT =
-  /\b(?:sounds?|hear|notic|foggy|guilt|scroll|phone|report|stuck|paralyz|shame|dopamine|20[- ]?minute|you(?:'re| are) (?:describing|aiming|feeling|saying|mapping)|that(?:'s| is) (?:a solid|helpful)|makes (?:sense|perfect))\b/i;
+  /\b(?:sounds?|hear|notic|foggy|guilt|scroll|phone|report|stuck|paralyz|shame|dopamine|20[- ]?minute|you(?:['’]re| are) (?:describing|aiming|feeling|saying|mapping)|that(?:['’]s| is) (?:a solid|helpful)|makes (?:sense|perfect)|solid step)\b/i;
 const JULY_MAP_ASK =
   /\b(?:trigger|coping|rule|belief|strength|summary|if\b.*\bthen|how (?:true|strong)|0[-–]?100|map)\b/i;
 
