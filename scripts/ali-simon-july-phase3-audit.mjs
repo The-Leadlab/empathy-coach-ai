@@ -86,7 +86,7 @@ function pairTurns(messages) {
   return pairs;
 }
 
-function scoreReply(text, { feelingsKnown = false } = {}) {
+function scoreReply(text, { feelingsKnown = false, asking = null, protocolState = null } = {}) {
   const t = String(text || "");
   const flags = [];
   if (EARLY_GOAL.test(t)) flags.push("early_goal");
@@ -94,9 +94,11 @@ function scoreReply(text, { feelingsKnown = false } = {}) {
   if (INVENT.test(t) && !/\brouting report\b/i.test(t)) flags.push("possible_invent");
   if ((t.match(/\?/g) || []).length > 1) flags.push("multi_question");
   if (t.length > 700) flags.push("wall");
+  const element = asking || (feelingsKnown ? "belief" : "trigger");
+  const inPhaseOne = !protocolState || /MAP_|CONCEPTUAL|PHASE_?ONE|INTAKE/i.test(String(protocolState));
   const reject = rejectReason(t, {
-    phaseOne: true,
-    element: feelingsKnown ? "belief" : "trigger",
+    phaseOne: inPhaseOne && element !== "summary",
+    element,
     feelingsKnown,
   });
   if (reject) flags.push(`guard:${reject}`);
@@ -366,8 +368,13 @@ async function main() {
     });
 
     const current = String(result.reply ?? result.error ?? "");
-    const currentFlags = scoreReply(current, { feelingsKnown });
-    const julyFlags = july ? scoreReply(july, { feelingsKnown }) : [];
+    const askingNow = result.phaseOne?.asking ?? journey.phaseOneState?.asking ?? null;
+    const currentFlags = scoreReply(current, {
+      feelingsKnown,
+      asking: askingNow,
+      protocolState: result.protocolState,
+    });
+    const julyFlags = july ? scoreReply(july, { feelingsKnown, asking: askingNow }) : [];
     const close = july ? closenessHints(july, current) : [];
 
     journey = advanceJourney(journey, {
