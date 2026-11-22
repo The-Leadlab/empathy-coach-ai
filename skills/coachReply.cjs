@@ -214,6 +214,7 @@ function rejectReason(reply, opts = {}) {
   if (!visible) return "empty";
   if (isMetaText(visible, opts)) return "meta";
   if (opts.phaseOne && opts.element !== "summary" && !visible.includes("?")) return "no_question";
+  if ((visible.match(/\?/g) || []).length > 1) return "multi_question";
   if (isPreGoalTurn(opts) && EARLY_GOAL_PATTERN.test(visible)) return "early_goal";
   // Feelings already captured — ban a fresh feeling/body interview (except when asking coping, or brief reinforcement).
   if (
@@ -226,6 +227,8 @@ function rejectReason(reply, opts = {}) {
   ) {
     return "feeling_reask";
   }
+  // Stock invented scenarios the 14B sometimes invents mid-journey.
+  if (/\b(?:10k|5k|half[- ]?marathon|race tomorrow)\b/i.test(visible)) return "invented_scenario";
   const voiceReject = naturalVoiceRejectReason(visible);
   if (voiceReject) return voiceReject;
   return null;
@@ -406,6 +409,7 @@ Hard rules for this reply:
 - Never re-ask anything listed under Already known, even with different wording.
 - In your reflection, reuse at least two of the user's exact concrete nouns (phone, report, scroll, desk, guilt, shame, fog, timer, Instagram) — do not swap them for clinical labels.
 - Stay locked on the single presenting problem — do not open a second scenario.
+- Exactly one question mark in the whole reply. Never invent races, runs, hobbies, or events the user did not name.
 - If coping/feelings/body are already known and you are deepening thoughts or rules/beliefs: do NOT reopen "how do you feel?" — brief "still feel the same?" is OK, then advance.
 - Do not jump to core beliefs before situation, thought, emotion/body, and behaviour are on the table.
 - If asking about trigger/thought: deepen meaning or evidence — do not skim and jump ahead.
