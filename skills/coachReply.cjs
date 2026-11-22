@@ -523,6 +523,15 @@ function isDocumentAnalysisTurn(userMessage) {
   return /^\[Uploaded document for analysis:/i.test(String(userMessage ?? "").trim());
 }
 
+/** Rich opening challenge already — map it (July style); don't stall on name. */
+function hasSubstantialPresentingProblem(userMessage) {
+  const t = String(userMessage || "").trim();
+  if (t.length < 80) return false;
+  return /\b(stuck|scroll|phone|report|work|desk|feel|guilt|shame|anxious|paralyz|exhaust|furious|can't|cannot|don't know why|keep doing)\b/i.test(
+    t,
+  );
+}
+
 /** First few turns: learn name / preferred address before clinical Phase One. */
 function needsRapportIntro(journeyContext, history, userMessage) {
   if (!journeyContext || typeof journeyContext !== "object") return false;
@@ -533,6 +542,8 @@ function needsRapportIntro(journeyContext, history, userMessage) {
   if (prior?.asking === "summary" || prior?.handshakeConfirmed) return false;
   const captured = prior?.captured && typeof prior.captured === "object" ? prior.captured : null;
   if (captured && Object.keys(captured).length >= 2) return false;
+  // July / Simon: if they already poured out the problem, start conceptualisation now.
+  if (hasSubstantialPresentingProblem(userMessage)) return false;
   const userTurns = (history || []).filter((m) => m?.role === "user").length + (userMessage ? 1 : 0);
   if (userTurns > 3) return false;
   const blob = [...(history || []).map((m) => m?.content || ""), userMessage || ""].join("\n").toLowerCase();
