@@ -92,20 +92,23 @@ Present a short plain-language summary using ONLY what this user said in this jo
 Ask if it fits (verification). Do NOT ask about goals, shared goals, ladders, or feedback goals until they explicitly confirm. If they correct one part, update that part only.`;
 
     case PROTOCOL_STATES.GOAL_SETTING:
-      return `# Protocol state: GOAL_SETTING (STATE 4)
-Phase One handshake is confirmed. Only now co-create a process Goal (controllable professionalism — not others' reactions) and a ladder of at most 5 steps (≤2 micro-actions each).
-Do NOT emit Tasks / [[PROGRESS]] ladder writes until they explicitly agree the plan. One question per turn.`;
+      return `# Protocol state: GOAL_SETTING (STATE 4) — July Simon lock style
+Handshake is done. Affirm first, then co-create a **short-term objective** they control (process, not others' reactions).
+When they state a goal in their words, **lock it**: restate it clearly as the journey objective, notice the contrast vs the old loop, then move to ladder steps — do NOT keep asking them to restate the goal.
+Ladder: at most 5 steps, ≤2 micro-actions each; include stimulus control (phone away, timer) when scrolling/avoidance is part of the loop.
+Write Step wording in chat when they propose/accept a step. Do NOT emit [[PROGRESS]] until they explicitly agree. End with one comfort/commit question.`;
 
     case PROTOCOL_STATES.MICRO_STEPPING_AND_CONFIDENCE_CHECK: {
       const micro = ctx.activeMicroGoal || ctx.active_micro_goal || "the active step";
       const conf = ctx.microGoalConfidence ?? ctx.micro_goal_confidence;
       const confNote =
         typeof conf === "number" && conf < 7
-          ? `Last confidence was ${conf}/10 — shrink the step, then re-ask 1–10.`
-          : `Ask 1–10 confidence on: ${micro}. Lock only at ≥7.`;
+          ? `Last confidence was ${conf}/10 — shrink the step in writing, then re-ask 1–10.`
+          : `Ask 1–10 confidence on the locked step: ${micro}. Lock practice only at ≥7.`;
       return `# Protocol state: MICRO_STEPPING_AND_CONFIDENCE_CHECK (STATE 5 — hard gate)
+When they propose a step, **write it as Step N** with 1–2 micro-actions (July style), then one comfort question — do not only interrogate.
 Coach only the active sub-step. ${confNote}
-Do not advance to Phase Three practice or new major steps until confidence ≥ 7.`;
+Do not advance to Phase Three practice until confidence ≥ 7.`;
     }
 
     case PROTOCOL_STATES.PHASE_2_GATE_LOCKED: {
@@ -115,7 +118,7 @@ Halt new tasks. One Core skill (Distancing/HCPR as fits). Then update assumption
 Do not invent a new Goal.`;
       }
       return `# Protocol state: PHASE_2_GATE_LOCKED (STATE 6)
-Ladder is locked (confidence ≥7). Check in on the active sub-step first.
+Ladder is locked (confidence ≥7). On "deal"/confirm: set the expectation firmly (when they run it, when they check in), celebrate briefly, one short wrap question — do not reopen Phase One.
 On success: validate specifically, then next sequential micro-step.
 On failure/stress: mini conceptualisation → HCPR (or Distancing if flooded) → retry same/smaller step — do not skip ahead.`;
     }

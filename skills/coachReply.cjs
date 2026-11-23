@@ -510,8 +510,10 @@ function withRegenerateReminder(messages) {
  * Decides, before the model runs, how this turn's reply is checked and (in Phase One intake)
  * which element to ask about.
  */
-const HANDSHAKE_DONE_INSTRUCTION = `# This turn
-The user just confirmed your Phase One summary (Reflective Handshake). Do NOT re-summarize or ask if it captures things again. Acknowledge briefly in one short sentence, then start Phase Two: ask what a successful resolution of this challenge would look like for them (their target outcome).`;
+const HANDSHAKE_DONE_INSTRUCTION = `# This turn — July Simon after handshake
+The user just confirmed your Phase One summary. Do NOT re-summarize or ask if it captures things again.
+Affirm briefly, then move into Action Plan: propose a clear **short-term objective** grounded in what they said (break the phone/scroll loop, finish the report, etc.), and ask if they are comfortable with that objective or want to adjust it.
+Write the objective in plain locked language — do not only ask an open "what would success look like?" with no proposed lock.`;
 
 const RAPPORT_INTRO_INSTRUCTION = `# This turn — soft start (get to know them)
 Do NOT start Phase One mapping, Hot Cross Bun, rules, beliefs, ladders, or goals yet.

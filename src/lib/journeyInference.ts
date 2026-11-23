@@ -49,24 +49,30 @@ function looksLikeBacktrackQuestion(text: string) {
   return /assumption|rule|fear.*change|did.*change|new.*(rule|fear|belief)/i.test(text);
 }
 
-function extractMicroGoal(assistantText: string): string | null {
+function extractMicroGoal(text: string): string | null {
   const patterns = [
-    /your (?:next )?(?:small )?step(?: is)?:?\s*([^.?\n]{8,120})/i,
+    /(?:step\s*[12](?:\.\d+)?|your (?:next )?(?:small )?step)(?: is)?:?\s*([^.?\n]{8,160})/i,
     /try (?:to )?([^.?\n]{8,100}) tomorrow/i,
     /micro[- ]?goal:?\s*([^.?\n]{8,120})/i,
+    /short[- ]term objective:?\s*([^.?\n]{8,160})/i,
   ];
   for (const p of patterns) {
-    const m = assistantText.match(p);
+    const m = text.match(p);
     if (m?.[1]) return m[1].trim();
   }
   return null;
 }
 
-function extractTargetOutcome(assistantText: string): string | null {
-  const m = assistantText.match(
-    /(?:successful resolution|target outcome|success looks like):?\s*([^.?\n]{8,160})/i,
-  );
-  return m?.[1]?.trim() ?? null;
+function extractTargetOutcome(text: string): string | null {
+  const patterns = [
+    /(?:successful resolution|target outcome|success looks like|short[- ]term objective):?\s*([^.?\n]{8,200})/i,
+    /(?:my goal for this week is|clear goal[,:]?\s*i'?d say:?)\s*['"]?([^'"\n]{12,220})/i,
+  ];
+  for (const p of patterns) {
+    const m = text.match(p);
+    if (m?.[1]) return m[1].replace(/^['"]|['"]$/g, "").trim();
+  }
+  return null;
 }
 
 function extractPresentingChallenge(userText: string): string | null {
@@ -163,7 +169,10 @@ export function inferJourneyUpdates(
   }
 
   // --- Phase Two ---
-  const confMatch = user.match(CONFIDENCE_ONLY);
+  const confMatch =
+    user.match(CONFIDENCE_ONLY) ||
+    user.match(/\bconfidence(?:\s+is)?(?:\s+sitting)?(?:\s+at)?\s*(?:a\s*)?(\d{1,2})\s*(?:\/|out of)\s*10\b/i) ||
+    user.match(/\b(\d{1,2})\s*(?:\/|out of)\s*10\b/i);
   if (confMatch && current.phase_one_confirmed) {
     const n = parseInt(confMatch[1], 10);
     if (n >= 1 && n <= 10) {
@@ -177,14 +186,24 @@ export function inferJourneyUpdates(
     }
   }
 
-  const microGoal = extractMicroGoal(currentAssistant);
+  const microGoal = extractMicroGoal(currentAssistant) || extractMicroGoal(user);
   if (microGoal && current.phase_one_confirmed) {
     updates.active_micro_goal = microGoal;
     if (!updates.platform_phase) updates.platform_phase = 2;
   }
 
-  const target = extractTargetOutcome(currentAssistant);
+  const target = extractTargetOutcome(user) || extractTargetOutcome(currentAssistant);
   if (target && current.phase_one_confirmed) updates.target_outcome = target;
+
+  // July-style "deal" / plan confirm with confidence already ≥7 → practice lock
+  if (
+    current.phase_one_confirmed &&
+    /\b(sounds? like a deal|that'?s a deal|i'?m (?:in|ready)|let'?s (?:lock|do) it|keep the steps)\b/i.test(user) &&
+    (current.active_micro_goal || updates.active_micro_goal) &&
+    (updates.micro_goal_confidence ?? current.micro_goal_confidence ?? 0) >= 7
+  ) {
+    updates.platform_phase = 3;
+  }
 
   // --- Phase Three (only after handshake) ---
   const confirmed = !!(updates.phase_one_confirmed ?? current.phase_one_confirmed);

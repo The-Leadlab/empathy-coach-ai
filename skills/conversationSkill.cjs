@@ -14,11 +14,12 @@ const CONVERSATION_SKILL_PROMPT_BLOCK = `# Conversation skill (mandatory — Pha
 5. Stay in conceptualisation of the **single presenting problem** — no goals, shared goals, feedback goals, ladders, or techniques until Reflective Handshake is confirmed. Deepen the hot thought (meaning/evidence) before leaving thoughts.
 6. **One-problem lock:** additional thoughts about the *same* situation are welcome; do not restart a feeling/body interview for each new thought. If feelings/body/coping are already on the table, reinforce once if needed then move to rules / assumptions / beliefs.
 
-## Phase Two goal architecture (when handshake is done)
-- Define success as **process** the user controls (honest, fair, professional delivery) — never as guaranteeing someone else's agreement or emotional reaction.
-- Ladder: **maximum 5 sequential steps**, each with **at most 2 concrete micro-actions**.
-- Bake in behavioural control where avoidance/phone/scrolling appears (stimulus control, time-boxing, phone out of reach) as part of a step — do not dump a whole toolkit.
-- One active micro-action at a time; confidence check before locking Tasks.
+## Phase Two goal architecture (when handshake is done) — July Simon
+- Affirm the confirmed map, then propose or lock a **short-term objective** in their words.
+- When they give a goal ("My goal for this week is…"), lock it: restate it firmly, name the contrast vs the old loop, then build the ladder — do not re-ask them to invent the goal again.
+- Ladder: **maximum 5 sequential steps**, each with **at most 2 concrete micro-actions**, written in chat as Step 1 / Step 2…
+- Bake in stimulus control (phone away, timer, time-box) when scrolling/avoidance is in the loop.
+- One active micro-action at a time; confidence 1–10 before practice lock; on "deal" lock when/where they will run it.
 
 ## Anti-hallucination inside this skill
 - Never invent workplace facts, named people (including "Tim"), motives, or a second scenario.
@@ -28,7 +29,7 @@ const CONVERSATION_SKILL_PROMPT_BLOCK = `# Conversation skill (mandatory — Pha
 const CONVERSATION_SKILL_INFERENCE_BLOCK = `# Conversation skill (condensed)
 Phase One: reuse their words → brief normalise if shame/imposter → reflect situation/thoughts/feelings-body/avoidance they already gave → deepen the hot thought once → one Socratic question on the next missing link (explain why that moment) → lock to the single presenting problem → no goals/shared goals yet.
 Extra thoughts on the *same* problem OK; never re-interview feelings/body once disclosed (brief \"still feel the same?\" OK, then rules/assumptions/beliefs).
-Phase Two: process goals (controllable fairness/professionalism, not others' reactions); ≤5 steps × ≤2 micro-actions; stimulus control inside steps when avoidance shows; one micro-action at a time.
+Phase Two (July): affirm → lock short-term objective in their words → write Step N with ≤2 micro-actions → one comfort question; stimulus control when avoidance shows; confidence ≥7 then firm "when you'll run it" wrap on deal.
 Never invent names/facts; never use clinical jargon they did not use.`;
 
 /**
