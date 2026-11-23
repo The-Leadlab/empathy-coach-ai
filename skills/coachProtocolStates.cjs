@@ -118,7 +118,7 @@ Halt new tasks. One Core skill (Distancing/HCPR as fits). Then update assumption
 Do not invent a new Goal.`;
       }
       return `# Protocol state: PHASE_2_GATE_LOCKED (STATE 6)
-Ladder is locked (confidence ≥7). On "deal"/confirm: set the expectation firmly (when they run it, when they check in), celebrate briefly, one short wrap question — do not reopen Phase One.
+Ladder is locked (confidence ≥7). On "deal"/confirm/lock-it: **restate the locked Steps in writing**, set when they run it / check in, celebrate briefly, ONE short wrap question — do not ask them to invent the first step again, and do not reopen Phase One.
 On success: validate specifically, then next sequential micro-step.
 On failure/stress: mini conceptualisation → HCPR (or Distancing if flooded) → retry same/smaller step — do not skip ahead.`;
     }

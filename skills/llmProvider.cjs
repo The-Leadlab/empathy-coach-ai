@@ -19,13 +19,34 @@ const {
 } = require("./runpodAsync.cjs");
 
 /**
- * Coach chat transport. `runpod` (default) uses RunPod Serverless async jobs when VLLM_API_URL is a
- * RunPod URL; `openai_compat` sends synchronous /chat/completions to VLLM_API_URL.
- * Legacy values (openrouter, groq, …) are treated as runpod so existing hosts keep working.
+ * Coach chat transport.
+ * - `runpod` (default): RunPod Serverless async jobs. Leave this on Vercel while training stays there.
+ * - `openai_compat`: synchronous /chat/completions to VLLM_API_URL.
+ * - `vault` or `dummy`: private scale-to-zero host (VAULT_LLM_*). LoRA updates are a new
+ *   VAULT_LORA_ADAPTER name, not a full merge. If the vault URL is unset, the caller uses the
+ *   already-configured fallback (Netlify draft) and does not boot RunPod.
+ * Legacy values (openrouter, groq, …) stay `runpod` so existing hosts keep working.
  */
 function coachLlmProvider() {
   const value = (process.env.LLM_PROVIDER || "").trim().toLowerCase();
-  return value === "openai_compat" ? "openai_compat" : "runpod";
+  if (value === "openai_compat") return "openai_compat";
+  if (value === "vault" || value === "dummy") return "vault";
+  return "runpod";
+}
+
+/** OpenAI-compatible private host. Model id is the LoRA adapter name when set. */
+function resolveVaultEndpoint() {
+  const apiUrl = (process.env.VAULT_LLM_API_URL || "").trim();
+  const apiKey = (process.env.VAULT_LLM_API_KEY || "").trim();
+  const adapter = (process.env.VAULT_LORA_ADAPTER || "").trim();
+  const base = (process.env.VAULT_BASE_MODEL || "").trim();
+  return {
+    apiUrl,
+    apiKey,
+    model: adapter || base || "empathy-coach-lora",
+    adapter: adapter || null,
+    ready: Boolean(apiUrl && apiKey),
+  };
 }
 
 function workbookProviderMode() {
@@ -171,6 +192,7 @@ async function pollRunPodJobResult(jobId, endpointId, apiKey) {
 module.exports = {
   callLlm,
   coachLlmProvider,
+  resolveVaultEndpoint,
   pollRunPodJobResult,
   workbookProviderMode,
   resolveSyncEndpoint,

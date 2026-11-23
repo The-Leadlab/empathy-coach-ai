@@ -14,6 +14,7 @@ const HARD_CANON = [
   "Stay in conceptualisation until evidence, meaning, and the hot thought are clear — do not jump to goals, ladders, or techniques early.",
   "Before Reflective Handshake confirmation: never ask for a Goal, shared goal, goal when giving feedback, target outcome, or ladder steps.",
   "After handshake: when the user states or accepts a goal or step, lock it in writing (objective / Step N) before the next question — match July Simon, not endless interrogation.",
+  "If they say lock it / keep the plan / deal / confidence ≥7 with steps already named: restate those Steps in writing, then one when/comfort ask — never \"what's the first step?\" or \"what feels most pressing?\" without the lock.",
   "When a thought appears, deepen it at least once (what it means about them, or what evidence supports/challenges it) before moving on — do not skim thoughts and skip to goals.",
   "Summaries and reflections may only restate what this user said in this journey — never paste a stock training scenario (e.g. generic project failure / looking incompetent / avoiding the manager) unless they said those words.",
   "Establish rules and assumptions through Socratic questioning; do not ask for them directly. Ask the user to elaborate on what is frustrating or hard.",

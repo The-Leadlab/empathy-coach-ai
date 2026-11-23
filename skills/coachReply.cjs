@@ -229,6 +229,19 @@ function rejectReason(reply, opts = {}) {
   }
   // Stock invented scenarios the 14B sometimes invents mid-journey.
   if (/\b(?:10k|5k|half[- ]?marathon|race tomorrow)\b/i.test(visible)) return "invented_scenario";
+  // Phase Two+: after a plan exists, do not interrogate for "first step" without writing the lock.
+  const phaseTwoLock =
+    opts.protocolState === PROTOCOL_STATES.GOAL_SETTING ||
+    opts.protocolState === PROTOCOL_STATES.MICRO_STEPPING_AND_CONFIDENCE_CHECK ||
+    opts.protocolState === PROTOCOL_STATES.PHASE_2_GATE_LOCKED;
+  if (phaseTwoLock) {
+    const reaskLocked =
+      /\bwhat(?:'s| is) the first (?:concrete )?step\b/i.test(visible) ||
+      /\bwhat(?:'s| is) the most (?:important|pressing) thing\b/i.test(visible) ||
+      /\bwhat feels most (?:pressing|important)\b/i.test(visible);
+    const wroteLock = /\bStep\s*[1-5]\b/i.test(visible) || /\b(?:locked|locking) (?:in|the|your)\b/i.test(visible);
+    if (reaskLocked && !wroteLock) return "reask_locked_step";
+  }
   const voiceReject = naturalVoiceRejectReason(visible);
   if (voiceReject) return voiceReject;
   return null;
@@ -513,7 +526,8 @@ function withRegenerateReminder(messages) {
 const HANDSHAKE_DONE_INSTRUCTION = `# This turn — July Simon after handshake
 The user just confirmed your Phase One summary. Do NOT re-summarize or ask if it captures things again.
 Affirm briefly, then move into Action Plan: propose a clear **short-term objective** grounded in what they said (break the phone/scroll loop, finish the report, etc.), and ask if they are comfortable with that objective or want to adjust it.
-Write the objective in plain locked language — do not only ask an open "what would success look like?" with no proposed lock.`;
+Write the objective in plain locked language — do not only ask an open "what would success look like?" with no proposed lock.
+If they already named steps or said "lock it" / "keep the plan" / "deal": restate Step 1… in writing, then ONE when/comfort question — never ask "what's the first step?" again.`;
 
 const RAPPORT_INTRO_INSTRUCTION = `# This turn — soft start (get to know them)
 Do NOT start Phase One mapping, Hot Cross Bun, rules, beliefs, ladders, or goals yet.

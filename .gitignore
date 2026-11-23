@@ -46,3 +46,6 @@ data/raw/_downloads/
 # Vendor skills (cloned reference; Cursor loads from ~/.cursor/skills)
 skills/vendor/
 models/
+
+# Local Netlify folder
+.netlify

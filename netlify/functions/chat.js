@@ -1,6 +1,8 @@
 /**
  * Netlify serverless function: same behavior as server/server.js /api/chat
- * Production: RunPod Serverless vLLM via VLLM_* env vars (see docs/SUPER-PROMPT-RUNPOD-OWN-LLM.md)
+ * Netlify dummy: LLM_PROVIDER=vault → private scale-to-zero host (VAULT_LLM_* + LoRA adapter name).
+ * Until VAULT_LLM_API_URL is set, the existing Netlify fallback answers and RunPod is not booted.
+ * Vercel keeps the default RunPod path for training.
  * - LLM_API_KEY = RunPod API key
  * - VLLM_API_URL = https://api.runpod.ai/v2/<endpoint-id>/openai/v1/chat/completions
  * - VLLM_MODEL = OPENAI_SERVED_MODEL_NAME_OVERRIDE (e.g. empathy-coach-qwen14)
@@ -53,7 +55,7 @@ const {
   withNoThink,
   withRegenerateReminder,
 } = require("../../skills/coachReply.cjs");
-const { coachLlmProvider } = require("../../skills/llmProvider.cjs");
+const { coachLlmProvider, resolveVaultEndpoint } = require("../../skills/llmProvider.cjs");
 
 const SYSTEM_PROMPT = {
   role: "system",
@@ -318,7 +320,7 @@ exports.handler = async (event) => {
 
   // Journey open / sign-in path: scale min=0 worker before the user types (no chat text).
   if (body?.mode === "warm") {
-    if (!apiKey?.trim() || !endpointId || !useRunPodAsync(url)) {
+    if (coachLlmProvider() === "vault" || !apiKey?.trim() || !endpointId || !useRunPodAsync(url)) {
       return {
         statusCode: 200,
         headers: { "Content-Type": "application/json" },
@@ -476,7 +478,7 @@ exports.handler = async (event) => {
   };
 
   /** Fallback provider. After a guard rejection it gets one attempt, then the deterministic template. */
-  const runFallback = async (cancelJobId, afterGuardRejection = false) => {
+  const runFallback = async (cancelJobId, afterGuardRejection = false, providerName = "fallback") => {
     if (!fallbackConfigured()) {
       if (guard && afterGuardRejection) return templateReply();
       return {
@@ -495,13 +497,13 @@ exports.handler = async (event) => {
         const reply = stripThinking(await callFallbackChat(messages, sampling));
         console.log("Fallback LLM reply, mode=", mode, "chars=", reply.length, "model=", currentFallbackModel());
         if (!reply) throw new Error("empty fallback reply");
-        return okReply({ reply }, "fallback");
+        return okReply({ reply }, providerName);
       }
       const generate = (isRetry) =>
         callFallbackChat(isRetry || afterGuardRejection ? withRegenerateReminder(messages) : messages, sampling);
       const out = await runGuarded(generate, guard, afterGuardRejection ? 1 : 2);
       console.log("Fallback LLM reply, mode=", mode, "ok=", !!out, "model=", currentFallbackModel());
-      return out ? okReply(out, "fallback") : templateReply();
+      return out ? okReply(out, providerName) : templateReply();
     } catch (err) {
       console.error("Fallback LLM error:", err.message);
       if (guard && afterGuardRejection) return templateReply();
@@ -530,7 +532,13 @@ exports.handler = async (event) => {
     return runFallback(null);
   }
 
-  if (!apiKey || apiKey.trim() === "") {
+  const vault = provider === "vault" ? resolveVaultEndpoint() : null;
+  if (vault && !vault.ready) {
+    console.log("Vault host unset; Netlify fallback is the dummy coach (RunPod left for training).");
+    return runFallback(null, false, "dummy");
+  }
+
+  if ((!apiKey || apiKey.trim() === "") && !vault?.ready) {
     if (fallbackConfigured()) {
       return runFallback(null);
     }
@@ -542,13 +550,18 @@ exports.handler = async (event) => {
       body: JSON.stringify({ error: "Avatar is currently unavailable. (API key not configured.)" }),
     };
   }
-
-  const model = process.env.VLLM_MODEL || (isRunPod ? "empathy-coach-qwen14" : "meta-llama/llama-3.2-3b-instruct:free");
+  const requestUrl = vault ? vault.apiUrl : url;
+  const requestKey = vault ? vault.apiKey : apiKey;
+  const model =
+    vault?.model ||
+    process.env.VLLM_MODEL ||
+    (isRunPod ? "empathy-coach-qwen14" : "meta-llama/llama-3.2-3b-instruct:free");
 
   // Cold GPU: kick a warm job, then still queue the real chat on RunPod (14B). Client poll may
   // fall back to Groq only after RUNPOD_FALLBACK_AFTER_MS — do not skip RunPod on cold start.
   // Soft-start rapport (name) may use Groq when workers are already up.
-  if (mode === "chat" && useRunPodAsync(url) && endpointId && apiKey?.trim()) {
+  // Vault mode never calls this — training endpoint stays idle.
+  if (provider !== "vault" && mode === "chat" && useRunPodAsync(url) && endpointId && apiKey?.trim()) {
     let workersUp = false;
     try {
       workersUp = countLiveWorkers(await getRunPodHealth(endpointId, apiKey)) > 0;
@@ -621,11 +634,11 @@ exports.handler = async (event) => {
   }
 
   const post = (msgs) =>
-    fetch(url, {
+    fetch(requestUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey.trim()}`,
+        "Authorization": `Bearer ${requestKey.trim()}`,
       },
       body: JSON.stringify({
         model,
@@ -639,7 +652,7 @@ exports.handler = async (event) => {
 
   /** One primary completion with cold-start retries and one context-length re-trim. Returns raw text. */
   const requestPrimary = async (msgs) => {
-    let { res, attempts } = await fetchLlmWithRetries(() => post(msgs), { isRunPod });
+    let { res, attempts } = await fetchLlmWithRetries(() => post(msgs), { isRunPod: vault ? false : isRunPod });
     if (!res.ok) {
       let errText = await res.text();
       if (isContextLengthError(errText) && (mode === "chat" || mode === "regenerate")) {
@@ -656,7 +669,7 @@ exports.handler = async (event) => {
           "attempts:",
           attempts,
           "URL:",
-          url,
+          requestUrl,
           "model:",
           model,
           "estTokens:",
@@ -674,7 +687,7 @@ exports.handler = async (event) => {
   };
 
   try {
-    const replyProvider = isRunPod ? "runpod" : "direct";
+    const replyProvider = vault ? "vault" : isRunPod ? "runpod" : "direct";
     if (!guard) {
       return okReply({ reply: stripThinking(await requestPrimary(messages)) }, replyProvider);
     }
@@ -687,7 +700,7 @@ exports.handler = async (event) => {
   } catch (err) {
     console.error("Error connecting to LLM:", err.message);
     if (fallbackConfigured()) {
-      return runFallback(null);
+      return runFallback(null, false, provider === "vault" ? "dummy" : "fallback");
     }
     if (err.status) {
       return {
