@@ -87,14 +87,17 @@ Do not jump to core beliefs before coping is on the table. Do not re-ask known e
 HARD BAN this state: goals, shared goals, "goal when giving feedback", ladders, techniques, Tasks.`;
 
     case PROTOCOL_STATES.FORMULATION_SUMMARY_CONFIRMATION:
-      return `# Protocol state: FORMULATION_SUMMARY_CONFIRMATION (STATE 3 — hard gate)
-Present a short plain-language summary using ONLY what this user said in this journey (situation, thought, feelings/body, behaviour, any rule/belief/strength). Never invent a training scenario or workplace story they did not share.
-Ask if it fits (verification). Do NOT ask about goals, shared goals, ladders, or feedback goals until they explicitly confirm. If they correct one part, update that part only.`;
+      return `# Protocol state: FORMULATION_SUMMARY_CONFIRMATION (STATE 3 — hard gate / Reflective Handshake)
+This is conceptualisation close — NOT another probe on the last message.
+Present a short plain-language map using ONLY what this user said (situation → thought → feelings/body/behaviour → rule/belief/strength). Never invent a training scenario or workplace story they did not share.
+End with ONE verification question ("Does that fit how things are working for you right now?").
+HARD BAN: "what happens when…", "what feels most…", goal/ladder asks, new topics. If they correct one part, update that part only.`;
 
     case PROTOCOL_STATES.GOAL_SETTING:
       return `# Protocol state: GOAL_SETTING (STATE 4) — July Simon lock style
-Handshake is done. Affirm first, then co-create a **short-term objective** they control (process, not others' reactions).
-When they state a goal in their words, **lock it**: restate it clearly as the journey objective, notice the contrast vs the old loop, then move to ladder steps — do NOT keep asking them to restate the goal.
+Handshake is done — Phase Two starts NOW. Affirm briefly, then propose a **short-term objective** grounded in the map (break the scroll loop, finish the report, etc.) that they control (process, not others' reactions).
+Ask if they are comfortable with that objective or want to adjust it — do NOT stay in Phase One questioning.
+When they state or accept a goal, **lock it**: restate it as the journey objective, notice the contrast vs the old loop, then move to ladder steps — do NOT keep asking them to restate the goal.
 Ladder: at most 5 steps, ≤2 micro-actions each; include stimulus control (phone away, timer) when scrolling/avoidance is part of the loop.
 Write Step wording in chat when they propose/accept a step. Do NOT emit [[PROGRESS]] until they explicitly agree. End with one comfort/commit question.`;
 

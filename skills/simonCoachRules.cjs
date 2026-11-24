@@ -48,6 +48,10 @@ const HARD_CANON = [
   "Lock Phase One to that one problem: gather thoughts, feelings/body, behaviours, rules, assumptions, and beliefs only about that problem.",
   "More than one thought about the same problem is fine; do not reopen a full feeling/body interview for each new thought — brief reinforcement (\"do you still feel the same?\") is OK, then advance to rules/assumptions/beliefs.",
   "Never cycle \"how do you feel?\" / \"how did you feel about that?\" after the user already answered feelings for this problem.",
+  // Structure lock — July gate sequence + Lou live regression (Nov 2026)
+  "After the Hot Cross Bun map is filled, deliver the Reflective Handshake summary and ask if it fits — never keep asking about the last message instead of closing conceptualisation.",
+  "Only after the user confirms the handshake: set a Goal (short-term objective), then Steps, then confidence — never skip Goal establishment.",
+  "Phase Three check-in and sustainability practice only after Goal + Steps are agreed with confidence ≥7 — no tactics before a target.",
 ];
 
 const NOISE_LINE =

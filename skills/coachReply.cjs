@@ -208,14 +208,33 @@ function isPreGoalTurn(opts = {}) {
   return false;
 }
 
+const SUMMARY_VERIFY_RE =
+  /\b(does (this|that)|fit|capture|sound(?:s)? (right|accurate|fair)|have i (got|heard)|is that (right|fair|accurate|how)|am i (hearing|getting)|does that (match|describe))\b/i;
+const SUMMARY_EXPLORATORY_RE =
+  /\bwhat (happens|feels|makes|do you|would|part|usually|felt)|how (do|does|did) you|what(?:'s| is) (one|the most|most)\b/i;
+const STRENGTH_ASK_RE = /0\s*(to|-|–)\s*100|how strongly|out of 100|per\s?cent|%\b/i;
+
 /** Why a reply should be rejected, or null when it is fine to show. */
 function rejectReason(reply, opts = {}) {
   const visible = stripHiddenTags(reply);
   if (!visible) return "empty";
   if (isMetaText(visible, opts)) return "meta";
   if (opts.phaseOne && opts.element !== "summary" && !visible.includes("?")) return "no_question";
-  if ((visible.match(/\?/g) || []).length > 1) return "multi_question";
   if (isPreGoalTurn(opts) && EARLY_GOAL_PATTERN.test(visible)) return "early_goal";
+  if ((visible.match(/\?/g) || []).length > 1) return "multi_question";
+  // Reflective Handshake: must summarise + verify — not chase the last message.
+  if (opts.phaseOne && opts.element === "summary") {
+    if (!SUMMARY_VERIFY_RE.test(visible) && SUMMARY_EXPLORATORY_RE.test(visible)) {
+      return "summary_not_handshake";
+    }
+    if (!SUMMARY_VERIFY_RE.test(visible) && visible.length < 120) {
+      return "summary_not_handshake";
+    }
+  }
+  // Strength turn must ask 0–100 — not another exploratory probe.
+  if (opts.phaseOne && opts.element === "strength" && !STRENGTH_ASK_RE.test(visible)) {
+    return "strength_not_asked";
+  }
   // Feelings already captured — ban a fresh feeling/body interview (except when asking coping, or brief reinforcement).
   if (
     opts.feelingsKnown &&
@@ -278,8 +297,18 @@ function detectAskedElement(assistantText) {
 }
 
 function parseStrength(text) {
-  const m = String(text ?? "").match(/\b(100|[1-9]?\d)\s*(%|percent|per cent|\/\s*100|out of 100)?/i);
-  return m ? Number(m[1]) : null;
+  const t = String(text ?? "").trim();
+  // Explicit marker — always trusted.
+  const explicit = t.match(/\b(100|[1-9]?\d)\s*(%|percent|per cent|\/\s*100|out of 100)\b/i);
+  if (explicit) return Number(explicit[1]);
+  // Short rating answers: "80", "about 80", "I'd say 70" — not long story sentences with "3 clients".
+  if (/\b(clients?|hours?|days?|people|weeks?|months?|emails?|tasks?)\b/i.test(t)) return null;
+  if (t.split(/\s+/).length > 8) return null;
+  const soft = t.match(/^(?:about|around|roughly|maybe|nearly|like|id say|i'd say|i would say)?\s*(100|[1-9]?\d)\s*[.!]?\s*$/i);
+  if (soft) return Number(soft[1]);
+  const about = t.match(/\b(?:about|around|roughly|maybe|nearly|say)\s+(100|[1-9]?\d)\b/i);
+  if (about) return Number(about[1]);
+  return null;
 }
 
 function cleanCaptured(captured) {
@@ -407,15 +436,51 @@ const ELEMENT_ASK = {
     "a short plain-language summary of what they shared (situation, thought, feelings/body, behaviour, any rule/belief, strength), then ask if it fits",
 };
 
+function buildHandshakeDraft(captured = {}) {
+  const bits = [];
+  if (captured.situation) bits.push(`the situation is ${captured.situation}`);
+  if (captured.trigger) bits.push(`the thought that shows up is "${captured.trigger}"`);
+  if (captured.coping) bits.push(`you respond by ${captured.coping}`);
+  if (captured.rule) bits.push(`there's a sense that ${captured.rule}`);
+  if (captured.belief) bits.push(`underneath sits "${captured.belief}"`);
+  // Skip tiny strengths — often mis-parsed from "3 clients" / "a few hours" before the fix.
+  if (typeof captured.strength === "number" && captured.strength >= 10) {
+    bits.push(`you rate that around ${captured.strength}/100`);
+  }
+  if (!bits.length) return "I've been mapping what you shared about this problem.";
+  return `Here's what I'm hearing: ${bits.join("; ")}.`;
+}
+
 /** Appended to the system prompt on Phase One intake turns. */
 function phaseOneTurnInstruction(state) {
   const captured = state.captured || {};
   const known = Object.entries(captured)
     .map(([k, v]) => `${k}: ${v}`)
     .join("; ");
+  const asking = state.asking || "trigger";
+  const example =
+    asking === "summary"
+      ? `${buildHandshakeDraft(captured)} Does that fit how things are working for you right now?`
+      : asking === "strength"
+        ? "On a scale from 0 to 100, how strongly do you believe that thought right now?"
+        : asking === "coping"
+          ? "When that thought shows up, what do you notice in your body, and what do you tend to do next?"
+          : "When that moment starts, what's the first thought or urge that shows up?";
+
+  const summaryHard =
+    asking === "summary"
+      ? `
+SUMMARY / REFLECTIVE HANDSHAKE (mandatory this turn):
+- Your reply MUST be a short map of Already known (situation → thought → feelings/body/behaviour → rule/belief/strength) in their words.
+- End with ONE verification question only (e.g. "Does that fit how things are working for you right now?").
+- HARD BAN: "what happens when…", "what feels most…", "what part of…", or any new probe about the last message.
+- Do NOT open a new topic. Do NOT set a Goal yet — wait for their yes.`
+      : "";
+
   return `# This turn
-Ask about: ${ELEMENT_ASK[state.asking] || ELEMENT_ASK.trigger}
+Ask about: ${ELEMENT_ASK[asking] || ELEMENT_ASK.trigger}
 Already known (do not ask again): ${known || "nothing yet"}
+${summaryHard}
 
 Hard rules for this reply:
 - Ask ONLY the element above. Do not ask about rule/belief if the target is trigger or coping.
@@ -432,10 +497,10 @@ Hard rules for this reply:
 
 # Output format (required)
 Return only one JSON object, no other text:
-{"state_update":{"phase":1,"step":"${state.asking === "summary" ? "1.3" : state.asking === "situation" ? "1.1" : "1.2"}","captured":{"trigger":"","rule":"","belief":"","strength":null,"coping":""}},"reply":"..."}
-Fill "captured" only with what the user has actually said. "reply" is what the user sees: second person, warm, natural, ${state.asking === "summary" ? "a short summary then one question" : "1-3 sentences, a brief reflection then exactly one question"}. Never mention phases, steps, the user in the third person, or your plan.
+{"state_update":{"phase":1,"step":"${asking === "summary" ? "1.3" : asking === "situation" ? "1.1" : "1.2"}","captured":{"trigger":"","rule":"","belief":"","strength":null,"coping":""}},"reply":"..."}
+Fill "captured" only with what the user has actually said. "reply" is what the user sees: second person, warm, natural, ${asking === "summary" ? "a short Reflective Handshake summary then one verification question" : "1-3 sentences, a brief reflection then exactly one question"}. Never mention phases, steps, the user in the third person, or your plan.
 Never end with "What feels most pressing about that for you right now?" or open with "You are noticing something real…".
-Example reply: When that repetitive task hits and the phone comes out, what do you notice in your body in that exact moment?`;
+Example reply: ${example}`;
 }
 
 /** Stricter reminder used for the single regeneration attempt. */
@@ -455,7 +520,7 @@ const TEMPLATE_QUESTIONS = {
   rule: "In that moment, is there a simple 'if… then…' assumption you notice — in your own words?",
   belief: "What does that moment seem to say about you, in your own words?",
   strength: "On a scale from 0 to 100, how strongly do you believe that thought right now?",
-  summary: "Is there anything else about that moment you'd like to add before I sum up what I've heard?",
+  summary: "Does that fit how things are working for you right now?",
   general: "What feels most important for us to focus on next?",
 };
 
@@ -466,8 +531,14 @@ Briefly summarise what matters from the document for their coaching situation, s
 const CRISIS_TEMPLATE =
   "I'm really sorry things feel this heavy. When you say that, do you mean you're having thoughts of ending your life, or is it more a way of saying how bad this feels right now?";
 
-function templatedReply({ element, crisis } = {}) {
+function templatedReply({ element, crisis, captured } = {}) {
   if (crisis) return CRISIS_TEMPLATE;
+  if (element === "summary") {
+    return `${buildHandshakeDraft(captured)} ${TEMPLATE_QUESTIONS.summary}`;
+  }
+  if (element === "strength") {
+    return `Thanks for spelling that out. ${TEMPLATE_QUESTIONS.strength}`;
+  }
   return `Thank you for sharing that. ${TEMPLATE_QUESTIONS[element] || TEMPLATE_QUESTIONS.general}`;
 }
 
@@ -523,9 +594,9 @@ function withRegenerateReminder(messages) {
  * Decides, before the model runs, how this turn's reply is checked and (in Phase One intake)
  * which element to ask about.
  */
-const HANDSHAKE_DONE_INSTRUCTION = `# This turn — July Simon after handshake
+const HANDSHAKE_DONE_INSTRUCTION = `# This turn — July Simon after handshake (enter Phase Two)
 The user just confirmed your Phase One summary. Do NOT re-summarize or ask if it captures things again.
-Affirm briefly, then move into Action Plan: propose a clear **short-term objective** grounded in what they said (break the phone/scroll loop, finish the report, etc.), and ask if they are comfortable with that objective or want to adjust it.
+Affirm briefly, then move into Phase Two / Action Plan: propose a clear **short-term objective (Goal)** grounded in what they said (break the phone/scroll loop, finish the report, etc.), and ask if they are comfortable with that objective or want to adjust it.
 Write the objective in plain locked language — do not only ask an open "what would success look like?" with no proposed lock.
 If they already named steps or said "lock it" / "keep the plan" / "deal": restate Step 1… in writing, then ONE when/comfort question — never ask "what's the first step?" again.`;
 

@@ -110,7 +110,69 @@ describe("rejectReason", () => {
 
   it("requires a question on intake turns but not for the summary", () => {
     expect(rejectReason("That sounds hard.", { phaseOne: true, element: "trigger" })).toBe("no_question");
-    expect(rejectReason("Here is what I heard.", { phaseOne: true, element: "summary" })).toBeNull();
+    expect(
+      rejectReason(
+        "Here's what I'm hearing: the tasks feel repetitive and you scroll. Does that fit how things are working for you right now?",
+        { phaseOne: true, element: "summary" },
+      ),
+    ).toBeNull();
+  });
+
+  it("rejects exploratory probes when Reflective Handshake is due", () => {
+    expect(
+      rejectReason("It makes sense that you feel pressured. What happens when you try to focus on meeting those targets?", {
+        phaseOne: true,
+        element: "summary",
+      }),
+    ).toBe("summary_not_handshake");
+  });
+
+  it("rejects strength turns that never ask 0–100", () => {
+    expect(
+      rejectReason("That sounds draining. What part of the work still catches your attention?", {
+        phaseOne: true,
+        element: "strength",
+      }),
+    ).toBe("strength_not_asked");
+    expect(
+      rejectReason("On a scale from 0 to 100, how strongly do you believe that thought right now?", {
+        phaseOne: true,
+        element: "strength",
+      }),
+    ).toBeNull();
+  });
+
+  it("does not treat incidental numbers as belief strength", () => {
+    const next = advancePhaseOneState({
+      prior: {
+        asking: "strength",
+        captured: {
+          situation: "repetitive tasks",
+          trigger: "bored",
+          coping: "scroll",
+          rule: "stuck",
+          belief: "not good enough",
+        },
+      },
+      userMessage: "I feel pressure to onboard three clients a day",
+    });
+    expect(next.captured.strength).toBeUndefined();
+    expect(next.asking).toBe("strength");
+    const withPct = advancePhaseOneState({
+      prior: {
+        asking: "strength",
+        captured: {
+          situation: "repetitive tasks",
+          trigger: "bored",
+          coping: "scroll",
+          rule: "stuck",
+          belief: "not good enough",
+        },
+      },
+      userMessage: "About 70%",
+    });
+    expect(withPct.captured.strength).toBe(70);
+    expect(withPct.asking).toBe("summary");
   });
 
   it("allows step language outside intake (goal ladders)", () => {

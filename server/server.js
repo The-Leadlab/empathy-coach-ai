@@ -287,7 +287,14 @@ app.post("/api/chat", async (req, res) => {
     if (!guard) return res.json({ reply: stripThinking(await generate(false)) });
     const out =
       (await runGuarded(generate, guard)) ??
-      { reply: templatedReply({ element: guard.element, crisis: guard.crisis }), stateUpdate: null };
+      {
+        reply: templatedReply({
+          element: guard.element,
+          crisis: guard.crisis,
+          captured: turn?.phaseOne?.captured,
+        }),
+        stateUpdate: null,
+      };
     res.json({
       reply: out.reply,
       stateUpdate: out.stateUpdate ?? null,

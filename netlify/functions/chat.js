@@ -545,7 +545,16 @@ exports.handler = async (event) => {
   });
   const templateReply = () => {
     console.warn("Using templated coach reply, element=", guard?.element, "crisis=", !!guard?.crisis);
-    return okReply({ reply: templatedReply({ element: guard?.element, crisis: guard?.crisis }) }, "template");
+    return okReply(
+      {
+        reply: templatedReply({
+          element: guard?.element,
+          crisis: guard?.crisis,
+          captured: turn?.phaseOne?.captured,
+        }),
+      },
+      "template",
+    );
   };
 
   /** Fallback provider. After a guard rejection it gets one attempt, then the deterministic template. */
