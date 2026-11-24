@@ -557,30 +557,33 @@ exports.handler = async (event) => {
     process.env.VLLM_MODEL ||
     (isRunPod ? "empathy-coach-qwen14" : "meta-llama/llama-3.2-3b-instruct:free");
 
-  // Cold GPU: kick a warm job, then still queue the real chat on RunPod (14B). Client poll may
-  // fall back to Groq only after RUNPOD_FALLBACK_AFTER_MS — do not skip RunPod on cold start.
-  // Soft-start rapport (name) may use Groq when workers are already up.
+  // Prefer live 14B when workers are up. Async /run has been sitting in queue while the
+  // OpenAI HTTP path still serves — so warm traffic uses sync; cold uses /run + poll.
   // Vault mode never calls this — training endpoint stays idle.
-  if (provider !== "vault" && mode === "chat" && useRunPodAsync(url) && endpointId && apiKey?.trim()) {
-    let workersUp = false;
+  let runpodWorkersUp = false;
+  if (provider !== "vault" && endpointId && apiKey?.trim() && useRunPodAsync(url)) {
     try {
-      workersUp = countLiveWorkers(await getRunPodHealth(endpointId, apiKey)) > 0;
+      runpodWorkersUp = countLiveWorkers(await getRunPodHealth(endpointId, apiKey)) > 0;
     } catch (err) {
       console.warn("RunPod health unavailable:", err.message);
     }
-    if (!workersUp) {
+    if (!runpodWorkersUp && mode === "chat") {
       try {
         const warmId = await ensureRunPodWarm(endpointId, apiKey);
         if (warmId) console.log("RunPod warm kick on first/cold turn:", warmId);
       } catch (err) {
         console.warn("RunPod warm kick failed:", err.message);
       }
-    } else if (turn?.rapport && fallbackConfigured()) {
-      return runFallback(null);
     }
   }
 
-  if (provider === "runpod" && (mode === "chat" || mode === "regenerate") && useRunPodAsync(url) && endpointId) {
+  if (
+    provider === "runpod" &&
+    (mode === "chat" || mode === "regenerate") &&
+    useRunPodAsync(url) &&
+    endpointId &&
+    !runpodWorkersUp
+  ) {
     try {
       // Hard-guarantee fit before async submit (no mid-job retry path).
       if (estimateMessagesTokens(messages) > 3400) {
