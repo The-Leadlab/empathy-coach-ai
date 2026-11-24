@@ -15,6 +15,9 @@ export default function AdminAccessPage() {
           <Link to="/testing/login">Sign in</Link>
         </Button>
         <Button asChild variant="outline" className="w-full rounded-xl">
+          <Link to="/admin">LLM live monitor</Link>
+        </Button>
+        <Button asChild variant="outline" className="w-full rounded-xl">
           <Link to="/adminchat">Admin chat monitor</Link>
         </Button>
       </div>

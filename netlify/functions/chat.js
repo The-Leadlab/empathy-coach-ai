@@ -318,6 +318,77 @@ exports.handler = async (event) => {
     };
   }
 
+  // Admin monitor: RunPod worker/queue snapshot (no secrets).
+  if (body?.mode === "llm_status") {
+    const providerMode = coachLlmProvider();
+    if (providerMode === "vault") {
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          live: false,
+          provider: "vault",
+          reason: "vault_mode",
+          checkedAt: new Date().toISOString(),
+        }),
+      };
+    }
+    if (!apiKey?.trim() || !endpointId || !useRunPodAsync(url)) {
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          live: false,
+          provider: providerMode,
+          reason: "runpod_not_configured",
+          checkedAt: new Date().toISOString(),
+        }),
+      };
+    }
+    try {
+      const health = await getRunPodHealth(endpointId, apiKey);
+      const workers = health?.workers || {};
+      const jobs = health?.jobs || {};
+      const liveCount = countLiveWorkers(health);
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          live: liveCount > 0,
+          provider: liveCount > 0 ? "runpod" : "cold",
+          endpointId,
+          model: process.env.VLLM_MODEL || "empathy-coach-qwen14",
+          workers: {
+            ready: workers.ready || 0,
+            idle: workers.idle || 0,
+            running: workers.running || 0,
+            initializing: workers.initializing || 0,
+            throttled: workers.throttled || 0,
+            unhealthy: workers.unhealthy || 0,
+          },
+          jobs: {
+            inQueue: jobs.inQueue || 0,
+            inProgress: jobs.inProgress || 0,
+            completed: jobs.completed || 0,
+            failed: jobs.failed || 0,
+          },
+          checkedAt: new Date().toISOString(),
+        }),
+      };
+    } catch (err) {
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          live: false,
+          provider: "error",
+          reason: err.message || "health_failed",
+          checkedAt: new Date().toISOString(),
+        }),
+      };
+    }
+  }
+
   // Journey open / sign-in path: scale min=0 worker before the user types (no chat text).
   if (body?.mode === "warm") {
     if (coachLlmProvider() === "vault" || !apiKey?.trim() || !endpointId || !useRunPodAsync(url)) {

@@ -14,6 +14,7 @@ import AvatarSessionPage from "./pages/AvatarSessionPage";
 import SessionWorkspacePage from "./pages/SessionWorkspacePage";
 import JourneysDashboardPage from "./pages/JourneysDashboardPage";
 import AdminChatPage from "./pages/AdminChatPage";
+import AdminLlmMonitorPage from "./pages/AdminLlmMonitorPage";
 import LoginPage from "./pages/LoginPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import SkillsLibraryPage from "./pages/SkillsLibraryPage";
@@ -58,6 +59,13 @@ const App = () => {
             <Route path="/testing/reset-password" element={<ResetPasswordPage />} />
             <Route path="/adminchat" element={<AppLayout />}>
               <Route index element={<AdminChatPage />} />
+            </Route>
+            <Route path="/admin" element={<RequireAuth />}>
+              <Route element={<AppLayout />}>
+                <Route element={<RequireAdmin />}>
+                  <Route index element={<AdminLlmMonitorPage />} />
+                </Route>
+              </Route>
             </Route>
             <Route path="/testing" element={<RequireAuth />}>
               <Route element={<AppLayout />}>

@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { BookOpen, Bot, HeartHandshake, LayoutDashboard, LogIn, LogOut, NotebookPen, Settings } from "lucide-react";
+import { Activity, BookOpen, Bot, HeartHandshake, LayoutDashboard, LogIn, LogOut, NotebookPen, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
 import { useTrainerAdmin } from "@/hooks/useTrainerAdmin";
@@ -22,6 +22,7 @@ export default function TopNav() {
     ? [
         ...baseTabs.slice(0, 2),
         { to: "/testing/workbooks", icon: NotebookPen, label: "Workbooks" },
+        { to: "/admin", icon: Activity, label: "LLM" },
         ...baseTabs.slice(2),
       ]
     : baseTabs;
@@ -43,7 +44,9 @@ export default function TopNav() {
           {navTabs.map((item) => {
             const active =
               location.pathname === item.to ||
-              (item.to !== "/testing" && location.pathname.startsWith(item.to));
+              (item.to !== "/testing" &&
+                item.to !== "/admin" &&
+                location.pathname.startsWith(`${item.to}/`));
             return (
               <Link
                 key={item.to}
