@@ -292,6 +292,7 @@ app.post("/api/chat", async (req, res) => {
           element: guard.element,
           crisis: guard.crisis,
           captured: turn?.phaseOne?.captured,
+          protocolState: guard.protocolState || turn?.protocolState,
         }),
         stateUpdate: null,
       };

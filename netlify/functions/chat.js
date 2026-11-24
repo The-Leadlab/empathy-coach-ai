@@ -551,6 +551,7 @@ exports.handler = async (event) => {
           element: guard?.element,
           crisis: guard?.crisis,
           captured: turn?.phaseOne?.captured,
+          protocolState: guard?.protocolState || turn?.protocolState,
         }),
       },
       "template",

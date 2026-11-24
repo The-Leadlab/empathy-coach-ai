@@ -49,3 +49,6 @@ models/
 
 # Local Netlify folder
 .netlify
+
+# Local HF secrets (never commit)
+.hf-secrets.local

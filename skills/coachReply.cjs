@@ -258,7 +258,11 @@ function rejectReason(reply, opts = {}) {
       /\bwhat(?:'s| is) the first (?:concrete )?step\b/i.test(visible) ||
       /\bwhat(?:'s| is) the most (?:important|pressing) thing\b/i.test(visible) ||
       /\bwhat feels most (?:pressing|important)\b/i.test(visible);
-    const wroteLock = /\bStep\s*[1-5]\b/i.test(visible) || /\b(?:locked|locking) (?:in|the|your)\b/i.test(visible);
+    const wroteLock =
+      /\bStep\s*[1-5]\b/i.test(visible) ||
+      /\b(?:locked|locking) (?:in|the|your)\b/i.test(visible) ||
+      /\b(?:short-term )?objective\b/i.test(visible) ||
+      /\b(?:comfortable (?:with|locking)|lock that (?:as )?(?:the )?goal)\b/i.test(visible);
     if (reaskLocked && !wroteLock) return "reask_locked_step";
   }
   const voiceReject = naturalVoiceRejectReason(visible);
@@ -531,8 +535,25 @@ Briefly summarise what matters from the document for their coaching situation, s
 const CRISIS_TEMPLATE =
   "I'm really sorry things feel this heavy. When you say that, do you mean you're having thoughts of ending your life, or is it more a way of saying how bad this feels right now?";
 
-function templatedReply({ element, crisis, captured } = {}) {
+function templatedReply({ element, crisis, captured, protocolState } = {}) {
   if (crisis) return CRISIS_TEMPLATE;
+  // After Reflective Handshake — never fall back to a vague "what feels important" probe.
+  if (
+    protocolState === PROTOCOL_STATES.GOAL_SETTING ||
+    protocolState === PROTOCOL_STATES.MICRO_STEPPING_AND_CONFIDENCE_CHECK
+  ) {
+    const loopHint =
+      (typeof captured?.coping === "string" && captured.coping.trim()) ||
+      (typeof captured?.situation === "string" && captured.situation.trim()) ||
+      "";
+    const objective = loopHint
+      ? `interrupt that escape (${loopHint.slice(0, 80)}) so you finish the next block`
+      : "interrupt the escape loop so you finish the next block";
+    return `Thanks for confirming that map. For a short-term objective we can try: ${objective}. Are you comfortable locking that as the Goal, or want to tweak the wording?`;
+  }
+  if (protocolState === PROTOCOL_STATES.PHASE_2_GATE_LOCKED) {
+    return `Locked — we'll keep the steps we wrote. When will you run the active step, and when should we check in?`;
+  }
   if (element === "summary") {
     return `${buildHandshakeDraft(captured)} ${TEMPLATE_QUESTIONS.summary}`;
   }

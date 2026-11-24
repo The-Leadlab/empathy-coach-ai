@@ -1,6 +1,6 @@
 # SUPER-PROMPT — Private vault + trained 14B (no Groq coach)
 
-**Goal:** Put `empathy-coach-qwen14-merged-v2` in a **private Hugging Face vault**, serve it on **Modal** (scale-to-zero, OpenAI-compatible), point **Netlify** at that host, and **turn off Groq** for coach chat. Leave RunPod volume `lo3n0gefun` + Vercel for **training** only.
+**Goal:** Put `empathy-coach-qwen14-merged-v2` in a **private Hugging Face vault**, serve it for free (Mac MLX 4-bit + Cloudflare tunnel; or HF Space ZeroGPU once the HF account is ≥30 days old), point **Netlify** at that host, and **turn off Groq** for coach chat. Leave RunPod volume `lo3n0gefun` + Vercel for **training** only. **Do not use Modal** (paid).
 
 **Do not** push weight files to the public GitHub repo.
 

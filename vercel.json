@@ -5,7 +5,7 @@
   "outputDirectory": "dist",
   "functions": {
     "api/*.js": {
-      "maxDuration": 60,
+      "maxDuration": 120,
       "includeFiles": "{netlify/functions/**,skills/**,config/**,knowledge-base/**,data/index/**,scripts/phase3/**}"
     }
   },
