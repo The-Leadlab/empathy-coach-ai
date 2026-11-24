@@ -5,7 +5,7 @@ import ChatInput from "@/components/chat/ChatInput";
 import { detectCrisis } from "@/components/safety/CrisisDetector";
 import { useAuth } from "@/hooks/useAuth";
 import { useSpeechSynthesis } from "@/hooks/useSpeechSynthesis";
-import { warmCoachLlm } from "@/lib/warmCoachLlm";
+import { warmCoachLlmStatus } from "@/lib/warmCoachLlm";
 import {
   fetchJourneyById,
   renameChatSession,
@@ -159,6 +159,17 @@ export default function AvatarSessionPage() {
   const activeJobIdRef = useRef<string | null>(null);
   /** Tracks last coach provider so we can toast when Groq → trained model switches. */
   const lastCoachProviderRef = useRef<string | null>(null);
+  const modelLiveToastShownRef = useRef(false);
+
+  const notifyModelLive = (why: string) => {
+    if (modelLiveToastShownRef.current) return;
+    modelLiveToastShownRef.current = true;
+    toast.success("ShiftED model is live", {
+      description: why,
+      position: "top-center",
+      duration: 7000,
+    });
+  };
   const { speak, stop, isSpeaking } = useSpeechSynthesis();
 
   const buildDisplayMessages = (allMessages: StoredMessage[], activeMessageId: string | null) => {
@@ -397,6 +408,30 @@ export default function AvatarSessionPage() {
           setActiveAssistantId(initial.id);
           await setSessionActiveMessage(journey.id, initial.id);
         }
+
+        const recentAssistants = restored.filter((m) => m.role === "assistant").slice(-8);
+        const lastProvider = [...recentAssistants]
+          .reverse()
+          .map((m) => (m.generation_metadata?.provider as string | undefined) || null)
+          .find((p) => p);
+        lastCoachProviderRef.current = lastProvider || null;
+        const hadFallback = recentAssistants.some(
+          (m) => (m.generation_metadata?.provider as string | undefined) === "fallback",
+        );
+
+        // Kick RunPod; toast on-site when our 14B is already serving (esp. after Groq turns).
+        const warm = await warmCoachLlmStatus("session_open");
+        if (
+          isMounted &&
+          warm?.provider === "runpod" &&
+          (warm.alreadyWarm || hadFallback || lastProvider === "fallback")
+        ) {
+          notifyModelLive(
+            hadFallback || lastProvider === "fallback"
+              ? "You're back on the trained ShiftED coach — not the quick-start model."
+              : "Trained ShiftED coach is ready for this session.",
+          );
+        }
       } catch (err) {
         console.error(err);
       } finally {
@@ -405,8 +440,6 @@ export default function AvatarSessionPage() {
     };
 
     bootstrapJourney();
-    // October-style: kick RunPod scale-up as soon as the journey session opens.
-    warmCoachLlm("session_open");
 
     return () => {
       isMounted = false;
@@ -649,16 +682,8 @@ export default function AvatarSessionPage() {
       const replyProvider = result.provider || "runpod";
       const prevProvider = lastCoachProviderRef.current;
       lastCoachProviderRef.current = replyProvider;
-      if (
-        prevProvider &&
-        prevProvider !== "runpod" &&
-        replyProvider === "runpod"
-      ) {
-        toast.success("Trained coach is ready", {
-          description: "Switched from quick start to your ShiftED model.",
-          position: "bottom-right",
-          duration: 5000,
-        });
+      if (prevProvider && prevProvider !== "runpod" && replyProvider === "runpod") {
+        notifyModelLive("Switched from quick start to your trained ShiftED model.");
       }
       const workbookRec = parseWorkbookRecommendation(content);
       const { displayContent } = extractProgressUpdates(content, journeyState);
