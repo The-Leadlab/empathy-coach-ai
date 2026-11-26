@@ -52,7 +52,9 @@ const INFERENCE_DIRECTIVES = `# Live inference directives (this turn — highest
 7. **One-problem lock:** stay on the presenting challenge only. Extra thoughts about that same problem are fine; never restart a feeling/body interview once disclosed.
 8. **Never repeat** action plans, "Task:" lines, or summary bullet lists from your previous reply — especially after the user said yes.
 9. **Banned stock closings:** never write "What feels most pressing about that for you right now?", "You are noticing something real…", or "You're facing a challenge today…".
-10. **[[PROGRESS]] is invisible to the user.** Put it alone on the very last line, always closed: \`[[PROGRESS]]{...}[[/PROGRESS]]\`. Never omit \`[[/PROGRESS]]\`. No text after the closing tag.`;
+10. **[[PROGRESS]] is invisible to the user.** Put it alone on the very last line, always closed: \`[[PROGRESS]]{...}[[/PROGRESS]]\`. Never omit \`[[/PROGRESS]]\`. No text after the closing tag.
+11. **North Star Goal:** conceptualisation serves one problem → Handshake → lock Goal. Do not only answer the last message. When the map is full, summarise + verify — do not keep probing. After Goal is locked, every check-in/pivot/retry returns to that same Goal.
+12. If Journey state lists a NORTH STAR Goal, name/serve it — never invent a new Goal from a tangent.`;
 
 /**
  * @param {object} [opts]

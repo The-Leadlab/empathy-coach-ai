@@ -1,0 +1,27 @@
+# ShiftED coach model backup — empathy-coach-qwen14-merged-v2
+
+Created: 2026-11-19T12:33:56Z
+Machine: MacBook Pro
+
+## Local path (this laptop)
+/Users/attia/Desktop/Paginas web/New folder/empathy-coach-ai/models/empathy-coach-qwen14-merged-v2
+
+## Size
+ 28G	/Users/attia/Desktop/Paginas web/New folder/empathy-coach-ai/models/empathy-coach-qwen14-merged-v2
+
+## Files
+total 57807528
+drwxr-xr-x@ 14 attia  staff   448B Nov 18 19:04 .
+drwxr-xr-x@  5 attia  staff   160B Nov 18 19:00 ..
+-rw-r--r--@  1 attia  staff   2.4K Nov 18 19:04 chat_template.jinja
+-rw-r--r--@  1 attia  staff   1.8K Nov 18 19:04 config.json
+-rw-r--r--@  1 attia  staff   240B Nov 18 19:04 generation_config.json
+-rw-r--r--@  1 attia  staff   4.6G Nov 18 18:55 model-00001-of-00006.safetensors
+-rw-r--r--@  1 attia  staff   4.6G Nov 18 18:55 model-00002-of-00006.safetensors
+-rw-r--r--@  1 attia  staff   4.6G Nov 18 18:56 model-00003-of-00006.safetensors
+-rw-r--r--@  1 attia  staff   4.6G Nov 18 18:56 model-00004-of-00006.safetensors
+-rw-r--r--@  1 attia  staff   4.6G Nov 18 18:56 model-00005-of-00006.safetensors
+-rw-r--r--@  1 attia  staff   4.4G Nov 18 18:57 model-00006-of-00006.safetensors
+-rw-r--r--@  1 attia  staff    46K Nov 18 19:04 model.safetensors.index.json
+-rw-r--r--@  1 attia  staff    11M Nov 18 19:04 tokenizer.json
+-rw-r--r--@  1 attia  staff   4.3K Nov 18 19:04 tokenizer_config.json

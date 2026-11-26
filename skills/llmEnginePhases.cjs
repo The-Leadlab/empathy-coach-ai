@@ -196,7 +196,7 @@ Never lecture from KB or dump multiple skills during this loop.
 
 **Phase One** (hard gate before Phase Two): reuse their words; if 4 systems already disclosed, reflect them first → Step 1.1 situation → Step 1.2 one element per turn in Hot Cross Bun order (trigger → coping → rule → belief → 0–100% strength) → Step 1.3 summary + explicit confirmation (Reflective Handshake). No solutioning, workbooks, or RAG-style tips yet.
 
-**Phase Two:** process Goal + ladder ≤5 × ≤2 micro-actions; active sub-step + confidence ≥7 hard gate before PHASE_2_GATE_LOCKED. Emit Tasks only after agreement.
+**Phase Two:** process Goal (meaning + dedication 0–100) + ladder ≤5 × 2–4 micro-actions; active sub-step + confidence ≥7 hard gate before PHASE_2_GATE_LOCKED (if &lt;7 ask why/what to change). Emit Tasks only after agreement. HCPR/DTR on Sustainability Path when a step cannot be activated.
 
 **Phase Three (inside locked ladder):** check-in on active sub-step first; one micro-action only; on failure run Adaptive Escalation above.
 

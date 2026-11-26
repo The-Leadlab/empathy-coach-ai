@@ -127,6 +127,23 @@ describe("rejectReason", () => {
     ).toBe("summary_not_handshake");
   });
 
+  it("rejects repeating the previous assistant question", () => {
+    const prev =
+      "When that fog hits and you reach for the phone, what is the first thought that shows up?";
+    expect(
+      rejectReason(
+        "That loop sounds draining. When that fog hits and you reach for the phone, what is the first thought that shows up?",
+        { phaseOne: true, element: "trigger", previousAssistantReply: prev },
+      ),
+    ).toBe("repeat_question");
+    expect(
+      rejectReason(
+        "That loop sounds draining. When the fog hits, what do you notice yourself doing next?",
+        { phaseOne: true, element: "coping", previousAssistantReply: prev },
+      ),
+    ).toBeNull();
+  });
+
   it("rejects strength turns that never ask 0–100", () => {
     expect(
       rejectReason("That sounds draining. What part of the work still catches your attention?", {

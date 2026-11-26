@@ -64,7 +64,10 @@ function formatJourneyContextForPrompt(ctx) {
     lines.push(`Conceptualisation on file: ${ctx.conceptualisationSummary}`);
   }
   if (ctx.targetOutcome) {
-    lines.push(`Target outcome (Phase Two): ${ctx.targetOutcome}`);
+    lines.push(`NORTH STAR Goal (locked — every later turn must serve this): ${ctx.targetOutcome}`);
+    lines.push(
+      "Do not invent a new Goal or new presenting problem from the last message. Check-in, pivot, and retry stay loyal to this Goal.",
+    );
   }
   if (ctx.activeMicroGoal) {
     lines.push(`Active micro-goal (Phase Two/Three): ${ctx.activeMicroGoal}`);
@@ -149,13 +152,19 @@ function formatJourneyContextForPrompt(ctx) {
       lines.push("- Phase One Step 1.3: present summary; await explicit confirmation before Phase Two.");
     }
   } else if (!ctx.targetOutcome && goals.length === 0) {
-    lines.push("- Phase Two: co-create Goal + ladder (Steps 1–5, subs 1.1…) and get explicit agreement before Tasks list.");
+    lines.push(
+      "- Phase Two: Handshake is done — lock a short-term Goal in writing NOW (do not keep Phase One probing), then ladder (Steps 1–5) before Tasks.",
+    );
   } else if (phase === 2 || !ctx.activeMicroGoal || (ctx.microGoalConfidence ?? 0) < 7) {
-    lines.push("- Phase Two: agree Goal + ladder if not on Tasks yet; else coach **active sub-step** only + 1–10 confidence (≥7).");
+    lines.push(
+      "- Phase Two: stay on the NORTH STAR Goal above; coach **active sub-step** only + 1–10 confidence (≥7). Never re-ask a confirmed Goal.",
+    );
   } else if (ctx.isResuming) {
-    lines.push("- Phase Three: check-in on **active sub-step** from ladder first.");
+    lines.push(
+      "- Phase Three: check-in on **active sub-step** toward the NORTH STAR Goal first — do not restart intake from the last message.",
+    );
   } else {
-    lines.push("- Phase Three: coach execution; pivot on failure/stress.");
+    lines.push("- Phase Three: coach execution toward the same Goal; pivot on failure/stress, then return to that Goal.");
   }
 
   return lines.join("\n");

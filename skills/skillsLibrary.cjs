@@ -424,7 +424,7 @@ const SKILLS = [
     platformPhase: 1,
     acronym: null,
     description:
-      "Phase One dialogue craft: reuse their words, normalise shame/imposter briefly, reflect situation/thoughts/feelings-body/avoidance already shared, then one Socratic question with a plain reason. Phase Two: process goals, ≤5 steps × ≤2 micro-actions, stimulus control when scrolling/avoidance appears.",
+      "Phase One dialogue craft: reuse their words, normalise shame/imposter briefly, Two-Pillar map (cognitive drivers + response engine) already shared, then one Socratic question with a plain reason. Phase Two: process goals, ≤5 steps × 2–4 micro-actions, phone-away/timer when scrolling/avoidance appears.",
     gapSignals: [
       "freeze up",
       "feel like a fraud",

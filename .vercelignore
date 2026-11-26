@@ -1,0 +1,15 @@
+models
+**/models/**
+node_modules
+.git
+data/sft
+data/archives
+data/raw
+data/processed
+tmp-july-docs
+docs/exports/ShiftED-July-vs-Now-System-Comparison-Pack
+docs/exports/ShiftED-July-Gap-And-Old-Laptop-Gather.zip
+*.safetensors
+.env
+.env.*
+.DS_Store

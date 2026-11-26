@@ -522,7 +522,14 @@ exports.handler = async (event) => {
     messages = trimMessagesForContext(messages, { reserveOutputTokens: 450 });
   }
   if (mode === "regenerate") {
-    turn = prepareCoachTurn({ mode, possibleCrisisLanguage: body?.possibleCrisisLanguage });
+    const regenHistory = Array.isArray(body?.chatHistory) ? body.chatHistory : [];
+    turn = prepareCoachTurn({
+      mode,
+      possibleCrisisLanguage: body?.possibleCrisisLanguage,
+      history: regenHistory,
+      userMessage: body?.userMessage || body?.regenerationContext?.originalUserMessage,
+      journeyContext: body?.journeyContext,
+    });
   }
   const guard = turn?.guard ?? null;
   if (guard && body?.guardAttempt === 2) messages = withRegenerateReminder(messages);

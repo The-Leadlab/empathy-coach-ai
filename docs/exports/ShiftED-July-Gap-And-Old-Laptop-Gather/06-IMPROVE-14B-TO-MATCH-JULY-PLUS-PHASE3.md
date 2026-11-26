@@ -81,6 +81,14 @@ Assumption: July 7B weights stay missing. We close the quality gap on **this** s
 | Clinical jargon | 0 |
 | Provider | RunPod 14B v2 only |
 | Cold start | Worker eventually ready (not infinite queue) |
+| No last-message chase when Handshake due | Summary + fit? (not exploratory probe) |
+| Goal locked after Handshake yes | Short-term objective named in writing |
+| Return to locked Goal after check-in/pivot | Same Goal; no new case from tangent |
+| No repeated previous question | Advance one protocol step |
+
+## Anti-regression (25 Nov) — last-message chase / no Goal return
+
+Root cause: v2 weights + soft prompts favour answering the latest user sentence; Handshake/Goal never stick. Layer-2 now has North Star rules + `repeat_question` reject. **V3 SFT must include Handshake→Goal gold and hard negatives** (chase last message; abandon Goal; re-ask). See `docs/SUPER-PROMPT-PHASE-STRUCTURE-GOAL-SETTING.md`.
 
 ---
 

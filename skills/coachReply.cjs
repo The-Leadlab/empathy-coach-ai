@@ -214,6 +214,37 @@ const SUMMARY_EXPLORATORY_RE =
   /\bwhat (happens|feels|makes|do you|would|part|usually|felt)|how (do|does|did) you|what(?:'s| is) (one|the most|most)\b/i;
 const STRENGTH_ASK_RE = /0\s*(to|-|–)\s*100|how strongly|out of 100|per\s?cent|%\b/i;
 
+/** Last interrogative sentence in a coach reply (for repeat detection). */
+function extractLastQuestion(text) {
+  const matches = String(text ?? "").match(/[^.!?\n]*\?/g);
+  if (!matches || !matches.length) return "";
+  return matches[matches.length - 1].trim();
+}
+
+function normalizeQuestion(q) {
+  return String(q || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** True when the new question is the same or a close rephrase of the previous one. */
+function isRepeatQuestion(currentReply, previousAssistantReply) {
+  const cur = normalizeQuestion(extractLastQuestion(currentReply));
+  const prev = normalizeQuestion(extractLastQuestion(previousAssistantReply));
+  if (!cur || !prev || cur.length < 12 || prev.length < 12) return false;
+  if (cur === prev) return true;
+  if (cur.includes(prev) || prev.includes(cur)) return true;
+  const a = new Set(cur.split(" ").filter((w) => w.length > 2));
+  const b = new Set(prev.split(" ").filter((w) => w.length > 2));
+  if (a.size < 3 || b.size < 3) return false;
+  let inter = 0;
+  for (const w of a) if (b.has(w)) inter += 1;
+  const union = a.size + b.size - inter;
+  return union > 0 && inter / union >= 0.72;
+}
+
 /** Why a reply should be rejected, or null when it is fine to show. */
 function rejectReason(reply, opts = {}) {
   const visible = stripHiddenTags(reply);
@@ -222,6 +253,10 @@ function rejectReason(reply, opts = {}) {
   if (opts.phaseOne && opts.element !== "summary" && !visible.includes("?")) return "no_question";
   if (isPreGoalTurn(opts) && EARLY_GOAL_PATTERN.test(visible)) return "early_goal";
   if ((visible.match(/\?/g) || []).length > 1) return "multi_question";
+  // Same question as last assistant turn (rephrase counts).
+  if (opts.previousAssistantReply && isRepeatQuestion(visible, opts.previousAssistantReply)) {
+    return "repeat_question";
+  }
   // Reflective Handshake: must summarise + verify — not chase the last message.
   if (opts.phaseOne && opts.element === "summary") {
     if (!SUMMARY_VERIFY_RE.test(visible) && SUMMARY_EXPLORATORY_RE.test(visible)) {
@@ -478,12 +513,14 @@ SUMMARY / REFLECTIVE HANDSHAKE (mandatory this turn):
 - Your reply MUST be a short map of Already known (situation → thought → feelings/body/behaviour → rule/belief/strength) in their words.
 - End with ONE verification question only (e.g. "Does that fit how things are working for you right now?").
 - HARD BAN: "what happens when…", "what feels most…", "what part of…", or any new probe about the last message.
-- Do NOT open a new topic. Do NOT set a Goal yet — wait for their yes.`
+- Do NOT open a new topic. Do NOT set a Goal yet — wait for their yes.
+- After they confirm, the next turn MUST lock a Goal for this same problem — conceptualisation is finished.`
       : "";
 
   return `# This turn
 Ask about: ${ELEMENT_ASK[asking] || ELEMENT_ASK.trigger}
 Already known (do not ask again): ${known || "nothing yet"}
+North Star: enrich the single presenting problem toward Handshake → Goal. Do not chase only the last message; never repeat your previous question.
 ${summaryHard}
 
 Hard rules for this reply:
@@ -616,10 +653,11 @@ function withRegenerateReminder(messages) {
  * which element to ask about.
  */
 const HANDSHAKE_DONE_INSTRUCTION = `# This turn — July Simon after handshake (enter Phase Two)
-The user just confirmed your Phase One summary. Do NOT re-summarize or ask if it captures things again.
+The user just confirmed your Phase One summary. Do NOT re-summarize or ask if it captures things again. Do NOT probe the last message as if Phase One continues.
 Affirm briefly, then move into Phase Two / Action Plan: propose a clear **short-term objective (Goal)** grounded in what they said (break the phone/scroll loop, finish the report, etc.), and ask if they are comfortable with that objective or want to adjust it.
 Write the objective in plain locked language — do not only ask an open "what would success look like?" with no proposed lock.
-If they already named steps or said "lock it" / "keep the plan" / "deal": restate Step 1… in writing, then ONE when/comfort question — never ask "what's the first step?" again.`;
+If they already named steps or said "lock it" / "keep the plan" / "deal": restate Step 1… in writing, then ONE when/comfort question — never ask "what's the first step?" again.
+This Goal becomes the North Star: later check-ins and pivots must return to it, not invent a new case.`;
 
 const RAPPORT_INTRO_INSTRUCTION = `# This turn — soft start (get to know them)
 Do NOT start Phase One mapping, Hot Cross Bun, rules, beliefs, ladders, or goals yet.
@@ -702,6 +740,9 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
       : null;
 
   if (phaseOne?.handshakeConfirmed) {
+    const previousAssistantReply = [...(history || [])]
+      .reverse()
+      .find((m) => m && m.role === "assistant" && typeof m.content === "string")?.content;
     return {
       phaseOne: { ...phaseOne, handshakeConfirmed: true },
       protocolState: PROTOCOL_STATES.GOAL_SETTING,
@@ -711,6 +752,7 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
         phaseOne: false,
         element: null,
         protocolState: PROTOCOL_STATES.GOAL_SETTING,
+        previousAssistantReply: previousAssistantReply || null,
         crisis,
       },
     };
@@ -748,6 +790,10 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
     FEELING_DISCLOSED_RE.test(userBlob)
   );
 
+  const previousAssistantReply = [...(history || [])]
+    .reverse()
+    .find((m) => m && m.role === "assistant" && typeof m.content === "string")?.content;
+
   return {
     phaseOne,
     protocolState,
@@ -758,6 +804,7 @@ function prepareCoachTurn({ mode, journeyContext, possibleCrisisLanguage, histor
       element: phaseOne?.asking ?? null,
       protocolState,
       feelingsKnown,
+      previousAssistantReply: previousAssistantReply || null,
       crisis,
     },
   };
@@ -789,6 +836,8 @@ module.exports = {
   fallbackExtractReply,
   isMetaText,
   rejectReason,
+  extractLastQuestion,
+  isRepeatQuestion,
   stripHiddenTags,
   detectAskedElement,
   advancePhaseOneState,

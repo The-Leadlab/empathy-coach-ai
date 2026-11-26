@@ -1,0 +1,35 @@
+ShiftED — model backup restore card (no secrets / no API keys)
+Updated: 2026-11-19
+
+MODEL: empathy-coach-qwen14-merged-v2  (Qwen2.5-14B continued SFT)
+SIZE:  ~28 GB (6 safetensor shards + tokenizer)
+
+LAPTOP COPY (complete):
+/Users/attia/Desktop/Paginas web/New folder/empathy-coach-ai/models/empathy-coach-qwen14-merged-v2
+
+CHECKSUMS:
+/Users/attia/Desktop/ShiftED-MODEL-BACKUP-v2/SHA256SUMS.txt
+README: /Users/attia/Desktop/ShiftED-MODEL-BACKUP-v2/README.md
+
+RUNPOD (live):
+Volume id:   lo3n0gefun  (name: empathy-coach-phase3, EU-RO-1, 100 GB)
+Volume path: /runpod-volume/models/empathy-coach-qwen14-merged-v2
+Endpoint:    ukbtc1h97b2y2h
+
+PUBLIC GITHUB (code only — weights NOT in git):
+https://github.com/The-Leadlab/empathy-coach-ai
+.gitignore includes: models/
+
+IF VOLUME DELETED AGAIN:
+1) Use laptop copy above
+2) New EU-RO-1 volume + upload folder
+3) Repoint Serverless MODEL_NAME
+
+V3 TRAINING (anti-wipe):
+- NEVER overwrite merged-v2 on disk or volume
+- Train/merge only into *-sft-v3 / *-merged-v3 paths
+- Keep endpoint ukbtc1h97b2y2h on v2 until V3 A/B passes
+- See docs/MODEL-CHECKPOINT-BACKUP-V3.md
+- Before train: bash scripts/verify-model-checkpoint-v2.sh
+
+DO NOT commit weight files to GitHub.

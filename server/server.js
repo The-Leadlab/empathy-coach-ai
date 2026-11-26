@@ -253,7 +253,15 @@ app.post("/api/chat", async (req, res) => {
     messages = [{ role: "system", content: systemContent }, ...history, { role: "user", content: userMessage }];
     messages = trimMessagesForContext(messages, { reserveOutputTokens: 450 });
   }
-  if (isRegenerationMode) turn = prepareCoachTurn({ mode: "regenerate", possibleCrisisLanguage });
+  if (isRegenerationMode) {
+    turn = prepareCoachTurn({
+      mode: "regenerate",
+      possibleCrisisLanguage,
+      history: Array.isArray(chatHistory) ? chatHistory : [],
+      userMessage: userMessage || regenerationContext?.originalUserMessage,
+      journeyContext,
+    });
+  }
   const guard = turn?.guard ?? null;
 
   const apiKey = process.env.LLM_API_KEY;
