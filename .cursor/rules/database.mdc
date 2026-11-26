@@ -1,0 +1,38 @@
+---
+description: Supabase RLS and migration rules for ShiftED user and catalog data
+globs:
+  - supabase/**
+  - docs/SUPABASE-CHAT-SCHEMA.sql
+  - docs/APPLY-USER-CONSENTS.sql
+  - src/integrations/supabase/**
+---
+
+# Database (Supabase)
+
+Project `wxxwxvauseqftyorhkkp`. The browser uses `VITE_SUPABASE_PUBLISHABLE_KEY` (anon). `SUPABASE_SERVICE_ROLE_KEY` is server/scripts only and bypasses RLS — treat every service-role query as a privileged admin action.
+
+## Every table
+
+```sql
+alter table public.<name> enable row level security;
+```
+
+Ship the `ENABLE` in the same migration as `CREATE TABLE`. If Advisor reports RLS off (see `20261103193000_notification_rls.sql`), fix it immediately with no broad `USING (true)` policy.
+
+## Policy shape
+
+- **User rows:** `auth.uid() = user_id` (or session ownership join for `chat_messages`).
+- **Admin cross-user read:** `public.has_role(auth.uid(), 'admin')` only. Keep `has_role` `SECURITY DEFINER` with `SET search_path = public`.
+- **Catalog (`skills`, `workbooks`):** `SELECT` for `TO authenticated` (and `is_active = true` if used). Do not leave a policy that applies to `anon` with only `USING (is_active = true)` — that is a public read.
+- **Clinician workbooks:** owner admin CRUD; other admins read. Not for regular users.
+- Views that join user data use `security_invoker = true` (see `admin_feedback_prompt_metrics`).
+
+## Client
+
+`src/integrations/supabase/client.ts` stays on the publishable key. Never create a browser client with the service role. Regenerated `types.ts` must include new tables before they are queried from `src/`.
+
+## Migrations
+
+- Do not commit role grants to `anon` for write, or policies that `SELECT` `auth.users` as the invoker (use `auth.uid()` / a security-definer helper).
+- SQL under `supabase/sql/` is operator-run. Same RLS rules apply; do not document workarounds that disable RLS.
+---

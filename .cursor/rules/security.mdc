@@ -1,0 +1,54 @@
+---
+description: ShiftED AI security baseline — secrets, authz, RLS, rate limits, validation, payments
+alwaysApply: true
+---
+
+# Security (ShiftED AI)
+
+This is a Vite + React SPA (`src/`) on Netlify (primary) and Vercel, with LLM proxies in `netlify/functions/`, `api/`, and `server/server.js`, and Supabase for auth + data. Coaching transcripts, journals, consents, and trainer feedback are sensitive.
+
+## 1. Secrets stay server-side
+
+- Never put `LLM_API_KEY`, `GROQ_API_KEY`, `OPENAI_API_KEY`, `FALLBACK_LLM_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, RunPod keys, or any webhook/signing secret in `src/`, `public/`, or a `VITE_` / `NEXT_PUBLIC_` variable. Vite inlines `import.meta.env.VITE_*` into the client bundle.
+- Allowed in the browser: `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY` (anon), and non-secret flags such as `VITE_FEATURE_REFERRALS`.
+- Admin PINs/passwords must not use `VITE_*`. A second gate belongs in a Netlify/Vercel function with a non-`VITE_` env var.
+- Read secrets only via `process.env` in `netlify/functions/`, `api/`, `server/`, or `scripts/`.
+
+## 2. Database: RLS on, no public read/write
+
+- Every new `public` table enables RLS in the same migration. No table ships with RLS off.
+- User data (`chat_*`, `journal_entries`, `reflections`, `user_consents`, `user_activity`, `survey_results`, `profiles`, clinician workbooks) is owner-scoped (`auth.uid() = user_id`) or admin via `public.has_role(auth.uid(), 'admin')`.
+- Catalog tables (`skills`, `workbooks`) may be SELECT-only for `authenticated`, never `anon` write, and never `USING (true)` / `WITH CHECK (true)`.
+- Service role is Netlify/server/scripts only. The browser client uses the anon key.
+
+## 3. Auth and authorization on every API and admin page
+
+- `/api/chat`, `/api/transcribe`, `/api/translate`, `/api/workbook-author` (and the Express copies in `server/server.js`) must verify a Supabase JWT (`Authorization: Bearer`) and reject missing/invalid tokens with 401.
+- Admin-only work (`workbook-author`, trainer monitor, clinician workbooks) must check `user_roles.role = 'admin'` (or an equivalent server-side role claim). Email allowlists (`NAMED_TRAINER_ADMINS`, `@admin.com`) are not authorization.
+- `/adminchat` and `/testing/workbooks/*` stay behind `RequireAuth` + `RequireAdmin`. Do not add client-only admin gates.
+
+## 4. Rate-limit costly routes
+
+- Rate-limit `/api/chat`, `/api/transcribe`, `/api/translate`, `/api/workbook-author`, and Supabase Auth (login/signup/reset) per IP and per user.
+- Cap JSON body size (chat text is small; transcribe audio is the exception). Do not keep `express.json({ limit: "15mb" })` on the chat server without a tighter per-route limit.
+
+## 5. Validate input; do not trust the client
+
+- Validate function bodies with zod (already a dependency). Reject unknown fields on admin/LLM routes.
+- Use the Supabase client / parameterized SQL only. No string-concatenated SQL.
+- Treat `userMessage`, `chatHistory`, `journeyContext`, and uploaded files as untrusted. Escape anything rendered as HTML (`dangerouslySetInnerHTML` only for known-safe CSS, as in the chart primitive).
+- CORS: do not use `Access-Control-Allow-Origin: *` on authenticated or LLM routes. `server/server.js` must not `app.use(cors())` without an origin allowlist in production.
+
+## 6. Nothing secret in git
+
+- `.env`, `.env.*`, and `server/.env` stay gitignored (keep only `.env.example` with placeholders).
+- Never commit service_role JWTs, LLM keys, or real user passwords. If one lands in history: rotate it, then purge the blob. Add secret scanning (gitleaks) before merge.
+
+## 7. Payments (when added)
+
+- There is no Stripe/Paystack integration today. If one is added: verify session status and webhook signatures on the server (`STRIPE_WEBHOOK_SECRET` / Paystack HMAC). Never trust a client `isPremium` flag or query param for paid features.
+
+## Mental-health data
+
+- Chat, journal, consents, and feedback are health-adjacent. Default deny. Log errors without message bodies or tokens.
+---
